@@ -1,0 +1,257 @@
+﻿name: Sonic-{player}
+
+# Used to describe your yaml. Useful if you have multiple files.
+description: Sonic the Hedgehog 1 - Random
+
+game: Sonic the Hedgehog 1
+requires:
+  version: 0.6.3 # Version of Archipelago required for this yaml to work as expected.
+
+Sonic the Hedgehog 1:
+  ################
+  # Game Options #
+  ################
+  progression_balancing:
+    # A system that can move progression earlier, to try and prevent the player from getting stuck and bored early.
+    # 
+    # A lower setting means more getting stuck. A higher setting means less getting stuck.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 99
+    random: 0
+    random-low: 0
+    random-high: 0
+    disabled: 0 # equivalent to 0
+    normal: 50 # equivalent to 50
+    extreme: 0 # equivalent to 99
+
+  accessibility:
+    # Set rules for reachability of your items/locations.
+    # 
+    # **Full:** ensure everything can be reached and acquired.
+    # 
+    # **Minimal:** ensure what is needed to reach your goal can be acquired.
+    full: 50
+    minimal: 0
+
+  starting_zone:
+    # Specifies which zone keys are given for free
+    ['Random']
+
+  no_local_keys:
+    # Restrict local placement rules to force this world's keys to be placed in other worlds.
+    'false': 50
+    'true': 0
+
+  allow_disable_goal:
+    # Enable the buff item that disables Special stage GOAL blocks.
+    'false': 1
+    'true': 4
+
+  allow_disable_r:
+    # Enable the buff item that disables Special stage R blocks.
+    'false': 1
+    'true': 4
+
+  send_death:
+    # Enable this to send DeathLink
+    'false': 50
+    'true': 0
+
+  recv_death:
+    # Enable this to receive DeathLink
+    'false': 50
+    'true': 0
+
+  ################
+  # Ring Options #
+  ################
+  available_rings:
+    # Dr Eggman attacked, how many rings fell into the pool for you to recover?  Will cap Ring Goal.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Default is 150
+    # Minimum value is 0
+    # Maximum value is 150
+    0: 1
+    random-range-1-50: 2
+    random-range-51-100: 4
+    random-range-101-120: 8
+    random-range-121-140: 16
+    random-range-141-150: 32
+
+  hard_mode:
+    # Hard Mode: The ROM's ring count will remain zero and Sonic still only drops 6 rings.  Doesn't interact with Ring Goal or Available Rings.
+    'false': 4
+    'true': 1
+
+  boring_filler:
+    # Enable to take the fun out of the junk filler items
+    'false': 50
+    'true': 0
+
+  ####################
+  # Power-up options #
+  ####################
+  pow_invinc:
+    # Trigger Invincibility power-up
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Default is 5
+    # Minimum value is 0
+    # Maximum value is 16
+    0: 1
+    random-range-1-3: 2
+    random-range-4-6: 4
+    random-range-7-10: 2
+    random-range-11-16: 1
+
+  pow_shield:
+    # Trigger Shield power-up
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Default is 5
+    # Minimum value is 0
+    # Maximum value is 16
+    0: 1
+    random-range-1-3: 2
+    random-range-4-6: 4
+    random-range-7-10: 2
+    random-range-11-16: 1
+
+  pow_speeds:
+    # Trigger Speed Shoes power-up
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Default is 5
+    # Minimum value is 0
+    # Maximum value is 16
+    0: 1
+    random-range-1-3: 2
+    random-range-4-6: 4
+    random-range-7-10: 2
+    random-range-11-16: 1
+
+  pow_ss_trap_flag:
+    # Do you consider Speed Shoes a trap?
+    'false': 1
+    'true': 4
+
+  ###########################
+  # Item & Location Options #
+  ###########################
+  local_items:
+    # Forces these items to be in their native world.
+    []
+
+  non_local_items:
+    # Forces these items to be outside their native world.
+    []
+
+  start_inventory:
+    # Start with these items.
+    {}
+
+  start_hints:
+    # Start with these item's locations prefilled into the ``!hint`` command.
+    []
+
+  start_location_hints:
+    # Start with these locations and their item prefilled into the ``!hint`` command.
+    []
+
+  exclude_locations:
+    # Prevent these locations from having an important item.
+    []
+
+  priority_locations:
+    # Prevent these locations from having an unimportant item.
+    []
+
+  item_links:
+    # Share part of your item pool with other players.
+    []
+
+  plando_items:
+    # Generic items plando.
+    []
+
+  ######################
+  # Victory conditions #
+  ######################
+  emerald_goal:
+    # Changes the number of emeralds that need to be collected for you to clear.  Not order specific.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Default is 6
+    # Minimum value is 0
+    # Maximum value is 6
+    0: 1
+    1: 2
+    2: 4
+    3: 8
+    4: 16
+    5: 32
+    6: 64
+
+  boss_goal:
+    # Changes the number of bosses that need to be beaten for you to clear.  Not order specific.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Default is 6
+    # Minimum value is 0
+    # Maximum value is 6
+    0: 1
+    1: 2
+    2: 4
+    3: 8
+    4: 16
+    5: 32
+    6: 64
+
+  specials_goal:
+    # Changes the number of Special Stages that need to be beaten for you to clear.  Order specific.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Default is 6
+    # Minimum value is 0
+    # Maximum value is 6
+    0: 1
+    1: 2
+    2: 4
+    3: 8
+    4: 16
+    5: 32
+    6: 64
+
+  ring_goal:
+    # Changes the number of rings that need to be found for you to clear.  Isn't affected by Hard Mode, is overriden by Available Rings.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Default is 50, 100, 150 for easy, normal, hard
+    # Minimum value is 0
+    # Maximum value is 150
+    0: 1
+    random-range-1-50: 2
+    random-range-51-100: 4
+    random-range-101-120: 8
+    random-range-121-140: 2
+    random-range-141-150: 1
+
+  final_zone_last:
+    # Control when Final Zone can unlock, wait until all other victory conditions are met?
+    # 
+    # - **Anytime:** You can do Final Zone as soon as you have the key.
+    # - **Last But Optional:** If your victory conditions can be achieved without beating Final Zone you skip it.
+    # - **Always Last:** Final Zone unlocks once you have every other victory condition, beat it to win.
+    # 
+    # Note that this may change how certain mechanics behave:
+    # 
+    # - "Always Last" essentially forces the boss goal to be at least 1, "Last But Optional" will not.
+    # - Both "Always Last" and "Last But Optional" will add the Final Zone key to your starting inventory.
+    # - "Always Last" and "Last But Optional" are identical with 6 bosses.
+    # - An example of less than 6: "Always Last" with 3 bosses will require any 2 of the Act 3 bosses then FZ, "Last But Optional" requires any 2 of the Act 3 bosses then either FZ or a third Act 3 boss.
+    anytime: 1
+    last_but_optional: 1
+    always_last: 1

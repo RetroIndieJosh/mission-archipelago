@@ -1,0 +1,857 @@
+﻿name: DKC2-{player}
+description: Donkey Kong Country 2 - Random
+game: Donkey Kong Country 2
+requires:
+  version: 0.6.2 # Version of Archipelago required for this yaml to work as expected.
+
+Donkey Kong Country 2:
+  # Game Options
+  progression_balancing:
+    # A system that can move progression earlier, to try and prevent the player from getting stuck and bored early.
+    # 
+    # A lower setting means more getting stuck. A higher setting means less getting stuck.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 99
+    random: 0
+    random-low: 0
+    random-high: 0
+    disabled: 0 # equivalent to 0
+    normal: 50 # equivalent to 50
+    extreme: 0 # equivalent to 99
+
+  accessibility:
+    # Set rules for reachability of your items/locations.
+    # 
+    # **Full:** ensure everything can be reached and acquired.
+    # 
+    # **Minimal:** ensure what is needed to reach your goal can be acquired.
+    full: 50
+    minimal: 0
+
+  death_link:
+    # When you die, everyone who enabled death link dies. Of course, the reverse is true too.
+    'false': 50
+    'true': 0
+
+  energy_link:
+    # EnergyLink allows players to deposit energy extracted from collected bananas into a shared pool across games in the session.
+    # 
+    # You can exchange energy for Backup DK Barrels. Great for players that find the base game hard.
+    # There's an additional item in the item pool that allows for better energy extraction from bananas.
+    'false': 50
+    'true': 0
+
+  trap_link:
+    # Whether your received traps are linked to other players
+    'false': 50
+    'true': 0
+
+  display_messages:
+    # The game may summon a pop up message on items sent and received
+    # Messages are considerably delayed from the actual effect, you actually receive and send items quite fast
+    # 
+    # This feature is highly experimental, use it if you don't mind some visual bugs under certain scenarios,
+    # mainly during lag frames and pausing in certain moments
+    'off': 0
+    on_only_sent: 0
+    on_only_received: 0
+    on_everything: 50
+
+  received_message_filter:
+    # Applies an item classification filter on RECEIVED items
+    # 
+    # Only the items with the classifications listed below will be included
+    - Progression
+    - Useful
+    - Filler
+    - Trap
+
+  sent_message_filter:
+    # Applies an item classification filter on SENT items
+    # 
+    # Only the items with the classifications listed below will be included
+    - Progression
+    - Useful
+    - Filler
+    - Trap
+
+  starting_life_count:
+    # How many lives to start the game with.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 99
+    5: 50
+    random: 0
+    random-low: 0
+    random-high: 0
+
+  # Goal
+  goal:
+    # Which goal will be used to mark the game as completed
+    # - **Flying Krock:** Duel with K. Rool at the Flying Krock
+    # - **Lost World:** Duel with K. Rool at Lost World
+    # - **Kompletionist:** Duel with K. Rool at both Flying Krock and Lost World
+    flying_krock: 8
+    lost_world: 2
+    kompletionist: 1
+
+  krock_boss_tokens:
+    # How many Boss Tokens are required to access the Flying Krock.
+    # 
+    # If this value is set to 0, then the access will be a multiworld item.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 5
+    0: 1
+    1: 2
+    2: 4
+    3: 8
+    4: 16
+    5: 32
+    random: 0
+    random-low: 0
+    random-high: 0
+
+  required_galleon_levels:
+    # How many levels in Gangplank Galleon need to be cleared to fight the area boss
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 5
+    0: 1
+    1: 2
+    2: 4
+    3: 8
+    4: 16
+    5: 8
+    random: 0
+    random-low: 0
+    random-high: 0
+
+  required_cauldron_levels:
+    # How many levels in Crocodile Cauldron need to be cleared to fight the area boss
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 5
+    0: 1
+    1: 2
+    2: 4
+    3: 8
+    4: 16
+    5: 8
+    random: 0
+    random-low: 0
+    random-high: 0
+
+  required_quay_levels:
+    # How many levels in Krem Quay need to be cleared to fight the area boss
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 6
+    0: 1
+    1: 2
+    2: 4
+    3: 8
+    4: 16
+    5: 8
+    6: 4
+    random: 0
+    random-low: 0
+    random-high: 0
+
+  required_kremland_levels:
+    # How many levels in Krazy Kremland need to be cleared to fight the area boss
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 6
+    0: 1
+    1: 2
+    2: 4
+    3: 8
+    4: 16
+    5: 8
+    6: 4
+    random: 0
+    random-low: 0
+    random-high: 0
+
+  required_gulch_levels:
+    # How many levels in Gloomy Gulch need to be cleared to fight the area boss
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 5
+    0: 1
+    1: 2
+    2: 4
+    3: 8
+    4: 16
+    5: 8
+    random: 0
+    random-low: 0
+    random-high: 0
+
+  required_keep_levels:
+    # How many levels in K. Rool's Keep need to be cleared to fight the area boss
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 6
+    0: 1
+    1: 2
+    2: 4
+    3: 8
+    4: 16
+    5: 8
+    6: 4
+    random: 0
+    random-low: 0
+    random-high: 0
+
+  required_krock_levels:
+    # How many levels in The Flying Krock need to be cleared to fight the area boss
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 1
+    0: 1
+    1: 2
+    random: 0
+    random-low: 0
+    random-high: 0
+
+  lost_world_rocks:
+    # How many rocks are required to be found to be able to duel K. Rool at Lost World's Kore
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 1
+    # Maximum value is 10
+    1: 2
+    2: 4
+    3: 8
+    4: 16
+    5: 32
+    6: 16
+    7: 8
+    8: 4
+    9: 2
+    10: 1
+    random: 0
+    random-low: 0
+    random-high: 0
+
+  extra_lost_world_rocks:
+    # How many additional Lost World Rocks can be found in the multiworld
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 5
+    0: 1
+    1: 2
+    2: 4
+    3: 8
+    4: 4
+    5: 2
+    random: 0
+    random-low: 0
+    random-high: 0
+
+  lost_world_rock_placement:
+    # Determines how Lost World Rocks will be placed in the multiworld
+    # - **anywhere**: Placed anywhere in the multiworld
+    # - **lost_world_level_clear**: Forced in Level Clears found in Lost World
+    #   This option always creates 5 rocks. Extra lost world rocks aren't created.
+    # - **lost_world_anywhere**: Forced in anywhere in Lost World
+    # 
+    # These options listens to Excluded Locations, it won't force you to deal with levels you don't want to deal with.
+    # However, if it can place an item due to excluded locations AP will place them anywhere in the multiworld.
+    anywhere: 1
+    lost_world_level_clear: 4
+    lost_world_anywhere: 1
+
+  # Locations
+  logic:
+    # Logic difficulty. May become irrelevant if not a lot of items are added to the item pool.
+    # - **Strict**: Ensures everything is reachable as the original devs intended. For beginners or people who want to go out of logic with some tricks.
+    # - **Loose**: Reaching locations may require some level of mastery about the game's mechanics.
+    # - **Expert**: Locations expects players to be extremely good at the game with minimal amount of abilities. Hard to go out of logic.
+    strict: 50
+    loose: 0
+    expert: 0
+
+  kong_checks:
+    # Whether collecting all KONG letters in each level will grant a check
+    'false': 1
+    'true': 4
+
+  dk_coin_checks:
+    # Whether collecting a DK Coin in each level will grant a check
+    'false': 1
+    'true': 4
+
+  balloonsanity:
+    # Whether collecting a colored balloon in levels will grant a check
+    # 
+    # Doesn't include balloons from the goal or Black Klobbers
+    'false': 4
+    'true': 1
+
+  coinsanity:
+    # Whether collecting a banana coin in levels will grant a check
+    # 
+    # Doesn't include banana coins from the goal
+    'false': 8
+    'true': 1
+
+  bananasanity:
+    # Whether collecting a banana bunch in levels will grant a check
+    # 
+    # Doesn't include banana bunches from the goal, Yellow Klobbers or Rickety Race
+    'false': 16
+    'true': 1
+
+  swanky_checks:
+    # Whether completing a quiz will grant a check
+    'false': 1
+    'true': 4
+
+  # Shuffle
+  starting_kong:
+    # Which Kongs will be available at the start
+    diddy: 4
+    dixie: 2
+    both: 1
+
+  shuffle_levels:
+    # Shuffles levels and bosses around
+    'false': 16
+    'true': 1
+
+  shuffle_abilities:
+    # Which abilities will be added as items in the item pool
+    # If an ability is not present in the list they will be treated as unlocked from the start
+    # If you remove everything from this list, please put curly braces next to the option name
+    # 
+    #     shuffle_abilities: {}
+    # 
+    - Carry
+    - Swim
+    - Cartwheel
+    - Cling
+    - Climb
+    - Helicopter Spin
+    - Team Attack
+
+  shuffle_animals:
+    # Which animal buddies will be added as items in the item pool
+    # If an animal buddy is not present in the list they will be treated as unlocked from the start
+    # If you remove everything from this list, please put curly braces next to the option name
+    # 
+    #     shuffle_animals: {}
+    # 
+    - Rambi
+    - Squawks
+    - Enguarde
+    - Squitter
+    - Rattly
+    - Clapper
+    - Glimmer
+    - Skull Kart
+
+  shuffle_barrels:
+    # Which kind of barrels will be added as items in the item pool
+    # If a barrel is not present in the list they will be treated as unlocked from the start
+    # If you remove everything from this list, please put curly braces next to the option name
+    # 
+    #     shuffle_barrels: {}
+    # 
+    - Barrel Kannons
+    - Controllable Barrels
+    - Kong Barrels
+    - Warp Barrels
+    - Exclamation Barrels
+
+  # Trivia
+  swanky_questions_per_quiz:
+    # Whether completing a quiz will grant a check
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 1
+    # Maximum value is 6
+    1: 2
+    2: 4
+    3: 8
+    4: 4
+    5: 2
+    6: 1
+
+  swanky_forced_topics:
+    # Which additional topics will be added to Swanky's Bonus Bonanza pool of questions.
+    # 
+    # Swanky already enforces questions from games in the multiworld if they're on the database.
+    # 
+    # This option has priority over the Excluded Topics option.
+    # 
+    # Remove the leading # from anything you want from here
+
+    - 'A Link to the Past'
+    #- 'Actraiser'
+    #- 'Adventure'
+    #- 'Astalon'
+    #- 'Banjo-Tooie'
+    - 'Castlevania - Circle of the Moon'
+    #- 'Cave Story'
+    #- 'Diddy Kong Racing'
+    - 'Donkey Kong 64'
+    - 'Donkey Kong Country'
+    #- 'Donkey Kong Country 2'
+    #- 'Donkey Kong Country 3'
+    #- 'EarthBound'
+    - 'Final Fantasy Mystic Quest'
+    #- 'Genshin Impact'
+    #- 'Hollow Knight'
+    #- 'Kingdom Hearts'
+    #- 'Kingdom Hearts 2'
+    - 'Kirby 64 - The Crystal Shards'
+    #- 'Kirby Super Star'
+    #- "Kirby's Dream Land 3"
+    #- "Luigi's Mansion"
+    - "Majora's Mask Recompiled"
+    #- 'Mario & Luigi Superstar Saga'
+    #- 'Mario Kart Double Dash'
+    - 'Math'
+    - 'Mega Man 2'
+    - 'Mega Man 3'
+    - 'Mega Man X'
+    - 'Mega Man X2'
+    - 'Mega Man X3'
+    - 'Ocarina of Time'
+    #- 'Overcooked! 2'
+    #- 'Paper Mario'
+    #- 'Paper Mario The Thousand Year Door'
+    - 'Pokemon Crystal'
+    #- 'Pokemon Emerald'
+    - 'Pokemon Red and Blue'
+    #- 'Rabi-Ribi'
+    #- 'Risk of Rain 2'
+    #- 'Skyward Sword'
+    - 'Sonic Adventure 2 Battle'
+    - 'Subnautica'
+    - 'Super Mario 64'
+    - 'Super Mario World'
+    - 'Super Metroid'
+    - 'Symphony of the Night'
+    #- 'Terraria'
+    - 'The Legend of Zelda'
+    - 'VVVVVV'
+    #- 'Xenoblade X'
+    #- "Yoshi's Island"
+    #- 'Zelda II: The Adventure of Link'
+    #- 'Zillion'
+
+  swanky_excluded_topics:
+    # Which topics will be excluded from Swanky's Bonus Bonanza pool of questions.
+    # 
+    # Swanky enforces questions from the multiworld. This will help you to remove topics from games you don't know/care about in the session.
+    # Donkey Kong Country 2 can't be excluded (can be put here, but it'll be forced anyway)
+    # 
+    # Do note that if you remove way too many topics and set a very high question per quiz count an error may arise from the lack of questions available
+    # 
+    # Remove the leading # from anything you want from here
+    
+    #- 'A Link to the Past'
+    - 'Actraiser'
+    - 'Adventure'
+    - 'Astalon'
+    - 'Banjo-Tooie'
+    #- 'Castlevania - Circle of the Moon'
+    - 'Cave Story'
+    - 'Diddy Kong Racing'
+    #- 'Donkey Kong 64'
+    #- 'Donkey Kong Country'
+    - 'Donkey Kong Country 2'
+    - 'Donkey Kong Country 3'
+    - 'EarthBound'
+    #- 'Final Fantasy Mystic Quest'
+    - 'Genshin Impact'
+    - 'Hollow Knight'
+    - 'Kingdom Hearts'
+    - 'Kingdom Hearts 2'
+    #- 'Kirby 64 - The Crystal Shards'
+    - 'Kirby Super Star'
+    - "Kirby's Dream Land 3"
+    - "Luigi's Mansion"
+    #- "Majora's Mask Recompiled"
+    - 'Mario & Luigi Superstar Saga'
+    - 'Mario Kart Double Dash'
+    #- 'Math'
+    #- 'Mega Man 2'
+    #- 'Mega Man 3'
+    #- 'Mega Man X'
+    #- 'Mega Man X2'
+    #- 'Mega Man X3'
+    #- 'Ocarina of Time'
+    - 'Overcooked! 2'
+    - 'Paper Mario'
+    - 'Paper Mario The Thousand Year Door'
+    #- 'Pokemon Crystal'
+    - 'Pokemon Emerald'
+    #- 'Pokemon Red and Blue'
+    - 'Rabi-Ribi'
+    - 'Risk of Rain 2'
+    - 'Skyward Sword'
+    #- 'Sonic Adventure 2 Battle'
+    #- 'Subnautica'
+    #- 'Super Mario 64'
+    #- 'Super Mario World'
+    #- 'Super Metroid'
+    #- 'Symphony of the Night'
+    - 'Terraria'
+    #- 'The Legend of Zelda'
+    #- 'VVVVVV'
+    - 'Xenoblade X'
+    - "Yoshi's Island"
+    - 'Zelda II: The Adventure of Link'
+    - 'Zillion'
+
+  # Traps
+  trap_fill_percentage:
+    # Replace a percentage of junk items in the item pool with random traps
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 100
+    0: 4
+    random: 1
+    random-low: 0
+    random-high: 0
+
+  freeze_trap_weight:
+    # Likelihood of a receiving a trap which freezes the controllable kong
+    none: 0
+    low: 0
+    medium: 50
+    high: 0
+
+  reverse_trap_weight:
+    # Likelihood of a receiving a trap which reverses the player's controls
+    none: 0
+    low: 0
+    medium: 50
+    high: 0
+
+  honey_trap_weight:
+    # Likelihood of a receiving a trap which makes the floor (temporarily) sticky
+    none: 0
+    low: 0
+    medium: 50
+    high: 0
+
+  ice_trap_weight:
+    # Likelihood of a receiving a trap which makes the level slightly slippery
+    none: 0
+    low: 0
+    medium: 50
+    high: 0
+
+  tnt_barrel_trap_weight:
+    # Likelihood of a receiving a trap which spawns an active TNT barrel above the player
+    none: 0
+    low: 0
+    medium: 50
+    high: 0
+
+  # Aesthetics
+
+  # Valid presets for Diddy:
+  #   original
+  #   original_inactive
+  #   original_invincible
+  #   original_frozen
+  #   original_slow
+  #   original_reverse
+  #   original_team_2
+  #   original_team_2_inactive
+  #   dkc_alt
+  #   dkc3_kiddy
+  #   dkc3_kiddy_alt
+  #   gb_green
+  #   gb_gray
+  #   gbc_retro_blast
+  #   golden
+  #   monochrome
+  #   sepia
+  #   smb_mario
+  #   smb_luigi
+  #   toothpaste
+  #   whatsapp
+  #   bubblegum
+  #   retro_frozen
+  #   retro_reversed
+  #   retro_slow
+  #   rottytops
+  #   
+  #   You can also use random to get a random palette from the presets
+
+  # Which color to use for Diddy's active color
+  palette_diddy_active: random
+  # Which color to use for Diddy's inactive color
+  palette_diddy_inactive: original_inactive
+  # Which color to use for Diddy's invincible color
+  palette_diddy_invincible: original_invincible
+  # Which color to use for Diddy's frozen color
+  palette_diddy_frozen: original_frozen
+  # Which color to use for Diddy's reversed color
+  palette_diddy_reversed: original_reversed
+  # Which color to use for Dixie's slow color
+  palette_diddy_slow: original_slow
+
+  # Valid presets for Dixie:
+  #   original
+  #   original_inactive
+  #   original_invincible
+  #   original_frozen
+  #   original_slow
+  #   original_reverse
+  #   original_team_2
+  #   original_team_2_inactive
+  #   dkc2_inverted
+  #   dkc2_team_2_inverted
+  #   dkc3_alt
+  #   dkc3_alt_inverted
+  #   gb_green
+  #   gb_grey
+  #   gbc_retro_blast
+  #   gba_blue
+  #   gba_green
+  #   smb_mario
+  #   smb_luigi
+  #   golden
+  #   monochrome
+  #   sepia
+  #   rottytops
+  #   miku
+  #   teto
+  #   sakura
+  #   nagisa
+  #   gothic
+  #   toothpaste
+  #   whatsapp
+  #   boca
+  #   bubblegum
+  #   retro_frozen
+  #   retro_reversed
+  #   retro_slow
+  #   
+  #   You can also use random to get a random palette from the presets
+
+  # Which color to use for Diddy's active color
+  palette_dixie_active: random
+  # Which color to use for Diddy's inactive color
+  palette_dixie_inactive: original_inactive
+  # Which color to use for Diddy's invincible color
+  palette_dixie_invincible: original_invincible
+  # Which color to use for Diddy's frozen color
+  palette_dixie_frozen: original_frozen
+  # Which color to use for Diddy's reversed color
+  palette_dixie_reversed: original_reversed
+  # Which color to use for Dixie's slow color
+  palette_dixie_slow: original_slow
+
+  # Which color to use for Rambi
+  # Valid colors:
+  #   original
+  #   gray
+  #   blue
+  #   green
+  #   red
+  #   dkc2_frozen
+  #   dkc2_reversed
+  #   dkc2_slow
+  #   golden
+  #   pink
+  #   whatsapp
+  #  You can also use random to get a random palette from the presets
+  palette_rambi: random
+
+  # Which color to use for Enguarde
+  # Valid colors:
+  #   original
+  #   red
+  #   purple
+  #   silver
+  #   blue_white_belly
+  #   golden
+  #   dkc2_frozen
+  #   dkc2_reversed
+  #   whatsapp
+  #   black
+  #  You can also use random to get a random palette from the presets
+  palette_enguarde: random
+  
+  # Which color to use for Squitter
+  # Valid colors:
+  #   original
+  #   blue
+  #   green
+  #   pink
+  #   aqua
+  #   purple
+  #   gray
+  #   golden
+  #   dkc2_frozen
+  #   dkc2_reversed
+  #   whatsapp
+  #  You can also use random to get a random palette from the presets
+  palette_squitter: random
+  
+  # Which color to use for Rattly
+  # Valid colors:
+  #   original
+  #   black
+  #   blue
+  #   white
+  #   golden
+  #   dkc2_frozen
+  #   dkc2_reversed
+  #   whatsapp
+  #  You can also use random to get a random palette from the presets
+  palette_rattly: random
+
+  # Which color to use for Squawks
+  # Valid colors:
+  #   original
+  #   quawks
+  #   red
+  #   blue
+  #   black
+  #   white
+  #   purple
+  #   dkc2_frozen
+  #   dkc2_reversed
+  #   whatsapp
+  #   golden
+  #  You can also use random to get a random palette from the presets
+  palette_squawks: random
+
+  # Which color to use for Quawks
+  # Valid colors:
+  #   original
+  #   squawks
+  #   red
+  #   blue
+  #   black
+  #   white
+  #   purple
+  #   dkc2_frozen
+  #   dkc2_reversed
+  #   whatsapp
+  #   golden
+  #  You can also use random to get a random palette from the presets
+  palette_quawks: random
+
+  palette_filters:
+    # Applies a filter that can brighten or darken your selected palette
+    # Doesn't produce results similar to the original ones, but it's good enough
+    # 
+    # Positive numbers create a brighter color palette (the higher the number, the brighter the palette)
+    # Negative numbers create a darker color palette (the higher (or lower lol) the negative number, the darkeer the palette)
+    # 
+    # Treat the values as percentages
+    Diddy: 0
+    Diddy Inactive: 0
+    Diddy Invincible: 0
+    Diddy Frozen: 0
+    Diddy Reversed: 0
+    Diddy Slow: 0
+
+    Dixie: 0
+    Dixie Inactive: 0
+    Dixie Invincible: 0
+    Dixie Frozen: 0
+    Dixie Reversed: 0
+    Dixie Slow: 0
+
+    Rambi: 0
+    Enguarde: 0
+    Squitter: 0
+    Rattly: 0
+    Squawks: 0
+    Quawks: 0
+
+  palettes: {}
+    # Allows you to create colors for each Kong status. Includes K.Rool effects and the invincibility barrel.
+    # This will override the option preset
+    # 
+    # Each one expects 15 values which are mapped to the Kongs colors.
+    # The values can be in SNES RGB (bgr555) with the $ prefix or PC RGB (rgb888) with the # prefix.
+    # 
+    # Uncomment the ones you want to modify
+    # If you happen to uncomment any, please remove the braces next to palettes
+
+    # Diddy: []
+    # Diddy Inactive: []
+    # Diddy Invincible: []
+    # Diddy Frozen: []
+    # Diddy Reversed: []
+    # Diddy Slow: []
+
+    # Dixie: []
+    # Dixie Inactive: []
+    # Dixie Invincible: []
+    # Dixie Frozen: []
+    # Dixie Reversed: []
+    # Dixie Slow: []
+
+    # Rambi: []
+    # Enguarde: []
+    # Squitter: []
+    # Rattly: []
+    # Squawks: []
+    # Quawks: []
+
+  # Item & Location Options
+  local_items:
+    # Forces these items to be in their native world.
+    []
+
+  non_local_items:
+    # Forces these items to be outside their native world.
+    []
+
+  start_inventory:
+    # Start with these items.
+    {}
+
+  start_hints:
+    # Start with these item's locations prefilled into the ``!hint`` command.
+    []
+
+  start_location_hints:
+    # Start with these locations and their item prefilled into the ``!hint`` command.
+    []
+
+  exclude_locations:
+    # Prevent these locations from having an important item.
+    []
+
+  priority_locations:
+    # Prevent these locations from having an unimportant item.
+    []
+
+  item_links:
+    # Share part of your item pool with other players.
+    []
+
+  start_inventory_from_pool:
+    # Start with these items and don't place them in the world.
+    # 
+    # The game decides what the replacement items will be.
+    {}

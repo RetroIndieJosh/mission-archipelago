@@ -1,0 +1,465 @@
+﻿name: Celeste-{player}
+
+# Used to describe your yaml. Useful if you have multiple files.
+description: Celeste (Open World) - Random
+
+game: Celeste (Open World)
+requires:
+  version: 0.6.3 # Version of Archipelago required for this yaml to work as expected.
+
+Celeste (Open World):
+  ################
+  # Game Options #
+  ################
+  progression_balancing:
+    # A system that can move progression earlier, to try and prevent the player from getting stuck and bored early.
+    # 
+    # A lower setting means more getting stuck. A higher setting means less getting stuck.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 99
+    random: 0
+    random-low: 0
+    random-high: 0
+    disabled: 0 # equivalent to 0
+    normal: 50 # equivalent to 50
+    extreme: 0 # equivalent to 99
+
+  accessibility:
+    # Set rules for reachability of your items/locations.
+    # 
+    # **Full:** ensure everything can be reached and acquired.
+    # 
+    # **Minimal:** ensure what is needed to reach your goal can be acquired.
+    full: 50
+    minimal: 0
+
+  death_link:
+    # When you die, everyone who enabled death link dies. Of course, the reverse is true too.
+    'false': 50
+    'true': 0
+
+  death_link_amnesty:
+    # How many deaths it takes to send a DeathLink
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 1
+    # Maximum value is 30
+    10: 50
+    random: 0
+    random-low: 0
+    random-high: 0
+
+  trap_link:
+    # Whether your received traps are linked to other players
+    # 
+    # You will also receive any linked traps from other players with Trap Link enabled,
+    # if you have a weight above "none" set for that trap
+    'false': 50
+    'true': 0
+
+  ################
+  # Goal Options #
+  ################
+  goal_area:
+    # What Area must be cleared to gain access to the Epilogue and complete the game
+    the_summit_a: 256
+    the_summit_b: 64
+    the_summit_c: 1
+    core_a: 128
+    core_b: 32
+    core_c: 1
+    empty_space: 8
+    farewell: 4
+    farewell_golden: 1
+
+  lock_goal_area:
+    # Determines whether your Goal Area will be locked until you receive your required Strawberries, or only the Epilogue
+    'false': 1
+    'true': 8
+
+  goal_area_checkpointsanity:
+    # Determines whether the Checkpoints in your Goal Area will be shuffled into the item pool (if Checkpointsanity is active)
+    'false': 4
+    'true': 1
+
+  total_strawberries:
+    # Maximum number of how many Strawberries can exist
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Default is 50
+    # Minimum value is 0
+    # Maximum value is 202
+    0: 1
+    random-range-1-10: 2
+    random-range-11-30: 4
+    random-range-31-70: 8
+    random-range-71-100: 4
+    random-range-101-150: 2
+    random-range-151-202: 1
+
+  strawberries_required_percentage:
+    # Percentage of existing Strawberries you must receive to access your Goal Area (if Lock Goal Area is active) and the Epilogue
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Default is 80
+    # Minimum value is 0
+    # Maximum value is 100
+    0: 1
+    random-range-1-10: 2
+    random-range-11-30: 4
+    random-range-31-50: 8
+    random-range-51-70: 16
+    random-range-71-90: 4
+    random-range-91-100: 1
+
+  ####################
+  # Location Options #
+  ####################
+  checkpointsanity:
+    # Determines whether Checkpoints will be shuffled into the item pool
+    'false': 4
+    'true': 1
+
+  binosanity:
+    # Determines whether using Binoculars sends location checks
+    'false': 8
+    'true': 1
+
+  keysanity:
+    # Determines whether individual Keys are shuffled into the item pool
+    'false': 8
+    'true': 1
+
+  gemsanity:
+    # Determines whether Summit Gems are shuffled into the item pool
+    'false': 8
+    'true': 1
+
+  carsanity:
+    # Determines whether riding on cars grants location checks
+    'false': 8
+    'true': 1
+
+  roomsanity:
+    # Determines whether entering individual rooms sends location checks
+    'false': 8
+    'true': 1
+
+  include_goldens:
+    # Determines whether collecting Golden Strawberries sends location checks
+    'false': 8
+    'true': 1
+
+  include_core:
+    # Determines whether Chapter 8 - Core Levels will be included
+    'false': 8
+    'true': 1
+
+  include_farewell:
+    # Determines how much of Chapter 9 - Farewell Level will be included
+    none: 32
+    empty_space: 4
+    farewell: 1
+
+  include_b_sides:
+    # Determines whether the B-Side Levels will be included
+    'false': 8
+    'true': 1
+
+  include_c_sides:
+    # Determines whether the C-Side Levels will be included
+    'false': 16
+    'true': 1
+
+  ##################
+  # Junk and Traps #
+  ##################
+  junk_fill_percentage:
+    # Replace a percentage of non-required Strawberries in the item pool with junk items
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Default is 50
+    # Minimum value is 0
+    # Maximum value is 100
+    0: 1
+    random-range-1-25: 2
+    random-range-26-75: 4
+    random-range-76-100: 1
+
+  trap_fill_percentage:
+    # Replace a percentage of junk items in the item pool with random traps
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 100
+    0: 0
+    random: 1
+    random-low: 0
+    random-high: 0
+
+  trap_expiration_action:
+    # The type of action which causes traps to wear off
+    return_to_menu: 1
+    deaths: 8
+    new_screens: 2
+
+  trap_expiration_amount:
+    # The amount of the selected Trap Expiration Action that must occur for the trap to wear off
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 1
+    # Maximum value is 10
+    5: 0
+    random: 1
+    random-low: 0
+    random-high: 0
+
+  bald_trap_weight:
+    # Likelihood of receiving a trap which makes Maddy bald
+    none: 0
+    low: 0
+    medium: 50
+    high: 0
+
+  literature_trap_weight:
+    # Likelihood of a receiving a trap which causes the player to read literature
+    none: 0
+    low: 0
+    medium: 50
+    high: 0
+
+  stun_trap_weight:
+    # Likelihood of a receiving a trap which briefly stuns Maddy
+    none: 0
+    low: 0
+    medium: 50
+    high: 0
+
+  invisible_trap_weight:
+    # Likelihood of a receiving a trap which turns Maddy invisible
+    none: 0
+    low: 0
+    medium: 50
+    high: 0
+
+  fast_trap_weight:
+    # Likelihood of a receiving a trap which increases the game speed
+    none: 0
+    low: 0
+    medium: 50
+    high: 0
+
+  slow_trap_weight:
+    # Likelihood of a receiving a trap which decreases the game speed
+    none: 0
+    low: 0
+    medium: 50
+    high: 0
+
+  ice_trap_weight:
+    # Likelihood of a receiving a trap which causes the level to become slippery
+    none: 0
+    low: 0
+    medium: 50
+    high: 0
+
+  reverse_trap_weight:
+    # Likelihood of a receiving a trap which causes the controls to be reversed
+    none: 0
+    low: 0
+    medium: 50
+    high: 0
+
+  screen_flip_trap_weight:
+    # Likelihood of a receiving a trap which causes the screen to be flipped
+    none: 0
+    low: 0
+    medium: 50
+    high: 0
+
+  laughter_trap_weight:
+    # Likelihood of a receiving a trap which causes Maddy to laugh uncontrollably
+    none: 0
+    low: 0
+    medium: 50
+    high: 0
+
+  hiccup_trap_weight:
+    # Likelihood of a receiving a trap which causes Maddy to hiccup uncontrollably
+    none: 0
+    low: 0
+    medium: 50
+    high: 0
+
+  zoom_trap_weight:
+    # Likelihood of a receiving a trap which causes the camera to focus on Maddy
+    none: 0
+    low: 0
+    medium: 50
+    high: 0
+
+  #####################
+  # Aesthetic Options #
+  #####################
+  music_shuffle:
+    # Music shuffle type
+    # 
+    # None: No Music is shuffled
+    # 
+    # Consistent: Each music track is consistently shuffled throughout the game
+    # 
+    # Singularity: The entire game uses one song for levels
+    none: 50
+    consistent: 0
+    singularity: 0
+
+  require_cassettes:
+    # Determines whether you must receive a level's Cassette Item to hear that level's music
+    'false': 50
+    'true': 0
+
+  madeline_hair_length:
+    # How long Madeline's hair is
+    very_short: 1
+    short: 2
+    default: 8
+    long: 4
+    very_long: 2
+    absurd: 1
+
+  madeline_one_dash_hair_color:
+    # What color Madeline's hair is when she has one dash
+    # The `any_color` option will choose a fully random color
+    # A custom color entry may be supplied as a 6-character RGB hex color code
+    # e.g. F542C8
+    strawberry: 1
+    empty: 1
+    double: 0
+    golden: 0
+    baddy: 0
+    fire_red: 0
+    maroon: 0
+    salmon: 0
+    orange: 0
+    lime_green: 0
+    bright_green: 0
+    forest_green: 0
+    royal_blue: 0
+    brown: 1
+    black: 1
+    white: 1
+    grey: 1
+    any_color: 0
+
+  madeline_two_dash_hair_color:
+    # What color Madeline's hair is when she has two dashes
+    # The `any_color` option will choose a fully random color
+    # A custom color entry may be supplied as a 6-character RGB hex color code
+    # e.g. F542C8
+    strawberry: 0
+    empty: 0
+    double: 1
+    golden: 0
+    baddy: 1
+    fire_red: 1
+    maroon: 0
+    salmon: 0
+    orange: 0
+    lime_green: 0
+    bright_green: 0
+    forest_green: 0
+    royal_blue: 0
+    brown: 0
+    black: 0
+    white: 0
+    grey: 0
+    any_color: 0
+
+  madeline_no_dash_hair_color:
+    # What color Madeline's hair is when she has no dashes
+    # The `any_color` option will choose a fully random color
+    # A custom color entry may be supplied as a 6-character RGB hex color code
+    # e.g. F542C8
+    strawberry: 0
+    empty: 0
+    double: 0
+    golden: 0
+    baddy: 0
+    fire_red: 0
+    maroon: 1
+    salmon: 1
+    orange: 1
+    lime_green: 0
+    bright_green: 0
+    forest_green: 0
+    royal_blue: 0
+    brown: 0
+    black: 0
+    white: 0
+    grey: 0
+    any_color: 0
+
+  madeline_feather_hair_color:
+    # What color Madeline's hair is when she has a feather
+    # The `any_color` option will choose a fully random color
+    # A custom color entry may be supplied as a 6-character RGB hex color code
+    # e.g. F542C8
+    strawberry: 0
+    empty: 0
+    double: 0
+    golden: 1
+    baddy: 0
+    fire_red: 0
+    maroon: 0
+    salmon: 0
+    orange: 0
+    lime_green: 1
+    bright_green: 1
+    forest_green: 1
+    royal_blue: 1
+    brown: 0
+    black: 0
+    white: 0
+    grey: 0
+    any_color: 0
+
+  ###########################
+  # Item & Location Options #
+  ###########################
+  local_items:
+    # Forces these items to be in their native world.
+    []
+
+  non_local_items:
+    # Forces these items to be outside their native world.
+    []
+
+  start_inventory:
+    # Start with these items.
+    {}
+
+  start_hints:
+    # Start with these item's locations prefilled into the ``!hint`` command.
+    []
+
+  start_location_hints:
+    # Start with these locations and their item prefilled into the ``!hint`` command.
+    []
+
+  exclude_locations:
+    # Prevent these locations from having an important item.
+    []
+
+  priority_locations:
+    # Prevent these locations from having an unimportant item.
+    []
+
+  item_links:
+    # Share part of your item pool with other players.
+    []
+
+  plando_items:
+    # Generic items plando.
+    []

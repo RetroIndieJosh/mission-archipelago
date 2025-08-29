@@ -1,0 +1,351 @@
+﻿name: Quake-{player}
+
+# Used to describe your yaml. Useful if you have multiple files.
+description: Quake - Random
+
+game: Quake 1
+requires:
+  version: 0.6.3 # Version of Archipelago required for this yaml to work as expected.
+
+Quake 1:
+  ################
+  # Game Options #
+  ################
+  progression_balancing:
+    # A system that can move progression earlier, to try and prevent the player from getting stuck and bored early.
+    # 
+    # A lower setting means more getting stuck. A higher setting means less getting stuck.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 99
+    random: 0
+    random-low: 0
+    random-high: 0
+    disabled: 0 # equivalent to 0
+    normal: 50 # equivalent to 50
+    extreme: 0 # equivalent to 99
+
+  accessibility:
+    # Set rules for reachability of your items/locations.
+    # 
+    # **Full:** ensure everything can be reached and acquired.
+    # 
+    # **Minimal:** ensure what is needed to reach your goal can be acquired.
+    full: 50
+    minimal: 0
+
+  difficulty:
+    # Randomizer difficulty.
+    # Higher levels offer less resources and worse items in the pool
+    easy: 2
+    medium: 4
+    hard: 1
+    extreme: 0
+
+  logic_difficulty:
+    # Trick difficulty for logic.
+    # Higher levels require harder tricks such precise Rocket/Grenade Jumps and airstrafes
+    easy: 2
+    medium: 4
+    hard: 1
+    extreme: 0
+
+  skill_level:
+    # In-Game difficulty.
+    # Primarily affects number of Enemies spawned
+    easy: 2
+    medium: 4
+    hard: 1
+    nightmare: 0
+
+  basegame:
+    # Pick which game/expansion to play
+    quake: 50
+    hipnotic: 0
+    rogue: 0
+    mg1: 0
+    dopa: 0
+
+  unlock_abilities:
+    # Unlock Jumping, Diving, Running, Rocket/Grenade Jumps as items
+    'false': 1
+    'true': 4
+
+  damage_remover_abilities:
+    # Unlock the ability to not get hurt when doing rocket/grenade jumps
+    'false': 1
+    'true': 4
+
+  unlock_interact:
+    # Unlock using buttons, shooting switches and opening doors as items
+    'false': 1
+    'true': 4
+
+  area_maps:
+    # Select if full game maps are available in the in-game map view
+    none: 1
+    unlockable: 4
+    start_with: 8
+
+  goal:
+    # Choose the goal of the game
+    beat_all_bosses: 2
+    beat_all_levels: 4
+    collect_all_secrets: 1
+    all: 2
+
+  goal_percentage:
+    # Percentage of chosen goals that need to be reached to win the game
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Default is 100
+    # Minimum value is 25
+    # Maximum value is 100
+    random-range-25-50: 1
+    random-range-51-75: 2
+    random-range-76-100: 4
+
+  included_locations_preset:
+    # Presets for included locations.
+    # Iconic includes all keys, weapons, sigils, armor and powerups.
+    # Balanced adds 25 % ammo + health.
+    # Dense adds 50% ammo + health.
+    # All adds 100% ammo + health.
+    # Use the custom option if you want to make use of CustomIncludedLocations.
+    iconic: 2
+    balanced: 4
+    dense: 2
+    all: 1
+    custom: 0
+
+  include_mp_items:
+    # Set if included locations should also contain multiplayer item spawns.
+    'false': 50
+    'true': 0
+
+  custom_included_locations:
+    # A list of itemnames that will be replaced with AP locations.
+    # The number after the itemname is the percentage of items of that type, which will get turned into AP locations.
+    # Quake 1 Items: ["item_armor1", "item_armor2", "item_armorInv", "weapon_lightning", "weapon_nailgun", "weapon_supernailgun", "weapon_supershotgun", "weapon_grenadelauncher",
+    #     "weapon_rocketlauncher", "item_health (Small Medkit)", "item_health (Large Medkit)", "item_health (Megahealth)", "item_cells", "item_rockets", "item_shells", "item_spikes",
+    #     "item_artifact_envirosuit", "item_artifact_invisibility", "item_artifact_invulnerability", "item_artifact_super_damage", "item_key1", "item_key2", "item_sigil"]
+    # Hipnotic Items: ["item_artifact_empathy_shields", "item_hornofconjuring", "item_artifact_wetsuit", "weapon_laser_gun", "weapon_mjolnir", "weapon_proximity_gun"]
+    # Rogue Items: ["item_sphere", "item_random_powerup", "item_powerup_belt", "item_powerup_shield", "item_flag", "item_flag_team1", "item_flag_team2", "item_lava_spikes", "item_multi_rockets", "item_plasma"]
+    item_armor1: 100
+    item_armor2: 100
+    item_armorInv: 100
+    item_artifact_empathy_shields: 100
+    item_artifact_envirosuit: 100
+    item_artifact_invisibility: 100
+    item_artifact_invulnerability: 100
+    item_artifact_super_damage: 100
+    item_artifact_wetsuit: 100
+    item_cells: 100
+    item_flag: 100
+    item_flag_team1: 100
+    item_flag_team2: 100
+    item_health (Large Medkit): 100
+    item_health (Megahealth): 100
+    item_health (Small Medkit): 100
+    item_hornofconjuring: 100
+    item_key1: 100
+    item_key2: 100
+    item_lava_spikes: 100
+    item_multi_rockets: 100
+    item_plasma: 100
+    item_powerup_belt: 100
+    item_powerup_shield: 100
+    item_random_powerup: 100
+    item_rockets: 100
+    item_shells: 100
+    item_sigil: 100
+    item_sphere: 100
+    item_spikes: 100
+    item_weapon: 100
+    weapon_grenadelauncher: 100
+    weapon_laser_gun: 100
+    weapon_lightning: 100
+    weapon_mjolnir: 100
+    weapon_nailgun: 100
+    weapon_proximity_gun: 100
+    weapon_rocketlauncher: 100
+    weapon_supernailgun: 100
+    weapon_supershotgun: 100
+
+  include_secrets:
+    # Include secret areas into the location pool.
+    # This only has an effect if they are not already included as goal locations
+    'false': 4
+    'true': 1
+
+  include_allkills:
+    # Includes all kills per level in the location pool.
+    'false': 4
+    'true': 1
+
+  episode1:
+    # Include Episode 1 in the randomizer
+    'false': 1
+    'true': 2
+
+  episode2:
+    # Include Episode 2 in the randomizer
+    'false': 1
+    'true': 1
+
+  episode3:
+    # Include Episode 3 in the randomizer
+    'false': 1
+    'true': 1
+
+  episode4:
+    # Include Episode 4 in the randomizer
+    'false': 2
+    'true': 1
+
+# EPISODE 5 ?!?! is this just for non-vanilla?
+  episode5:
+    # Include Episode 5 in the randomizer
+    'false': 1
+    'true': 1
+
+  include_hub:
+    # Include the Hub Level in the randomizer
+    'false': 1
+    'true': 1
+
+  include_end:
+    # Include the End Level in the randomizer
+    'false': 4
+    'true': 1
+
+  level_count:
+    # Number of maps that should be included in the shuffle. Maps are picked from the enabled episodes. If this count
+    # exceeds the maximum number of levels in those episodes, all of them will be included.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Default is 9
+    # Minimum value is 3
+    # Maximum value is 32
+    random-range-3-6: 4
+    random-range-7-11: 16
+    random-range-12-16: 8
+    random-range-17-21: 4
+    random-range-22-26: 2
+    random-range-27-32: 1
+
+  shuffle_starting_levels:
+    # If enabled will pick levels unlocked by default at random instead of the first of each episode
+    'false': 1
+    'true': 4
+
+  starting_level_count:
+    # The number of levels that are unlocked from the start.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Default is 1
+    # Minimum value is 1
+    # Maximum value is 32
+    1: 16
+    random-range-2-8: 8
+    random-range-9-16: 4
+    random-range-17-24: 2
+    random-range-25-32: 1
+
+  progressive_weapons:
+    # Replace weapon unlocks and ammunition capacity upgrades with progressive versions.
+    # This greatly increases access to weapons to your world.
+    'false': 1
+    'true': 8
+
+  progressive_inventories:
+    # Replace Inventory unlocks and their capacity upgrades with progressive versions.
+    # This increases access to their abilities in your world.
+    'false': 1
+    'true': 8
+
+  trap_percentage:
+    # Percentage of filler items that should be traps
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Default is 10
+    # Minimum value is 0
+    # Maximum value is 90
+    random-range-0-5: 64
+    random-range-6-15: 256
+    random-range-16-25: 128
+    random-range-26-35: 64
+    random-range-36-45: 32
+    random-range-46-55: 16
+    random-range-56-65: 8
+    random-range-66-75: 4
+    random-range-76-85: 2
+    random-range-86-90: 1
+
+  traps_as_progressive:
+    # Traps show up as progressive items in-game.
+    'false': 1
+    'true': 8
+
+  shell_recharge:
+    # Recharges 1 shell (ammo) every second.
+    # QoL to make the early game less painful on harder difficulties.
+    'false': 4
+    'true': 1
+
+  powerup_recharge:
+    # Recharges 1 of each powerup every 60 seconds.
+    # This is incredibly overpowered, only use it if you struggle with the game.
+    'false': 64
+    'true': 1
+
+  death_link:
+    # When you die, everyone who enabled death link dies. Of course, the reverse is true too.
+    'false': 50
+    'true': 0
+
+  ###########################
+  # Item & Location Options #
+  ###########################
+  local_items:
+    # Forces these items to be in their native world.
+    []
+
+  non_local_items:
+    # Forces these items to be outside their native world.
+    []
+
+  start_inventory:
+    # Start with these items.
+    {}
+
+  start_inventory_from_pool:
+    # Start with these items and don't place them in the world.
+    # 
+    # The game decides what the replacement items will be.
+    {}
+
+  start_hints:
+    # Start with these item's locations prefilled into the ``!hint`` command.
+    []
+
+  start_location_hints:
+    # Start with these locations and their item prefilled into the ``!hint`` command.
+    []
+
+  exclude_locations:
+    # Prevent these locations from having an important item.
+    []
+
+  priority_locations:
+    # Prevent these locations from having an unimportant item.
+    []
+
+  item_links:
+    # Share part of your item pool with other players.
+    []
+
+  plando_items:
+    # Generic items plando.
+    []

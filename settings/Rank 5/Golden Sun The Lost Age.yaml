@@ -1,0 +1,769 @@
+﻿name: GSTLA-{player}
+
+# Used to describe your yaml. Useful if you have multiple files.
+description: Golden Sun The Lost Age - Random
+
+game: Golden Sun The Lost Age
+requires:
+  version: 0.6.3 # Version of Archipelago required for this yaml to work as expected.
+
+Golden Sun The Lost Age:
+  ################
+  # Game Options #
+  ################
+  progression_balancing:
+    # A system that can move progression earlier, to try and prevent the player from getting stuck and bored early.
+    # 
+    # A lower setting means more getting stuck. A higher setting means less getting stuck.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 99
+    random: 0
+    random-low: 0
+    random-high: 0
+    disabled: 0 # equivalent to 0
+    normal: 50 # equivalent to 50
+    extreme: 0 # equivalent to 99
+
+  accessibility:
+    # Set rules for reachability of your items/locations.
+    # 
+    # **Full:** ensure everything can be reached and acquired.
+    # 
+    # **Minimal:** ensure what is needed to reach your goal can be acquired.
+    full: 50
+    minimal: 0
+
+  coop:
+    # Enables cooping a seed by making local items the same as remote items, enabling
+    # your friends to receive items you pick up.  Also helpful if trying to play a world from multiple devices.
+    # You will still need to pickup djinn the other person picks up.
+    # off - vanilla
+    # progression - Only progression items are treated as remote items
+    # prog_useful - Progression and useful items are treated as remote items
+    # all - All items are treated as remote items
+    'off': 50
+    progression: 0
+    prog_useful: 0
+    all: 0
+
+  ################
+  # General Pool #
+  ################
+  item_shuffle:
+    # Determine which locations in the game are part of the pool.
+    # All Chests and Tablets: includes all chests and tablets and does not include items from pots, barrels, dug up. Roughly 100 less locations to check from All Items
+    # All Items: includes everything from the vanilla game, including items in pots, barrels, scooped up, covered in leaves or on the overworld. Roughly 320 locations in total.
+    all_chests_and_tablets: 8
+    all_items: 1
+
+  omit_locations:
+    # Choose to omit locations containing optional harder boss fights
+    # No Omission: keeps all super bosses in play.
+    # Omit Anemos Inner Sanctum: omits Anemos Inner Sanctum. Removes roughly 4 locations from the pool.
+    # Omit Superbosses and Inner Sanctum: omits all super bosses and Anemos Inner Sanctum. Removes roughly 7 locations from the pool
+    no_omission: 1
+    omit_anemos_inner_sanctum: 2
+    omit_superbosses_and_inner_sanctum: 8
+
+  add_elvenshirt_clericsring:
+    # Adds the Elven Shirt and Cleric's Ring from Golden Sun to the item pool.
+    'false': 1
+    'true': 8
+
+  add_non_obtainable_items:
+    # Adds a variety of items that are normally unobtainable through normal means in the game.
+    # These are: Casual Shirt, Golden Boots, Aroma Ring, Golden Shirt, Ninja Sandals, Golden Ring, 
+    # Herbed Shirt, Knight's Greave, Rainbow Ring, Divine Camisole, Silver Greave and Soul Ring
+    'false': 4
+    'true': 1
+
+  ########
+  # Goal #
+  ########
+  goal:
+    # What conditions must be satisfied for this world to goal.  You can select however many you want, and only
+    # when all the selected conditions are satisfied is the world considered goaled.
+    # 
+    # Valid options are:
+    #     - "Chestbeaters"
+    #     - "King Scorpion"
+    #     - "Briggs"
+    #     - "Aqua Hydra"
+    #     - "Poseidon"
+    #     - "Serpent"
+    #     - "Avimander"
+    #     - "Moapa"
+    #     - "Reunion"
+    #     - "Flame Dragons"
+    #     - "Doom Dragon"
+    #     - "Star Magician"
+    #     - "Sentinel"
+    #     - "Valukar"
+    #     - "Dullahan"
+    #     - "Djinn Hunt"
+    #     - "Summon Hunt"
+    # 
+    # IMPORTANT:
+    # 1. If Doom Dragon is a selected goal, make sure you have a save prior to the fight available if you don't
+    # end the world on this fight.  We take no responsibility for borked experiences due to save mismanagement.
+    # 2. If any of the non-Dullahan superbosses are selected as a goal, then omit_locations is set to 1 (if not 0).
+    # If Dullahan is a goal, then the omit_locations option is set to 0.
+    [
+      'Doom Dragon',
+      'Chestbeaters',
+      'King Scorpion',
+      'Briggs',
+      'Aqua Hydra',
+      'Poseidon',
+      'Serpent',
+      'Avimander',
+      'Moapa',
+      'Reunion',
+      'Flame Dragons',
+      'Doom Dragon',
+      'Star Magician',
+      'Sentinel',
+      'Valukar',
+      'Dullahan',
+      'Djinn Hunt',
+      'Summon Hunt'
+    ]
+
+  random_goals:
+    # From the goals configured in "goals", pick the configured number of the goals randomly.
+    # 0 disables random picking, and all the configured goals are selected.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Default is 0
+    # Minimum value is 0
+    # Maximum value is 17
+    random-range-0-4: 32
+    random-range-5-9: 8
+    random-range-10-14: 2
+    random-range-14-17: 1
+
+  djinn_hunt_count:
+    # How many djinn you need to obtain in order to satisfy the Djinn Hunt Objective
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Default is 56
+    # Minimum value is 1
+    # Maximum value is 72
+    random-range-1-19: 1
+    random-range-20-39: 2
+    random-range-40-59: 8
+    random-range-60-72: 2
+
+  summon_hunt_count:
+    # How many summons you need to obtain in order to satisfy the Summon Hunt Objective
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Default is 10
+    # Minimum value is 1
+    # Maximum value is 13
+    random-range-1-5: 1
+    random-range-6-9: 2
+    random-range-10-13: 8
+
+  #####################
+  # Logic Adjustments #
+  #####################
+  reveal_hidden_item:
+    # Require Reveal to be able to logically access hidden items.
+    # Note that most hidden items can be gotten regardless of having Reveal or not.
+    # Also there are a few locations that hard require Reveal to be obtainable, this setting does not alter those.
+    'false': 0
+    'true': 50
+
+  lemurian_ship:
+    # What needs to be done to get the ship?
+    # Vanilla: requires getting the Black Crystal and completing the Gabomba Statue to get the reward from Madras Mayor to be able to enter the ship and activate it.
+    # Ship Door Unlocked: The ship door is unlocked but you still require to activate the ship by reaching the engine room. Black Crystal is no longer in the pool as it is not required.
+    # Available From The Start: allows you to use the ship from the beginning of the game. Black Crystal is no longer in the pool as it is not required.
+    vanilla: 1
+    ship_door_unlocked: 4
+    available_from_start: 2
+
+  start_with_wings_of_anemos:
+    # When enabled, the ship starts with the Wings of Anemos.
+    'false': 4
+    'true': 1
+
+  anemos_inner_sanctum_access:
+    # Determine accesss to Anemos Inner Sanctun
+    # Vanilla: requires all 72 Djinn to be able to enter Anemos Inner Sanctum
+    # Randomized: will select a value between 16 to 28 Djinn to be able to access Anemos Inner Sanctum
+    # Open: allows you to enter Anemos Inner Sanctum without any Djinn
+    vanilla: 4
+    randomized: 2
+    open: 1
+
+  djinn_logic:
+    # How much do Djinn affect logic for being able to defeat bosses?
+    # Assuming this is set to 100 (Normal) beating Briggs expects 6 djinn, Poseidon 24 djinn and Doom Dragon 56 djinn.
+    # Dullahan goes up to 72 (All Djinn in the game). Setting this to 50 (Hard) will halve all of these numbers and 0 will remove the requirement completely.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 100
+    random: 0
+    random-low: 0
+    random-high: 0
+    normal: 50 # equivalent to 100
+    hard: 0 # equivalent to 50
+    none: 0 # equivalent to 0
+
+  name_puzzles:
+    # Determines how the named puzzles will generate. These include the puzzles for Gambomba Statue, Gaia Rock and Trial Road
+    # Vanilla: uses the name that is given to Felix
+    # Fixed: will force the puzzles to use the name 'Felix'
+    # Randomized: will force the puzzles to be a random name
+    vanilla: 50
+    fixed: 0
+    randomized: 0
+
+  #####################
+  # Character Changes #
+  #####################
+  shuffle_characters:
+    # Where can you find the other characters?
+    # Vanilla: makes it like the vanilla experience.
+    # Vanilla Shuffled: puts the characters in each others locations.
+    # Anywhere: puts the characters in the multiworld itempool,
+    # note that Jenna's character location is forced to be a character due to game limiations with psynergy learning.
+    vanilla: 1
+    vanilla_shuffled: 4
+    anywhere: 2
+
+  second_starting_character:
+    # Which character will join Felix on Idejima?
+    # This will always be Jenna when Character Shuffle is set to Vanilla, otherwise it will be whichever character this is set to.
+    jenna: 0
+    sheba: 0
+    piers: 0
+    isaac: 0
+    garet: 0
+    ivan: 0
+    mia: 0
+    random: 50
+
+  scale_characters:
+    # Whether to scale character levels by spheres.  Increases generation time.
+    'false': 0
+    'true': 50
+
+  max_scaled_level:
+    # The maximum level a scaled character should have.  Only valid if scale_characters is true.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 5
+    # Maximum value is 99
+    24: 50
+    random: 0
+    random-low: 0
+    random-high: 0
+
+  character_stats:
+    # Determine the stats for characters
+    # Vanilla: leaves the stats as per the vanilla game.
+    # Shuffle Character Stats: will shuffle stats between characters.
+    # Adjust Character Stats: will randomize stats for each character within a margin of vanilla.
+    vanilla: 0
+    shuffle_character_stats: 0
+    adjust_character_stats: 50
+
+  character_elements:
+    # Determine how character elements are shuffled
+    # Vanilla: leaves character elements as per the vanilla game
+    # Shuffle Character Elements: will shuffle them between characters
+    # Randomize Character Elements: will randomize each characters element
+    vanilla: 1
+    shuffle_character_elements: 4
+    randomize_character_elements: 2
+
+  randomize_class_stat_boosts:
+    # When enabled the base stats for classes are randomized
+    'false': 50
+    'true': 0
+
+  ####################
+  # Psynergy Changes #
+  ####################
+  no_util_psynergy_from_classes:
+    # Prevents utility Psynergy (Growth, Frost, etc.) from being learned by classes.
+    'false': 0
+    'true': 50
+
+  class_psynergy:
+    # Determine what Psynergy a class will learn
+    # Vanilla: leaves the Psynergy on their vanilla classes
+    # Randomize Psynergy by Classline: Learned Psynergy is shuffled by classlines (e.g. Squire will have Brute Psynergy)
+    # Randomize by Psynergy Group: Learned Psynergy is shuffled by Psynergy groups (e.g. if a class learns Spire, it will also learn Clay Spire)
+    # Randomize by Psynergy Group Prefer Element: As by group, but with a preference to the same Element
+    # Randomize by Psynergy Element: Learned Psynergy is freely shuffled with another Psynergy of the same element
+    # Fully Randomize it will randomize it completely without grouping or preference
+    vanilla: 0
+    randomize_by_classline: 0
+    randomize_by_psynergy_group: 50
+    randomize_by_psynergy_group_prefer_element: 0
+    randomize_by_psynergy_element: 0
+    fully_randomized: 0
+
+  psynergy_levels:
+    # Determine when Psynergy is learned
+    # Vanilla: leaves the learning of Psynergy on the vanilla levels.
+    # Adjust Learning Levels: will randomize learning levels within a margin from vanilla.
+    # Randomize Learning Levels: will randomize learning levels completely.
+    vanilla: 0
+    adjust_learning_levels: 50
+    randomize_learning_levels: 0
+
+  adjust_psynergy_power:
+    # When enabled the power of Psynergy is randomized within a margin of vanilla.
+    'false': 50
+    'true': 0
+
+  adjust_psynergy_cost:
+    # When enabled the PP cost of Psynergy is randomized within a margin of vanilla.
+    'false': 50
+    'true': 0
+
+  randomize_psynergy_aoe:
+    # When enabled the AoE of Psynergy is randomized
+    'false': 50
+    'true': 0
+
+  adjust_enemy_psynergy_power:
+    # When enabled the power of Enemy Psynergy is randomized within a margin of vanilla.
+    'false': 50
+    'true': 0
+
+  randomize_enemy_psynergy_aoe:
+    # When enabled the AoE of Enemy Psynergy is randomized.
+    'false': 50
+    'true': 0
+
+  enemy_elemental_resistance:
+    # Determine how Enemy Elemental Resistance is shuffled
+    # Vanilla: leaves the elemental resistance as per the vanilla game.
+    # Shuffle Elemental Resistance: will shuffle them between enemies.
+    # Randomize Elemental Resistance: will randomize the resistances for each enemy.
+    vanilla: 50
+    shuffle_elemmental_res: 0
+    randomize_elemental_res: 0
+
+  ############################
+  # Djinn and Summon Changes #
+  ############################
+  shuffle_djinn:
+    # How Djinn should be placed in your own world. The client has extra commands to help find which Djinni locations have (not) been checked.
+    # Note currently Djinn can only be placed in djinn locations in their own world due to game limitations.
+    # Vanilla keeps them in their vanilla locations.
+    # Vanilla Shuffled by Element, Djinni are placed in vanilla Djinni locations that share their element.
+    # Vanilla Shuffled are placed in any vanilla Djinni location regardless of element.
+    vanilla: 0
+    vanilla_shuffled_by_element: 1
+    vanilla_shuffled: 2
+
+  shuffle_djinn_stat_boosts:
+    # When enabled the stats a djinn grant are shuffled amongst each other.
+    'false': 0
+    'true': 50
+
+  adjust_djinn_attack_power:
+    # When enabled the attack power of djinn are randomized within a margin of vanilla.
+    'false': 50
+    'true': 0
+
+  randomize_djinn_attack_aoe:
+    # When enabled the Area of Effect of djinn used in battle is randomized.
+    'false': 50
+    'true': 0
+
+  scale_djinni_battle_difficulty:
+    # Adjust Djinn battle difficulty based on number of owned Djinn.
+    'false': 0
+    'true': 50
+
+  randomize_summon_costs:
+    # When enabled the costs for Summons is randomized.
+    'false': 50
+    'true': 0
+
+  adjust_summon_power:
+    # when enabled the power of Summons is randomized within a margin of vanilla.
+    'false': 50
+    'true': 0
+
+  #####################
+  # Equipment Changes #
+  #####################
+  randomize_equip_compatibility:
+    # When enabled the compatability for each equipment piece is randomized. 
+    # Compatibility defines what each character can equip.
+    'false': 50
+    'true': 0
+
+  adjust_equip_prices:
+    # When enabled the price for each equipment piece is randomized within a margin of vanilla.
+    'false': 50
+    'true': 0
+
+  adjust_equip_stats:
+    # When enabled the stats for each equipment piece is randomized within a margin of vanilla.
+    'false': 50
+    'true': 0
+
+  shuffle_weapon_attack:
+    # When enabled, the attack stat from weapons is shuffled amongst each other
+    'false': 50
+    'true': 0
+
+  shuffle_weapon_effect:
+    # When enabled the effects for weapons are shuffled amongst each other.
+    'false': 50
+    'true': 0
+
+  shuffle_armour_defense:
+    # When enabled, the defense from equipment is shuffled amongst each other
+    'false': 50
+    'true': 0
+
+  shuffle_armour_effect:
+    # When enabled the bonus effects for armour are shuffled amongst each other.
+    'false': 50
+    'true': 0
+
+  randomize_curses:
+    # When enabled the curses for equipment are randomized.
+    'false': 50
+    'true': 0
+
+  remove_all_curses:
+    # When enabled, curses are removed.
+    'false': 0
+    'true': 50
+
+  ###################
+  # Quality Of Life #
+  ###################
+  start_with_healing_psynergy:
+    # Start the game with at least one healing Psynergy (Cure, Ply, Wish or Aura)
+    'false': 4
+    'true': 1
+
+  start_with_revive:
+    # When enabled, start the game with Revive Psynergy
+    'false': 4
+    'true': 1
+
+  free_avoid:
+    # When enabled, the Avoid Psynergy will cost no PP
+    'false': 0
+    'true': 50
+
+  avoid_always_works:
+    # When enabled, Avoid always succeeds and will disable encounters. Using it again will enable encounters
+    'false': 0
+    'true': 50
+
+  free_retreat:
+    # When enabled, the Retreat Psynergy will cost no PP
+    'false': 0
+    'true': 50
+
+  manual_retreat_glitch:
+    # When enabled, Hold select to trigger the Retreat glitch. Logic does not require or expect use of glitches to beat your seed,
+    # this purely gives more control to activating the glitch over draining your PP to than use it anyway.
+    'false': 50
+    'true': 0
+
+  sanctum_revive_cost:
+    # Determine how expensive the Sanctuary is to revive characters
+    # Vanilla: leaves the cost per the vanilla game (20x level)
+    # Reduced: will alter the cost to be cheaper than vanilla (2x level)
+    # Fixed: will alter the cost to the same price throughout (100 coins)
+    vanilla: 0
+    reduced: 50
+    fixed: 0
+
+  enable_hard_mode:
+    # When enabled, all enemies will have 50% more health, 25% more attack and defense
+    'false': 50
+    'true': 0
+
+  reduced_encounter_rate:
+    # When enabled, the encounter rate will be halved
+    'false': 50
+    'true': 0
+
+  easier_bosses:
+    # When enabled, boss fights will be easier by altering their scripts / stats
+    'false': 50
+    'true': 0
+
+  teleport_to_dungeons_and_towns:
+    # When enabled, allows Teleport to target small villages and dungeons
+    'false': 0
+    'true': 50
+
+  scale_exp:
+    # Scale how much Exp is earned by the party.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Default is 3
+    # Minimum value is 1
+    # Maximum value is 15
+    1: 1
+    random-range-2-4: 16
+    random-range-5-9: 4
+    random-range-10-12: 2
+    random-range-13-15: 1
+
+  scale_coins:
+    # Scale how much Coins are earned by the party.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Default is 4
+    # Minimum value is 1
+    # Maximum value is 15
+    random-range-1-2: 1
+    random-range-3-5: 16
+    random-range-6-9: 4
+    random-range-10-12: 2
+    random-range-13-15: 1
+
+  starting_levels:
+    # Determine the starting levels for characters joining the party.
+    # Note this only increases levels of characters that are lower level than the party
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 5
+    # Maximum value is 99
+    5: 50
+    random: 0
+    random-low: 0
+    random-high: 0
+
+  show_items_outside_chest:
+    # Chests and Tablets are replaced with their contents on the floor.
+    # This allows for scouting items. Note certain locations are still not visible,
+    # for example items in pots or barrels.
+    'false': 0
+    'true': 50
+
+  shuffle_music:
+    # When enabled, music is shuffled amongst each other.
+    'false': 50
+    'true': 0
+
+  auto_run:
+    # Swaps the behavior of holding B when moving (default is now run instead of walk)
+    'false': 0
+    'true': 50
+
+  disable_shop_gametickets:
+    # Disable Shopkeepers offering Game Tickets, in Vanilla this is the main way to get game tickets. 
+    # In the randomizer they and/or their rewards may show up as part of the item pool (see common_consumable_filler_weight and lucky_equipment_filler_weight options).
+    # Note disabling this setting will make shop interactions take longer each time a game ticket is offered.
+    'false': 0
+    'true': 50
+
+  ################################
+  # Trap and Filler Distribution #
+  ################################
+  forge_materials_are_filler:
+    # Whether Forge Materials should be marked as filler instead of useful
+    'false': 50
+    'true': 0
+
+  artifacts_are_filler:
+    # Whether "Rare" Equipment should be considered filler instead of useful.  Rings, Shirts, and Boots are
+    # not reclassified by this option.
+    'false': 50
+    'true': 0
+
+  trap_chance:
+    # The chance for filler items in the pool to be replaced by a trap. This can vary from about 70 to 130 traps depending on your settings. Have fun!
+    # Note that this does not replace every filler item as some options force add filler items to the pool.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 100
+    0: 4
+    random-low: 2
+    random: 1
+
+  mimic_trap_weight:
+    # The weight for a trap to be a Mimic. As not all vanilla locations can be mimics.
+    # Mimics will drop their vanilla contents which tend to be more useful consumables but can also be things like Game Tickets or Lucky Medals.
+    # Note: Enabling this will force a number of filler items to the pool to ensure generation success due to locations not supporting mimics.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 100
+    5: 50
+    random: 0
+    random-low: 0
+    random-high: 0
+
+  scale_mimics:
+    # Whether the strength of mimics should be scaled based on the sphere they are in.  Increases generation time
+    'false': 0
+    'true': 50
+
+  forge_material_filler_weight:
+    # The weight for a filler item to be a forge material. These will be forged into any of their regular results.
+    # Note that forging results are RNG based in the game and the randomizer does not alter this behaviour.
+    # Examples of materials are Tear Stone, Sylph Feather, Golem Core, Dark Matter and Orihalcon.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 100
+    25: 50
+    random: 0
+    random-low: 0
+    random-high: 0
+
+  rusty_material_filler_weight:
+    # The weight for a filler item to be a rusty weapon. These weapons will forge into their counterparts as per usual.
+    # E.g. you can find a Rusty Sword which when forged turns into the Soul Brand or a Rusty Staff for a Glower Staff.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 100
+    10: 50
+    random: 0
+    random-low: 0
+    random-high: 0
+
+  stat_boost_filler_weight:
+    # The weight for a filler item to be a stat boost item.
+    # These are Cookie, Hard Nut, Apple, Mint, Power Bread and Lucky Pepper.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 100
+    20: 50
+    random: 0
+    random-low: 0
+    random-high: 0
+
+  uncommon_consumable_filler_weight:
+    # The weight for a filler item to be an uncommon consumable.
+    # Examples of these are Psy Crystal, Mist Potion, Potion and Water of Life.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 100
+    25: 50
+    random: 0
+    random-low: 0
+    random-high: 0
+
+  forged_equipment_filler_weight:
+    # The weight for a filler item to be the end result of forging equipment through materials or rusty weapons.
+    # Examples are Excalibur, Viking Axe, Goblin's Rod, Luna Shield, Astral Circlet and Dragon Boots.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 100
+    0: 50
+    random: 0
+    random-low: 0
+    random-high: 0
+
+  lucky_equipment_filler_weight:
+    # The weight for a filler item to be a lucky item reward from the fountain in Lemuria or Lucky Wheels in Contigo.
+    # Examples of these are Hestia Blade, Mighty Axe, Aegis Shield, Crown of Glory, Quick Boots, Silk Shirt and War Ring.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 100
+    0: 50
+    random: 0
+    random-low: 0
+    random-high: 0
+
+  shop_equipment_filler_weight:
+    # The weight for a filler item to be equipment from the shop.
+    # These include the normal things you can buy amongst a few of the artefacts. Think along the lines of Long Sword, Silver Helm, Chain Mail to a Frost Wand.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 100
+    10: 50
+    random: 0
+    random-low: 0
+    random-high: 0
+
+  coins_filler_weight:
+    # The weight for a filler item to be coins.
+    # The coin amounts are the vanilla coin items you can find. These vary from 3 coins to 911 coins. Majority is around or below 300.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 100
+    15: 50
+    random: 0
+    random-low: 0
+    random-high: 0
+
+  common_consumable_filler_weight:
+    # The weight for a filler item to be a common consumable.
+    # Examples of these are Herbs, Vials, Antidotes, Elixirs, Smoke Bombs, Lucky Medals and Game Tickets
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 100
+    50: 50
+    random: 0
+    random-low: 0
+    random-high: 0
+
+  ###########################
+  # Item & Location Options #
+  ###########################
+  local_items:
+    # Forces these items to be in their native world.
+    []
+
+  non_local_items:
+    # Forces these items to be outside their native world.
+    []
+
+  start_inventory:
+    # Start with these items.
+    {}
+
+  start_inventory_from_pool:
+    # Start with these items and don't place them in the world.
+    # 
+    # The game decides what the replacement items will be.
+    {}
+
+  start_hints:
+    # Start with these item's locations prefilled into the ``!hint`` command.
+    []
+
+  start_location_hints:
+    # Start with these locations and their item prefilled into the ``!hint`` command.
+    []
+
+  exclude_locations:
+    # Prevent these locations from having an important item.
+    []
+
+  priority_locations:
+    # Prevent these locations from having an unimportant item.
+    []
+
+  item_links:
+    # Share part of your item pool with other players.
+    []
+
+  plando_items:
+    # Generic items plando.
+    []

@@ -1,0 +1,382 @@
+﻿name: Prime-{player}
+
+# Used to describe your yaml. Useful if you have multiple files.
+description: Metroid Prime - Random
+
+game: Metroid Prime
+requires:
+  version: 0.5.0 # Version of Archipelago required for this yaml to work as expected.
+
+Metroid Prime:
+  # Game Options
+  progression_balancing:
+    # A system that can move progression earlier, to try and prevent the player from getting stuck and bored early.
+    #
+    # A lower setting means more getting stuck. A higher setting means less getting stuck.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 99
+    random: 0
+    random-low: 0
+    random-high: 0
+    disabled: 0 # equivalent to 0
+    normal: 50 # equivalent to 50
+    extreme: 0 # equivalent to 99
+
+  accessibility:
+    # Set rules for reachability of your items/locations.
+    #
+    # **Full:** ensure everything can be reached and acquired.
+    #
+    # **Minimal:** ensure what is needed to reach your goal can be acquired.
+    full: 50
+    minimal: 0
+
+  death_link:
+    # When you die, everyone who enabled death link dies. Of course, the reverse is true too.
+    'false': 50
+    'true': 0
+
+  # General
+  required_artifacts:
+    # Determines the number of Artifacts needed to begin the endgame sequence.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 1
+    # Maximum value is 12
+    random-range-1-4: 1
+    random-range-5-8: 2
+    random-range-9-11: 4
+    12: 8 #default
+
+  artifact_hints:
+    # If enabled, scanning the artifact stones in the temple will give a hint to their location. Additionally, hints will be pre collected in the client.
+    'false': 0
+    'true': 50
+
+  final_bosses:
+    # Determines the final bosses required to beat the seed. Choose from Meta Ridley, Metroid Prime,
+    # both, or neither.
+    both: 1
+    ridley: 2
+    prime: 8
+    none: 4
+
+  starting_room:
+    # Determines the starting room of the game. This will change your starting loadout depending on the room.
+    # Normal: Start at the Talon Overworld Landing Site. Most randomization options, when enabled, will move the starting room to Save Station 1 in Chozo Ruins due to the restrictive nature of the landing site starting room.
+    # Safe: Start in rooms that will not require a significant combat challenge to progress from. Without disable_starting_room_bk_prevention enabled, this may assign you a new beam and an item in order to make the seed feasible
+    # Buckle Up: Start in rooms that will pose a significant challenge to players with no energy tanks or suit upgrades. Fun for the aspiring masochist (less fun for their friends waiting in BK).
+    normal: 4
+    safe: 1
+    buckle_up: 0
+
+  combat_logic_difficulty:
+    # When enabled, the game will include energy tanks and the charge beam as requirements for certain combat heavy rooms.
+    no_logic: 0
+    normal_logic: 50
+    minimal_logic: 0
+
+  # Gameplay Tweaks
+  progressive_beam_upgrades:
+    # If enabled, 3 progressive beam items will be added into the item pool per beam. These unlock the beam itself, charging capabilities, and the associated missile combo.
+    'false': 4
+    'true': 1
+
+  missile_launcher:
+    # If enabled, the missile launcher will be added to the item pool. This will only allow you to use missiles once the missile launcher is found (regardless of missile expansions received).
+    'false': 4
+    'true': 1
+
+  main_power_bomb:
+    # If enabled, the main power bomb will be added to the item pool. This will only allow you to use power bombs once the main power bombs is found (regardless of power bomb expansions received).
+    'false': 4
+    'true': 1
+
+  randomize_starting_beam:
+    # If enabled, the starting beam will be randomized to a random beam that is not the Power Beam.
+    'false': 4
+    'true': 1
+
+  shuffle_scan_visor:
+    # If enabled, the scan visor will be shuffled into the item pool and will need to be found in order to scan dash and open certain locks.
+    'false': 8
+    'true': 1
+
+  pre_scan_elevators:
+    # Pre scans the elevators in the game, allowing for faster transitions between regions. Makes for more interesting gameplay if disabled when the scan visor is shuffled.
+    'false': 0
+    'true': 50
+
+  non_varia_heat_damage:
+    # If enabled, the gravity suit and phazon suit will not protect against heat damage which will change the required logic of the game.
+    'false': 0
+    'true': 50
+
+  staggered_suit_damage:
+    # Configure how suit damage reduction is calculated.
+    # Default: based on the strongest suit you have
+    # Progressive: based on the number of suits you have
+    # Additive: Individual suits provide their added damage reduction
+    default: 0
+    progressive: 50
+    additive: 0
+
+  spring_ball:
+    # Enables the spring ball when you receive Morph Ball Bombs. This will allow you to jump while in morph ball form by pressing up on the c stick, reducing the complexity of double bomb jumps.
+    'false': 0
+    'true': 50
+
+  # Door Randomization
+  elevator_randomization:
+    # Randomizes the elevators between regions.
+    'false': 8
+    'true': 1
+
+  door_color_randomization:
+    # Determine if/how door colors are randomized.
+    # None: No door colors will be randomized
+    # Global: All door colors of a given color will be randomized to another color
+    # Regional: Each Region will have its door colors randomized to another color
+    none: 8
+    global: 2
+    regional: 1
+
+  blast_shield_randomization:
+    # Determine if/how blast shields are randomized. Note that this will have a difficult time generating in solo worlds with no tricks enabled.
+    # None: No blast shields will be randomized
+    # Replace Existing: Each existing Missile Blast Shield will be replaced with a different Blast Shield type
+    # Mix It Up: Each Region will remove all existing blast shields and instead add a specified number to new doors
+    none: 50
+    replace_existing: 0
+    mix_it_up: 0
+
+  blast_shield_frequency:
+    # If using 'Mix It Up' for blast shield randomization, how many blast shields should be added per region? These are added using a percentage of total possible placements so exact numbers will vary by region. Higher numbers will have more difficulty genning in solo worlds with less tricks.
+    # Low: 10%
+    # Medium: 30%
+    # High: 50%
+    low: 0
+    medium: 50
+    high: 0
+
+  blast_shield_available_types:
+    # Which blast shield types are available for randomization.
+    # All: All blast shield types are available, including beam combos, bomb, power bomb, charge beam, and super missiles
+    # No beam combos: Flamethrower, Wavebuster, and Ice Spreader will not be included as blast shield types (Super Missiles will still be included)
+    all: 0
+    no_beam_combos: 50
+
+  locked_door_count:
+    # If greater than 0, locked doors will be placed in the game (maximum of 1 per level). These will only be placed in spots that will not prevent progression but may force alternate paths.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 2
+    0: 50
+    random: 0
+    random-low: 0
+    random-high: 0
+
+  include_power_beam_doors:
+    # If enabled, Power Beam doors will be an available door color for randomization. If the starting beam is also randomized, it will remove the new starting beam's color from the pool of available door colors.
+    'false': 4
+    'true': 1
+
+  include_morph_ball_bomb_doors:
+    # If enabled, Morph Ball Bomb doors will be added as an available door color for door randomization.
+    'false': 4
+    'true': 1
+
+  # Tricks
+  trick_difficulty:
+    # Determines which tricks, if any, are required to complete the seed. This will affect the logic of the game
+    no_tricks: 50
+    easy: 0
+    medium: 0
+    hard: 0
+
+  remove_hive_mecha:
+    # If enabled, the trigger for the Hive Mecha boss will be removed from the game.
+    'false': 1
+    'true': 2
+
+  backwards_lower_mines:
+    # If enabled, allows you to progress through the lower mines in reverse by removing the locks in the PCA room.
+    'false': 4
+    'true': 1
+
+  remove_xray_requirements:
+    # Determines the xray visor requirements.
+    # Remove None: No xray visor requirements are removed.
+    # Remove Most: All xray visor requirements are removed except for metroid prime, chozo ghosts (normal/minimal combat difficulty), and omega pirate.
+    # Remove All But Omega Pirate: All xray visor requirements are removed except for omega pirate.
+    remove_none: 50
+    remove_most: 0
+    remove_all_but_omega_pirate: 0
+
+  remove_thermal_requirements:
+    # Determines the thermal visor requirements.
+    # Remove None: No thermal visor requirements are removed.
+    # Remove Most: All thermal visor requirements are removed except for metroid prime (note this means wave beam panels will be in logic without the visor to see them).
+    # Remove All: All thermal visor requirements are removed (note this means wave beam panels will be in logic without the visor to see them).
+    remove_none: 50
+    remove_most: 0
+    remove_all: 0
+
+  flaahgra_power_bombs:
+    # If enabled, makes the sandstone block at the top of arboretum breakable with power bombs. Note that this will require you to have 4 power bombs in order to defeat Flaahgra.
+    'false': 50
+    'true': 0
+
+  trick_allow_list:
+    # A list of trick names to explicitly allow in logic, regardless of selected difficulty. For example, "Crashed Frigate Scan Dash" or "Alcove Escape".
+    []
+
+  trick_deny_list:
+    # A list of trick names to explicitly deny in logic, regardless of selected difficulty.  For example, "Crashed Frigate Scan Dash" or "Alcove Escape".
+    []
+
+  # Cosmetic
+  fusion_suit:
+    # If enabled, will replace all the suits in game with the Fusion Suit variants (cosmetic only). Suit color randomization will have no effect if this is enabled.
+    'false': 2
+    'true': 1
+
+  hud_color:
+    # Determines the color of the HUD in the game. Will be overridden if any of the color overrides are greater than 0. Note: Certain colors will change the colors of the beam icons.
+    default: 1
+    red: 1
+    green: 1
+    blue: 1
+    violet: 1
+    yellow: 1
+    cyan: 1
+    white: 1
+    orange: 1
+    pink: 1
+    lime: 1
+    teal: 1
+    purple: 1
+
+  hud_color_red:
+    # 0 to 255, sets the Red channel of the HUD color.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 255
+    0: 50
+    random: 0
+    random-low: 0
+    random-high: 0
+
+  hud_color_green:
+    # 0 to 255, sets the Green channel of the HUD color.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 255
+    0: 50
+    random: 0
+    random-low: 0
+    random-high: 0
+
+  hud_color_blue:
+    # 0 to 255, sets the Blue channel of the HUD color.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 255
+    0: 50
+    random: 0
+    random-low: 0
+    random-high: 0
+
+  randomize_suit_colors:
+    # Randomize the colors of the suits. Is overridden if any of the color overrides are greater than 0. Note: This is not compatible with the Fusion Suit and will have no effect.
+    'false': 0
+    'true': 1
+
+  power_suit_color:
+    # Override the color of the Power Suit using an index from the game's color wheel.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 359
+    0: 50
+    random: 0
+    random-low: 0
+    random-high: 0
+
+  varia_suit_color:
+    # Override the color of the Varia Suit using an index from the game's color wheel.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 359
+    0: 50
+    random: 0
+    random-low: 0
+    random-high: 0
+
+  gravity_suit_color:
+    # Override the color of the Gravity Suit using an index from the game's color wheel.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 359
+    0: 50
+    random: 0
+    random-low: 0
+    random-high: 0
+
+  phazon_suit_color:
+    # Override the color of the Phazon Suit using an index from the game's color wheel.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 359
+    0: 50
+    random: 0
+    random-low: 0
+    random-high: 0
+
+  # Item & Location Options
+  local_items:
+    # Forces these items to be in their native world.
+    []
+
+  non_local_items:
+    # Forces these items to be outside their native world.
+    []
+
+  start_inventory:
+    # Start with these items.
+    {}
+
+  start_inventory_from_pool:
+    # Start with these items and don't place them in the world.
+    #
+    # The game decides what the replacement items will be.
+    {}
+
+  start_hints:
+    # Start with these item's locations prefilled into the ``!hint`` command.
+    []
+
+  start_location_hints:
+    # Start with these locations and their item prefilled into the ``!hint`` command.
+    []
+
+  exclude_locations:
+    # Prevent these locations from having an important item.
+    []
+
+  priority_locations:
+    # Prevent these locations from having an unimportant item.
+    []
+
+  item_links:
+    # Share part of your item pool with other players.
+    []

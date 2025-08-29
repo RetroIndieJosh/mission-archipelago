@@ -1,0 +1,233 @@
+﻿name: Msgr-{player}
+
+# Used to describe your yaml. Useful if you have multiple files.
+description: The Messenger - Random
+
+game: The Messenger
+requires:
+  version: 0.6.1 # Version of Archipelago required for this yaml to work as expected.
+
+The Messenger:
+  # Game Options
+  progression_balancing:
+    # A system that can move progression earlier, to try and prevent the player from getting stuck and bored early.
+    # 
+    # A lower setting means more getting stuck. A higher setting means less getting stuck.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 99
+    random: 0
+    random-low: 0
+    random-high: 0
+    disabled: 0 # equivalent to 0
+    normal: 50 # equivalent to 50
+    extreme: 0 # equivalent to 99
+
+  accessibility:
+    # Set rules for reachability of your items/locations.
+    # 
+    # **Full:** ensure everything can be reached and acquired.
+    # 
+    # **Minimal:** ensure what is needed to reach your goal can be acquired.
+    # 
+    # **Items:** ensure all logically relevant items can be acquired. Some items, such as keys, may be self-locking, and
+    # some locations may be inaccessible.
+    full: 50
+    minimal: 0
+    items: 0
+
+  death_link:
+    # When you die, everyone who enabled death link dies. Of course, the reverse is true too.
+    'false': 50
+    'true': 0
+
+  logic_level:
+    # The level of logic to use when determining what locations in your world are accessible.
+    # 
+    # Normal: Can require damage boosts, but otherwise approachable for someone who has beaten the game.
+    # Hard: Expects more knowledge and tighter execution. Has leashing, normal clips and much tighter d-boosting in logic.
+    normal: 50
+    hard: 0
+
+  shuffle_shards:
+    # Whether mega shards should be item locations.
+    'false': 1
+    'true': 2
+
+  limited_movement:
+    # Removes either rope dart or wingsuit from the itempool. Forces logic to at least hard and accessibility to minimal.
+    'false': 50
+    'true': 0
+
+  early_meditation:
+    # Guarantees meditation will be found early
+    'false': 2
+    'true': 1
+
+  available_portals:
+    # Number of portals that are available from the start. Autumn Hills, Howling Grotto, and Glacial Peak are always available. If portal outputs are not randomized, Searing Crags will also be available.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 3
+    # Maximum value is 6
+    3: 1
+    4: 2
+    5: 4
+    6: 8
+
+  shuffle_portals:
+    # Whether the portals lead to random places.
+    # Entering a portal from its vanilla area will always lead to HQ, and will unlock it if relevant.
+    # Supports plando.
+    # 
+    # None: Portals will take you where they're supposed to.
+    # Shops: Portals can lead to any area except Music Box and Elemental Skylands, with each portal output guaranteed to not overlap with another portal's. Will only put you at a portal or a shop.
+    # Checkpoints: Like Shops except checkpoints without shops are also valid drop points.
+    # Anywhere: Like Checkpoints except it's possible for multiple portals to output to the same map.
+    none: 8
+    shops: 4
+    checkpoints: 2
+    anywhere: 1
+
+  shuffle_transitions:
+    # Whether the transitions between the levels should be randomized.
+    # Supports plando.
+    # 
+    # None: Level transitions lead where they should.
+    # Coupled: Returning through a transition will take you from whence you came.
+    # Decoupled: Any level transition can take you to any other level transition.
+    none: 1
+    coupled: 0
+    decoupled: 0
+
+  goal:
+    # Requirement to finish the game. To win with the power seal hunt goal, you must enter the Music Box through the shop chest.
+    open_music_box: 2
+    power_seal_hunt: 1
+
+  music_box:
+    # Whether the music box gauntlet needs to be done.
+    'false': 1
+    'true': 0
+
+  notes_needed:
+    # How many notes are needed to access the Music Box.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 1
+    # Maximum value is 6
+    random-range-1-3: 1
+    random-range-4-5: 2
+    6: 4
+
+  total_seals:
+    # Number of power seals that exist in the item pool when power seal hunt is the goal.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 1
+    # Maximum value is 85
+    random-range-1-20: 1
+    randome-range-21-40: 2
+    random-range-41-60: 4
+    random-range-61-85: 8
+
+  percent_seals_required:
+    # Percentage of total seals required to open the shop chest.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 10
+    # Maximum value is 100
+    random-range-1-20: 1
+    randome-range-21-40: 2
+    random-range-41-60: 4
+    random-range-61-80: 8
+    random-range-81-100: 16
+
+  traps:
+    # Whether traps should be included in the itempool.
+    'false': 2
+    'true': 1
+
+  shop_price:
+    # Percentage modifier for shuffled item prices in shops
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 25
+    # Maximum value is 400
+    random-range-25-50: 8
+    random-range-51-100: 16
+    random-range-101-200: 4
+    random-range-201-400: 1
+
+  shop_price_plan:
+    # Plan specific prices on shop slots. Supports weighting
+    {}
+
+  portal_plando:
+    # Plando connections to be used with portal shuffle. Direction is ignored.
+    # List of valid connections can be found here: https://github.com/ArchipelagoMW/Archipelago/blob/main/worlds/messenger/portals.py#L12.
+    # The entering Portal should *not* have "Portal" appended.
+    # For the exits, those in checkpoints and shops should just be the name of the spot, while portals should have " Portal" at the end.
+    # Example:
+    # - entrance: Riviere Turquoise
+    #   exit: Wingsuit
+    # - entrance: Sunken Shrine
+    #   exit: Sunny Day
+    # - entrance: Searing Crags
+    #   exit: Glacial Peak Portal
+    []
+
+  plando_connections:
+    # Plando connections to be used with transition shuffle.
+    # List of valid connections can be found at https://github.com/ArchipelagoMW/Archipelago/blob/main/worlds/messenger/connections.py#L641.
+    # Dictionary keys (left) are entrances and values (right) are exits. If transition shuffle is on coupled all plando
+    # connections will be coupled. If on decoupled, "entrance" and "exit" will be treated the same, simply making the
+    # plando connection one-way from entrance to exit.
+    # Example:
+    # - entrance: Searing Crags - Top
+    #   exit: Dark Cave - Right
+    #   direction: both
+    []
+
+  # Item & Location Options
+  local_items:
+    # Forces these items to be in their native world.
+    [
+      'Key of Chaos',
+      'Key of Hope',
+      'Key of Courage',
+      'Key of Love',
+      'Key of Symbiosis',
+      'Key of Strength'
+    ]
+
+  non_local_items:
+    # Forces these items to be outside their native world.
+    []
+
+  start_inventory:
+    # Start with these items and don't place them in the world.
+    # 
+    # The game decides what the replacement items will be.
+    {}
+
+  start_hints:
+    # Start with these item's locations prefilled into the ``!hint`` command.
+    []
+
+  start_location_hints:
+    # Start with these locations and their item prefilled into the ``!hint`` command.
+    []
+
+  exclude_locations:
+    # Prevent these locations from having an important item.
+    []
+
+  priority_locations:
+    # Prevent these locations from having an unimportant item.
+    []
+
+  item_links:
+    # Share part of your item pool with other players.
+    []

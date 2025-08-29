@@ -1,0 +1,218 @@
+﻿name: SM64-{player}
+
+# Used to describe your yaml. Useful if you have multiple files.
+description: Super Mario 64 - Random
+
+game: Super Mario 64
+requires:
+  version: 0.6.2 # Version of Archipelago required for this yaml to work as expected.
+
+Super Mario 64:
+  # Game Options
+  progression_balancing:
+    # A system that can move progression earlier, to try and prevent the player from getting stuck and bored early.
+    # 
+    # A lower setting means more getting stuck. A higher setting means less getting stuck.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 99
+    random: 0
+    random-low: 0
+    random-high: 0
+    disabled: 0 # equivalent to 0
+    normal: 50 # equivalent to 50
+    extreme: 0 # equivalent to 99
+
+  accessibility:
+    # Set rules for reachability of your items/locations.
+    # 
+    # **Full:** ensure everything can be reached and acquired.
+    # 
+    # **Minimal:** ensure what is needed to reach your goal can be acquired.
+    full: 50
+    minimal: 0
+
+  plando_items:
+    # Generic items plando.
+    []
+
+  death_link:
+    # When you die, everyone who enabled death link dies. Of course, the reverse is true too.
+    'false': 50
+    'true': 0
+
+  completion_type:
+    # Set goal for game completion
+    last_bowser_stage: 2
+    all_bowser_stages: 1
+
+  # Logic Options
+  area_rando:
+    # Randomize Entrances
+    'off': 16
+    courses_only: 8
+    courses_and_secrets_separate: 2
+    courses_and_secrets: 1
+
+  buddy_checks:
+    # Bob-omb Buddies are checks, Cannon Unlocks are items
+    'false': 4
+    'true': 1
+
+  exclamation_boxes:
+    # Include 1Up Exclamation Boxes during randomization.
+    # Adds 29 locations to the pool.
+    'false': 8
+    'true': 1
+
+  progressive_keys:
+    # Keys will first grant you access to the Basement, then to the Second Floor
+    'false': 1
+    'true': 4
+
+  enable_coin_stars:
+    # Determine logic for 100 Coin Stars.
+    # 
+    # Off - Removed from pool. You can still collect them, but they don't do anything.
+    # Optimal for ignoring 100 Coin Stars entirely. Removes 15 locations from the pool.
+    # 
+    # On - Kept in pool, potentially randomized.
+    # 
+    # Vanilla - Kept in pool, but NOT randomized.
+    'off': 8
+    'on': 1
+    vanilla: 2
+
+  strict_cap_requirements:
+    # If disabled, Stars that expect special caps may have to be acquired without the caps
+    'false': 0
+    'true': 50
+
+  strict_cannon_requirements:
+    # If disabled, Stars that expect cannons may have to be acquired without them.
+    # Has no effect if Buddy Checks and Move Randomizer are disabled
+    'false': 0
+    'true': 50
+
+  # Ability Options
+  enable_move_rando:
+    # Mario is unable to perform some actions until a corresponding item is picked up.
+    # This option is incompatible with builds using a 'nomoverando' branch.
+    # Specific actions to randomize can be specified in the YAML.
+    'false': 2
+    'true': 1
+
+  move_rando_actions:
+    # Which actions to randomize when Move Randomizer is enabled
+    ['Triple Jump', 'Long Jump', 'Backflip', 'Side Flip', 'Wall Kick', 'Dive', 'Ground Pound', 'Kick', 'Climb', 'Ledge Grab']
+
+  strict_move_requirements:
+    # If disabled, Stars that expect certain moves may have to be acquired without them. Only makes a difference
+    # if Move Randomization is enabled
+    'false': 0
+    'true': 50
+
+  # Star Options
+  amount_of_stars:
+    # How many stars exist.
+    # If there aren't enough locations to hold the given total, the total will be reduced.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Default is 120
+    # Minimum value is 35
+    # Maximum value is 120
+    random-range-35-60: 1
+    random-range-61-90: 2
+    random-range-91-120: 4
+
+  first_bowser_star_door_cost:
+    # What percent of the total stars are required at the Star Door to Bowser in the Dark World
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Default is 7
+    # Minimum value is 0
+    # Maximum value is 40
+    0: 1
+    random-range-1-12: 4
+
+  basement_star_door_cost:
+    # What percent of the total stars are required at the Star Door in the Basement
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Default is 25
+    # Minimum value is 0
+    # Maximum value is 50
+    random-range-13-37: 1
+
+  second_floor_star_door_cost:
+    # What percent of the total stars are required to access the third floor
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Default is 42
+    # Minimum value is 0
+    # Maximum value is 70
+    random-range-38-46: 4
+
+  mips1_cost:
+    # What percent of the total stars are required to spawn MIPS the first time
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Default is 12
+    # Minimum value is 0
+    # Maximum value is 35
+    0: 1
+    random-range-1-24: 4
+
+  mips2_cost:
+    # What percent of the total stars are required to spawn MIPS the second time.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Default is 42
+    # Minimum value is 0
+    # Maximum value is 70
+    random-range-38-46: 4
+    random-range-47-70: 1
+
+  stars_to_finish:
+    # What percent of the total stars are required at the infinite stairs
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Default is 58
+    # Minimum value is 0
+    # Maximum value is 90
+    random-range-47-70: 4
+    random-range-71-90: 1
+
+  # Item & Location Options
+  local_items:
+    # Forces these items to be in their native world.
+    []
+
+  non_local_items:
+    # Forces these items to be outside their native world.
+    []
+
+  start_inventory:
+    # Start with these items.
+    {}
+
+  start_hints:
+    # Start with these item's locations prefilled into the ``!hint`` command.
+    []
+
+  start_location_hints:
+    # Start with these locations and their item prefilled into the ``!hint`` command.
+    []
+
+  exclude_locations:
+    # Prevent these locations from having an important item.
+    []
+
+  priority_locations:
+    # Prevent these locations from having an unimportant item.
+    []
+
+  item_links:
+    # Share part of your item pool with other players.
+    []

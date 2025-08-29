@@ -1,0 +1,455 @@
+﻿name: FFIVFE-{player}
+
+# Used to describe your yaml. Useful if you have multiple files.
+description: Final Fantasy IV Free Enterprise - Random
+
+game: Final Fantasy IV Free Enterprise
+requires:
+  version: 0.6.3 # Version of Archipelago required for this yaml to work as expected.
+
+Final Fantasy IV Free Enterprise:
+  ################
+  # Game Options #
+  ################
+  progression_balancing:
+    # A system that can move progression earlier, to try and prevent the player from getting stuck and bored early.
+    # 
+    # A lower setting means more getting stuck. A higher setting means less getting stuck.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 99
+    random: 0
+    random-low: 0
+    random-high: 0
+    disabled: 0 # equivalent to 0
+    normal: 50 # equivalent to 50
+    extreme: 0 # equivalent to 99
+
+  accessibility:
+    # Set rules for reachability of your items/locations.
+    # 
+    # **Full:** ensure everything can be reached and acquired.
+    # 
+    # **Minimal:** ensure what is needed to reach your goal can be acquired.
+    full: 50
+    minimal: 0
+
+  #####################
+  # Objective Options #
+  #####################
+  ForgeTheCrystal:
+    # Bring the Adamant and Legend Sword to clear this objective.
+    # Forces the objective reward to be the Crystal.
+    'false': 8
+    'true': 1
+
+  ConquerTheGiant:
+    # Clear the Giant of Bab-il to clear this objective.
+    # No character will be available from the Giant with this objective.
+    'false': 8
+    'true': 1
+
+  DefeatTheFiends:
+    # Defeat every elemental fiend to clear this objective.
+    # Your targets are Milon, Milon Z., Kainazzo, Valvalis, Rubicant, and the Elements bosses. Good hunting.
+    'false': 8
+    'true': 1
+
+  FindTheDarkMatter:
+    # Find thirty Dark Matters and deliver them to Kory in Agart to clear this objective.
+    # There are forty-five Dark Matters in total.
+    'false': 8
+    'true': 1
+
+  AdditionalObjectives:
+    # The number of additional random objectives. Can be quests, boss fights, or character recruitments. Note that
+    # no matter what this is set to, no more than thirty-two objectives will be set.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Default is 0
+    # Minimum value is 0
+    # Maximum value is 32
+    0: 128
+    random-range-1-4: 64
+    random-range-5-8: 32
+    random-range-9-12: 16
+    random-range-13-16: 8
+    random-range-16-20: 4
+    random-range-21-26: 2
+    random-range-27-32: 1
+
+  RequiredObjectiveCount:
+    # The number of objectives required for victory. Note that this is ignored when no objectives are set. If this
+    # count is greater than the total number of objectives available, then it will be reduced to match the number of
+    # available objectives.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 1
+    # Maximum value is 32
+    32: 1 # whatever objectives are generated, we should be required to do them
+
+  ObjectiveReward:
+    # The reward for clearing all objectives. Note that this is ignored when no objectives are set,
+    # and Forge the Crystal forces this to the Crystal setting.
+    crystal: 4
+    win: 1
+
+  #####################
+  # Character Options #
+  #####################
+  NoFreeCharacters:
+    # If set, characters will not be available at locations with no requirements or bosses. These locations are
+    # Mysidia, Damcyan Watery Pass, and Mt. Ordeals.
+    'false': 50
+    'true': 0
+
+  NoEarnedCharacters:
+    # If set, characters will not be available at locations with requirements or bosses. These locations are Mist,
+    # Kaipo, Mt. Hobs, Baron, the Tower of Zot, Cave Eblana, Lunar Palace, and the Giant of Bab-il.
+    'false': 50
+    'true': 0
+
+  AllowedCharacters:
+    # Pool of characters allowed to show up. Note that if Hero Challenge is enabled, your hero will still appear.
+    ['Cecil', 'Kain', 'Rydia', 'Tellah', 'Edward', 'Rosa', 'Yang', 'Palom', 'Porom', 'Cid', 'Edge', 'Fusoya']
+
+  EnsureAllCharacters:
+    # Ensure at least one instance of each allowed character is available, if possible.
+    'false': 0
+    'true': 50
+
+  AllowDuplicateCharacters:
+    # Allows multiple instances of the same character to join your party.
+    'false': 0
+    'true': 50
+
+  RestrictedCharacters:
+    # List of characters that can't appear in the easiest to access locations if possible.
+    ['Edge', 'Fusoya']
+
+  ################
+  # Item Options #
+  ################
+  ItemPlacement:
+    # Where items can and will be placed.
+    # Setting this to Full Shuffle will allow any items to be anywhere.
+    # Setting this to Major Minor Split will force all non-major locations to never have progression.
+    # In either case, major locations can only have useful or progression items.
+    # Major locations are any MIAB or event locations.
+    full_shuffle: 50
+    major_minor_split: 0
+
+  ItemRandomization:
+    # Affects item pool
+    standard: 0
+    wild: 50
+    pro: 0
+    wildish: 0
+
+  PassEnabled:
+    # Will the Pass be included in the Key Item Pool?
+    'false': 4
+    'true': 1
+
+  PassInShops:
+    # Can the pass show up in shops? This is a convenience feature and will never be required by the logic.
+    'false': 4
+    'true': 1
+
+  MinTier:
+    # The minimum tier of items that can appear in the item pool.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 1
+    # Maximum value is 4
+    1: 50
+    random: 0
+    random-low: 0
+    random-high: 0
+
+  MaxTier:
+    # The maximum tier of items that can appear in the item pool.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 5
+    # Maximum value is 8
+    8: 50
+    random: 0
+    random-low: 0
+    random-high: 0
+
+  JunkTier:
+    # Items of this tier or below will automatically be sold for cold hard cash.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 8
+    1: 50
+    random: 0
+    random-low: 0
+    random-high: 0
+
+  JunkedItems:
+    # Items that will always be sold for GP regardless of your junk tier settings.
+    []
+
+  KeptItems:
+    # Items that will never be sold for GP regardless of your junk tier settings. Takes priority over Junked Items.
+    []
+
+  ###################
+  # Challenge Flags #
+  ###################
+  HeroChallenge:
+    # Enable the Hero Challenge. In Hero Challenge, your starting character is your main character and cannot be
+    # dismissed. They will face the top of Mt. Ordeals on their own, and Kokkol will forge a weapon from FFIV Advance
+    # for them (unless Forge the Crystal is set).
+    none: 4
+    cecil: 0
+    kain: 0
+    rydia: 0
+    tellah: 0
+    edward: 0
+    rosa: 0
+    yang: 0
+    palom: 0
+    porom: 0
+    cid: 0
+    edge: 0
+    fusoya: 0
+    random_character: 1
+
+  PartySize:
+    # Maximum party size.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 1
+    # Maximum value is 5
+    5: 50
+    random: 0
+    random-low: 0
+    random-high: 0
+
+  CharactersPermajoin:
+    # If enabled, characters may not be dismissed from the party.
+    'false': 50
+    'true': 0
+
+  CharactersPermadie:
+    # If enabled, characters petrified or dead at the end of battle will be removed from your party forever.
+    # On Extreme difficulty, this also includes "cutscene" fights (Mist, Dark Elf, etc.)
+    'no': 50
+    'yes': 0
+    extreme: 0
+
+  UnsafeKeyItemPlacement:
+    # Normally, underground access is guaranteed to be available without taking a trip to the moon.
+    # Toggling this on disables this check.
+    'false': 50
+    'true': 0
+
+  NoAdamantArmors:
+    # Remove Adamant Armor from the item and shop pool.
+    'false': 50
+    'true': 0
+
+  KeepDoorsBehemoths:
+    # Should Trap Door and Behemoth Fights be enabled even when encounters are off?
+    'false': 50
+    'true': 0
+
+  NoFreeBosses:
+    # Removes alternate win conditions for bosses other than good old fashioned violence.
+    'false': 50
+    'true': 0
+
+  WackyChallenge:
+    # Wacky challenges are not fair, balanced, stable, or even necessarily interesting.
+    # They are, however, quite wacky. See FE documentation for more info, or pick one for a fun surprise!
+    none: 50
+    afflicted: 0
+    battle_scars: 0
+    the_bodyguard: 0
+    enemy_unknown: 0
+    ff4_the_musical: 0
+    fist_fight: 0
+    forward_is_the_new_back: 0
+    friendly_fire: 0
+    the_floor_is_made_of_lava: 0
+    gotta_go_fast: 0
+    holy_onomatopoeia_batman: 0
+    imaginary_numbers: 0
+    is_this_even_randomized: 0
+    kleptomania: 0
+    men_are_pigs: 0
+    misspelled: 0
+    a_much_bigger_magnet: 0
+    mystery_juice: 0
+    neat_freak: 0
+    night_mode: 0
+    omnidextrous: 0
+    payable_golbez: 0
+    save_us_big_chocobo: 0
+    six_legged_race: 0
+    the_sky_warriors: 0
+    something_worth_fighting_for: 0
+    the_tellah_maneuver: 0
+    three_point_system: 0
+    time_is_money: 0
+    unstackable: 0
+    world_championship_of_darts: 0
+    zombies: 0
+    random_challenge: 0
+
+  #######################
+  # Miscellaneous Flags #
+  #######################
+  ShopRandomization:
+    # Affects the placement of items in shops. See FE documentation for more for now.
+    vanilla: 4
+    shuffle: 8
+    standard: 32
+    pro: 2
+    wild: 64
+    cabins: 1
+
+  FreeShops:
+    # Everything must go!
+    'false': 9
+    'true': 1
+
+  StarterKitOne:
+    # FE Starter Kit 1. See FE Documentation for details. Or just pick one, they can't hurt you.
+    none: 2
+    basic: 0
+    better: 0
+    loaded: 0
+    cata: 0
+    freedom: 0
+    cid: 0
+    yang: 0
+    money: 0
+    grab_bag: 0
+    miab: 0
+    archer: 0
+    fabul: 0
+    castlevania: 0
+    summon: 0
+    not_deme: 0
+    meme: 0
+    defense: 0
+    mist: 0
+    mysidia: 0
+    baron: 0
+    dwarf: 0
+    eblan: 0
+    libra: 0
+    '99': 0
+    green_names: 0
+    random_kit: 1
+
+  StarterKitTwo:
+    # FE Starter Kit 2. See FE Documentation for details. Or just pick one, they can't hurt you.
+    none: 2
+    basic: 0
+    better: 0
+    loaded: 0
+    cata: 0
+    freedom: 0
+    cid: 0
+    yang: 0
+    money: 0
+    grab_bag: 0
+    miab: 0
+    archer: 0
+    fabul: 0
+    castlevania: 0
+    summon: 0
+    not_deme: 0
+    meme: 0
+    defense: 0
+    mist: 0
+    mysidia: 0
+    baron: 0
+    dwarf: 0
+    eblan: 0
+    libra: 0
+    '99': 0
+    green_names: 0
+    random_kit: 1
+
+  StarterKitThree:
+    # FE Starter Kit 3. See FE Documentation for details. Or just pick one, they can't hurt you.
+    none: 2
+    basic: 0
+    better: 0
+    loaded: 0
+    cata: 0
+    freedom: 0
+    cid: 0
+    yang: 0
+    money: 0
+    grab_bag: 0
+    miab: 0
+    archer: 0
+    fabul: 0
+    castlevania: 0
+    summon: 0
+    not_deme: 0
+    meme: 0
+    defense: 0
+    mist: 0
+    mysidia: 0
+    baron: 0
+    dwarf: 0
+    eblan: 0
+    libra: 0
+    '99': 0
+    green_names: 0
+    random_kit: 1
+
+  ###########################
+  # Item & Location Options #
+  ###########################
+  local_items:
+    # Forces these items to be in their native world.
+    []
+
+  non_local_items:
+    # Forces these items to be outside their native world.
+    []
+
+  start_inventory:
+    # Start with these items.
+    {}
+
+  start_inventory_from_pool:
+    # Start with these items and don't place them in the world.
+    # 
+    # The game decides what the replacement items will be.
+    {}
+
+  start_hints:
+    # Start with these item's locations prefilled into the ``!hint`` command.
+    []
+
+  start_location_hints:
+    # Start with these locations and their item prefilled into the ``!hint`` command.
+    []
+
+  exclude_locations:
+    # Prevent these locations from having an important item.
+    []
+
+  priority_locations:
+    # Prevent these locations from having an unimportant item.
+    []
+
+  item_links:
+    # Share part of your item pool with other players.
+    []
+
+  plando_items:
+    # Generic items plando.
+    []

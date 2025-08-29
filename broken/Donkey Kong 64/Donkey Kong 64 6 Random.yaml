@@ -1,0 +1,484 @@
+﻿name: DK64-{player}
+
+# Used to describe your yaml. Useful if you have multiple files.
+description: Donkey Kong 64 - Random
+
+game: Donkey Kong 64
+requires:
+  version: 0.6.3 # Version of Archipelago required for this yaml to work as expected.
+
+Donkey Kong 64:
+  ################
+  # Game Options #
+  ################
+  progression_balancing:
+    # A system that can move progression earlier, to try and prevent the player from getting stuck and bored early.
+    # 
+    # A lower setting means more getting stuck. A higher setting means less getting stuck.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 99
+    random: 0
+    random-low: 0
+    random-high: 0
+    disabled: 0 # equivalent to 0
+    normal: 50 # equivalent to 50
+    extreme: 0 # equivalent to 99
+
+  accessibility:
+    # Set rules for reachability of your items/locations.
+    # 
+    # **Full:** ensure everything can be reached and acquired.
+    # 
+    # **Minimal:** ensure what is needed to reach your goal can be acquired.
+    full: 50
+    minimal: 0
+
+  death_link:
+    # When you die, everyone who enabled death link dies. Of course, the reverse is true too.
+    'false': 50
+    'true': 0
+
+  ring_link:
+    # Determines if the Ring Link is enabled.
+    # 
+    # The easier waty to say this is Ammo link.
+    # If enabled, all ammo types are shared between players.
+    # 
+    # Currently for Film and Crystal Coconuts if you gain any above the base amount from ringlink, we will not provide more.
+    # But you can still gain more ammo from the world, and it will be shared.
+    'false': 50
+    'true': 0
+
+  tag_link:
+    # Determines if the Tag Link is enabled.
+    # 
+    # If enabled, if you have another players kong you will tag to that kong as well.
+    # If you don't have that kong, you will randomly tag to another kong.
+    # If you only have one kong, nothing will happen.
+    'false': 50
+    'true': 0
+
+  goal:
+    # Determines the goal of the seed.
+    krool: 8
+    all_keys: 2
+    dk_rap: 1
+
+  krool_key_count:
+    # Determines how many keys are needed to spawn Krool's Ship.
+    # 
+    # Choosing a value of 0 means you start with all 8 keys.
+    # Choosing a value of 8 means you start with no keys.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 8
+    1: 1
+    2: 2
+    3: 4
+    4: 8
+    5: 16
+    6: 32
+    7: 64
+    8: 128
+    random: 0
+    random-low: 0
+    random-high: 0
+
+  krool_phase_count:
+    # Pick how many phases are in the final battle against K. Rool.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 1
+    # Maximum value is 5
+    1: 1
+    2: 2
+    3: 4
+    4: 2
+    5: 1
+    random: 0
+    random-low: 0
+    random-high: 0
+
+  helm_phase_count:
+    # Pick how many rooms needed to complete Helm.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 1
+    # Maximum value is 5
+    1: 4
+    2: 8
+    3: 4
+    4: 2
+    5: 1
+    random: 0
+    random-low: 0
+    random-high: 0
+
+  krool_in_boss_pool:
+    # Whether or not K. Rool can be fightable in T&S Bosses and vice versa.
+    'false': 50
+    'true': 0
+
+  remove_barriers_selected:
+    # Determines which barriers are removed.
+    # 
+    # Valid Keys:
+    # "japes_coconut_gates"
+    # "japes_shellhive_gates"
+    # "aztec_tunnel_door"
+    # "aztec_5dtemple_switches"
+    # "aztec_llama_switches"
+    # "aztec_tiny_temple_ice"
+    # "factory_testing_gate"
+    # "factory_production_room"
+    # "galleon_lighthouse_gate"
+    # "galleon_shipyard_area_gate"
+    # "galleon_seasick_ship"
+    # "galleon_treasure_room"
+    # "forest_green_tunnel"
+    # "forest_yellow_tunnel"
+    # "caves_igloo_pads"
+    # "caves_ice_walls"
+    # "castle_crypt_doors"
+    []
+
+  medal_cb_req:
+    # Determines how many CBs are needed to acquire Banana Medal.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 1
+    # Maximum value is 100
+    40: 50
+    random: 0
+    random-low: 0
+    random-high: 0
+
+  mermaid_gb_pearls:
+    # Determines how many pearls are needed to satisfy the mermaid.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 1
+    # Maximum value is 5
+    1: 50
+    random: 0
+    random-low: 0
+    random-high: 0
+
+  medal_requirement:
+    # Determines how many medals are needed to play Jetpac.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 1
+    # Maximum value is 40
+    9: 50
+    random: 0
+    random-low: 0
+    random-high: 0
+
+  rareware_gb_fairies:
+    # Determines how many Fairies are needed to unlock the Rareware Door.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 1
+    # Maximum value is 20
+    4: 50
+    random: 0
+    random-low: 0
+    random-high: 0
+
+  randomize_blocker_required_amounts:
+    # Determines if B. Locker values are randomized.
+    'false': 50
+    'true': 0
+
+  blocker_max:
+    # Determines the Maximum Value for B. Lockers if Randomize B.Lockers are enabled.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 201
+    64: 50
+    random: 0
+    random-low: 0
+    random-high: 0
+
+  level1_blocker:
+    # Determines the value of Level 1's B. Locker if Randomize B. Lockers are turned off.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 201
+    1: 50
+    random: 0
+    random-low: 0
+    random-high: 0
+
+  level2_blocker:
+    # Determines the value of Level 2's B. Locker if Randomize B. Lockers are turned off.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 201
+    5: 50
+    random: 0
+    random-low: 0
+    random-high: 0
+
+  level3_blocker:
+    # Determines the value of Level 3's B. Locker if Randomize B. Lockers are turned off.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 201
+    15: 50
+    random: 0
+    random-low: 0
+    random-high: 0
+
+  level4_blocker:
+    # Determines the value of Level 4's B. Locker if Randomize B. Lockers are turned off.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 201
+    30: 50
+    random: 0
+    random-low: 0
+    random-high: 0
+
+  level5_blocker:
+    # Determines the value of Level 5's B. Locker if Randomize B. Lockers are turned off.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 201
+    50: 50
+    random: 0
+    random-low: 0
+    random-high: 0
+
+  level6_blocker:
+    # Determines the value of Level 6's B. Locker if Randomize B. Lockers are turned off.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 201
+    65: 50
+    random: 0
+    random-low: 0
+    random-high: 0
+
+  level7_blocker:
+    # Determines the value of Level 7's B. Locker if Randomize B. Lockers are turned off.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 201
+    80: 50
+    random: 0
+    random-low: 0
+    random-high: 0
+
+  level8_blocker:
+    # Determines the value of Level 8's B. Locker if Randomize B. Lockers are turned off.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 201
+    100: 50
+    random: 0
+    random-low: 0
+    random-high: 0
+
+  open_lobbies:
+    # Determines whether or not all lobbies are preopened.
+    'false': 8
+    'true': 1
+
+  switchsanity:
+    # Determines if the pads leading to helm are randomized.
+    # 
+    # Options:
+    # off: Switchsanity is Off
+    # helm_access: Monkeyport pad and Gorilla Gone Pad are randomized
+    # all: Most switches across the game are randomized.
+    'off': 8
+    helm_access: 2
+    all: 1
+
+  climbing_shuffle:
+    # Whether or not you shuffle the Climbing ability into the world(s).
+    'false': 8
+    'true': 1
+
+  starting_kong_count:
+    # Determines how many Kongs you start with.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 1
+    # Maximum value is 5
+    1: 16
+    2: 8
+    3: 4
+    4: 2
+    5: 1
+    random: 0
+    random-low: 0
+    random-high: 0
+
+  starting_move_count:
+    # Determines how many additional random moves you start with. If you choose more moves than are available, you will start with all moves.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 50
+    0: 4
+    random: 1
+    random-low: 2
+    random-high: 1
+
+  logic_type:
+    # Determines what type of logic is needed to beat the seed.
+    glitchless: 50
+    glitched: 0
+
+  glitches_selected:
+    # Determines what glitches are enabled if logic_type is set to Glitched.
+    # 
+    # Valid Keys:
+    # "advanced_platforming": Platforming techniques that don't require any glitches but might be too tough for some players.
+    # "moonkicks": A trick that allows Donkey to ascend by interrupting his aerial attack with a kick.
+    # "phase_swimming": Formerly known as STVW, a trick to go through a significant amount of walls in the game whilst underwater.
+    # "swim_through_shores": A trick that allows you to swim into a sloped shoreline to get out of bounds.
+    # "troff_n_scoff_skips": Any skip that allows you to bypass the kong and small banana requirement in order to fight a boss.
+    # "moontail": A trick that allows the player to gain extra height with Diddy.
+    []
+
+  hard_shooting:
+    # Enabling this setting means logic may expect you to do some difficult shooting challenges without help.
+    # 
+    # Lanky's attic in Fungi Forest removes Homing requirement.
+    # Donkey's 5 door cabin in Crystal Caves removes Homing requirement.
+    # Tiny's trash can in Creepy Castle removes homing ammo. (This can be bypassed with Saxophone)
+    # Chunky's tree banana in Creepy Castle removes sniper scope. (This requirement can be skipped by shooting from below the switch.
+    # Chunky's shooting barrel in Hideout Helm removes either sniper scope or homing ammo.
+    # Lanky's tower in Castle Requires either Homing ammo or Sniper Scope instead of just Sniper
+    'false': 50
+    'true': 0
+
+  hard_mode:
+    # Determines whether Hard Mode is enabled. Use the yaml option below this to determine which settings you want enabled.
+    'false': 50
+    'true': 0
+
+  hard_mode_selected:
+    # If Hard Mode is enabled, determines which Hard Mode settings are included.
+    # 
+    # Valid Keys:
+    # "hard_enemies": Enemies Fight Back a little harder.
+    # "shuffled_jetpac_enemies": Jetpac enemies are shuffled within Jetpac.
+    # "strict_helm_timer": Helm Timer starts at 0:00 requiring blueprints to turn in
+    # "donk_in_the_dark_world: All maps are pitch black, with only a light to help you path your way to the end of the game. Mixing this with 'Donk in the Sky' will convert the challenge into 'Memory Challenge' instead.
+    # "donk_in_the_sky": Collision Geometry is disabled. Mixing this with 'Donk in the Dark World' will convert the challenge into 'Memory Challenge' instead.
+    []
+
+  mirror_mode:
+    # Determines whether the game will be horizontally Mirrored.
+    'false': 50
+    'true': 0
+
+  hints_in_item_pool:
+    # Determines if Hints are added into the Item Pool.
+    'false': 50
+    'true': 0
+
+  trap_fill_percentage:
+    # Replace a percentage of junk items in the item pool with random traps.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 100
+    0: 2
+    random: 1
+    random-low: 2
+    random-high: 1
+
+  bubble_trap_weight:
+    # Likelihood of receiving a trap which freezes the player.
+    none: 0
+    low: 0
+    medium: 50
+    high: 0
+
+  reverse_trap_weight:
+    # Likelihood of receiving a trap which reverses controls.
+    none: 0
+    low: 0
+    medium: 50
+    high: 0
+
+  slow_trap_weight:
+    # Likelihood of receiving a trap which slows the player.
+    none: 0
+    low: 0
+    medium: 50
+    high: 0
+
+  receive_notifications:
+    # Determines if the player will receive notifications about item sends.
+    # 
+    # Options:
+    # - display_all_speedup (1): If we have more than 5 items queued, we will speed up the display based on the percentage.
+    # - display_all_discard_extra (2): If we have more than 5 items queued, we will speed up the display based on percentage, but discard any non progression items.
+    # - display_all_fast (3): Displays ALL items at the fastest speed.
+    # - display_extra_fast (4): Displays Progression items at the default speed, and non progression items at a faster speed.
+    # - display_extra_items (5): Displays extra items and progression items at standard speed.
+    # - display_only_progression (6): Progression only, no speed changes.
+    display_all_speedup: 50
+    display_all_discard_extra: 0
+    display_all_fast: 0
+    display_extra_fast: 0
+    display_extra_items: 0
+    display_only_progression: 0
+
+  ###########################
+  # Item & Location Options #
+  ###########################
+  local_items:
+    # Forces these items to be in their native world.
+    []
+
+  non_local_items:
+    # Forces these items to be outside their native world.
+    []
+
+  start_inventory:
+    # Start with these items.
+    {}
+
+  start_hints:
+    # Start with these item's locations prefilled into the ``!hint`` command.
+    []
+
+  start_location_hints:
+    # Start with these locations and their item prefilled into the ``!hint`` command.
+    []
+
+  exclude_locations:
+    # Prevent these locations from having an important item.
+    []
+
+  priority_locations:
+    # Prevent these locations from having an unimportant item.
+    []
+
+  item_links:
+    # Share part of your item pool with other players.
+    []
+
+  plando_items:
+    # Generic items plando.
+    []

@@ -1,0 +1,239 @@
+﻿name: Kirby64-{player}
+
+# Used to describe your yaml. Useful if you have multiple files.
+description: Kirby 64 - The Crystal Shards - Random
+
+game: Kirby 64 - The Crystal Shards
+requires:
+  version: 0.6.3 # Version of Archipelago required for this yaml to work as expected.
+
+Kirby 64 - The Crystal Shards:
+  ################
+  # Game Options #
+  ################
+  death_link:
+    # When you die, everyone who enabled death link dies. Of course, the reverse is true too.
+    'false': 50
+    'true': 0
+
+  progression_balancing:
+    # A system that can move progression earlier, to try and prevent the player from getting stuck and bored early.
+    # 
+    # A lower setting means more getting stuck. A higher setting means less getting stuck.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 99
+    random: 0
+    random-low: 0
+    random-high: 0
+    disabled: 0 # equivalent to 0
+    normal: 50 # equivalent to 50
+    extreme: 0 # equivalent to 99
+
+  accessibility:
+    # Set rules for reachability of your items/locations.
+    # 
+    # **Full:** ensure everything can be reached and acquired.
+    # 
+    # **Minimal:** ensure what is needed to reach your goal can be acquired.
+    full: 50
+    minimal: 0
+
+  plando_connections:
+    # Generic connections plando. Format is:
+    # - entrance: "Entrance Name"
+    #   exit: "Exit Name"
+    #   direction: "Direction"
+    #   percentage: 100
+    # Direction must be one of 'entrance', 'exit', or 'both', and defaults to 'both' if omitted.
+    # Percentage is an integer from 1 to 100, and defaults to 100 when omitted.
+    []
+
+  goal_speed:
+    # Normal: the goal is unlocked after defeating the 6 bosses
+    # Fast: the goal is unlocked after acquiring the target number of Crystal Shards
+    normal: 4
+    fast: 1
+
+  split_power_combos:
+    # If enabled, Power Combos are added to the pool as separate items, and must be unlocked separate from
+    # its base abilities.
+    'false': 4
+    'true': 1
+
+  stage_shuffle:
+    # None: No stage shuffling.
+    # Same World: shuffles stages around their world.
+    # Shuffled: shuffles stages across all worlds.
+    none: 8
+    same_world: 2
+    shuffled: 1
+
+  boss_requirement_random:
+    # If enabled, unlocking a boss will require a random amount of Crystal Shards, up to a certain amount per level.
+    'false': 4
+    'true': 1
+
+  total_crystals:
+    # Maximum number of crystal shards to include in the pool of items.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Default is 30
+    # Minimum value is 5
+    # Maximum value is 72
+    random-range-5-19: 2
+    random-range-20-30: 4
+    random-range-31-45: 2
+    random-range-46-72: 1
+
+  required_crystals:
+    # Percentage of crystal shards required to unlock the boss of Ripple Star, and grant access to Zero-Two.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Default is 50
+    # Minimum value is 1
+    # Maximum value is 100
+    random-range-1-20: 1
+    random-range-21-40: 2
+    random-range-41-60: 4
+    random-range-61-80: 2
+    random-range-81-100: 1
+
+  filler_percentage:
+    # Percentage of non-required Crystal Shards to be converted to filler items (1-Ups, Maxim Tomatoes, Invincibility Candy).
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 100
+    random-range-1-20: 1
+    random-range-21-40: 2
+    random-range-41-60: 4
+    random-range-61-80: 2
+    random-range-81-100: 1
+
+  kirby_flavor_preset:
+    # The color of Kirby, from a list of presets.
+    default: 1
+    bubblegum: 1
+    cherry: 1
+    blueberry: 1
+    lemon: 1
+    kiwi: 1
+    grape: 1
+    chocolate: 1
+    marshmallow: 1
+    licorice: 1
+    watermelon: 1
+    orange: 1
+    lime: 1
+    kusamochi: 1
+    citrus: 1
+    wafer: 1
+    ice: 1
+    cream: 1
+    snowcone: 1
+    cotton_candy: 1
+    chocomint: 1
+    cheeseburger: 1
+    rose: 1
+    daisy: 1
+    lavender: 1
+    lilac: 1
+    blue_poppy: 1
+    fuschia: 1
+    canary: 1
+    carbon: 1
+    snow: 1
+    ivory: 1
+    chalk: 1
+    sapphire: 1
+    emerald: 1
+    gameboy: 1
+    nostalgic: 1
+    halloween: 1
+    bright: 1
+    ocean: 1
+    miku: 1
+    rin: 1
+    len: 1
+    luka: 1
+    meiko: 1
+    kaito: 1
+    mirror: 1
+    dedede: 1
+    waddle_dee: 1
+    susie: 1
+    mogeko: 1
+    link: 1
+    callie: 1
+    marie: 1
+    pearl: 1
+    marina: 1
+    custom: 0
+
+  kirby_flavor:
+    # A custom color for Kirby. To use a custom color, set the preset to Custom and then define a dict of keys from "1" to
+    # "17", with their values being an HTML hex color.
+    '1': '#080000'
+    '10': '#D5D5D5'
+    '11': '#312029'
+    '12': '#8B949C'
+    '13': '#0000D5'
+    '14': '#8B626A'
+    '15': '#BD838B'
+    '16': '#FF6946'
+    '17': '#FF2600'
+    '2': '#F64A5A'
+    '3': '#6A4152'
+    '4': '#F6F6F6'
+    '5': '#F7A5B5'
+    '6': '#E66A62'
+    '7': '#00085A'
+    '8': '#EE8BA4'
+    '9': '#733141'
+
+  ###########################
+  # Item & Location Options #
+  ###########################
+  local_items:
+    # Forces these items to be in their native world.
+    []
+
+  non_local_items:
+    # Forces these items to be outside their native world.
+    []
+
+  start_inventory:
+    # Start with these items.
+    {}
+
+  start_inventory_from_pool:
+    # Start with these items and don't place them in the world.
+    # 
+    # The game decides what the replacement items will be.
+    {}
+
+  start_hints:
+    # Start with these item's locations prefilled into the ``!hint`` command.
+    []
+
+  start_location_hints:
+    # Start with these locations and their item prefilled into the ``!hint`` command.
+    []
+
+  exclude_locations:
+    # Prevent these locations from having an important item.
+    []
+
+  priority_locations:
+    # Prevent these locations from having an unimportant item.
+    []
+
+  item_links:
+    # Share part of your item pool with other players.
+    []
+
+  plando_items:
+    # Generic items plando.
+    []
