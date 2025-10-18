@@ -1,0 +1,61 @@
+name: Player-{player}
+
+description: RetroIndieJosh - Mission Archipelago Game Weights
+requires:
+  version: 0.6.3
+
+# Define games - note that you MUST include EVERY game for EACH rank included or
+# else generation will fail
+game:
+  # rank 1
+  Castlevania - Circle of the Moon: 4096
+  Mega Man 2: 4096
+  Star Wars Episode I Racer: 4096
+  Super Metroid: 4096
+  The Messenger: 4096
+  # rank 2
+  A Link to the Past: 512
+  DOOM 1993: 512
+  Ocarina of Time: 512
+  SMZ3: 512
+  Subnautica: 512
+  Tetris Attack: 512
+  # rank 3
+  Links Awakening DX: 64
+  Mega Man 3: 64
+  Mega Man X: 64
+  Metroid Prime: 64
+  Metroid Zero Mission: 64
+  # rank 4
+  DOOM II: 8
+  Mega Man X2: 8
+  Pokemon Red and Blue: 8
+  Stardew Valley: 8
+  Super Mario 64: 8
+  Super Mario Land 2: 8
+  Super Mario World: 8
+  Symphony of the Night: 8
+  VVVVVV: 8
+  Yacht Dice: 8
+  # rank 5
+  Bumper Stickers: 1
+  Celeste (Open World): 1
+  Checks Finder: 1
+  ChecksMate: 1
+  Donkey Kong Country 2: 1
+  Donkey Kong Country 3: 1
+  Final Fantasy IV Free Enterprise: 1
+  Final Fantasy Mystic Quest: 1
+  Golden Sun The Lost Age: 1
+  Heretic: 1
+  Kirby 64 - The Crystal Shards: 1
+  Majora's Mask Recomp: 1
+  Metroid Fusion: 1
+  Paint: 1
+  Pokemon Crystal: 1
+  Quake: 1
+  Slay the Spire: 1
+  Sonic Adventure 2 Battle: 1
+  Sonic the Hedgehog 1: 1
+  The Legend of Zelda: 1
+  The Wind Waker: 1
