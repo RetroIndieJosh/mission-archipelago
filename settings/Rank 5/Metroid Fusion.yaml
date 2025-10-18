@@ -1,13 +1,4 @@
-﻿name: Fusion-{player}
-
-# Used to describe your yaml. Useful if you have multiple files.
-description: Metroid Fusion - Random
-
-game: Metroid Fusion
-requires:
-  version: 0.6.3 # Version of Archipelago required for this yaml to work as expected.
-
-Metroid Fusion:
+﻿Metroid Fusion:
   ################
   # Game Options #
   ################

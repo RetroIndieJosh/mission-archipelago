@@ -1,10 +1,4 @@
-﻿name: DKC2-{player}
-description: Donkey Kong Country 2 - Random
-game: Donkey Kong Country 2
-requires:
-  version: 0.6.2 # Version of Archipelago required for this yaml to work as expected.
-
-Donkey Kong Country 2:
+﻿Donkey Kong Country 2:
   # Game Options
   progression_balancing:
     # A system that can move progression earlier, to try and prevent the player from getting stuck and bored early.

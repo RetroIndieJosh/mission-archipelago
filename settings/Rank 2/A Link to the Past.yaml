@@ -1,13 +1,4 @@
-﻿name: LttP-{player}
-
-# Used to describe your yaml. Useful if you have multiple files.
-description: A Link to the Past - Random
-
-game: A Link to the Past
-requires:
-  version: 0.6.1 # Version of Archipelago required for this yaml to work as expected.
-
-A Link to the Past:
+﻿A Link to the Past:
   # Game Options
   progression_balancing:
     # A system that can move progression earlier, to try and prevent the player from getting stuck and bored early.
@@ -706,17 +697,17 @@ A Link to the Past:
     # Share part of your item pool with other players.
     []
 
-triggers:
-# if ganon starts open, hint all required items
-- option_category: A Link to the Past
-  option_name: crystals_needed_for_ganon
-  option_result: 0
-  options:
-    A Link to the Past:
-      +start_hints:
-        - Mirror
-        - Moon Pearl
-        - Pegasus Boots
-        - Progressive Sword
-        - Bow
-        - Silver Arrows
+  triggers:
+  # if ganon starts open, hint all required items
+  - option_category: A Link to the Past
+    option_name: crystals_needed_for_ganon
+    option_result: 0
+    options:
+      A Link to the Past:
+        +start_hints:
+          - Magic Mirror
+          - Moon Pearl
+          - Pegasus Boots
+          - Progressive Sword
+          - Bow
+          - Silver Arrows

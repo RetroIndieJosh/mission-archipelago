@@ -1,11 +1,4 @@
-﻿name: DOOM2-{player}
-description: DOOM II - Random
-
-game: DOOM II
-requires:
-  version: 0.4.6 # Version of Archipelago required for this yaml to work as expected.
-
-DOOM II:
+﻿DOOM II:
   progression_balancing:
     # A system that can move progression earlier, to try and prevent the player from getting stuck and bored early.
     # A lower setting means more getting stuck. A higher setting means less getting stuck.

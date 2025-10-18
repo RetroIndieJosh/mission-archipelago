@@ -1,13 +1,4 @@
-﻿name: TetAtk-{player}
-
-# Used to describe your yaml. Useful if you have multiple files.
-description: Tetris Attack - Random
-
-game: Tetris Attack
-requires:
-  version: 0.6.3 # Version of Archipelago required for this yaml to work as expected.
-
-Tetris Attack:
+﻿Tetris Attack:
   # Game Options
   progression_balancing:
     # A system that can move progression earlier, to try and prevent the player from getting stuck and bored early.
@@ -268,31 +259,31 @@ Tetris Attack:
     # Share part of your item pool with other players.
     []
 
-triggers:
-# if no puzzles, start with stage clear or vs
-- option_category: Tetris Attack
-  option_name: puzzle_goal
-  option_result: 'no_puzzle'
-  options:
-    Tetris Attack:
-      starter_pack:
-        stage_clear_round_1: 1
-        stage_clear_round_2: 1
-        stage_clear_round_3: 1
-        stage_clear_round_4: 1
-        stage_clear_round_5: 1
-        stage_clear_round_6: 1
-        vs_two_stages: 1
-# if no vs, start with stage clear (even if there are puzzles)
-- option_category: Tetris Attack
-  option_name: versus_goal
-  option_result: 'no_vs'
-  options:
-    Tetris Attack:
-      starter_pack:
-        stage_clear_round_1: 1
-        stage_clear_round_2: 1
-        stage_clear_round_3: 1
-        stage_clear_round_4: 1
-        stage_clear_round_5: 1
-        stage_clear_round_6: 1
+  triggers:
+  # if no puzzles, start with stage clear or vs
+  - option_category: Tetris Attack
+    option_name: puzzle_goal
+    option_result: 'no_puzzle'
+    options:
+      Tetris Attack:
+        starter_pack:
+          stage_clear_round_1: 1
+          stage_clear_round_2: 1
+          stage_clear_round_3: 1
+          stage_clear_round_4: 1
+          stage_clear_round_5: 1
+          stage_clear_round_6: 1
+          vs_two_stages: 1
+  # if no vs, start with stage clear (even if there are puzzles)
+  - option_category: Tetris Attack
+    option_name: versus_goal
+    option_result: 'no_vs'
+    options:
+      Tetris Attack:
+        starter_pack:
+          stage_clear_round_1: 1
+          stage_clear_round_2: 1
+          stage_clear_round_3: 1
+          stage_clear_round_4: 1
+          stage_clear_round_5: 1
+          stage_clear_round_6: 1

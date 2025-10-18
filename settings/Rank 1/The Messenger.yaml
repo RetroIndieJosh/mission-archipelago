@@ -1,13 +1,4 @@
-﻿name: Msgr-{player}
-
-# Used to describe your yaml. Useful if you have multiple files.
-description: The Messenger - Random
-
-game: The Messenger
-requires:
-  version: 0.6.1 # Version of Archipelago required for this yaml to work as expected.
-
-The Messenger:
+﻿The Messenger:
   # Game Options
   progression_balancing:
     # A system that can move progression earlier, to try and prevent the player from getting stuck and bored early.
@@ -128,7 +119,7 @@ The Messenger:
     # Minimum value is 1
     # Maximum value is 85
     random-range-1-20: 1
-    randome-range-21-40: 2
+    random-range-21-40: 2
     random-range-41-60: 4
     random-range-61-85: 8
 
@@ -138,8 +129,8 @@ The Messenger:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 10
     # Maximum value is 100
-    random-range-1-20: 1
-    randome-range-21-40: 2
+    random-range-10-20: 1
+    random-range-21-40: 2
     random-range-41-60: 4
     random-range-61-80: 8
     random-range-81-100: 16

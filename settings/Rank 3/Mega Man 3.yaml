@@ -1,13 +1,4 @@
-﻿name: MM3-{player}
-
-# Used to describe your yaml. Useful if you have multiple files.
-description: Mega Man 3 - Random
-
-game: Mega Man 3
-requires:
-  version: 0.6.2 # Version of Archipelago required for this yaml to work as expected.
-
-Mega Man 3:
+﻿Mega Man 3:
   # Game Options
   progression_balancing:
     # A system that can move progression earlier, to try and prevent the player from getting stuck and bored early.

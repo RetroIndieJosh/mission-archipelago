@@ -1,13 +1,4 @@
-﻿name: DOOM-{player}
-
-# Used to describe your yaml. Useful if you have multiple files.
-description: DOOM 1993 - Random
-
-game: DOOM 1993
-requires:
-  version: 0.4.6 # Version of Archipelago required for this yaml to work as expected.
-
-DOOM 1993:
+﻿DOOM 1993:
   progression_balancing:
     # A system that can move progression earlier, to try and prevent the player from getting stuck and bored early.
     # A lower setting means more getting stuck. A higher setting means less getting stuck.
@@ -180,20 +171,20 @@ DOOM 1993:
     false: 2
     true: 1
 
-triggers:
-# if the goal is boss levels, do at least the first three episodes
-- option_category: DOOM 1993
-  option_name: goal
-  option_result: complete_boss_levels
-  options:
-    DOOM 1993:
-      episode1: true
-      episode2: true
-      episode3: true
-# force disable Episode 4 if difficulty is hard
-- option_category: DOOM 1993
-  option_name: difficulty
-  option_result: hard
-  options:
-    DOOM 1993:
-      episode4: false
+  triggers:
+  # if the goal is boss levels, do at least the first three episodes
+  - option_category: DOOM 1993
+    option_name: goal
+    option_result: complete_boss_levels
+    options:
+      DOOM 1993:
+        episode1: true
+        episode2: true
+        episode3: true
+  # force disable Episode 4 if difficulty is hard
+  - option_category: DOOM 1993
+    option_name: difficulty
+    option_result: hard
+    options:
+      DOOM 1993:
+        episode4: false

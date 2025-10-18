@@ -1,13 +1,4 @@
-﻿name: Sub-{player}
-
-# Used to describe your yaml. Useful if you have multiple files.
-description: Subnautica - Random
-
-game: Subnautica
-requires:
-  version: 0.5.1 # Version of Archipelago required for this yaml to work as expected.
-
-Subnautica:
+﻿Subnautica:
   # Game Options
   progression_balancing:
     # A system that can move progression earlier, to try and prevent the player from getting stuck and bored early.
@@ -167,30 +158,30 @@ Subnautica:
     # The game decides what the replacement items will be.
     {}
 
-triggers:
-# if goal is launch, force on free samples
-- option_category: Subnautica
-  option_name: goal
-  option_result: launch
-  options:
-    Subnautica:
-      free_samples: true
-# if scan logic requires stasis, auto-hint stasis rifle
-- option_category: Subnautica
-  option_name: creature_scan_logic
-  option_result: stasis
-  options:
-    Subnautica:
-      +start_hints:
-        - Stasis Rifle Fragment
-        - Stasis Rifle Fragment
-        - Stasis Rifle Fragment
-        - Stasis Rifle Fragment
-# if scan logic requires alien containment, auto-hint alien containment
-- option_category: Subnautica
-  option_name: creature_scan_logic
-  option_result: containment
-  options:
-    Subnautica:
-      +start_hints:
-        - Alien Containment
+  triggers:
+  # if goal is launch, force on free samples
+  - option_category: Subnautica
+    option_name: goal
+    option_result: launch
+    options:
+      Subnautica:
+        free_samples: true
+  # if scan logic requires stasis, auto-hint stasis rifle
+  - option_category: Subnautica
+    option_name: creature_scan_logic
+    option_result: stasis
+    options:
+      Subnautica:
+        +start_hints:
+          - Stasis Rifle Fragment
+          - Stasis Rifle Fragment
+          - Stasis Rifle Fragment
+          - Stasis Rifle Fragment
+  # if scan logic requires alien containment, auto-hint alien containment
+  - option_category: Subnautica
+    option_name: creature_scan_logic
+    option_result: containment
+    options:
+      Subnautica:
+        +start_hints:
+          - Alien Containment

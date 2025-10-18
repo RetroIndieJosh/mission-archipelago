@@ -1,13 +1,4 @@
-﻿name: OoT-{player}
-
-# Used to describe your yaml. Useful if you have multiple files.
-description: Ocarina of Time - Random
-
-game: Ocarina of Time
-requires:
-  version: 0.6.1 # Version of Archipelago required for this yaml to work as expected.
-
-Ocarina of Time:
+﻿Ocarina of Time:
   # Game Options
   progression_balancing:
     # A system that can move progression earlier, to try and prevent the player from getting stuck and bored early.
@@ -1871,48 +1862,48 @@ Ocarina of Time:
     # Share part of your item pool with other players.
     []
 
-triggers:
-# if not skullsanity, remove 40/50 skull rewards
-- option_category: Ocarina of Time
-  option_name: tokensanity
-  option_result: 'off'
-  options:
-    Ocarina of Time:
-      +exclude_locations:
-        - Kak 40 Gold Skulltula Reward
-        - Kak 50 Gold Skulltula Reward
-# hint the relevant wallet if shop prices are potentially expensive
-- option_category: Ocarina of Time
-  option_name: shopsanity
-  option_result: adults_wallet
-  options:
-    Ocarina of Time:
-      +start_hints:
-        - Progressive Wallet
-- option_category: Ocarina of Time
-  option_name: shopsanity
-  option_result: giants_wallet
-  options:
-    Ocarina of Time:
-      +start_hints:
-        - Progressive Wallet
-        - Progressive Wallet
-- option_category: Ocarina of Time
-  option_name: shopsanity
-  option_result: tycoons_wallet
-  options:
-    Ocarina of Time:
-      +start_hints:
-        - Progressive Wallet
-        - Progressive Wallet
-        - Progressive Wallet
-# if small keys are separate, keep them near the dungeon
-- option_category: Ocarina of Time
-  option_name: key_rings
-  option_result: 'off'
-  options:
-    Ocarina of Time:
-      shuffle_smallkeys:
-        vanilla: 1
-        dungeon: 4
-        regional: 2
+  triggers:
+  # if not skullsanity, remove 40/50 skull rewards
+  - option_category: Ocarina of Time
+    option_name: tokensanity
+    option_result: 'off'
+    options:
+      Ocarina of Time:
+        +exclude_locations:
+          - Kak 40 Gold Skulltula Reward
+          - Kak 50 Gold Skulltula Reward
+  # hint the relevant wallet if shop prices are potentially expensive
+  - option_category: Ocarina of Time
+    option_name: shopsanity
+    option_result: adults_wallet
+    options:
+      Ocarina of Time:
+        +start_hints:
+          - Progressive Wallet
+  - option_category: Ocarina of Time
+    option_name: shopsanity
+    option_result: giants_wallet
+    options:
+      Ocarina of Time:
+        +start_hints:
+          - Progressive Wallet
+          - Progressive Wallet
+  - option_category: Ocarina of Time
+    option_name: shopsanity
+    option_result: tycoons_wallet
+    options:
+      Ocarina of Time:
+        +start_hints:
+          - Progressive Wallet
+          - Progressive Wallet
+          - Progressive Wallet
+  # if small keys are separate, keep them near the dungeon
+  - option_category: Ocarina of Time
+    option_name: key_rings
+    option_result: 'off'
+    options:
+      Ocarina of Time:
+        shuffle_smallkeys:
+          vanilla: 1
+          dungeon: 4
+          regional: 2

@@ -1,13 +1,4 @@
-﻿name: SA2B-{player}
-
-# Used to describe your yaml. Useful if you have multiple files.
-description: Sonic Adventure 2 Battle - Random
-
-game: Sonic Adventure 2 Battle
-requires:
-  version: 0.6.2 # Version of Archipelago required for this yaml to work as expected.
-
-Sonic Adventure 2 Battle:
+﻿Sonic Adventure 2 Battle:
   # Game Options
   progression_balancing:
     # A system that can move progression earlier, to try and prevent the player from getting stuck and bored early.
@@ -1044,16 +1035,16 @@ Sonic Adventure 2 Battle:
     # Share part of your item pool with other players.
     []
 
-triggers:
-# if we need C rank, force disable hard mode missions
-- option_category: Sonic Adventure 2 Battle
-  option_name: required_rank
-  option_result: c
-  options:
-    Sonic Adventure 2 Battle:
-      sonic_mission_5: false
-      shadow_mission_5: false
-      tails_mission_5: false
-      eggman_mission_5: false
-      knuckles_mission_5: false
-      rouge_mission_5: false
+  triggers:
+  # if we need C rank, force disable hard mode missions
+  - option_category: Sonic Adventure 2 Battle
+    option_name: required_rank
+    option_result: c
+    options:
+      Sonic Adventure 2 Battle:
+        sonic_mission_5: false
+        shadow_mission_5: false
+        tails_mission_5: false
+        eggman_mission_5: false
+        knuckles_mission_5: false
+        rouge_mission_5: false

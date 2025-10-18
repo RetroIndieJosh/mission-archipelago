@@ -1,13 +1,4 @@
-﻿name: Heretic-{player}
-
-# Used to describe your yaml. Useful if you have multiple files.
-description: Heretic - Random
-
-game: Heretic
-requires:
-  version: 0.6.1 # Version of Archipelago required for this yaml to work as expected.
-
-Heretic:
+﻿Heretic:
   # Game Options
   progression_balancing:
     # A system that can move progression earlier, to try and prevent the player from getting stuck and bored early.
@@ -338,15 +329,15 @@ Heretic:
     # Share part of your item pool with other players.
     []
 
-triggers:
-# if the goal is boss levels, include all episodes
-- option_category: Heretic
-  option_name: goal
-  option_result: complete_boss_levels
-  options:
-    Heretic:
-      episode1: true
-      episode2: true
-      episode3: true
-      episode4: true
-      episode5: true
+  triggers:
+  # if the goal is boss levels, include all episodes
+  - option_category: Heretic
+    option_name: goal
+    option_result: complete_boss_levels
+    options:
+      Heretic:
+        episode1: true
+        episode2: true
+        episode3: true
+        episode4: true
+        episode5: true

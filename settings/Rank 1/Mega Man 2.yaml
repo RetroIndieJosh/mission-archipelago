@@ -1,13 +1,4 @@
-﻿name: MM2-{player}
-
-# Used to describe your yaml. Useful if you have multiple files.
-description: Mega Man 2 - Random
-
-game: Mega Man 2
-requires:
-  version: 0.6.1 # Version of Archipelago required for this yaml to work as expected.
-
-Mega Man 2:
+﻿Mega Man 2:
   # Game Options
   progression_balancing:
     # A system that can move progression earlier, to try and prevent the player from getting stuck and bored early.

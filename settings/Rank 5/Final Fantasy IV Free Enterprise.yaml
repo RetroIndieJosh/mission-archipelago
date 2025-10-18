@@ -1,13 +1,4 @@
-﻿name: FFIVFE-{player}
-
-# Used to describe your yaml. Useful if you have multiple files.
-description: Final Fantasy IV Free Enterprise - Random
-
-game: Final Fantasy IV Free Enterprise
-requires:
-  version: 0.6.3 # Version of Archipelago required for this yaml to work as expected.
-
-Final Fantasy IV Free Enterprise:
+﻿Final Fantasy IV Free Enterprise:
   ################
   # Game Options #
   ################

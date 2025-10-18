@@ -1,13 +1,4 @@
-﻿name: CotM-{player}
-
-# Used to describe your yaml. Useful if you have multiple files.
-description: Castlevania - Circle of the Moon - Randomized
-
-game: Castlevania - Circle of the Moon
-requires:
-  version: 0.6.1 # Version of Archipelago required for this yaml to work as expected.
-
-Castlevania - Circle of the Moon:
+﻿Castlevania - Circle of the Moon:
   # Game Options
   progression_balancing:
     # A system that can move progression earlier, to try and prevent the player from getting stuck and bored early.
@@ -248,12 +239,12 @@ Castlevania - Circle of the Moon:
     # Share part of your item pool with other players.
     []
 
-triggers:
-# if our goal is arena only, don't require keys for Dracula
-- option_category: Castlevania - Circle of the Moon
-  option_name: completion_goal
-  option_result: battle_arena
-  options:
-    Castlevania - Circle of the Moon:
-      available_last_keys: 0
-      required_last_keys: 0
+  triggers:
+  # if our goal is arena only, don't require keys for Dracula
+  - option_category: Castlevania - Circle of the Moon
+    option_name: completion_goal
+    option_result: battle_arena
+    options:
+      Castlevania - Circle of the Moon:
+        available_last_keys: 0
+        required_last_keys: 0

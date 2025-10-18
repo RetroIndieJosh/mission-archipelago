@@ -1,13 +1,4 @@
-﻿name: Prime-{player}
-
-# Used to describe your yaml. Useful if you have multiple files.
-description: Metroid Prime - Random
-
-game: Metroid Prime
-requires:
-  version: 0.5.0 # Version of Archipelago required for this yaml to work as expected.
-
-Metroid Prime:
+﻿Metroid Prime:
   # Game Options
   progression_balancing:
     # A system that can move progression earlier, to try and prevent the player from getting stuck and bored early.

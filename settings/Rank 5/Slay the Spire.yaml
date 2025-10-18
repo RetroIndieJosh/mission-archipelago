@@ -1,13 +1,4 @@
-﻿name: Spire-{player}
-
-# Used to describe your yaml. Useful if you have multiple files.
-description: Slay the Spire - Random
-
-game: Slay the Spire
-requires:
-  version: 0.6.3 # Version of Archipelago required for this yaml to work as expected.
-
-Slay the Spire:
+﻿Slay the Spire:
   ################
   # Game Options #
   ################

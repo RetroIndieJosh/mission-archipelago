@@ -1,13 +1,4 @@
-﻿name: MMX-{player}
-
-# Used to describe your yaml. Useful if you have multiple files.
-description: Mega Man X - Random
-
-game: Mega Man X
-requires:
-  version: 0.6.2 # Version of Archipelago required for this yaml to work as expected.
-
-Mega Man X:
+﻿Mega Man X:
   # Game Options
   progression_balancing:
     # A system that can move progression earlier, to try and prevent the player from getting stuck and bored early.
@@ -87,7 +78,7 @@ Mega Man X:
     random-range-11-20: 8
     random-range-21-30: 4
     random-range-31-50: 2
-    random-range-50-100: 1
+    random-range-50-99: 1
 
   starting_hp:
     # How much HP X will have at the start of the game.

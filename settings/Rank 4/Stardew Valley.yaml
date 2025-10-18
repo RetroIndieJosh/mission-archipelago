@@ -1,13 +1,4 @@
-﻿name: Stardew-{player}
-
-# Used to describe your yaml. Useful if you have multiple files.
-description: Stardew Valley - Random
-
-game: Stardew Valley
-requires:
-  version: 0.6.2 # Version of Archipelago required for this yaml to work as expected.
-
-Stardew Valley:
+﻿Stardew Valley:
   # Game Options
   plando_items:
     # Generic items plando.
@@ -647,61 +638,61 @@ Stardew Valley:
     # Share part of your item pool with other players.
     []
 
-triggers:
-# if goal is bottom of the mines, increase probability of monster goals
-- option_category: Stardew Valley
-  option_name: goal
-  option_result: bottom_of_the_mines
-  options:
-    Stardew Valley:
-      # monster goals
-# if goal is cryptic note, increase probability of monster goals
-- option_category: Stardew Valley
-  option_name: goal
-  option_result: cryptic_note
-  options:
-    Stardew Valley:
-      # monster goals
-# if goal is master angler, force fishsanity
-- option_category: Stardew Valley
-  option_name: goal
-  option_result: master_angler
-  options:
-    Stardew Valley:
-      fishsanity: all
-# if goal is complete collection, force museumsanity
-- option_category: Stardew Valley
-  option_name: goal
-  option_result: complete_collection
-  options:
-    Stardew Valley:
-      museumsanity: all
-# if goal is protector of the valley, force monstersanity
-- option_category: Stardew Valley
-  option_name: goal
-  option_result: protector_of_the_valley
-  options:
-    Stardew Valley:
-      monstersanity: progressive_goals
-# if goal is full shipment, force shipsanity
-- option_category: Stardew Valley
-  option_name: goal
-  option_result: full_shipment
-  options:
-    Stardew Valley:
-      shipsanity: full_shipment
-# if goal is gourmet chef, force cooksanity and chefsanity
-- option_category: Stardew Valley
-  option_name: goal
-  option_result: gourmet_chef
-  options:
-    Stardew Valley:
-      cooksanity: all
-      chefsanity: all
-# if goal is craft master, force craftsanity
-- option_category: Stardew Valley
-  option_name: goal
-  option_result: craft_master
-  options:
-    Stardew Valley:
-      craftsanity: all
+  triggers:
+  # if goal is bottom of the mines, increase probability of monster goals
+  - option_category: Stardew Valley
+    option_name: goal
+    option_result: bottom_of_the_mines
+    options:
+      Stardew Valley:
+        # monster goals
+  # if goal is cryptic note, increase probability of monster goals
+  - option_category: Stardew Valley
+    option_name: goal
+    option_result: cryptic_note
+    options:
+      Stardew Valley:
+        # monster goals
+  # if goal is master angler, force fishsanity
+  - option_category: Stardew Valley
+    option_name: goal
+    option_result: master_angler
+    options:
+      Stardew Valley:
+        fishsanity: all
+  # if goal is complete collection, force museumsanity
+  - option_category: Stardew Valley
+    option_name: goal
+    option_result: complete_collection
+    options:
+      Stardew Valley:
+        museumsanity: all
+  # if goal is protector of the valley, force monstersanity
+  - option_category: Stardew Valley
+    option_name: goal
+    option_result: protector_of_the_valley
+    options:
+      Stardew Valley:
+        monstersanity: progressive_goals
+  # if goal is full shipment, force shipsanity
+  - option_category: Stardew Valley
+    option_name: goal
+    option_result: full_shipment
+    options:
+      Stardew Valley:
+        shipsanity: full_shipment
+  # if goal is gourmet chef, force cooksanity and chefsanity
+  - option_category: Stardew Valley
+    option_name: goal
+    option_result: gourmet_chef
+    options:
+      Stardew Valley:
+        cooksanity: all
+        chefsanity: all
+  # if goal is craft master, force craftsanity
+  - option_category: Stardew Valley
+    option_name: goal
+    option_result: craft_master
+    options:
+      Stardew Valley:
+        craftsanity: all

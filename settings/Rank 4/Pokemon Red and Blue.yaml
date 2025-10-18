@@ -1,13 +1,4 @@
-﻿name: PkmnRB-{player}
-
-# Used to describe your yaml. Useful if you have multiple files.
-description: Pokemon Red and Blue - Random
-
-game: Pokemon Red and Blue
-requires:
-  version: 0.6.1 # Version of Archipelago required for this yaml to work as expected.
-
-Pokemon Red and Blue:
+﻿Pokemon Red and Blue:
   # Game Options
   progression_balancing:
     # A system that can move progression earlier, to try and prevent the player from getting stuck and bored early.
@@ -908,20 +899,20 @@ Pokemon Red and Blue:
     # Share part of your item pool with other players.
     []
 
-triggers:
-# if dexsanity is disabled, also disable elite 4 pokedex condition and randomize pokedex location
-- option_category: Pokemon Red and Blue
-  option_name: dexsanity
-  option_result: disabled
-  options:
-    Pokemon Red and Blue:
-      elite_four_pokedex_condition: 0
-      randomize_pokedex: start_with
-# if trainersanity is disabled, have fewer blind trainers
-- option_category: Pokemon Red and Blue
-  option_name: trainersanity
-  option_result: disabled
-  options:
-    Pokemon Red and Blue:
-      blind_trainers:
-        random-range-40-60: 1 # default is 50
+  triggers:
+  # if dexsanity is disabled, also disable elite 4 pokedex condition and randomize pokedex location
+  - option_category: Pokemon Red and Blue
+    option_name: dexsanity
+    option_result: disabled
+    options:
+      Pokemon Red and Blue:
+        elite_four_pokedex_condition: 0
+        randomize_pokedex: start_with
+  # if trainersanity is disabled, have fewer blind trainers
+  - option_category: Pokemon Red and Blue
+    option_name: trainersanity
+    option_result: disabled
+    options:
+      Pokemon Red and Blue:
+        blind_trainers:
+          random-range-40-60: 1 # default is 50

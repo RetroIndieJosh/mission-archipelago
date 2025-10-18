@@ -1,13 +1,4 @@
-﻿name: Paint-{player}
-
-# Used to describe your yaml. Useful if you have multiple files.
-description: Paint - Random
-
-game: Paint
-requires:
-  version: 0.6.3 # Version of Archipelago required for this yaml to work as expected.
-
-Paint:
+﻿Paint:
   ################
   # Game Options #
   ################

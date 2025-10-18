@@ -1,13 +1,4 @@
-﻿name: GSTLA-{player}
-
-# Used to describe your yaml. Useful if you have multiple files.
-description: Golden Sun The Lost Age - Random
-
-game: Golden Sun The Lost Age
-requires:
-  version: 0.6.3 # Version of Archipelago required for this yaml to work as expected.
-
-Golden Sun The Lost Age:
+﻿Golden Sun The Lost Age:
   ################
   # Game Options #
   ################
