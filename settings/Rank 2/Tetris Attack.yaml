@@ -5,7 +5,7 @@ description: Tetris Attack - Random
 
 game: Tetris Attack
 requires:
-  version: 0.6.1 # Version of Archipelago required for this yaml to work as expected.
+  version: 0.6.3 # Version of Archipelago required for this yaml to work as expected.
 
 Tetris Attack:
   # Game Options
@@ -184,6 +184,32 @@ Tetris Attack:
     skippable: 0
     skippable_with_level_gate: 0
 
+  shock_panel_checks:
+    # Number of items to add to the item pool locked behind clearing shock panels (gray ! panels) in Stage Clear.
+    # Multiply by the panels per check for the total panel count in your slot.
+    # For reference, one panel will spawn per row but will step up to two panels per row if you fall behind.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 100
+    random-range-0-3: 8
+    random-range-4-6: 16
+    random-range-7-10: 8
+    random-range-11-20: 4
+    random-range-21-40: 2
+    random-range-41-100: 1
+
+  shock_panels_per_check:
+    # Number of shock panels required to unlock each check.
+    # This also determines the number of panels you get each time you receive the item.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 1
+    # Maximum value is 20
+    random-range-1-8: 4
+    random-range-9-16: 2
+    random-range-16-20: 1
+
   puzzle_filler:
     # If enabled, the game will maximize the number of locations and add more filler items to the pool.
     # Note that there are situations where filler is forced, otherwise the logic would be too tight and lead to unbeatable seeds.
@@ -202,6 +228,12 @@ Tetris Attack:
     minimum_progressive: 0
     goal_difficulty: 0
     goal_progressive: 50
+
+  music_filter:
+    # Pick the categories of music you want to disable. Menu music also includes the title screen.
+    disable_all_music: 0
+    disable_menu_music: 0
+    disable_no_music: 50
 
   # Item & Location Options
   local_items:
@@ -235,3 +267,32 @@ Tetris Attack:
   item_links:
     # Share part of your item pool with other players.
     []
+
+triggers:
+# if no puzzles, start with stage clear or vs
+- option_category: Tetris Attack
+  option_name: puzzle_goal
+  option_result: 'no_puzzle'
+  options:
+    Tetris Attack:
+      starter_pack:
+        stage_clear_round_1: 1
+        stage_clear_round_2: 1
+        stage_clear_round_3: 1
+        stage_clear_round_4: 1
+        stage_clear_round_5: 1
+        stage_clear_round_6: 1
+        vs_two_stages: 1
+# if no vs, start with stage clear (even if there are puzzles)
+- option_category: Tetris Attack
+  option_name: versus_goal
+  option_result: 'no_vs'
+  options:
+    Tetris Attack:
+      starter_pack:
+        stage_clear_round_1: 1
+        stage_clear_round_2: 1
+        stage_clear_round_3: 1
+        stage_clear_round_4: 1
+        stage_clear_round_5: 1
+        stage_clear_round_6: 1
