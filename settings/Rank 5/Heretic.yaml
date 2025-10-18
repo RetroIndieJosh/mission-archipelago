@@ -112,8 +112,8 @@ Heretic:
   reset_level_on_death:
     # When dying, levels are reset and monsters respawned. But inventory and checks are kept.
     # Turning this setting off is considered easy mode. Good for new players that don't know the levels well.
-    'false': 0
-    'true': 50
+    'false': 1
+    'true': 0
 
   death_link:
     # When you die, everyone who enabled death link dies. Of course, the reverse is true too.
