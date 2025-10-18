@@ -645,14 +645,30 @@
     option_result: bottom_of_the_mines
     options:
       Stardew Valley:
-        # monster goals
+        monstersanity:
+          none: 0
+          one_per_category: 4
+          one_per_monster: 2
+          goals: 1
+          short_goals: 64
+          very_short_goals: 32
+          progressive_goals: 128
+          split_goals: 16
   # if goal is cryptic note, increase probability of monster goals
   - option_category: Stardew Valley
     option_name: goal
     option_result: cryptic_note
     options:
       Stardew Valley:
-        # monster goals
+        monstersanity:
+          none: 0
+          one_per_category: 4
+          one_per_monster: 2
+          goals: 1
+          short_goals: 64
+          very_short_goals: 32
+          progressive_goals: 128
+          split_goals: 16
   # if goal is master angler, force fishsanity
   - option_category: Stardew Valley
     option_name: goal

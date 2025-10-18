@@ -110,7 +110,7 @@ def main():
 
     # Merge together each game yaml into our mystery settings.
     # TODO pass in as an arg
-    max_rank = 5
+    max_rank = 4
     for rank in range(1, max_rank+1):
         rank_path = f"./settings/Rank {rank}"
         for game_file in os.listdir(rank_path):
