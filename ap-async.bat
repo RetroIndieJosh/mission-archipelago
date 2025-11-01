@@ -3,66 +3,58 @@ setlocal
 
 set "PLAYERS=C:\Games\Archipelago\Players\"
 set "GENERATE=C:\Games\Archipelago\ArchipelagoGenerate.exe"
-set "CONFIG=async.yaml"
 
-:: Determine generation type from async.yaml
-for /f "delims=" %%G in ('powershell -NoProfile -Command ^
-    "(Get-Content '%CONFIG%' | ConvertFrom-Yaml).generation"') do (
-    set "GENERATION=%%G"
+:: --- Select generation mode ---
+echo Select generation mode:
+echo 1 = Count
+echo 2 = Weights
+echo 3 = Quit
+choice /c 123 /n /m "Enter choice (1-3): "
+set "CHOICE=%ERRORLEVEL%"
+
+if "%CHOICE%"=="3" (
+    echo Quitting.
+    exit /b
 )
 
-:: Validate NUM_MULTIWORLDS from argument
-if "%~1"=="" (
-    set "NUM_MULTIWORLDS=1"
+if "%CHOICE%"=="1" (
+    set "GENERATION=count"
+) else if "%CHOICE%"=="2" (
+    set "GENERATION=weights"
 ) else (
-    set /a test=%~1 >nul 2>&1
-    if errorlevel 1 (
-        echo Expected number of worlds as argument but got '%~1'
-        exit /b
-    ) 
-    if %~1 LSS 1 (
-        echo Number of worlds must be a positive integer.
-        exit /b
-    )
-    set "NUM_MULTIWORLDS=%~1"
+    echo Invalid choice, quitting.
+    exit /b
 )
 
+:: --- Number of multiworlds ---
+set /p NUM_MULTIWORLDS="Enter number of multiworlds to create (0 to quit): "
+if "%NUM_MULTIWORLDS%"=="0" (
+    echo User chose 0, exiting.
+    exit /b
+)
+
+:: --- Clean up old files ---
 echo Cleaning up old files in Archipelago Players directory
 del "%PLAYERS%\*.yaml"
 
+:: --- Copy new files ---
 echo Copying files to Archipelago Players directory
 copy "output\*.yaml" "%PLAYERS%"
 
-echo Creating %NUM_MULTIWORLDS% multiworlds.
-
-:: Only ask for num_players if generation is 'weights'
+:: --- Number of players if weights ---
 set "MULTI_ARGS="
 if /i "%GENERATION%"=="weights" (
-    :ask_players
-    set /p num_players="Number of players in each multiworld (WEIGHTS ONLY - 0 to quit): "
-
-    :: check if num_players is numeric
-    set /a testnum=%num_players% >nul 2>&1
-    if errorlevel 1 (
-        echo Invalid input. Please enter a positive integer or 0 to quit.
-        goto ask_players
+    set /p NUM_PLAYERS="Number of players in each multiworld: "
+    if not "%NUM_PLAYERS%"=="" (
+        set "MULTI_ARGS=--multi %NUM_PLAYERS%"
     )
-
-    if %num_players%==0 (
-        echo User chose 0, exiting.
-        exit /b
-    )
-
-    if %num_players% LSS 0 (
-        echo Negative numbers are not allowed.
-        goto ask_players
-    )
-
-    set "MULTI_ARGS=--multi %num_players%"
 )
 
+:: --- Generate ---
 echo Generating...
 for /L %%i in (1,1,%NUM_MULTIWORLDS%) do (
+    echo Running: "%GENERATE%" --csv_output --spoiler 0 %MULTI_ARGS%
     "%GENERATE%" --csv_output --spoiler 0 %MULTI_ARGS%
 )
+
 echo Done.
