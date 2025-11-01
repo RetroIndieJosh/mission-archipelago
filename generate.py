@@ -45,19 +45,25 @@ class MysterySettings(dict):
         game = os.path.splitext(os.path.basename(game_path))[0]
         options = payload.copy()
 
-        # Flatten any nested key that matches the game name
+        # Flatten nested key if top-level key matches the game name
         if game in options and isinstance(options[game], dict):
             options = options[game]
 
-        # remove any remaining nested game key to prevent nesting
-        options.pop(game, None)
+        # get metadata from original payload
+        game_name_value = payload.get("name")
+        if game_name_value is None:
+            game_name_value = "Player-{player}"
+            print(Fore.YELLOW + f"Warning: 'name' key missing for game `{game}`, using fallback '{game_name_value}'" + Fore.WHITE)
+
+        game_description = payload.get("description", "")
+        game_requires = payload.get("requires", {})
 
         # store options and metadata keys
         self.games_data[game] = {
             "options": options.copy(),
-            "name": options.get("name", game),
-            "description": options.get("description", ""),
-            "requires": options.get("requires", {}),
+            "name": game_name_value,
+            "description": game_description,
+            "requires": game_requires,
         }
 
         # merge meta file if present
@@ -74,6 +80,7 @@ class MysterySettings(dict):
                 meta_options = meta_payload.get(game, meta_payload)
                 if isinstance(meta_options, dict):
                     self.games_data[game]["options"].update(meta_options)
+
 
     def total_game_weights(self) -> int:
         return sum(int(v) for v in self["game"].values())
@@ -190,7 +197,7 @@ def main():
         for i, game in enumerate(games):
             options = mystery.games_data[game]["options"].copy()
 
-            # remove metadata keys to prevent nested or duplicate data
+            # remove metadata keys only for final gameplay options
             for meta_key in ("name", "description", "requires", "game"):
                 options.pop(meta_key, None)
 
