@@ -1,0 +1,183 @@
+﻿game: Kirby Super Star
+name: KSS-{player}
+description: Mission Archipelago - Kirby Super Star
+requires:
+  version: 0.6.3 # Version of Archipelago required for this yaml to work as expected.
+
+Kirby Super Star:
+  ################
+  # Game Options #
+  ################
+  death_link:
+    # When you die, everyone who enabled death link dies. Of course, the reverse is true too.
+    'false': 50
+    'true': 0
+
+  progression_balancing:
+    # A system that can move progression earlier, to try and prevent the player from getting stuck and bored early.
+    # 
+    # A lower setting means more getting stuck. A higher setting means less getting stuck.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 99
+    random: 0
+    random-low: 0
+    random-high: 0
+    disabled: 0 # equivalent to 0
+    normal: 50 # equivalent to 50
+    extreme: 0 # equivalent to 99
+
+  accessibility:
+    # Set rules for reachability of your items/locations.
+    # 
+    # **Full:** ensure everything can be reached and acquired.
+    # 
+    # **Minimal:** ensure what is needed to reach your goal can be acquired.
+    full: 50
+    minimal: 0
+
+  required_subgame_completions:
+    # How many subgames must be completed for the game to be considered complete.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 1
+    # Maximum value is 7
+    random-range-1-3: 2
+    random-range-4-6: 4
+    7: 1
+
+  required_subgames:
+    # Which subgames are required to be completed for the game to be considered complete.
+    ['Milky Way Wishes']
+
+  starting_subgame:
+    # The subgame that will be unlocked by default.
+    spring_breeze: 1
+    dyna_blade: 1
+    gourmet_race: 1
+    the_great_cave_offensive: 1
+    revenge_of_meta_knight: 1
+    milky_way_wishes: 1
+    the_arena: 1
+
+  included_subgames:
+    # Which subgames should be included as locations.
+    ['Dyna Blade', 'Gourmet Race', 'Milky Way Wishes', 'Revenge of Meta Knight',
+    'Spring Breeze', 'The Arena', 'The Great Cave Offensive']
+
+  consumables:
+    # Adds the specified consumables to the location pool. Options are Maxim Tomato, 1-Up,
+    # and Invincibility Candy.
+    []
+
+  essences:
+    # Adds Copy Essence pedestals to the location pool.
+    'false': 4
+    'true': 1
+
+  the_great_cave_offensive_required_gold:
+    # Required amount of gold that is needed in order to complete The Great Cave Offensive
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 2500000
+    # Maximum value is 9999990
+    random-range-2500000-4999990: 1
+    random-range-5000000-6999990: 2
+    random-range-7000000-9999990: 4
+
+  the_great_cave_offensive_excess_gold:
+    # How much of the excess gold should be kept within the multiworld.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 100
+    0: 8
+    random-range-1-20: 4
+    random-range-21-50: 2
+    random-range-51-100: 1
+
+  the_great_cave_offensive_gold_thresholds:
+    # What percent of the required gold is required before allowing access to
+    # Crystal/Old Tower/Garden areas in The Great Cave Offensive
+    Crystal: 25
+    Garden: 75
+    Old Tower: 50
+
+  milky_way_wishes_mode:
+    # Determines how Marx is unlocked in Milky Way Wishes.
+    # Local: Marx is unlocked after completing the 7 main planets
+    # (Floria, Aqualiss, Skyhigh, Hotbeat, Cavios, Mecheye, Halfmoon)
+    # Multiworld: Marx is unlocked after receiving 7 Rainbow Stars scattered across the multiworld
+    local: 4
+    multiworld: 1
+
+  kirby_flavor_preset:
+    # The color of Kirby, from a list of presets.
+    default: 1
+    bubblegum: 1
+    cherry: 1
+    blueberry: 1
+    lemon: 1
+    kiwi: 1
+    grape: 1
+    chocolate: 1
+    marshmallow: 1
+    licorice: 1
+    watermelon: 1
+    orange: 1
+    lime: 1
+    lavender: 1
+    miku: 1
+    custom: 0
+
+  kirby_flavor:
+    # A custom color for Kirby. To use a custom color, set the preset to Custom and then define a dict of keys from "1" to
+    # "8", with their values being an HTML hex color.
+    '1': F8F8F8
+    '2': F0E0E8
+    '3': E8D0D0
+    '4': F0A0B8
+    '5': C8A0A8
+    '6': A85048
+    '7': E02018
+    '8': E85048
+
+  ###########################
+  # Item & Location Options #
+  ###########################
+  local_items:
+    # Forces these items to be in their native world.
+    []
+
+  non_local_items:
+    # Forces these items to be outside their native world.
+    []
+
+  start_inventory:
+    # Start with these items.
+    {}
+
+  start_hints:
+    # Start with these item's locations prefilled into the ``!hint`` command.
+    []
+
+  start_location_hints:
+    # Start with these locations and their item prefilled into the ``!hint`` command.
+    []
+
+  exclude_locations:
+    # Prevent these locations from having an important item.
+    []
+
+  priority_locations:
+    # Prevent these locations from having an unimportant item.
+    []
+
+  item_links:
+    # Share part of your item pool with other players.
+    []
+
+  plando_items:
+    # Generic items plando.
+    []

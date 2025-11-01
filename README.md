@@ -28,5 +28,6 @@ need top level "game" key anymore)
 - update ap-gen.bat to use weights if weights.yaml exists, count otherwise
 - override switches in generate such as --mode weights, --mode count, --max-rank 3
 - output final data table as csv (possible --csv option)
+- fix categorize: rank, max rank, and rank mult (will require determining and retaining rank for each game, instead of flattening the directory structure and ignoring it)
 - detect number of games generated from AP output when using weight mode and print a summary at the end
 - setup script or on a first run of gen-async.bat asking for path to AP install so gen-async.bat doesn't require manual modification (and some mechanics to reset to change)

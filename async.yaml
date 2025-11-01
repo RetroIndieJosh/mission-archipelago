@@ -19,7 +19,7 @@ generation: count
 # all - generate all games listed (except with count/weight 0)
 # rank - generate games based on folder structure up to max-rank
 #   note that this will fail if it finds a game with no count/weight; use 0 to skip
-categorize: rank
+categorize: all
 
 # the maximum rank generated (only in categorize: rank)
 # minimum: 1
