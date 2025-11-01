@@ -1,0 +1,13 @@
+- guarantee that at least one seed of each available game is included
+    - is this possible? or already the default?
+- allow option to work like async tools (all games named in async.yaml, no others, included)
+    - will require searching through rank dirs to find a match
+- name seeds based on the game
+    - can we put `name` *inside* the game yaml?
+- auto-adjust weights based on rank
+    - some kind of multiplier, e.g. 1/2 for each rank after 1
+        - Rank 1, Weight 20 => Weight 20 
+        - Rank 2, Weight 20 => Weight 10 
+        - Rank 3, Weight 20 => Weight 5 
+        - Rank 4, Weight 20 => Weight 2 
+    - allow setting of multiplier either in async.yaml or CLI
