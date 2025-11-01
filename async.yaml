@@ -33,7 +33,7 @@ rank-mult: 2
 
 game:
   # rank 1
-  Castlevania - Circle of the Moon: 1
+  Castlevania - Circle of the Moon: 0
   Mega Man 2: 2
   Star Wars Episode I Racer: 1
   Super Metroid: 1
@@ -65,7 +65,7 @@ game:
   # rank 5
   Bumper Stickers: 0
   Celeste (Open World): 0
-  Checks Finder: 0
+  ChecksFinder: 0
   ChecksMate: 0
   Donkey Kong Country 2: 0
   Donkey Kong Country 3: 0
@@ -74,11 +74,11 @@ game:
   Golden Sun The Lost Age: 0
   Heretic: 0
   Kirby 64 - The Crystal Shards: 0
-  Majora's Mask Recomp: 0
+  Majora's Mask Recompiled: 0
   Metroid Fusion: 0
   Paint: 0
   Pokemon Crystal: 0
-  Quake: 0
+  Quake 1: 0
   Slay the Spire: 0
   Sonic Adventure 2 Battle: 0
   Sonic the Hedgehog 1: 0
