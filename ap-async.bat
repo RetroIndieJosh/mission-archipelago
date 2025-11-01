@@ -1,5 +1,6 @@
 @echo off
 setlocal
+setlocal enabledelayedexpansion
 
 set "PLAYERS=C:\Games\Archipelago\Players\"
 set "GENERATE=C:\Games\Archipelago\ArchipelagoGenerate.exe"
@@ -45,8 +46,8 @@ copy "output\*.yaml" "%PLAYERS%"
 set "MULTI_ARGS="
 if /i "%GENERATION%"=="weights" (
     set /p NUM_PLAYERS="Number of players in each multiworld: "
-    if not "%NUM_PLAYERS%"=="" (
-        set "MULTI_ARGS=--multi %NUM_PLAYERS%"
+    if not "!NUM_PLAYERS!"=="" (
+        set "MULTI_ARGS=--multi !NUM_PLAYERS!"
     )
 )
 
