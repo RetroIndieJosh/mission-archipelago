@@ -11,6 +11,7 @@ for /f "delims=" %%G in ('powershell -NoProfile -Command ^
     set "GENERATION=%%G"
 )
 
+:: Validate NUM_MULTIWORLDS from argument
 if "%~1"=="" (
     set "NUM_MULTIWORLDS=1"
 ) else (
@@ -19,6 +20,10 @@ if "%~1"=="" (
         echo Expected number of worlds as argument but got '%~1'
         exit /b
     ) 
+    if %~1 LSS 1 (
+        echo Number of worlds must be a positive integer.
+        exit /b
+    )
     set "NUM_MULTIWORLDS=%~1"
 )
 
