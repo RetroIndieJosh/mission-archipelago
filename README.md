@@ -29,3 +29,4 @@ need top level "game" key anymore)
 - override switches in generate such as --mode weights, --mode count, --max-rank 3
 - output final data table as csv (possible --csv option)
 - detect number of games generated from AP output when using weight mode and print a summary at the end
+- setup script or on a first run of gen-async.bat asking for path to AP install so gen-async.bat doesn't require manual modification (and some mechanics to reset to change)
