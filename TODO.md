@@ -1,9 +1,0 @@
-- guarantee that at least one seed of each available game is included when AP generates
-    - although this is either built-in or would require modding AP
-- auto-adjust weights based on rank
-    - some kind of multiplier, e.g. 1/2 for each rank after 1
-        - Rank 1, Weight 20 => Weight 20 
-        - Rank 2, Weight 20 => Weight 10 
-        - Rank 3, Weight 20 => Weight 5 
-        - Rank 4, Weight 20 => Weight 2 
-    - allow setting of multiplier either in async.yaml or CLI
