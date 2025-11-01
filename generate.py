@@ -3,17 +3,23 @@ from mystery_settings import MysterySettings
 from file_utils import collect_game_files, write_outputs
 
 def main():
-    cfg, generation, max_rank, rank_mult = load_config()
-    mystery = MysterySettings(generation, max_rank, rank_mult)
+    # Load configuration
+    cfg, generation, *_ = load_config()  # ignore max_rank, rank_mult
+    mystery = MysterySettings(generation)
 
-    for gname, val in cfg["game"].items():
+    # Initialize RAW values from config
+    for gname, val in cfg.get("game", {}).items():
         mystery["game"][gname] = int(val)
 
+    # Add game metadata from YAML files
     game_files = collect_game_files()
     for f in game_files:
-        mystery.add_game(f)
+        # Align YAML with config key if it exists
+        filename_key = f.split("/")[-1].split("\\")[-1].rsplit(".", 1)[0]
+        key = filename_key if filename_key in mystery["game"] else None
+        mystery.add_game(f, key=key)
 
-    mystery.compute_rank_mods()
+    # Write outputs (unchanged)
     write_outputs(mystery, generation)
 
     print("\nEstimated game distribution:\n")
