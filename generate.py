@@ -23,7 +23,7 @@ class MysterySettings(dict):
         return header + "\n".join(lines)
 
     def add_game(self, game_path: str):
-        """Load game YAML. Flatten any nested key that matches the game name. Merge optional meta."""
+        """Load game YAML and flatten any nested key that matches the game name."""
         if not game_path.endswith(".yaml"):
             return
 
@@ -45,25 +45,21 @@ class MysterySettings(dict):
         game = os.path.splitext(os.path.basename(game_path))[0]
         options = payload.copy()
 
-        # Flatten nested key if top-level key matches the game name
+        # Flatten any nested key that matches the game name
         if game in options and isinstance(options[game], dict):
             options = options[game]
 
-        # get metadata from original payload
-        game_name_value = payload.get("name")
+        # store options and metadata keys
+        game_name_value = options.get("name")
         if game_name_value is None:
             game_name_value = "Player-{player}"
             print(Fore.YELLOW + f"Warning: 'name' key missing for game `{game}`, using fallback '{game_name_value}'" + Fore.WHITE)
 
-        game_description = payload.get("description", "")
-        game_requires = payload.get("requires", {})
-
-        # store options and metadata keys
         self.games_data[game] = {
             "options": options.copy(),
             "name": game_name_value,
-            "description": game_description,
-            "requires": game_requires,
+            "description": options.get("description", ""),
+            "requires": options.get("requires", {}),
         }
 
         # merge meta file if present
@@ -80,7 +76,6 @@ class MysterySettings(dict):
                 meta_options = meta_payload.get(game, meta_payload)
                 if isinstance(meta_options, dict):
                     self.games_data[game]["options"].update(meta_options)
-
 
     def total_game_weights(self) -> int:
         return sum(int(v) for v in self["game"].values())
@@ -183,39 +178,32 @@ def main():
 
     # prepare outputs
     os.makedirs("output", exist_ok=True)
-    weights_path = os.path.join("output", "weights.yaml")
     games_path = os.path.join("output", "games.yaml")
+    weights_path = os.path.join("output", "weights.yaml")
     meta_path = os.path.join("output", "meta.yaml")
-
-    # write weights.yaml
-    with open(weights_path, "w", encoding="utf-8") as wf:
-        yaml.dump(dict(mystery), wf, sort_keys=False)
 
     # write games.yaml
     with open(games_path, "w", encoding="utf-8") as gf:
-        games = list(mystery["game"].keys())
-        for i, game in enumerate(games):
-            options = mystery.games_data[game]["options"].copy()
-
-            # remove metadata keys only for final gameplay options
-            for meta_key in ("name", "description", "requires", "game"):
-                options.pop(meta_key, None)
-
-            # dump gameplay options under the game key
-            yaml.dump({game: options}, gf, sort_keys=False)
-            gf.write("\n")
-
-            # dump metadata at top level
+        for game, count in mystery["game"].items():
+            options = mystery.games_data[game]["options"]
             metadata = {
                 "description": mystery.games_data[game]["description"],
                 "game": game,
                 "name": mystery.games_data[game]["name"],
                 "requires": mystery.games_data[game]["requires"],
             }
-            yaml.dump(metadata, gf, sort_keys=False)
+            for i in range(int(count)):
+                yaml.dump({game: options}, gf, sort_keys=False)
+                gf.write("\n")
+                yaml.dump(metadata, gf, sort_keys=False)
+                # separate copies
+                if i < int(count) - 1 or sum(int(c) for g, c in mystery["game"].items()) > 1:
+                    gf.write("\n---\n\n")
 
-            if i < len(games) - 1:
-                gf.write("\n---\n\n")
+    # write weights.yaml only if generation is "weights"
+    if generation_mode == "weights":
+        with open(weights_path, "w", encoding="utf-8") as wf:
+            yaml.dump(dict(mystery), wf, sort_keys=False)
 
     # write meta.yaml
     meta = {
