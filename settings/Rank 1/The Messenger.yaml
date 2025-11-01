@@ -1,4 +1,9 @@
-﻿The Messenger:
+﻿name: Messenger-{player}
+description: Mission Archipelago - The Messenger
+requires:
+  version: 0.6.2 # Version of Archipelago required for this yaml to work as expected.
+
+The Messenger:
   # Game Options
   progression_balancing:
     # A system that can move progression earlier, to try and prevent the player from getting stuck and bored early.

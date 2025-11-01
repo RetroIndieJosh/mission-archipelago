@@ -1,4 +1,9 @@
-﻿Metroid Zero Mission:
+﻿name: MZM-{player}
+description: Mission Archipelago - Metroid Zero Mission
+requires:
+  version: 0.6.2 # Version of Archipelago required for this yaml to work as expected.
+
+Metroid Zero Mission:
   ################
   # Game Options #
   ################

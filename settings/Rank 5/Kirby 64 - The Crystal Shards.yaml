@@ -1,4 +1,9 @@
-﻿Kirby 64 - The Crystal Shards:
+﻿name: Kirby64-{player}
+description: Mission Archipelago - Kirby 64 - The Crystal Shards
+requires:
+  version: 0.6.2 # Version of Archipelago required for this yaml to work as expected.
+
+Kirby 64 - The Crystal Shards:
   ################
   # Game Options #
   ################

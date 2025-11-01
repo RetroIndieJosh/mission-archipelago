@@ -1,4 +1,9 @@
-﻿Paint:
+﻿name: Paint-{player}
+description: Mission Archipelago - Paint
+requires:
+  version: 0.6.2 # Version of Archipelago required for this yaml to work as expected.
+
+Paint:
   ################
   # Game Options #
   ################

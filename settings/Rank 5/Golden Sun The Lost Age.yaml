@@ -1,4 +1,9 @@
-﻿Golden Sun The Lost Age:
+﻿name: GSTLA-{player}
+description: Mission Archipelago - Golden Sun The Lost Age
+requires:
+  version: 0.6.2 # Version of Archipelago required for this yaml to work as expected.
+
+Golden Sun The Lost Age:
   ################
   # Game Options #
   ################

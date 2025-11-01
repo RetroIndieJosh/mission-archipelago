@@ -1,4 +1,9 @@
-﻿Pokemon Crystal:
+﻿name: PkmnC-{player}
+description: Mission Archipelago - Pokemon Crystal
+requires:
+  version: 0.6.2 # Version of Archipelago required for this yaml to work as expected.
+
+Pokemon Crystal:
   ################
   # Game Options #
   ################

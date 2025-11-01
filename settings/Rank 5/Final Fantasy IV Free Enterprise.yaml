@@ -1,4 +1,9 @@
-﻿Final Fantasy IV Free Enterprise:
+﻿name: FFIVFE-{player}
+description: Mission Archipelago - Final Fantasy IV Free Enterprise
+requires:
+  version: 0.6.2 # Version of Archipelago required for this yaml to work as expected.
+
+Final Fantasy IV Free Enterprise:
   ################
   # Game Options #
   ################

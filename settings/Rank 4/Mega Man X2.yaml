@@ -1,4 +1,9 @@
-﻿Mega Man X2:
+﻿name: MMX2-{player}
+description: Mission Archipelago - Mega Man X2
+requires:
+  version: 0.6.2 # Version of Archipelago required for this yaml to work as expected.
+
+Mega Man X2:
   # Game Options
   progression_balancing:
     # A system that can move progression earlier, to try and prevent the player from getting stuck and bored early.

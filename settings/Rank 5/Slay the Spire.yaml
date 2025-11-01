@@ -1,4 +1,9 @@
-﻿Slay the Spire:
+﻿name: Spire-{player}
+description: Mission Archipelago - Slay the Spire
+requires:
+  version: 0.6.2 # Version of Archipelago required for this yaml to work as expected.
+
+Slay the Spire:
   ################
   # Game Options #
   ################

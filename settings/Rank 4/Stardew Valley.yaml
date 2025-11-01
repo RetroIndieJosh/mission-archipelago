@@ -1,4 +1,9 @@
-﻿Stardew Valley:
+﻿name: Stardew-{player}
+description: Mission Archipelago - Stardew Valley
+requires:
+  version: 0.6.2 # Version of Archipelago required for this yaml to work as expected.
+
+Stardew Valley:
   # Game Options
   plando_items:
     # Generic items plando.

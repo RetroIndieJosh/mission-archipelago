@@ -1,4 +1,9 @@
-﻿Heretic:
+﻿name: Heretic-{player}
+description: Mission Archipelago - Heretic
+requires:
+  version: 0.6.2 # Version of Archipelago required for this yaml to work as expected.
+
+Heretic:
   # Game Options
   progression_balancing:
     # A system that can move progression earlier, to try and prevent the player from getting stuck and bored early.

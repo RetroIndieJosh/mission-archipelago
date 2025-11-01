@@ -1,4 +1,9 @@
-﻿Celeste (Open World):
+﻿name: Celeste-{player}
+description: Celeste (Open World) - Mission Archipelago
+requires:
+  version: 0.6.2 # Version of Archipelago required for this yaml to work as expected.
+
+Celeste (Open World):
   ################
   # Game Options #
   ################

@@ -1,4 +1,9 @@
-﻿Donkey Kong Country 3:
+﻿name: DKC3-{player}
+description: Mission Archipelago - Donkey Kong Country 3
+requires:
+  version: 0.6.2 # Version of Archipelago required for this yaml to work as expected.
+
+Donkey Kong Country 3:
   ################
   # Game Options #
   ################

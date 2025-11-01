@@ -1,4 +1,9 @@
-﻿Symphony of the Night:
+﻿name: SotN-{player}
+description: Mission Archipelago - Symphony of the Night
+requires:
+  version: 0.6.2 # Version of Archipelago required for this yaml to work as expected.
+
+Symphony of the Night:
   ################
   # Game Options #
   ################

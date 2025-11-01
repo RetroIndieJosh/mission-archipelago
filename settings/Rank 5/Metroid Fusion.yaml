@@ -1,4 +1,9 @@
-﻿Metroid Fusion:
+﻿name: Fusion-{player}
+description: Mission Archipelago - Metroid Fusion
+requires:
+  version: 0.6.2 # Version of Archipelago required for this yaml to work as expected.
+
+Metroid Fusion:
   ################
   # Game Options #
   ################

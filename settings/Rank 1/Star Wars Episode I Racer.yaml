@@ -1,4 +1,9 @@
-﻿Star Wars Episode I Racer:
+﻿name: SWR-{player}
+description: Mission Archipelago - Star Wars Episode I Racer
+requires:
+  version: 0.6.2 # Version of Archipelago required for this yaml to work as expected.
+
+Star Wars Episode I Racer:
   # Game Options
   progression_balancing:
     # A system that can move progression earlier, to try and prevent the player from getting stuck and bored early.

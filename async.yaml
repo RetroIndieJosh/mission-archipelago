@@ -34,23 +34,23 @@ rank-mult: 2
 game:
   # rank 1
   Castlevania - Circle of the Moon: 0
-  Mega Man 2: 2
-  Star Wars Episode I Racer: 1
-  Super Metroid: 1
-  The Messenger: 4
+  Mega Man 2: 0
+  Star Wars Episode I Racer: 0
+  Super Metroid: 0
+  The Messenger: 0
   # rank 2
-  A Link to the Past: 1
-  DOOM 1993: 1
-  Ocarina of Time: 1
-  SMZ3: 1
-  Subnautica: 1
-  Tetris Attack: 2
+  A Link to the Past: 0
+  DOOM 1993: 0
+  Ocarina of Time: 0
+  SMZ3: 0
+  Subnautica: 0
+  Tetris Attack: 0
   # rank 3
-  Links Awakening DX: 1
-  Mega Man 3: 2
-  Mega Man X: 4
-  Metroid Prime: 3
-  Metroid Zero Mission: 8
+  Links Awakening DX: 0
+  Mega Man 3: 0
+  Mega Man X: 0
+  Metroid Prime: 0
+  Metroid Zero Mission: 0
   # rank 4
   DOOM II: 0
   Mega Man X2: 0
@@ -64,7 +64,7 @@ game:
   Yacht Dice: 0
   # rank 5
   Bumper Stickers: 0
-  Celeste (Open World): 0
+  Celeste (Open World): 1
   ChecksFinder: 0
   ChecksMate: 0
   Donkey Kong Country 2: 0

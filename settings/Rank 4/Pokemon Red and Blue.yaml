@@ -1,4 +1,9 @@
-﻿Pokemon Red and Blue:
+﻿name: PkmnRB-{player}
+description: Mission Archipelago - Pokemon Red and Blue
+requires:
+  version: 0.6.2 # Version of Archipelago required for this yaml to work as expected.
+
+Pokemon Red and Blue:
   # Game Options
   progression_balancing:
     # A system that can move progression earlier, to try and prevent the player from getting stuck and bored early.

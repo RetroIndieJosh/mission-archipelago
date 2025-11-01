@@ -1,4 +1,9 @@
-﻿Sonic the Hedgehog 1:
+﻿name: Sonic1-{player}
+description: Mission Archipelago - Sonic the Hedgehog 1
+requires:
+  version: 0.6.2 # Version of Archipelago required for this yaml to work as expected.
+
+Sonic the Hedgehog 1:
   ################
   # Game Options #
   ################

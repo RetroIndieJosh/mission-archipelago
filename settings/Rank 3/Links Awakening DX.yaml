@@ -1,4 +1,9 @@
-﻿Links Awakening DX:
+﻿name: LADX-{player}
+description: Mission Archipelago - Link's Awakening DX
+requires:
+  version: 0.6.2 # Version of Archipelago required for this yaml to work as expected.
+
+Links Awakening DX:
   # Game Options
   progression_balancing:
     # A system that can move progression earlier, to try and prevent the player from getting stuck and bored early.

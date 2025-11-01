@@ -1,4 +1,9 @@
-﻿ChecksFinder:
+﻿name: Finder-{player}
+description: Mission Archipelago - ChecksFinder
+requires:
+  version: 0.6.2 # Version of Archipelago required for this yaml to work as expected.
+
+ChecksFinder:
   ################
   # Game Options #
   ################

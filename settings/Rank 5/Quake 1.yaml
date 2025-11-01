@@ -1,4 +1,9 @@
-﻿Quake 1:
+﻿name: Quake1-{player}
+description: Mission Archipelago - Quake 1
+requires:
+  version: 0.6.2 # Version of Archipelago required for this yaml to work as expected.
+
+Quake 1:
   ################
   # Game Options #
   ################
