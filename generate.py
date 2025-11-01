@@ -1,140 +1,229 @@
 import os
+import sys
+import argparse
 import yaml
-
 from colorama import Fore
-from pprint import pprint
+
 
 class MysterySettings(dict):
-    def __init__(self, name: str, description: str, requires: dict, game: dict):
+    """Hold configured weights/counts and per-game loaded data."""
+    def __init__(self, generation: str):
         super().__init__()
-
-        self["name"] = name
-        self["description"] = description
-        self["requires"] = requires
-        self["game"] = game
+        self["game"] = {}  # mapping game_name -> weight/count
+        self.generation = generation
+        self.games_data = {}  # mapping game_name -> {"options":..., "name":..., "description":..., "requires":...}
 
     def __str__(self) -> str:
-        string = "{:<32} {:<4} {:>8}\n".format("GAME", "WGT", "%")
-        string += "-" * 46
-        string += "\n"
-        for game, percentage in sorted(self.weight_percentages().items(), key=lambda x:x[1], reverse=True):
-            string += "{:<32} {:<4}  ~{:>6}\n".format(game, self["game"][game], "{:.1f}%".format(percentage * 100))
-
-        return string
+        header_label = "#" if self.generation == "count" else "WGT"
+        header = "{:<32} {:<6} {:>8}\n".format("GAME", header_label, "%")
+        lines = ["-" * 52]
+        for game, pct in sorted(self.weight_percentages().items(), key=lambda x: x[1], reverse=True):
+            val = self["game"].get(game, 0)
+            lines.append("{:<32} {:<6} {:>8}".format(game, val, "{:.1f}%".format(pct * 100)))
+        return header + "\n".join(lines)
 
     def add_game(self, game_path: str):
+        """Load game YAML. Flatten any nested key that matches the game name. Merge optional meta."""
         if not game_path.endswith(".yaml"):
-            print(f"Skipping `{game_path}` because it's not game settings")
             return
+
+        print(f"Loading {game_path}...")
         try:
-            print(f"Loading {game_path}...")
-            with open(game_path, encoding="utf-8-sig") as game_file:
-                game_settings: dict = yaml.unsafe_load(game_file)
-
-                # Ensure that game_settings only has one property which has the same name as the file.
-                if len(game_settings.items()) > 1:
-                    raise ValueError(f"Found {len(game_settings)} top-level keys in `{game_path}`")
-                
-                game = next(iter(game_settings))
-                if game not in game_settings:
-                    raise ValueError(f"Could not find `{game}` top-level key in `{game_path}`")
-
-                self.update(game_settings)
+            with open(game_path, encoding="utf-8-sig") as f:
+                payload = yaml.safe_load(f) or {}
         except FileNotFoundError:
-            print(Fore.RED + f"\nUnable to find game settings file `{game_path}`." + Fore.WHITE)
-            exit(1)
-        except ValueError as e:
-            print(Fore.RED + f"\nGame settings dict should only have 1 key named after the game.\n\t{e}" + Fore.WHITE)
-            exit(2)
+            print(Fore.RED + f"Missing file `{game_path}`" + Fore.WHITE)
+            sys.exit(1)
+        except yaml.YAMLError as e:
+            print(Fore.RED + f"YAML parse error in `{game_path}`: {e}" + Fore.WHITE)
+            sys.exit(2)
+
+        if not isinstance(payload, dict):
+            print(Fore.RED + f"Game file `{game_path}` must be a mapping/dictionary." + Fore.WHITE)
+            sys.exit(2)
+
+        game = os.path.splitext(os.path.basename(game_path))[0]
+        options = payload.copy()
+
+        # Flatten any nested key that matches the game name
+        if game in options and isinstance(options[game], dict):
+            options = options[game]
+
+        # remove any remaining nested game key to prevent nesting
+        options.pop(game, None)
+
+        # store options and metadata keys
+        self.games_data[game] = {
+            "options": options.copy(),
+            "name": options.get("name", game),
+            "description": options.get("description", ""),
+            "requires": options.get("requires", {}),
+        }
+
+        # merge meta file if present
         meta_path = os.path.join("games", f"{game}.meta.yaml")
         if os.path.exists(meta_path):
-            with open(meta_path) as meta_file:
-                meta_settings: dict = yaml.unsafe_load(meta_file)
-            if len(meta_settings.items()) > 1:
-                raise ValueError(f"Found {len(meta_settings)} top-level keys in `{meta_path}`")
-            if game not in meta_settings:
-                raise ValueError(f"Could not find `{game}` top-level key in `{meta_path}`")
-            meta.update(meta_settings)
+            try:
+                with open(meta_path, encoding="utf-8-sig") as mf:
+                    meta_payload = yaml.safe_load(mf) or {}
+            except yaml.YAMLError as e:
+                print(Fore.RED + f"YAML parse error in `{meta_path}`: {e}" + Fore.WHITE)
+                sys.exit(2)
+
+            if isinstance(meta_payload, dict):
+                meta_options = meta_payload.get(game, meta_payload)
+                if isinstance(meta_options, dict):
+                    self.games_data[game]["options"].update(meta_options)
 
     def total_game_weights(self) -> int:
-        total = 0
-        for weight in self["game"].values():
-            total += weight
-        return total
+        return sum(int(v) for v in self["game"].values())
 
     def weight_percentages(self) -> dict:
-        total = self.total_game_weights()
-        games = {}
-
-        for game, weight in self["game"].items():
-            games[game] = weight / total
-
-        return games
+        total = self.total_game_weights() or 1
+        return {g: int(w) / total for g, w in self["game"].items()}
 
 
-class GameSettings(MysterySettings):
-    def __init__(self, name: str, description: str, requires: dict, game: str, game_options: dict):
-        super().__init__(name, description, requires, game)
+def parse_args():
+    p = argparse.ArgumentParser(description="Mystery game YAML generator")
+    p.add_argument("--file", type=str, default="async.yaml", help="Path to config YAML")
+    return p.parse_args()
 
-        self[game] = game_options
+
+def validate_config(cfg: dict):
+    required = ["generation", "categorize", "game"]
+    for key in required:
+        if key not in cfg:
+            print(Fore.RED + f"Missing required key `{key}` in config." + Fore.WHITE)
+            sys.exit(3)
+
+    gen = cfg["generation"]
+    if gen not in ("weights", "count"):
+        print(Fore.RED + "generation must be 'weights' or 'count'." + Fore.WHITE)
+        sys.exit(3)
+
+    cat = cfg["categorize"]
+    if cat not in ("rank", "all"):
+        print(Fore.RED + "categorize must be 'rank' or 'all'." + Fore.WHITE)
+        sys.exit(3)
+
+    max_rank = cfg.get("max-rank")
+    if cat == "rank" and (not isinstance(max_rank, int) or max_rank < 1):
+        print(Fore.RED + "Missing or invalid `max-rank` for rank categorization." + Fore.WHITE)
+        sys.exit(3)
+
+    if not isinstance(cfg["game"], dict):
+        print(Fore.RED + "`game` top-level key must be a mapping of game->weight/count." + Fore.WHITE)
+        sys.exit(3)
+
+    return gen, cat, max_rank
+
+
+def collect_game_files(categorize: str, max_rank: int):
+    files = []
+    if categorize == "rank":
+        for r in range(1, max_rank + 1):
+            rank_dir = os.path.join("settings", f"Rank {r}")
+            if not os.path.isdir(rank_dir):
+                print(Fore.RED + f"Expected directory `{rank_dir}` missing." + Fore.WHITE)
+                sys.exit(4)
+            for fn in os.listdir(rank_dir):
+                if fn.endswith(".yaml"):
+                    files.append(os.path.join(rank_dir, fn))
+    else:  # all
+        for root, _, fns in os.walk("settings"):
+            for fn in fns:
+                if fn.endswith(".yaml"):
+                    files.append(os.path.join(root, fn))
+    if not files:
+        print(Fore.RED + "No YAML files found under `settings/`." + Fore.WHITE)
+        sys.exit(4)
+    return files
 
 
 def main():
-    # Create output directory, if it does not exist.
-    if not os.path.exists("output/"):
-        os.mkdir("output/")
-
-    # Delete any old mystery.yaml file, if it exists.
-    if os.path.exists("output/mystery.yaml"):
-        os.remove("output/mystery.yaml")
-
-    # Load meta data first.
-    mystery: dict
-    meta: dict = {
-        "meta_description": "Generated from RetroIndieJosh's Mission Archipelago",
-        None: {
-            "progression_balancing": 0,
-        }
-    }
-    print("Loading meta player settings...")
+    args = parse_args()
     try:
-        with open("async.yaml") as file:
-            data = yaml.unsafe_load(file)
-            mystery = MysterySettings(data["name"], data["description"], data["requires"], data["game"])
+        with open(args.file, encoding="utf-8-sig") as cf:
+            cfg = yaml.safe_load(cf) or {}
     except FileNotFoundError:
-        print(Fore.RED + "async.yaml not found. Please ensure file exists and rerun generator." + Fore.WHITE)
-        exit(3)
+        print(Fore.RED + f"Config `{args.file}` not found." + Fore.WHITE)
+        sys.exit(2)
+    except yaml.YAMLError as e:
+        print(Fore.RED + f"YAML parse error in config `{args.file}`: {e}" + Fore.WHITE)
+        sys.exit(2)
 
-    print(f"Estimated chance of a particular game being rolled...\n\n{mystery}")
-    print("Attempting to generate yaml file...")
+    generation_mode, categorize, max_rank = validate_config(cfg)
 
-    # Merge together each game yaml into our mystery settings.
-    # TODO pass in as an arg
-    max_rank = 4
-    for rank in range(1, max_rank+1):
-        rank_path = f"./settings/Rank {rank}"
-        for game_file in os.listdir(rank_path):
-            mystery.add_game(f"{rank_path}/{game_file}")
-        
-    # I don't know where it generates this original list of games so we're just
-    # going to remove the non matching ones here for now
-    mystery["game"] = [g for g in list(mystery["game"]) if g in mystery.keys()]
+    # build mystery with only non-zero weights/counts
+    mystery = MysterySettings(generation_mode)
+    for gname, val in cfg["game"].items():
+        try:
+            w = int(val)
+        except Exception:
+            print(Fore.RED + f"Invalid weight/count for `{gname}`; must be integer-like." + Fore.WHITE)
+            sys.exit(3)
+        if w > 0:
+            mystery["game"][str(gname)] = w
 
-    with open("output/weights.yaml", "w+") as file:
-        yaml.dump(dict(mystery), file)
-    with open("output/games.yaml", "w+") as file:
-        games = list(mystery["game"])
-        last_key = games[-1]
-        for game in games:
-            game_options = GameSettings(mystery["name"], mystery["description"], mystery["requires"], game, mystery[game])
-            yaml.dump(dict(game_options), file)
-            if game != last_key:
-                file.write("\n---\n\n")
-    print(Fore.GREEN + "\nOutput settings file to `./output/weights.yaml`")
+    # collect and load game files
+    game_files = collect_game_files(categorize, max_rank)
+    print(f"Found {len(game_files)} game files.")
+    for path in game_files:
+        mystery.add_game(path)
+
+    # discard configured games not present in loaded files
+    mystery["game"] = {g: v for g, v in mystery["game"].items() if g in mystery.games_data}
+
+    # prepare outputs
+    os.makedirs("output", exist_ok=True)
+    weights_path = os.path.join("output", "weights.yaml")
+    games_path = os.path.join("output", "games.yaml")
     meta_path = os.path.join("output", "meta.yaml")
-    with open(meta_path, "w+") as file:
-        yaml.dump(meta, file)
-    print(Fore.GREEN + f"\nOutput meta file to `{meta_path}`" + Fore.WHITE)
+
+    # write weights.yaml
+    with open(weights_path, "w", encoding="utf-8") as wf:
+        yaml.dump(dict(mystery), wf, sort_keys=False)
+
+    # write games.yaml
+    with open(games_path, "w", encoding="utf-8") as gf:
+        games = list(mystery["game"].keys())
+        for i, game in enumerate(games):
+            options = mystery.games_data[game]["options"].copy()
+
+            # remove metadata keys to prevent nested or duplicate data
+            for meta_key in ("name", "description", "requires", "game"):
+                options.pop(meta_key, None)
+
+            # dump gameplay options under the game key
+            yaml.dump({game: options}, gf, sort_keys=False)
+            gf.write("\n")
+
+            # dump metadata at top level
+            metadata = {
+                "description": mystery.games_data[game]["description"],
+                "game": game,
+                "name": mystery.games_data[game]["name"],
+                "requires": mystery.games_data[game]["requires"],
+            }
+            yaml.dump(metadata, gf, sort_keys=False)
+
+            if i < len(games) - 1:
+                gf.write("\n---\n\n")
+
+    # write meta.yaml
+    meta = {
+        "meta_description": "Generated from Mission Archipelago",
+        None: {"progression_balancing": 0},
+    }
+    with open(meta_path, "w", encoding="utf-8") as mf:
+        yaml.dump(meta, mf, sort_keys=False)
+
+    # summary
+    print()
+    print(f"Mode: generation={generation_mode}, categorize={categorize}")
+    print(f"Estimated game distribution:\n\n{mystery}")
+    print(Fore.GREEN + "\nOutput written to ./output/ directory" + Fore.WHITE)
+
 
 if __name__ == "__main__":
     main()
