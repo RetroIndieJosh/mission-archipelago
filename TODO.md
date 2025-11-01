@@ -1,9 +1,5 @@
-- guarantee that at least one seed of each available game is included
-    - is this possible? or already the default?
-- allow option to work like async tools (all games named in async.yaml, no others, included)
-    - will require searching through rank dirs to find a match
-- name seeds based on the game
-    - can we put `name` *inside* the game yaml?
+- guarantee that at least one seed of each available game is included when AP generates
+    - although this is either built-in or would require modding AP
 - auto-adjust weights based on rank
     - some kind of multiplier, e.g. 1/2 for each rank after 1
         - Rank 1, Weight 20 => Weight 20 
