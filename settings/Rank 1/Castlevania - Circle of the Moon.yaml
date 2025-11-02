@@ -51,10 +51,8 @@ Castlevania - Circle of the Moon:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 0
     # Maximum value is 9
-    0: 1
-    random-range-1-3: 2
-    random-range-4-6: 4
-    random-range-7-9: 2
+    # NOTE: We require at least 1 unless the goal is Battle Arena, in which case it's forced to 0
+    random-range-middle-1-9: 1
 
   available_last_keys:
     # How many Last Keys are in the pool in total.
@@ -63,10 +61,7 @@ Castlevania - Circle of the Moon:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 0
     # Maximum value is 9
-    0: 1
-    random-range-1-3: 2
-    random-range-4-6: 4
-    random-range-7-9: 2
+    random-range-middle-1-9: 1
 
   required_skirmishes:
     # Forces a Last Key after every boss or after every boss and the Battle Arena and forces the required Last Keys to enter the Ceremonial Room to 8 or 9 for All Bosses and All Bosses And Arena respectively.
@@ -113,7 +108,7 @@ Castlevania - Circle of the Moon:
 
   ignore_cleansing:
     # Removes the logical requirement for the Cleansing to go beyond the Underground Waterway entrance rooms. You may be required to brave the harmful water without it.
-    'false': 8
+    'false': 4
     'true': 1
 
   halve_dss_cards_placed:
@@ -130,10 +125,10 @@ Castlevania - Circle of the Moon:
 
   early_escape_item:
     # Ensures the chosen Catacomb escape item will be placed in a starting location within your own game, accessible with nothing.
-    none: 0
-    double: 4
-    roc_wing: 2
-    double_or_roc_wing: 1
+    none: 1
+    double: 8
+    roc_wing: 4
+    double_or_roc_wing: 2
 
   death_link:
     # When you die, everyone dies. Of course the reverse is true too.
@@ -208,7 +203,9 @@ Castlevania - Circle of the Moon:
   # Item & Location Options
   local_items:
     # Forces these items to be in their native world.
-    []
+    [
+      "Last Key"
+    ]
 
   non_local_items:
     # Forces these items to be outside their native world.
@@ -245,7 +242,7 @@ Castlevania - Circle of the Moon:
     []
 
   triggers:
-  # if our goal is arena only, don't require keys for Dracula
+  # if our goal is arena only, don't require keys for Dracula since it's just one check
   - option_category: Castlevania - Circle of the Moon
     option_name: completion_goal
     option_result: battle_arena
@@ -253,3 +250,43 @@ Castlevania - Circle of the Moon:
       Castlevania - Circle of the Moon:
         available_last_keys: 0
         required_last_keys: 0
+  # if goal is dracula, disable MP Drain OFF to make optional battle arena harder
+  - option_category: Castlevania - Circle of the Moon
+    option_name: completion_goal
+    option_result: battle_arena
+    options:
+      Castlevania - Circle of the Moon:
+        disable_battle_arena_mp_drain: 'false'
+  # if we have half DSS cards, make it slightly less nefarious:
+  # - disable battle arena MP drain
+  # - disable ignore cleansing
+  - option_category: Castlevania - Circle of the Moon
+    option_name: halve_dss_cards_placed
+    option_result: 'true'
+    options:
+      Castlevania - Circle of the Moon:
+        disable_battle_arena_mp_drain: 'true'
+        ignore_cleansing: 'false'
+  # if roc wing isn't nerfed, don't have it as the early escape item
+  - option_category: Castlevania - Circle of the Moon
+    option_name: nerf_roc_wing
+    option_result: 'true'
+    options:
+      Castlevania - Circle of the Moon:
+        early_escape_item:
+          none: 1
+          double: 8
+  # prevent battle arena cheese (DSS patch) when MP allowed
+  - option_category: Castlevania - Circle of the Moon
+    option_name: disable_battle_arena_mp_drain
+    option_result: 'true'
+    options:
+      Castlevania - Circle of the Moon:
+        dss_patch: 'true'
+  # if DSS patch is on, never ignore cleansing (would be so painful!)
+  - option_category: Castlevania - Circle of the Moon
+    option_name: dss_patch
+    option_result: 'true'
+    options:
+      Castlevania - Circle of the Moon:
+        ignore_cleansing: 'false'
