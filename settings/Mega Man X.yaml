@@ -588,6 +588,7 @@ Mega Man X:
     []
 
   triggers:
+  # Determine single goal for base unlock
   - option_category: Mega Man X
     option_name: sigma_requirement
     option_result: medals
@@ -618,6 +619,8 @@ Mega Man X:
     options:
       Mega Man X:
         sigma_open: ["Sub Tanks"]
+
+  # Adjust HP / heart tanks relative to bosses
   - option_category: Mega Man X
     option_name: boss_randomize_hp
     option_result: weak
