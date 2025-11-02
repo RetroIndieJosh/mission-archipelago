@@ -59,12 +59,12 @@ Mega Man X:
 
   pickupsanity:
     # Whether collecting freestanding 1ups, HP and Weapon Energy capsules will grant a check.
-    'false': 4
+    'false': 2
     'true': 1
 
   early_legs:
     # Places the Legs Upgrade item in sphere 1.
-    'false': 4
+    'false': 2
     'true': 1
 
   # Gameplay Options
@@ -75,15 +75,8 @@ Mega Man X:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 0
     # Maximum value is 99
-    0: 1
-    1: 2
-    2: 64 #default
-    random-range-3-6: 32
-    random-range-7-10: 16
-    random-range-11-20: 8
-    random-range-21-30: 4
-    random-range-31-50: 2
-    random-range-50-99: 1
+    random-range-middle-1-3: 2
+    random-range-low-3-6: 1
 
   starting_hp:
     # How much HP X will have at the start of the game.
@@ -93,13 +86,7 @@ Mega Man X:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 1
     # Maximum value is 32
-    random-range-1-4: 1
-    random-range-5-9: 2
-    random-range-10-15: 4
-    16: 16 #default
-    random-range-17-22: 8
-    random-range-23-27: 4
-    random-range-28-32: 2
+    random-range-middle-1-32: 1
 
   heart_tank_effectiveness:
     # How many units of HP each Heart tank will provide to the user.
@@ -109,19 +96,12 @@ Mega Man X:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 1
     # Maximum value is 8
-    1: 1
-    2: 64 #default
-    3: 32
-    4: 16
-    5: 8
-    6: 4
-    7: 2
-    8: 1
+    random-range-low-2-8: 1
 
   jammed_buster:
     # Jams X's buster making it only able to shoot lemons.
     # Note: This adds another Arms Upgrade into the item pool.
-    'false': 2
+    'false': 4
     'true': 1
 
   better_walljump:
@@ -171,6 +151,14 @@ Mega Man X:
     'false': 50
     'true': 0
 
+  sigma_requirement:
+    medals: 1
+    weapons: 1
+    armor-upgrades: 1
+    heart-tanks: 1
+    sub-tanks: 1
+    access-item: 1
+
   # Sigma Fortress Options
   sigma_open:
     # Under which conditions will Sigma's Fortress open.
@@ -181,7 +169,7 @@ Mega Man X:
     # Armor Upgrades: Consider upgrades to get access to the fortress.
     # Heart Tanks: Consider heart tanks to get access to the fortress.
     # Sub Tanks: Consider sub tanks to get access to the fortress.
-    ['Medals', 'Weapons', 'Armor Upgrades', 'Heart Tanks', 'Sub Tanks']
+    []
 
   sigma_medal_count:
     # How many Maverick Medals are required to access Sigma's Fortress.
@@ -598,3 +586,62 @@ Mega Man X:
   item_links:
     # Share part of your item pool with other players.
     []
+
+  triggers:
+  - option_category: Mega Man X
+    option_name: sigma_requirement
+    option_result: medals
+    options:
+      Mega Man X:
+        sigma_open: ["Medals"]
+  - option_category: Mega Man X
+    option_name: sigma_requirement
+    option_result: weapons
+    options:
+      Mega Man X:
+        sigma_open: ["Weapons"]
+  - option_category: Mega Man X
+    option_name: sigma_requirement
+    option_result: armor-upgrades
+    options:
+      Mega Man X:
+        sigma_open: ["Armor Upgrades"]
+  - option_category: Mega Man X
+    option_name: sigma_requirement
+    option_result: heart-tanks
+    options:
+      Mega Man X:
+        sigma_open: ["Heart Tanks"]
+  - option_category: Mega Man X
+    option_name: sigma_requirement
+    option_result: sub-tanks
+    options:
+      Mega Man X:
+        sigma_open: ["Sub Tanks"]
+  - option_category: Mega Man X
+    option_name: boss_randomize_hp
+    option_result: weak
+    options:
+      Mega Man X:
+        starting_hp: 
+          random-range-middle-1-16: 1
+        heart_tank_effectiveness:
+          random-range-middle-2-4: 1
+  - option_category: Mega Man X
+    option_name: boss_randomize_hp
+    option_result: strong
+    options:
+      Mega Man X:
+        starting_hp: 
+          random-range-middle-16-32: 1
+        heart_tank_effectiveness:
+          random-range-middle-4-8: 1
+  - option_category: Mega Man X
+    option_name: boss_randomize_hp
+    option_result: chaotic
+    options:
+      Mega Man X:
+        starting_hp: 
+          random-range-high-1-32: 1
+        heart_tank_effectiveness:
+          random-range-high-2-8: 1
