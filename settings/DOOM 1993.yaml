@@ -33,11 +33,17 @@ DOOM 1993:
 
   non_local_items:
     # Forces these items to be outside their native world.
-    []
+    [
+      "Chaingun",
+      "Rocket launcher",
+      "Plasma gun",
+      "BFG9000",
+      "Chainsaw"
+    ]
 
   start_inventory:
     # Start with these items.
-    {}
+    "Shotgun": 1
 
   start_hints:
     # Start with these item's locations prefilled into the !hint command.
