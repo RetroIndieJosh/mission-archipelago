@@ -16,6 +16,16 @@ When using weights, Archipelago guarantees every game gets at least one seed,
 even if the weight is 0 or the requested player count is lower than the number
 of possible players
 
+## YAML Changes Under Consideration
+
+### DOOM 1993 / DOOM II
+- Find a more interesting way to do only boss levels: Unlock all non boss levels
+(plus keys) from the start? Make boss level unlocks local so they need to be
+found within the game itself? Ensure boss level items are junk so they aren't
+part of a larger chain (and especially don't hide guns)?
+- Start with all levels, or start with all keys: See if either of these options
+remain interesting while being slightly less frustratingly slow to unlock
+
 ## TODO - BUGS
 - fails in weights mode because weights.yaml isn't set up correctly
 

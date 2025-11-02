@@ -33,11 +33,18 @@ DOOM II:
 
   non_local_items:
     # Forces these items to be outside their native world.
-    []
+    [
+      "Super Shotgun",
+      "Chaingun",
+      "Rocket launcher",
+      "Plasma gun",
+      "BFG9000",
+      "Chainsaw"
+    ]
 
   start_inventory:
     # Start with these items.
-    {}
+    "Shotgun": 1
 
   start_hints:
     # Start with these item's locations prefilled into the !hint command.
@@ -112,8 +119,8 @@ DOOM II:
     # flipped: All levels are flipped
     # random: Random levels are flipped
     vanilla: 8
-    flipped: 2
-    randomly_flipped: 1
+    flipped: 0
+    randomly_flipped: 0
 
   allow_death_logic:
     # Some locations require a timed puzzle that can only be tried once.
@@ -170,3 +177,12 @@ DOOM II:
     # Otherwise episode 1 will be added.
     false: 0
     true: 1
+
+  triggers:
+  # force disable Episode 3 if difficulty is hard
+  - option_category: DOOM II
+    option_name: difficulty
+    option_result: hard
+    options:
+      DOOM II:
+        episode3: false
