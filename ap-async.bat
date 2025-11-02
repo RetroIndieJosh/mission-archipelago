@@ -55,7 +55,7 @@ if /i "%GENERATION%"=="weights" (
 echo Generating...
 for /L %%i in (1,1,%NUM_MULTIWORLDS%) do (
     echo Running: "%GENERATE%" --csv_output --spoiler 0 %MULTI_ARGS%
-    "%GENERATE%" --csv_output --spoiler 0 %MULTI_ARGS%
+    "%GENERATE%" --csv_output --spoiler 1 %MULTI_ARGS%
 )
 
 echo Done.
