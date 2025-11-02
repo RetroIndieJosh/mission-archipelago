@@ -192,6 +192,11 @@ DOOM 1993:
         episode1: true
         episode2: true
         episode3: true
+        +start_hints:
+          - "Phobos Anomaly (E1M8)"
+          - "Tower of Babel (E2M8)"
+          - "Dis (E3M8)"
+
   # force disable Episode 4 if difficulty is hard
   - option_category: DOOM 1993
     option_name: difficulty
@@ -199,3 +204,13 @@ DOOM 1993:
     options:
       DOOM 1993:
         episode4: false
+    
+  # if we have episode 4, add start hint for boss level (can't also check if
+  # we're boss mode, unfortunately)
+  - option_category: DOOM 1993
+    option_name: goal
+    option_result: complete_boss_levels
+    options:
+      DOOM 1993:
+        +start_hints:
+          - "Unto the Cruel (E4M8)"
