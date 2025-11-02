@@ -23,7 +23,7 @@ class MysterySettings(dict):
         game_key = key or filename_key
         options = payload.copy()
 
-        # Only flatten if it's clearly nested under the filename
+        # Flatten if nested under the filename
         if (
             len(options) == 1
             and filename_key in options
@@ -31,7 +31,6 @@ class MysterySettings(dict):
         ):
             options = options[filename_key]
 
-        # Ensure essential keys exist
         if "name" not in options:
             options["name"] = "Player-{player}"
             print(
@@ -43,7 +42,6 @@ class MysterySettings(dict):
         description = options.get("description", "")
         requires = options.get("requires", {})
 
-        # Store metadata keyed by config/game key
         self.games_data[game_key] = {
             "file_path": game_path,
             "options": options.copy(),
@@ -52,12 +50,12 @@ class MysterySettings(dict):
             "requires": requires,
         }
 
-        # Initialize RAW/COUNT if not already set
         if game_key not in self["game"]:
             if self.generation == "weights":
                 self["game"][game_key] = options.get("weight", 1)
             else:
-                self["game"][game_key] = options.get("count", 0)
+                # default to 1 if count not set
+                self["game"][game_key] = options.get("count", 1)
 
     def __str__(self):
         lines = []

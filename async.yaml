@@ -33,8 +33,8 @@ rank-mult: 2
 
 game:
   # rank 1
-  Castlevania - Circle of the Moon: 0
-  Mega Man 2: 1
+  Castlevania - Circle of the Moon: 16
+  Mega Man 2: 0
   Star Wars Episode I Racer: 0
   Super Metroid: 0
   The Messenger: 0
@@ -84,3 +84,7 @@ game:
   Sonic the Hedgehog 1: 0
   The Legend of Zelda: 0
   The Wind Waker: 0
+  # rank 7
+  Kirby Super Star: 0
+  # rank X
+  MegaMan Battle Network 3: 0

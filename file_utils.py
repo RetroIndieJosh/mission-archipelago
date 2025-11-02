@@ -1,5 +1,7 @@
 import os
 import yaml
+import shutil
+import copy
 
 def collect_game_files(settings_dir="settings"):
     """
@@ -19,52 +21,72 @@ def collect_game_files(settings_dir="settings"):
 def write_outputs(mystery, generation: str):
     """
     Writes output files:
-      - games.yaml: full game options + metadata
-      - weights.yaml: only options, metadata keys removed (weights mode only)
-      - meta.yaml: placeholder meta info
-    In count mode, generates multiple copies of each game in games.yaml according to the count.
+      - Count mode: one YAML file per game instance
+      - Weights mode: combined games.yaml
+    Metadata and game key are at the top level.
+    Clears the 'output' directory before writing.
     """
-    os.makedirs("output", exist_ok=True)
-    games_path = os.path.join("output", "games.yaml")
-    weights_path = os.path.join("output", "weights.yaml")
-    meta_path = os.path.join("output", "meta.yaml")
+    output_dir = "output"
 
-    # Write games.yaml
-    with open(games_path, "w", encoding="utf-8") as gf:
-        for i, game in enumerate(mystery["game"]):
-            count = mystery["game"][game] if generation == "count" else 1
-            for _ in range(count):
-                options = mystery.games_data[game]["options"].copy()
+    # Clear output directory
+    if os.path.exists(output_dir):
+        shutil.rmtree(output_dir)
+    os.makedirs(output_dir, exist_ok=True)
 
-                # Dump gameplay options under the game key
-                yaml.dump({game: options}, gf, sort_keys=False)
-                gf.write("\n")
+    if generation == "count":
+        # One YAML per game instance
+        for game, count in mystery["game"].items():
+            for i in range(1, count + 1):
+                output_file = os.path.join(output_dir, f"{game}_{i}.yaml")
+                with open(output_file, "w", encoding="utf-8") as gf:
+                    # Deep copy to avoid YAML anchors
+                    options_copy = copy.deepcopy(mystery.games_data[game]["options"])
 
-                # Dump metadata
-                metadata = {
-                    "description": mystery.games_data[game]["description"],
+                    # If options already has the game as top-level key, extract inner dict
+                    if game in options_copy:
+                        options_copy = options_copy[game]
+
+                    # Remove any leftover metadata keys
+                    for meta_key in ("name", "description", "requires"):
+                        options_copy.pop(meta_key, None)
+
+                    requires_copy = copy.deepcopy(mystery.games_data[game]["requires"])
+
+                    # Build final dict
+                    data = {
+                        "game": game,
+                        "name": mystery.games_data[game]["name"],
+                        "description": mystery.games_data[game]["description"],
+                        "requires": requires_copy,
+                        game: options_copy
+                    }
+
+                    yaml.safe_dump(data, gf, sort_keys=False)
+                print(f"Wrote {output_file}")
+
+    else:
+        # Weights mode: single combined games.yaml
+        games_path = os.path.join(output_dir, "games.yaml")
+        with open(games_path, "w", encoding="utf-8") as gf:
+            for game, data_info in mystery.games_data.items():
+                options_copy = copy.deepcopy(data_info["options"])
+
+                if game in options_copy:
+                    options_copy = options_copy[game]
+
+                for meta_key in ("name", "description", "requires"):
+                    options_copy.pop(meta_key, None)
+
+                requires_copy = copy.deepcopy(data_info["requires"])
+
+                data = {
                     "game": game,
-                    "name": mystery.games_data[game]["name"],
-                    "requires": mystery.games_data[game]["requires"],
+                    "name": data_info["name"],
+                    "description": data_info["description"],
+                    "requires": requires_copy,
+                    game: options_copy
                 }
-                yaml.dump(metadata, gf, sort_keys=False)
-                gf.write("\n---\n\n")
 
-    # Write weights.yaml (only in weights mode)
-    if generation == "weights":
-        with open(weights_path, "w", encoding="utf-8") as wf:
-            for game, data in mystery.games_data.items():
-                options = data["options"].copy()
-                # Remove metadata keys
-                for meta_key in ("name", "description", "requires", "game"):
-                    options.pop(meta_key, None)
-                yaml.dump({game: options}, wf, sort_keys=False)
-                wf.write("\n")
-
-    # Write a simple meta.yaml
-    meta = {
-        "meta_description": "Generated from Mission Archipelago",
-        None: {"progression_balancing": 0},
-    }
-    with open(meta_path, "w", encoding="utf-8") as mf:
-        yaml.dump(meta, mf, sort_keys=False)
+                yaml.safe_dump(data, gf, sort_keys=False)
+                gf.write("\n")
+        print(f"Wrote {games_path}")
