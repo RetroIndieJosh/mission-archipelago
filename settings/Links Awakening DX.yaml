@@ -167,9 +167,9 @@ Links Awakening DX:
     # Has little effect in single player games, and isn't always necessary with randomized entrances.
     # [Bush Breaker] Forces Tarin's gift to be an item that can destroy bushes.
     # [Any Item] Tarin's gift can be any item for any world
-    local_progression: 4
-    bush_breaker: 2
-    any_item: 1
+    local_progression: 0
+    bush_breaker: 1
+    any_item: 0
 
   overworld:
     # [Open Mabe] Replaces rock on the east side of Mabe Village with bushes, allowing access to Ukuku Prairie without Power Bracelet.
@@ -295,11 +295,6 @@ Links Awakening DX:
     'false': 0
     'true': 50
 
-  gfxmod:
-    # Sets the sprite for link, among other things
-    # The option should be the same name as a with sprite (and optional name) file in data/sprites/ladx
-    Link: 50
-
   music:
     # [Vanilla] Regular Music
     # [Shuffled] Shuffled Music
@@ -334,7 +329,14 @@ Links Awakening DX:
   # Item & Location Options
   local_items:
     # Forces these items to be in their native world.
-    []
+    - "Full Moon Cello"
+    - "Conch Horn"
+    - "Sea Lily's Bell"
+    - "Surf Harp"
+    - "Wind Marimba"
+    - "Coral Triangle"
+    - "Organ of Evening Calm"
+    - "Thunder Drum"
 
   non_local_items:
     # Forces these items to be outside their native world.
@@ -363,3 +365,13 @@ Links Awakening DX:
   item_links:
     # Share part of your item pool with other players.
     []
+
+  triggers:
+  # if the goal is boss levels, do at least the first three episodes
+  - option_category: Links Awakening DX
+    option_name: goal
+    option_result: seashells
+    options:
+      Links Awakening DX:
+        +local_items:
+          - Seashell
