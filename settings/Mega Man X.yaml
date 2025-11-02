@@ -152,11 +152,11 @@ Mega Man X:
     'true': 0
 
   sigma_requirement:
-    medals: 1
-    weapons: 1
-    armor-upgrades: 1
-    heart-tanks: 1
-    sub-tanks: 1
+    medals: 8
+    weapons: 8
+    armor-upgrades: 4
+    heart-tanks: 2
+    sub-tanks: 2
     access-item: 1
 
   # Sigma Fortress Options
