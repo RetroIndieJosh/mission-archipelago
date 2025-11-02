@@ -76,36 +76,23 @@ Mega Man X2:
 
   starting_hp:
     # How much HP X will have at the start of the game.
-    # 
-    # Notes: Going over 32 HP may cause visual bugs in either gameplay or the pause menu. The max HP is capped at 56.
+    # Note: Going over 32 HP may cause visual bugs in either gameplay or the pause menu.
+    #       The max HP is capped at 56.
     #
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 1
     # Maximum value is 32
-    random-range-1-4: 1
-    random-range-5-9: 2
-    random-range-10-15: 4
-    16: 16 #default
-    random-range-17-22: 8
-    random-range-23-27: 4
-    random-range-28-32: 2
+    random-range-middle-1-32: 1
 
   heart_tank_effectiveness:
     # How many units of HP each Heart tank will provide to the user.
-    # 
-    # Note: Going over 32 HP may cause visual bugs in either gameplay or the pause menu. The max HP is capped at 56.
+    # Note: Going over 32 HP may cause visual bugs in either gameplay or the pause menu.
+    #       The max HP is capped at 56.
     #
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 1
     # Maximum value is 8
-    1: 1
-    2: 64 #default
-    3: 32
-    4: 16
-    5: 8
-    6: 4
-    7: 2
-    8: 1
+    random-range-low-2-8: 1
 
   jammed_buster:
     # Jams X's buster making it only able to shoot lemons.
@@ -155,12 +142,7 @@ Mega Man X2:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 0
     # Maximum value is 5
-    0: 1
-    1: 2
-    2: 8 #default
-    3: 4
-    4: 2
-    5: 1
+    random-range-middle-0-5: 1
 
   # Boss Weakness Options
   boss_weakness_rando:
@@ -219,6 +201,14 @@ Mega Man X2:
     # the upgraded buster option.
     'false': 0
     'true': 50
+
+  base_requirement:
+    medals: 8
+    weapons: 8
+    armor-upgrades: 4
+    heart-tanks: 2
+    sub-tanks: 2
+    access-item: 1
 
   # X-Hunter's Base Options
   base_open:
@@ -600,3 +590,65 @@ Mega Man X2:
   item_links:
     # Share part of your item pool with other players.
     []
+
+  triggers:
+  # Determine single goal for base unlock
+  - option_category: Mega Man X2
+    option_name: base_requirement
+    option_result: medals
+    options:
+      Mega Man X2:
+        base_open: ["Medals"]
+  - option_category: Mega Man X2
+    option_name: base_requirement
+    option_result: weapons
+    options:
+      Mega Man X2:
+        base_open: ["Weapons"]
+  - option_category: Mega Man X2
+    option_name: base_requirement
+    option_result: armor-upgrades
+    options:
+      Mega Man X2:
+        base_open: ["Armor Upgrades"]
+  - option_category: Mega Man X2
+    option_name: base_requirement
+    option_result: heart-tanks
+    options:
+      Mega Man X2:
+        base_open: ["Heart Tanks"]
+  - option_category: Mega Man X2
+    option_name: base_requirement
+    option_result: sub-tanks
+    options:
+      Mega Man X2:
+        base_open: ["Sub Tanks"]
+
+  # Adjust HP / heart tanks relative to bosses
+  - option_category: Mega Man X2
+    option_name: boss_randomize_hp
+    option_result: weak
+    options:
+      Mega Man X2:
+        starting_hp: 
+          random-range-middle-1-16: 1
+        heart_tank_effectiveness:
+          random-range-middle-2-4: 1
+  - option_category: Mega Man X2
+    option_name: boss_randomize_hp
+    option_result: strong
+    options:
+      Mega Man X2:
+        starting_hp: 
+          random-range-middle-16-32: 1
+        heart_tank_effectiveness:
+          random-range-middle-4-8: 1
+  - option_category: Mega Man X2
+    option_name: boss_randomize_hp
+    option_result: chaotic
+    options:
+      Mega Man X2:
+        starting_hp: 
+          random-range-high-1-32: 1
+        heart_tank_effectiveness:
+          random-range-high-2-8: 1
