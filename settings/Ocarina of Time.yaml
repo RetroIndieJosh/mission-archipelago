@@ -72,16 +72,23 @@ Ocarina of Time:
     # https://github.com/ArchipelagoMW/Archipelago/blob/main/worlds/oot/LogicTricks.py
     []
 
-  # Open
   open_forest:
     # Set the state of Kokiri Forest and the path to Deku Tree.
     # Open: Neither the forest exit nor the path to Deku Tree is blocked.
     # Closed Deku: The forest exit is not blocked; the path to Deku Tree requires Kokiri Sword and Deku Shield.
     # Closed: Path to Deku Tree requires sword and shield. The forest exit is blocked until Deku Tree is beaten.
     # Closed forest will force child start, and becomes Closed Deku if interior entrances, overworld entrances, warp songs, or random spawn positions are enabled.
-    open: 1
-    closed_deku: 2
-    closed: 4
+    open: 2
+    closed_deku: 4
+    closed: 2
+  
+  closed_forest_fix:
+    # this is modified in a trigger when open_forest is closed; leave it like this here!
+    # also note this does nothing unless item plando is enabled
+    sword_and_shield: 0
+    bomb_bag: 0
+    scale: 0
+    none: 1
 
   open_kakariko:
     # Set the state of the Kakariko Village gate for child. The gate is always open as adult.
@@ -253,10 +260,10 @@ Ocarina of Time:
     # MQ: All layouts are Master Quest.
     # Specific: Use the option "mq_dungeons_list" to choose which dungeons are MQ.
     # Count: Use the option "mq_dungeons_count" to choose a number of random dungeons as MQ.
-    vanilla: 50
+    vanilla: 2
     mq: 0
     specific: 0
-    count: 0
+    count: 1
 
   mq_dungeons_list:
     # With MQ dungeons as Specific: chosen dungeons to be MQ layout.
@@ -268,10 +275,7 @@ Ocarina of Time:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 0
     # Maximum value is 12
-    0: 50
-    random: 0
-    random-low: 0
-    random-high: 0
+    random-range-low-1-12: 1
 
   bridge_stones:
     # With Stones bridge: set the number of Spiritual Stones required.
@@ -279,10 +283,7 @@ Ocarina of Time:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 0
     # Maximum value is 3
-    0: 1
-    1: 2
-    2: 4
-    3: 2
+    random-range-middle-1-3: 1
 
   bridge_medallions:
     # With Medallions bridge: set the number of medallions required.
@@ -290,9 +291,7 @@ Ocarina of Time:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 0
     # Maximum value is 6
-    0: 1
-    random-range-1-3: 4
-    random-range-4-6: 2
+    random-range-middle-1-6: 1
 
   bridge_rewards:
     # With Dungeons bridge: set the number of dungeon rewards required.
@@ -300,10 +299,7 @@ Ocarina of Time:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 0
     # Maximum value is 9
-    0: 1
-    random-range-1-3: 4
-    random-range-4-6: 8
-    random-range-7-9: 4
+    random-range-middle-1-9: 1
 
   bridge_tokens:
     # With Tokens bridge: set the number of Gold Skulltula Tokens required.
@@ -312,12 +308,7 @@ Ocarina of Time:
     # Default is 40
     # Minimum value is 0
     # Maximum value is 100
-    0: 1
-    random-range-1-10: 2
-    random-range-11-30: 4
-    random-range-31-50: 8
-    random-range-51-70: 4
-    random-range-71-100: 2
+    random-range-middle-1-100: 1
 
   bridge_hearts:
     # With Hearts bridge: set the number of hearts required.
@@ -326,10 +317,7 @@ Ocarina of Time:
     # Default is 20
     # Minimum value is 4
     # Maximum value is 20
-    random-range-4-8: 2
-    random-range-9-13: 4
-    random-range-14-18: 2
-    random-range-19-20: 1
+    random-range-middle-4-20: 1
 
   # Shuffle
   shuffle_song_items:
@@ -589,8 +577,7 @@ Ocarina of Time:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 1
     # Maximum value is 6
-    random-range-1-3: 4
-    random-range-4-6: 2
+    random-range-middle-1-6: 1
 
   ganon_bosskey_stones:
     # With stones GCBK: set how many Spiritual Stones are required to receive GCBK.
@@ -598,9 +585,7 @@ Ocarina of Time:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 1
     # Maximum value is 3
-    1: 2
-    2: 4
-    3: 2
+    random-range-middle-1-3: 1
 
   ganon_bosskey_rewards:
     # With dungeons GCBK: set how many dungeon rewards are required to receive GCBK.
@@ -608,9 +593,7 @@ Ocarina of Time:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 1
     # Maximum value is 9
-    random-range-1-3: 4
-    random-range-4-6: 8
-    random-range-7-9: 4
+    random-range-middle-1-9: 1
 
   ganon_bosskey_tokens:
     # With tokens GCBK: set how many Gold Skulltula Tokens are required to receive GCBK.
@@ -618,11 +601,7 @@ Ocarina of Time:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 1
     # Maximum value is 100
-    random-range-1-10: 2
-    random-range-11-30: 4
-    random-range-31-50: 8
-    random-range-51-70: 4
-    random-range-71-100: 2
+    random-range-middle-1-100: 1
 
   ganon_bosskey_hearts:
     # With hearts GCBK: set how many hearts are required to receive GCBK.
@@ -630,10 +609,7 @@ Ocarina of Time:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 4
     # Maximum value is 20
-    random-range-4-8: 2
-    random-range-9-13: 4
-    random-range-14-18: 2
-    random-range-19-20: 1
+    random-range-middle-4-20: 1
 
   key_rings:
     # A key ring grants all dungeon small keys at once, rather than individually.
@@ -671,8 +647,8 @@ Ocarina of Time:
 
   complete_mask_quest:
     # All masks are immediately available to borrow from the Happy Mask Shop.
-    'false': 0
-    'true': 1
+    'false': 1
+    'true': 8
 
   useful_cutscenes:
     # Reenables the Poe cutscene in Forest Temple, Darunia in Fire Temple, and Twinrova introduction. Mostly useful for
@@ -692,8 +668,8 @@ Ocarina of Time:
 
   fast_bunny_hood:
     # Bunny Hood lets you move 1.5x faster like in Majora's Mask.
-    'false': 50
-    'true': 0
+    'false': 0
+    'true': 1
 
   plant_beans:
     # Pre-plants all 10 magic beans in the soft soil spots.
@@ -1524,11 +1500,11 @@ Ocarina of Time:
   sfx_navi_overworld:
     # Choose a sound effect. "random_choice" selects a random option. "random_ear_safe" selects a random safe option.
     #     "completely_random" selects any random sound.
-    default: 50
+    default: 0
     completely_random: 0
     random_ear_safe: 0
     random_choice: 0
-    none: 0
+    none: 1
     bark: 0
     business_scrub: 0
     carrot_refill: 0
@@ -1561,11 +1537,11 @@ Ocarina of Time:
   sfx_navi_enemy:
     # Choose a sound effect. "random_choice" selects a random option. "random_ear_safe" selects a random safe option.
     #     "completely_random" selects any random sound.
-    default: 50
+    default: 0
     completely_random: 0
     random_ear_safe: 0
     random_choice: 0
-    none: 0
+    none: 1
     bark: 0
     business_scrub: 0
     carrot_refill: 0
@@ -1598,11 +1574,11 @@ Ocarina of Time:
   sfx_low_hp:
     # Choose a sound effect. "random_choice" selects a random option. "random_ear_safe" selects a random safe option.
     #     "completely_random" selects any random sound.
-    default: 50
+    default: 0
     completely_random: 0
     random_ear_safe: 0
     random_choice: 0
-    none: 0
+    none: 1
     bark: 0
     bomb_bounce: 0
     bongo_bongo_low: 0
@@ -1833,7 +1809,9 @@ Ocarina of Time:
   # Item & Location Options
   local_items:
     # Forces these items to be in their native world.
-    []
+    [
+      "Triforce Piece",
+    ]
 
   non_local_items:
     # Forces these items to be outside their native world.
@@ -1868,6 +1846,7 @@ Ocarina of Time:
     []
 
   triggers:
+
   # if not skullsanity, remove 40/50 skull rewards
   - option_category: Ocarina of Time
     option_name: tokensanity
@@ -1877,6 +1856,7 @@ Ocarina of Time:
         +exclude_locations:
           - Kak 40 Gold Skulltula Reward
           - Kak 50 Gold Skulltula Reward
+          
   # hint the relevant wallet if shop prices are potentially expensive
   - option_category: Ocarina of Time
     option_name: shopsanity
@@ -1902,6 +1882,7 @@ Ocarina of Time:
           - Progressive Wallet
           - Progressive Wallet
           - Progressive Wallet
+
   # if small keys are separate, keep them near the dungeon
   - option_category: Ocarina of Time
     option_name: key_rings
@@ -1912,3 +1893,93 @@ Ocarina of Time:
           vanilla: 1
           dungeon: 4
           regional: 2
+
+  # if bridge is vanilla, make light arrows local
+  - option_category: Ocarina of Time
+    option_name: bridge
+    option_result: vanilla
+    options:
+      Ocarina of Time:
+        +local_items:
+          - "Light Arrows"
+
+  # if bridge is tokens, make skull tokens local
+  - option_category: Ocarina of Time
+    option_name: bridge
+    option_result: tokens
+    options:
+      Ocarina of Time:
+        +local_items:
+          - "Gold Skulltula Token"
+
+  # if bridge is hearts, make heart containers and pieces local
+  - option_category: Ocarina of Time
+    option_name: bridge
+    option_result: hearts
+    options:
+      Ocarina of Time:
+        +local_items:
+          - "Heart Container"
+          - "Piece of Heart"
+
+  # if bridge is tokens, make skull tokens local
+  - option_category: Ocarina of Time
+    option_name: shuffle_ganon_bosskey
+    option_result: tokens
+    options:
+      Ocarina of Time:
+        +local_items:
+          - "Gold Skulltula Token"
+
+  # if bridge is hearts, make heart containers and pieces local
+  - option_category: Ocarina of Time
+    option_name: shuffle_ganon_bosskey
+    option_result: hearts
+    options:
+      Ocarina of Time:
+        +local_items:
+          - "Heart Container"
+          - "Piece of Heart"
+
+  # if closed deku is enabled, set a closed_deku_mod value
+  - option_category: Ocarina of Time
+    option_name: open_forest
+    option_result: closed
+    options:
+      Ocarina of Time:
+        closed_forest_fix:
+          sword_and_shield: 1
+          bomb_bag: 1
+          scale: 1
+  
+  # closed deku fix - sword + shield
+  - option_category: Ocarina of Time
+    option_name: closed_forest_fix
+    option_result: sword_and_shield
+    options:
+      Ocarina of Time:
+        plando_items:
+        - item: Kokiri Sword
+          location: KF Kokiri Sword Chest
+        - item: Deku Shield
+          location: KF Midos House Top Left Chest
+
+  # closed deku fix - bomb bag
+  - option_category: Ocarina of Time
+    option_name: closed_forest_fix
+    option_result: bomb_bag
+    options:
+      Ocarina of Time:
+        plando_items:
+        - item: Bomb Bag
+          location: KF Kokiri Sword Chest
+
+  # closed deku fix - progressive scale
+  - option_category: Ocarina of Time
+    option_name: closed_forest_fix
+    option_result: scale
+    options:
+      Ocarina of Time:
+        plando_items:
+        - item: Progressive Scale
+          location: KF Kokiri Sword Chest
