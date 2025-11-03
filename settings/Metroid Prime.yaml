@@ -41,10 +41,7 @@ Metroid Prime:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 1
     # Maximum value is 12
-    random-range-1-4: 1
-    random-range-5-8: 2
-    random-range-9-11: 4
-    12: 8 #default
+    random-range-high-2-12: 1
 
   artifact_hints:
     # If enabled, scanning the artifact stones in the temple will give a hint to their location. Additionally, hints will be pre collected in the client.
@@ -300,10 +297,7 @@ Metroid Prime:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 0
     # Maximum value is 359
-    0: 50
-    random: 0
-    random-low: 0
-    random-high: 0
+    random-low: 1
 
   varia_suit_color:
     # Override the color of the Varia Suit using an index from the game's color wheel.
@@ -311,10 +305,7 @@ Metroid Prime:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 0
     # Maximum value is 359
-    0: 50
-    random: 0
-    random-low: 0
-    random-high: 0
+    random-low: 1
 
   gravity_suit_color:
     # Override the color of the Gravity Suit using an index from the game's color wheel.
@@ -322,10 +313,7 @@ Metroid Prime:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 0
     # Maximum value is 359
-    0: 50
-    random: 0
-    random-low: 0
-    random-high: 0
+    random-low: 1
 
   phazon_suit_color:
     # Override the color of the Phazon Suit using an index from the game's color wheel.
@@ -333,15 +321,26 @@ Metroid Prime:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 0
     # Maximum value is 359
-    0: 50
-    random: 0
-    random-low: 0
-    random-high: 0
+    random-low: 1
 
   # Item & Location Options
   local_items:
     # Forces these items to be in their native world.
-    []
+    [
+      "Morph Ball",
+      "Artifact of Truth",
+      "Artifact of Chozo",
+      "Artifact of Lifegiver",
+      "Artifact of Wild",
+      "Artifact of World",
+      "Artifact of Nature",
+      "Artifact of Strength",
+      "Artifact of Sun",
+      "Artifact of Elder",
+      "Artifact of Spirit",
+      "Artifact of Warrior",
+      "Artifact of Newborn",
+    ]
 
   non_local_items:
     # Forces these items to be outside their native world.
