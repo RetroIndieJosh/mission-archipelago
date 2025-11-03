@@ -30,6 +30,9 @@ remain interesting while being slightly less frustratingly slow to unlock
 - When the bridge requires one medallion or one stone, ensure that the opposite type is given: Is this even possible? There are options for nonlocal rewards/medallions/stones but I dunno what that does since you can't shuffle them in this version
 - Start with bunny hood if Complete Mask Quest is true: doesn't seem possible until we get the new version of OoTR that has starting with Zelda's Letter
 
+### Subnautica
+- Make it more closed for longer: Not sure how to fix this, but particularly at higher difficulty depths, the game opens up the entire overworld map (and some of the underworld) as soon as you find the local seaglide pieces
+
 ## TODO - BUGS
 - fails in weights mode because weights.yaml isn't set up correctly
 
