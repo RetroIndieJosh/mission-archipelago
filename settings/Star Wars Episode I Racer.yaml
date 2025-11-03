@@ -66,9 +66,7 @@ Star Wars Episode I Racer:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 1
     # Maximum value is 23
-    random-range-1-6: 4
-    random-range-7-15: 2
-    random-range-16-23: 1
+    random-range-low-1-23: 1
 
   starting_racers_plando:
     # List of specific racers with which to start
@@ -81,9 +79,7 @@ Star Wars Episode I Racer:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 0
     # Maximum value is 22
-    random-range-0-6: 1
-    random-range-7-15: 2
-    random-range-16-22: 4
+    random-range-low-0-22: 1
 
   mirrored_tracks:
     # How many tracks should be mirrored
@@ -91,10 +87,7 @@ Star Wars Episode I Racer:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 0
     # Maximum value is 25
-    0: 8
-    random-range-1-6: 4
-    random-range-7-15: 2
-    random-range-16-25: 1
+    random-range-low-0-25: 1
 
   disable_part_damage:
     # Prevents parts from being damaged and removes pit droids from the item pool
@@ -154,16 +147,7 @@ Star Wars Episode I Racer:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 1
     # Maximum value is 10
-    1: 8
-    2: 4
-    3: 2
-    4: 1
-    #5: 
-    #6: 
-    #7: 
-    #8: 
-    #9: 
-    #10: 
+    random-range-low-1-10: 1
 
   course_plando:
     # Sets specific courses
@@ -219,3 +203,7 @@ Star Wars Episode I Racer:
   item_links:
     # Share part of your item pool with other players.
     []
+
+  plando_items:
+  - item: Ben Quadrinaros
+    location: Watto's Shop - Top Speed 5 (16 races)

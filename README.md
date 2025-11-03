@@ -26,6 +26,10 @@ part of a larger chain (and especially don't hide guns)?
 - Start with all levels, or start with all keys: See if either of these options
 remain interesting while being slightly less frustratingly slow to unlock
 
+### Ocarina of Time
+- When the bridge requires one medallion or one stone, ensure that the opposite type is given: Is this even possible? There are options for nonlocal rewards/medallions/stones but I dunno what that does since you can't shuffle them in this version
+- Start with bunny hood if Complete Mask Quest is true: doesn't seem possible until we get the new version of OoTR that has starting with Zelda's Letter
+
 ## TODO - BUGS
 - fails in weights mode because weights.yaml isn't set up correctly
 
