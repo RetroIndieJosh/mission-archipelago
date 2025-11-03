@@ -72,6 +72,10 @@ Stardew Valley:
     shuffled: 2
 
   bundle_price:
+    # see trigger for goal = community_center to modify this for that goal
+    # DO NOT set to very_expensive or maximum here, otherwise you'll potentially
+    # get weird forced sanities irrelevant to the current goal
+    #
     # How many items are needed for the community center bundles?
     # Minimum: Every bundle will require only one item
     # Very Cheap: Every bundle will require 2 items fewer than usual
@@ -80,13 +84,13 @@ Stardew Valley:
     # Expensive: Every bundle will require 1 extra item
     # Very Expensive: Every bundle will require 2 extra items
     # Maximum: Every bundle will require many extra items
-    minimum: 2
-    very_cheap: 8
-    cheap: 32
-    normal: 64
+    minimum: 1
+    very_cheap: 2
+    cheap: 4
+    normal: 8
     expensive: 16
-    very_expensive: 4
-    maximum: 1
+    very_expensive: 0
+    maximum: 0
 
   entrance_randomization:
     # Should area entrances be randomized?
@@ -235,15 +239,7 @@ Stardew Valley:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 0
     # Maximum value is 56
-    random: 0
-    random-low: 0
-    random-high: 0
-    none: 4 # equivalent to -1
-    story: 32 # equivalent to 0
-    minimum: 8 # equivalent to 7
-    normal: 16 # equivalent to 14
-    lots: 2 # equivalent to 28
-    maximum: 1 # equivalent to 56
+    random-low: 1
 
   fishsanity:
     # Locations for catching each fish the first time?
@@ -295,10 +291,7 @@ Stardew Valley:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 1
     # Maximum value is 8
-    4: 0
-    random: 1
-    random-low: 0
-    random-high: 0
+    random-middle: 1
 
   monstersanity:
     # Locations for slaying monsters?
@@ -355,16 +348,12 @@ Stardew Valley:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 0
     # Maximum value is 15
-    random: 0
-    random-low: 0
-    random-high: 0
     none: 64 # equivalent to 0
     queen_of_sauce: 32 # equivalent to 1
     purchases: 32 # equivalent to 2
     qos_and_purchases: 16 # equivalent to 3
-    skills: 4 # equivalent to 4
-    friendship: 4 # equivalent to 8
-    all: 1 # equivalent to 15
+    random-range-low-4-8: 4
+    random-range-low-9-15: 1
 
   craftsanity:
     # Checks for crafting items?
@@ -400,19 +389,8 @@ Stardew Valley:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 0
     # Maximum value is 50000
-    random-range-0-500: 1
-    random-range-501-1000: 8
-    random-range-1001-4000: 16
-    random-range-4001-10000: 8
-    random-range-10001-20000: 4
-    random-range-20001-30000: 2
-    random-range-30001-50000: 1
-    #unlimited: 0 # equivalent to -1
-    #vanilla: 0 # equivalent to 500
-    #extra: 0 # equivalent to 2000
-    #rich: 0 # equivalent to 5000
-    #very rich: 0 # equivalent to 20000
-    #filthy rich: 0 # equivalent to 50000
+    random-range-middle-0-20000: 2
+    random-range-low-20001-50000: 1
 
   profit_margin:
     # Multiplier over all gold earned in-game by the player.
@@ -420,12 +398,8 @@ Stardew Valley:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 25
     # Maximum value is 400
-    random-range-25-49: 1
-    random-range-50-74: 2
-    random-range-75-124: 8
-    random-range-125-149: 4
-    random-range-150-249: 2
-    random-range-250-400: 1
+    random-range-middle-25-125: 2
+    random-range-low-126-400: 1
 
   experience_multiplier:
     # How fast you want to earn skill experience.
@@ -435,12 +409,9 @@ Stardew Valley:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 25
     # Maximum value is 800
-    random-range-25-49: 1
-    random-range-50-74: 2
-    random-range-75-124: 8
-    random-range-125-149: 4
-    random-range-150-249: 2
-    random-range-250-400: 1
+    random-range-middle-25-125: 4
+    random-range-low-126-400: 2
+    random-range-low-401-800: 1
 
   friendship_multiplier:
     # How fast you want to earn friendship points with villagers.
@@ -450,12 +421,9 @@ Stardew Valley:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 25
     # Maximum value is 800
-    random-range-25-49: 1
-    random-range-50-74: 2
-    random-range-75-124: 8
-    random-range-125-149: 4
-    random-range-150-249: 2
-    random-range-250-400: 1
+    random-range-middle-25-125: 4
+    random-range-low-126-400: 2
+    random-range-low-401-800: 1
 
   debris_multiplier:
     # How much debris will spawn on the player's farm?
@@ -477,10 +445,7 @@ Stardew Valley:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 0
     # Maximum value is 12
-    0: 1
-    random-range-1-4: 2
-    random-range-5-8: 4
-    random-range-9-12: 2
+    random-range-low-4-12: 1
 
   enabled_filler_buffs:
     # Enable various permanent player buffs to roll as filler items
@@ -548,16 +513,7 @@ Stardew Valley:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 0
     # Maximum value is 200
-    0: 4
-    random-range-1-10: 8
-    random-range-11-25: 4
-    random-range-26-50: 2
-    random-range-51-100: 1
-    #free: 0 # equivalent to 0
-    #cheap: 0 # equivalent to 10
-    #medium: 0 # equivalent to 25
-    #expensive: 0 # equivalent to 50
-    #very expensive: 0 # equivalent to 100
+    random-low: 1
 
   quick_start:
     # Do you want the quick start package? You will get a few items to help early game automation,
@@ -644,6 +600,7 @@ Stardew Valley:
     []
 
   triggers:
+
   # if goal is bottom of the mines, increase probability of monster goals
   - option_category: Stardew Valley
     option_name: goal
@@ -659,6 +616,7 @@ Stardew Valley:
           very_short_goals: 32
           progressive_goals: 128
           split_goals: 16
+
   # if goal is cryptic note, increase probability of monster goals
   - option_category: Stardew Valley
     option_name: goal
@@ -674,6 +632,7 @@ Stardew Valley:
           very_short_goals: 32
           progressive_goals: 128
           split_goals: 16
+
   # if goal is master angler, force fishsanity
   - option_category: Stardew Valley
     option_name: goal
@@ -681,6 +640,7 @@ Stardew Valley:
     options:
       Stardew Valley:
         fishsanity: all
+
   # if goal is complete collection, force museumsanity
   - option_category: Stardew Valley
     option_name: goal
@@ -688,6 +648,7 @@ Stardew Valley:
     options:
       Stardew Valley:
         museumsanity: all
+
   # if goal is protector of the valley, force monstersanity
   - option_category: Stardew Valley
     option_name: goal
@@ -695,6 +656,7 @@ Stardew Valley:
     options:
       Stardew Valley:
         monstersanity: progressive_goals
+
   # if goal is full shipment, force shipsanity
   - option_category: Stardew Valley
     option_name: goal
@@ -702,6 +664,7 @@ Stardew Valley:
     options:
       Stardew Valley:
         shipsanity: full_shipment
+
   # if goal is gourmet chef, force cooksanity and chefsanity
   - option_category: Stardew Valley
     option_name: goal
@@ -710,6 +673,7 @@ Stardew Valley:
       Stardew Valley:
         cooksanity: all
         chefsanity: all
+
   # if goal is craft master, force craftsanity
   - option_category: Stardew Valley
     option_name: goal
@@ -717,3 +681,40 @@ Stardew Valley:
     options:
       Stardew Valley:
         craftsanity: all
+  
+  # if goal is community center, shuffle bundle prices
+  - option_category: Stardew Valley
+    option_name: goal
+    option_result: community_center
+    options:
+      Stardew Valley:
+        bundle_price:
+          minimum: 4
+          very_cheap: 8
+          cheap: 32
+          normal: 64
+          expensive: 16
+          very_expensive: 2
+          maximum: 1
+
+  # if bundles are very expensive, enable more sanities
+  - option_category: Stardew Valley
+    option_name: bundle_price
+    option_result: very_expensive
+    options:
+      Stardew Valley:
+        shipsanity: full_shipment
+        cooksanity: queen_of_sauce
+        chefsanity: random-low
+
+  # if bundles are maximum, enable max sanities
+  - option_category: Stardew Valley
+    option_name: bundle_price
+    option_result: maximum
+    options:
+      Stardew Valley:
+        shipsanity: full_shipment_with_fish
+        cooksanity: all
+        chefsanity: random-high
+        museumsanity: all
+        monstersanity: progressive_goals
