@@ -135,7 +135,8 @@ Subnautica:
 
   start_inventory:
     # Start with these items.
-    {}
+    Compass: 1
+    Beacon Fragment: 1
 
   start_hints:
     # Start with these item's locations prefilled into the ``!hint`` command.
