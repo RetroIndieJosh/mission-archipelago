@@ -38,12 +38,7 @@ Bumper Stickers:
     # Default is 4
     # Minimum value is 0
     # Maximum value is 5
-    0: 1
-    1: 2
-    2: 4
-    3: 8
-    4: 16
-    5: 8
+    random-range-high-1-5: 1
 
   turners:
     # Turners allow you to change the direction of a Bumper. These restock when the board resets.
@@ -52,12 +47,7 @@ Bumper Stickers:
     # Default is 3
     # Minimum value is 0
     # Maximum value is 5
-    0: 1
-    1: 2
-    2: 4
-    3: 8
-    4: 4
-    5: 2
+    random-range-middle-1-5: 1
 
   paint_cans:
     # Paint Cans allow you to change the color of a Bumper.
@@ -67,12 +57,7 @@ Bumper Stickers:
     # Default is 3
     # Minimum value is 0
     # Maximum value is 5
-    0: 1
-    1: 2
-    2: 4
-    3: 8
-    4: 4
-    5: 2
+    random-range-middle-1-5: 1
 
   trap_count:
     # Traps affect the board in various ways.
@@ -82,10 +67,8 @@ Bumper Stickers:
     # Default is 5
     # Minimum value is 0
     # Maximum value is 15
-    random-range-0-3: 2
-    random-range-4-6: 4
-    random-range-7-10: 2
-    random-range-11-15: 1
+    random-range-middle-0-10: 2
+    random-range-low-11-15: 1
 
   rainbow_trap_weight:
     # Rainbow Traps change the color of every bumper on the field.
@@ -93,10 +76,8 @@ Bumper Stickers:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 0
     # Maximum value is 100
-    50: 0
-    random: 1
-    random-low: 0
-    random-high: 0
+    # Default is 50
+    random-range-middle-0-100: 1
 
   spinner_trap_weight:
     # Spinner Traps change the direction of every bumper on the field.
@@ -104,10 +85,8 @@ Bumper Stickers:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 0
     # Maximum value is 100
-    50: 0
-    random: 1
-    random-low: 0
-    random-high: 0
+    # Default is 50
+    random-range-middle-0-100: 1
 
   killer_trap_weight:
     # Killer Traps end the current board immediately.
@@ -115,10 +94,9 @@ Bumper Stickers:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 0
     # Maximum value is 100
-    0: 0
-    random: 1
-    random-low: 0
-    random-high: 0
+    # Default is 0
+    0: 2
+    random-range-low-1-100: 1
 
   ###########################
   # Item & Location Options #
