@@ -1,7 +1,7 @@
 ﻿name: CotM-{player}
 description: Mission Archipelago - Castlevania - Circle of the Moon
 requires:
-  version: 0.6.2 # Version of Archipelago required for this yaml to work as expected.
+  version: 0.6.4 # Version of Archipelago required for this yaml to work as expected.
 
 Castlevania - Circle of the Moon:
   # Game Options
@@ -210,6 +210,8 @@ Castlevania - Circle of the Moon:
   non_local_items:
     # Forces these items to be outside their native world.
     []
+  
+  plando_items: []
 
   start_inventory:
     # Start with these items.
