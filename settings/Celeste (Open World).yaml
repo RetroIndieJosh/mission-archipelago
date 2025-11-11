@@ -1,7 +1,7 @@
 ﻿name: Celeste-{player}
 description: Celeste (Open World) - Mission Archipelago
 requires:
-  version: 0.6.2 # Version of Archipelago required for this yaml to work as expected.
+  version: 0.6.4 # Version of Archipelago required for this yaml to work as expected.
 
 Celeste (Open World):
   ################
@@ -88,11 +88,7 @@ Celeste (Open World):
     # Minimum value is 0
     # Maximum value is 202
     0: 1
-    random-range-1-10: 2
-    random-range-11-30: 4
-    random-range-31-70: 8
-    random-range-71-100: 4
-    random-range-101-150: 2
+    random-range-middle-1-150: 16
     random-range-151-202: 1
 
   strawberries_required_percentage:
@@ -102,13 +98,8 @@ Celeste (Open World):
     # Default is 80
     # Minimum value is 0
     # Maximum value is 100
-    0: 1
-    random-range-1-10: 2
-    random-range-11-30: 4
-    random-range-31-50: 8
-    random-range-51-70: 16
-    random-range-71-90: 4
-    random-range-91-100: 1
+    random-range-high-0-60: 1
+    random-range-middle-60-100: 16
 
   ####################
   # Location Options #
@@ -179,10 +170,7 @@ Celeste (Open World):
     # Default is 50
     # Minimum value is 0
     # Maximum value is 100
-    0: 1
-    random-range-1-25: 2
-    random-range-26-75: 4
-    random-range-76-100: 1
+    random-range-middle-1-100: 1
 
   trap_fill_percentage:
     # Replace a percentage of junk items in the item pool with random traps
