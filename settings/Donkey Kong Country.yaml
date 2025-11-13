@@ -63,12 +63,8 @@ Donkey Kong Country:
     # Minimum value is 1
     # Maximum value is 6
     # Default 4
-    1: 1
-    2: 2
-    3: 4
-    4: 8
-    5: 4
-    6: 1
+    random-range-high-1-2: 2
+    random-range-middle-3-5: 6
 
   required_jungle_levels:
     # How many levels in Kongo Jungle need to be cleared to fight Very Gnawty
@@ -77,11 +73,8 @@ Donkey Kong Country:
     # Minimum value is 1
     # Maximum value is 5
     # Default 4
-    1: 1
-    2: 2
-    3: 4
-    4: 8
-    5: 1
+    random-range-high-1-2: 2
+    random-range-middle-3-5: 6
 
   required_mines_levels:
     # How many levels in Monkey Mines need to be cleared to fight Master Necky
@@ -90,11 +83,8 @@ Donkey Kong Country:
     # Minimum value is 1
     # Maximum value is 5
     # Default 4
-    1: 1
-    2: 2
-    3: 4
-    4: 8
-    5: 1
+    random-range-high-1-2: 2
+    random-range-middle-3-5: 6
 
   required_valley_levels:
     # How many levels in Vine Valley need to be cleared to fight Queen B.
@@ -104,11 +94,7 @@ Donkey Kong Country:
     # Maximum value is 6
     # Default 4
     1: 1
-    2: 2
-    3: 4
-    4: 8
-    5: 4
-    6: 1
+    random-range-middle-2-6: 5
 
   required_glacier_levels:
     # How many levels in Gorilla Glacier need to be cleared to fight Really Gnawty
@@ -118,11 +104,7 @@ Donkey Kong Country:
     # Maximum value is 6
     # Default 4
     1: 1
-    2: 2
-    3: 4
-    4: 8
-    5: 4
-    6: 1
+    random-range-middle-2-6: 5
 
   required_industries_levels:
     # How many levels in Kremkroc Industries Inc. need to be cleared to fight Dumb Drum
@@ -132,11 +114,7 @@ Donkey Kong Country:
     # Maximum value is 6
     # Default 4
     1: 1
-    2: 2
-    3: 4
-    4: 8
-    5: 4
-    6: 1
+    random-range-middle-2-6: 5
 
   required_caverns_levels:
     # How many levels in Chimp Caverns need to be cleared to fight Master Necky Snr.
@@ -145,11 +123,8 @@ Donkey Kong Country:
     # Minimum value is 1
     # Maximum value is 5
     # Default 4
-    1: 1
-    2: 2
-    3: 4
-    4: 8
-    5: 1
+    random-range-high-1-2: 2
+    random-range-middle-3-5: 6
 
   # Locations
   logic:
@@ -200,7 +175,7 @@ Donkey Kong Country:
 
   starting_kong:
     # Which Kongs will be available at the start
-    donkey: 2
+    donkey: 4
     diddy: 2
     both: 1
 
@@ -250,10 +225,9 @@ Donkey Kong Country:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 0
     # Maximum value is 100
-    0: 50
-    random: 0
-    random-low: 0
-    random-high: 0
+    # Default 0
+    0: 2
+    random-range-low-1-100: 1
 
   jump_trap_weight:
     # Likelihood of a receiving a trap which makes the player jump uncontrollably
