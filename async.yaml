@@ -2,7 +2,7 @@ name: Player-{player}
 
 description: RetroIndieJosh - Mission Archipelago Game Weights
 requires:
-  version: 0.6.3
+  version: 0.6.4
 
 # count - generate the exact number of games given
 # weights - use values in game section as weights (total # of games specified on generation)
@@ -64,9 +64,10 @@ game:
   Yacht Dice: 0
   # rank 5
   Actraiser: 0
-  Celeste (Open World): 1
+  Celeste (Open World): 0
   ChecksFinder: 0
   ChecksMate: 0
+  Donkey Kong Country: 0
   Donkey Kong Country 2: 0
   Donkey Kong Country 3: 0
   Final Fantasy IV Free Enterprise: 0
