@@ -1,7 +1,7 @@
 ﻿name: DKC2-{player}
 description: Mission Archipelago - Donkey Kong Country 2
 requires:
-  version: 0.6.2 # Version of Archipelago required for this yaml to work as expected.
+  version: 0.6.4 # Version of Archipelago required for this yaml to work as expected.
 
 Donkey Kong Country 2:
   # Game Options
@@ -13,12 +13,7 @@ Donkey Kong Country 2:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 0
     # Maximum value is 99
-    random: 0
-    random-low: 0
-    random-high: 0
-    disabled: 0 # equivalent to 0
-    normal: 50 # equivalent to 50
-    extreme: 0 # equivalent to 99
+    normal: 1 # equivalent to 50
 
   accessibility:
     # Set rules for reachability of your items/locations.
@@ -82,10 +77,12 @@ Donkey Kong Country 2:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 0
     # Maximum value is 99
-    5: 50
-    random: 0
-    random-low: 0
-    random-high: 0
+    # Default 5
+    0: 1
+    random-range-middle-2-10: 8
+    random-range-low-11-20: 4
+    random-range-low-21-40: 2
+    random-range-low-41-99: 1
 
   # Goal
   goal:
@@ -104,16 +101,8 @@ Donkey Kong Country 2:
     #
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 0
-    # Maximum value is 5
-    0: 1
-    1: 2
-    2: 4
-    3: 8
-    4: 16
-    5: 32
-    random: 0
-    random-low: 0
-    random-high: 0
+    # Maximum value is 5 (Default)
+    random-range-high-0-5: 1
 
   required_galleon_levels:
     # How many levels in Gangplank Galleon need to be cleared to fight the area boss
@@ -121,15 +110,9 @@ Donkey Kong Country 2:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 0
     # Maximum value is 5
-    0: 1
-    1: 2
-    2: 4
-    3: 8
-    4: 16
-    5: 8
-    random: 0
-    random-low: 0
-    random-high: 0
+    # Default 4
+    random-range-high-0-2: 3
+    random-range-middle-3-5: 6
 
   required_cauldron_levels:
     # How many levels in Crocodile Cauldron need to be cleared to fight the area boss
@@ -137,15 +120,9 @@ Donkey Kong Country 2:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 0
     # Maximum value is 5
-    0: 1
-    1: 2
-    2: 4
-    3: 8
-    4: 16
-    5: 8
-    random: 0
-    random-low: 0
-    random-high: 0
+    # Default 4
+    random-range-high-0-2: 3
+    random-range-middle-3-5: 6
 
   required_quay_levels:
     # How many levels in Krem Quay need to be cleared to fight the area boss
@@ -153,16 +130,9 @@ Donkey Kong Country 2:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 0
     # Maximum value is 6
-    0: 1
-    1: 2
-    2: 4
-    3: 8
-    4: 16
-    5: 8
-    6: 4
-    random: 0
-    random-low: 0
-    random-high: 0
+    # Default 4
+    random-range-high-0-1: 2
+    random-range-middle-2-6: 10
 
   required_kremland_levels:
     # How many levels in Krazy Kremland need to be cleared to fight the area boss
@@ -170,16 +140,9 @@ Donkey Kong Country 2:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 0
     # Maximum value is 6
-    0: 1
-    1: 2
-    2: 4
-    3: 8
-    4: 16
-    5: 8
-    6: 4
-    random: 0
-    random-low: 0
-    random-high: 0
+    # Default 4
+    random-range-high-0-1: 1
+    random-range-middle-2-6: 10
 
   required_gulch_levels:
     # How many levels in Gloomy Gulch need to be cleared to fight the area boss
@@ -187,15 +150,9 @@ Donkey Kong Country 2:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 0
     # Maximum value is 5
-    0: 1
-    1: 2
-    2: 4
-    3: 8
-    4: 16
-    5: 8
-    random: 0
-    random-low: 0
-    random-high: 0
+    # Default 4
+    random-range-high-0-2: 3
+    random-range-middle-3-5: 6
 
   required_keep_levels:
     # How many levels in K. Rool's Keep need to be cleared to fight the area boss
@@ -203,16 +160,10 @@ Donkey Kong Country 2:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 0
     # Maximum value is 6
+    # Default 4
     0: 1
     1: 2
-    2: 4
-    3: 8
-    4: 16
-    5: 8
-    6: 4
-    random: 0
-    random-low: 0
-    random-high: 0
+    random-range-middle-2-6: 10
 
   required_krock_levels:
     # How many levels in The Flying Krock need to be cleared to fight the area boss
@@ -220,11 +171,9 @@ Donkey Kong Country 2:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 0
     # Maximum value is 1
+    # Default 1
     0: 1
     1: 2
-    random: 0
-    random-low: 0
-    random-high: 0
 
   lost_world_rocks:
     # How many rocks are required to be found to be able to duel K. Rool at Lost World's Kore
@@ -232,19 +181,8 @@ Donkey Kong Country 2:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 1
     # Maximum value is 10
-    1: 2
-    2: 4
-    3: 8
-    4: 16
-    5: 32
-    6: 16
-    7: 8
-    8: 4
-    9: 2
-    10: 1
-    random: 0
-    random-low: 0
-    random-high: 0
+    # Default 5
+    random-range-middle-1-10: 1
 
   extra_lost_world_rocks:
     # How many additional Lost World Rocks can be found in the multiworld
@@ -252,15 +190,9 @@ Donkey Kong Country 2:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 0
     # Maximum value is 5
+    # Default 3
     0: 1
-    1: 2
-    2: 4
-    3: 8
-    4: 4
-    5: 2
-    random: 0
-    random-low: 0
-    random-high: 0
+    random-range-1-5: 5
 
   lost_world_rock_placement:
     # Determines how Lost World Rocks will be placed in the multiworld
@@ -299,7 +231,7 @@ Donkey Kong Country 2:
     # Whether collecting a colored balloon in levels will grant a check
     # 
     # Doesn't include balloons from the goal or Black Klobbers
-    'false': 4
+    'false': 8
     'true': 1
 
   coinsanity:
@@ -336,46 +268,17 @@ Donkey Kong Country 2:
   shuffle_abilities:
     # Which abilities will be added as items in the item pool
     # If an ability is not present in the list they will be treated as unlocked from the start
-    # If you remove everything from this list, please put curly braces next to the option name
-    # 
-    #     shuffle_abilities: {}
-    # 
-    - Carry
-    - Swim
-    - Cartwheel
-    - Cling
-    - Climb
-    - Helicopter Spin
-    - Team Attack
+    ['Swim', 'Cling', 'Climb', 'Team Attack', 'Carry', 'Cartwheel', 'Helicopter Spin']
 
   shuffle_animals:
     # Which animal buddies will be added as items in the item pool
     # If an animal buddy is not present in the list they will be treated as unlocked from the start
-    # If you remove everything from this list, please put curly braces next to the option name
-    # 
-    #     shuffle_animals: {}
-    # 
-    - Rambi
-    - Squawks
-    - Enguarde
-    - Squitter
-    - Rattly
-    - Clapper
-    - Glimmer
-    - Skull Kart
+    ['Rambi', 'Glimmer', 'Rattly', 'Enguarde', 'Squawks', 'Clapper', 'Skull Kart', 'Squitter']
 
   shuffle_barrels:
     # Which kind of barrels will be added as items in the item pool
     # If a barrel is not present in the list they will be treated as unlocked from the start
-    # If you remove everything from this list, please put curly braces next to the option name
-    # 
-    #     shuffle_barrels: {}
-    # 
-    - Barrel Kannons
-    - Controllable Barrels
-    - Kong Barrels
-    - Warp Barrels
-    - Exclamation Barrels
+    ['Warp Barrels', 'Kong Barrels', 'Exclamation Barrels', 'Controllable Barrels', 'Barrel Kannons']
 
   # Trivia
   swanky_questions_per_quiz:
@@ -384,12 +287,8 @@ Donkey Kong Country 2:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 1
     # Maximum value is 6
-    1: 2
-    2: 4
-    3: 8
-    4: 4
-    5: 2
-    6: 1
+    # Default is 1
+    random-range-low-1-6: 1
 
   swanky_forced_topics:
     # Which additional topics will be added to Swanky's Bonus Bonanza pool of questions.
@@ -527,10 +426,9 @@ Donkey Kong Country 2:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 0
     # Maximum value is 100
-    0: 4
-    random: 1
-    random-low: 0
-    random-high: 0
+    # Default 0
+    0: 2
+    random-range-low-1-100: 1
 
   freeze_trap_weight:
     # Likelihood of a receiving a trap which freezes the controllable kong
@@ -854,3 +752,7 @@ Donkey Kong Country 2:
     # 
     # The game decides what the replacement items will be.
     {}
+
+  plando_items:
+    # Generic items plando.
+    []
