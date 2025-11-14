@@ -50,10 +50,10 @@ Donkey Kong Country:
     # Maximum value is 99
     # Default 5
     0: 1
-    random-range-middle-2-10: 8
-    random-range-low-11-20: 4
-    random-range-low-21-40: 2
-    random-range-low-41-99: 1
+    random-range-middle-2-10: 288
+    random-range-low-11-20: 160
+    random-range-low-21-40: 80
+    random-range-low-41-99: 118
 
   # Goal
   gangplank_tokens:
