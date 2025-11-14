@@ -1,7 +1,7 @@
 ﻿name: DKC3-{player}
 description: Mission Archipelago - Donkey Kong Country 3
 requires:
-  version: 0.6.2 # Version of Archipelago required for this yaml to work as expected.
+  version: 0.6.4 # Version of Archipelago required for this yaml to work as expected.
 
 Donkey Kong Country 3:
   ################
@@ -84,10 +84,9 @@ Donkey Kong Country 3:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 1
     # Maximum value is 17
-    15: 2
-    random: 1
-    random-low: 1
-    random-high: 2
+    # Default 15
+    random-range-high-1-12: 6
+    random-range-middle-13-17: 5
 
   percentage_of_extra_bonus_coins:
     # What Percentage of unneeded Bonus Coins are included in the item pool
@@ -95,10 +94,10 @@ Donkey Kong Country 3:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 0
     # Maximum value is 100
-    100: 2
-    random: 1
-    random-low: 1
-    random-high: 2
+    # Default 100
+    random-range-high-0-50: 5
+    random-range-high-51-90: 8
+    random-range-high-91-100: 4
 
   number_of_banana_birds:
     # How many Banana Birds are put into the item pool
@@ -106,10 +105,9 @@ Donkey Kong Country 3:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 5
     # Maximum value is 15
-    15: 2
-    random: 1
-    random-low: 1
-    random-high: 2
+    # Default 15
+    random-range-high-5-10: 3
+    random-range-high-11-15: 5
 
   percentage_of_banana_birds:
     # What Percentage of Banana Birds in the item pool are required for Banana Bird Hunt
@@ -117,10 +115,10 @@ Donkey Kong Country 3:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 20
     # Maximum value is 100
-    100: 2
-    random: 1
-    random-low: 1
-    random-high: 2
+    # Default 100
+    random-range-high-20-50: 31
+    random-range-high-51-90: 80
+    random-range-high-91-100: 40
 
   ##############
   # Aesthetics #
@@ -158,10 +156,11 @@ Donkey Kong Country 3:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 1
     # Maximum value is 99
-    5: 4
-    random: 1
-    random-low: 2
-    random-high: 1
+    0: 1
+    random-range-middle-2-10: 288
+    random-range-low-11-20: 160
+    random-range-low-21-40: 80
+    random-range-low-41-99: 118
 
   ###########################
   # Item & Location Options #
