@@ -219,13 +219,13 @@ Donkey Kong Country 2:
 
   kong_checks:
     # Whether collecting all KONG letters in each level will grant a check
-    'false': 1
-    'true': 4
+    'false': 4
+    'true': 1
 
   dk_coin_checks:
     # Whether collecting a DK Coin in each level will grant a check
-    'false': 1
-    'true': 4
+    'false': 2
+    'true': 1
 
   balloonsanity:
     # Whether collecting a colored balloon in levels will grant a check
