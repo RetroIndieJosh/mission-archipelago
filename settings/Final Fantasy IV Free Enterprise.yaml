@@ -1,7 +1,7 @@
 ﻿name: FFIVFE-{player}
 description: Mission Archipelago - Final Fantasy IV Free Enterprise
 requires:
-  version: 0.6.2 # Version of Archipelago required for this yaml to work as expected.
+  version: 0.6.4 # Version of Archipelago required for this yaml to work as expected.
 
 Final Fantasy IV Free Enterprise:
   ################
@@ -15,12 +15,8 @@ Final Fantasy IV Free Enterprise:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 0
     # Maximum value is 99
-    random: 0
-    random-low: 0
-    random-high: 0
     disabled: 0 # equivalent to 0
     normal: 50 # equivalent to 50
-    extreme: 0 # equivalent to 99
 
   accessibility:
     # Set rules for reachability of your items/locations.
@@ -34,46 +30,62 @@ Final Fantasy IV Free Enterprise:
   #####################
   # Objective Options #
   #####################
+  MainObjective:
+    # The primary objective (determined with triggers).
+    # crystal, giant, fiends, dark-matter: only one main objective as defined below
+    # crystal-plus, etc.: definitely has the i.e. crystal objective, plus 0-3 other main objectives
+    # none: no main objectives, just bonus ones
+    crystal: 128
+    giant: 64
+    fiends: 32
+    dark-matter: 16
+    crystal-plus: 2
+    giant-plus: 2
+    fiends-plus: 2
+    dark-matter-plus: 2
+    none: 1
+
   ForgeTheCrystal:
     # Bring the Adamant and Legend Sword to clear this objective.
     # Forces the objective reward to be the Crystal.
-    'false': 8
-    'true': 1
+    # Always false - otherwise breaks MainObjective triggers.
+    'false': 1
+    'true': 0
 
   ConquerTheGiant:
     # Clear the Giant of Bab-il to clear this objective.
     # No character will be available from the Giant with this objective.
-    'false': 8
-    'true': 1
+    # Always false - otherwise breaks MainObjective triggers.
+    'false': 1
+    'true': 0
 
   DefeatTheFiends:
     # Defeat every elemental fiend to clear this objective.
     # Your targets are Milon, Milon Z., Kainazzo, Valvalis, Rubicant, and the Elements bosses. Good hunting.
-    'false': 8
-    'true': 1
+    # Always false - otherwise breaks MainObjective triggers.
+    'false': 1
+    'true': 0
 
   FindTheDarkMatter:
     # Find thirty Dark Matters and deliver them to Kory in Agart to clear this objective.
     # There are forty-five Dark Matters in total.
-    'false': 8
-    'true': 1
+    # Always false - otherwise breaks MainObjective triggers.
+    'false': 1
+    'true': 0
 
   AdditionalObjectives:
     # The number of additional random objectives. Can be quests, boss fights, or character recruitments. Note that
     # no matter what this is set to, no more than thirty-two objectives will be set.
     #
     # You can define additional values between the minimum and maximum values.
-    # Default is 0
     # Minimum value is 0
     # Maximum value is 32
-    0: 128
-    random-range-1-4: 64
-    random-range-5-8: 32
-    random-range-9-12: 16
-    random-range-13-16: 8
-    random-range-16-20: 4
-    random-range-21-26: 2
-    random-range-27-32: 1
+    # Default is 0
+    0: 16
+    random-range-low-1-4: 32
+    random-range-low-5-10: 24
+    random-range-low-11-20: 20
+    random-range-low-21-32: 12
 
   RequiredObjectiveCount:
     # The number of objectives required for victory. Note that this is ignored when no objectives are set. If this
@@ -83,12 +95,13 @@ Final Fantasy IV Free Enterprise:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 1
     # Maximum value is 32
+    # Default is 32
     32: 1 # whatever objectives are generated, we should be required to do them
 
   ObjectiveReward:
     # The reward for clearing all objectives. Note that this is ignored when no objectives are set,
     # and Forge the Crystal forces this to the Crystal setting.
-    crystal: 4
+    crystal: 2
     win: 1
 
   #####################
@@ -137,11 +150,11 @@ Final Fantasy IV Free Enterprise:
     major_minor_split: 0
 
   ItemRandomization:
-    # Affects item pool
-    standard: 0
-    wild: 50
-    pro: 0
-    wildish: 0
+    # Affects item pool - default is wild but that's... wild
+    standard: 8
+    pro: 4
+    wildish: 2
+    wild: 1
 
   PassEnabled:
     # Will the Pass be included in the Key Item Pool?
@@ -159,10 +172,8 @@ Final Fantasy IV Free Enterprise:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 1
     # Maximum value is 4
-    1: 50
-    random: 0
-    random-low: 0
-    random-high: 0
+    # Default is 1
+    random-range-low-1-4: 1
 
   MaxTier:
     # The maximum tier of items that can appear in the item pool.
@@ -170,10 +181,8 @@ Final Fantasy IV Free Enterprise:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 5
     # Maximum value is 8
-    8: 50
-    random: 0
-    random-low: 0
-    random-high: 0
+    # Default is 8
+    random-range-high-5-8: 1
 
   JunkTier:
     # Items of this tier or below will automatically be sold for cold hard cash.
@@ -181,6 +190,7 @@ Final Fantasy IV Free Enterprise:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 0
     # Maximum value is 8
+    # Default is 1
     1: 50
     random: 0
     random-low: 0
@@ -201,20 +211,20 @@ Final Fantasy IV Free Enterprise:
     # Enable the Hero Challenge. In Hero Challenge, your starting character is your main character and cannot be
     # dismissed. They will face the top of Mt. Ordeals on their own, and Kokkol will forge a weapon from FFIV Advance
     # for them (unless Forge the Crystal is set).
-    none: 4
-    cecil: 0
-    kain: 0
-    rydia: 0
-    tellah: 0
-    edward: 0
-    rosa: 0
-    yang: 0
-    palom: 0
-    porom: 0
-    cid: 0
-    edge: 0
-    fusoya: 0
-    random_character: 1
+    none: 32
+    cecil: 8
+    kain: 4
+    rydia: 4
+    tellah: 4
+    edward: 2
+    rosa: 2
+    yang: 2
+    palom: 2
+    porom: 2
+    cid: 2
+    edge: 1
+    fusoya: 1
+    random_character: 0
 
   PartySize:
     # Maximum party size.
@@ -222,10 +232,8 @@ Final Fantasy IV Free Enterprise:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 1
     # Maximum value is 5
-    5: 50
-    random: 0
-    random-low: 0
-    random-high: 0
+    random-range-high-1-4: 1
+    5: 16
 
   CharactersPermajoin:
     # If enabled, characters may not be dismissed from the party.
@@ -235,9 +243,9 @@ Final Fantasy IV Free Enterprise:
   CharactersPermadie:
     # If enabled, characters petrified or dead at the end of battle will be removed from your party forever.
     # On Extreme difficulty, this also includes "cutscene" fights (Mist, Dark Elf, etc.)
-    'no': 50
-    'yes': 0
-    extreme: 0
+    'no': 16
+    'yes': 4
+    extreme: 1
 
   UnsafeKeyItemPlacement:
     # Normally, underground access is guaranteed to be available without taking a trip to the moon.
@@ -303,107 +311,107 @@ Final Fantasy IV Free Enterprise:
   #######################
   ShopRandomization:
     # Affects the placement of items in shops. See FE documentation for more for now.
-    vanilla: 4
-    shuffle: 8
-    standard: 32
-    pro: 2
-    wild: 64
-    cabins: 1
+    vanilla: 1
+    shuffle: 2
+    standard: 16
+    pro: 8
+    wild: 4
+    cabins: 0
 
   FreeShops:
     # Everything must go!
-    'false': 9
+    'false': 8
     'true': 1
 
   StarterKitOne:
     # FE Starter Kit 1. See FE Documentation for details. Or just pick one, they can't hurt you.
-    none: 2
-    basic: 0
-    better: 0
-    loaded: 0
-    cata: 0
-    freedom: 0
-    cid: 0
-    yang: 0
-    money: 0
-    grab_bag: 0
-    miab: 0
-    archer: 0
-    fabul: 0
-    castlevania: 0
-    summon: 0
-    not_deme: 0
-    meme: 0
-    defense: 0
-    mist: 0
-    mysidia: 0
-    baron: 0
-    dwarf: 0
-    eblan: 0
-    libra: 0
-    '99': 0
-    green_names: 0
-    random_kit: 1
+    none: 8 # about 90% any kit
+    basic: 8
+    better: 4
+    loaded: 2
+    cata: 8
+    freedom: 8
+    cid: 4
+    yang: 4
+    money: 4
+    grab_bag: 4
+    miab: 2
+    archer: 2
+    fabul: 2
+    castlevania: 2
+    summon: 2
+    not_deme: 2
+    meme: 2
+    defense: 2
+    mist: 2
+    mysidia: 2
+    baron: 2
+    dwarf: 2
+    eblan: 2
+    libra: 2
+    '99': 1
+    green_names: 1
+    random_kit: 0
 
   StarterKitTwo:
     # FE Starter Kit 2. See FE Documentation for details. Or just pick one, they can't hurt you.
-    none: 2
-    basic: 0
-    better: 0
-    loaded: 0
-    cata: 0
-    freedom: 0
-    cid: 0
-    yang: 0
-    money: 0
-    grab_bag: 0
-    miab: 0
-    archer: 0
-    fabul: 0
-    castlevania: 0
-    summon: 0
-    not_deme: 0
-    meme: 0
-    defense: 0
-    mist: 0
-    mysidia: 0
-    baron: 0
-    dwarf: 0
-    eblan: 0
-    libra: 0
-    '99': 0
-    green_names: 0
-    random_kit: 1
+    none: 64 # about 50% any kit
+    basic: 8
+    better: 4
+    loaded: 2
+    cata: 8
+    freedom: 8
+    cid: 4
+    yang: 4
+    money: 4
+    grab_bag: 4
+    miab: 2
+    archer: 2
+    fabul: 2
+    castlevania: 2
+    summon: 2
+    not_deme: 2
+    meme: 2
+    defense: 2
+    mist: 2
+    mysidia: 2
+    baron: 2
+    dwarf: 2
+    eblan: 2
+    libra: 2
+    '99': 1
+    green_names: 1
+    random_kit: 0
 
   StarterKitThree:
     # FE Starter Kit 3. See FE Documentation for details. Or just pick one, they can't hurt you.
-    none: 2
-    basic: 0
-    better: 0
-    loaded: 0
-    cata: 0
-    freedom: 0
-    cid: 0
-    yang: 0
-    money: 0
-    grab_bag: 0
-    miab: 0
-    archer: 0
-    fabul: 0
-    castlevania: 0
-    summon: 0
-    not_deme: 0
-    meme: 0
-    defense: 0
-    mist: 0
-    mysidia: 0
-    baron: 0
-    dwarf: 0
-    eblan: 0
-    libra: 0
-    '99': 0
-    green_names: 0
-    random_kit: 1
+    none: 128 # about 37% any kit
+    basic: 8
+    better: 4
+    loaded: 2
+    cata: 8
+    freedom: 8
+    cid: 4
+    yang: 4
+    money: 4
+    grab_bag: 4
+    miab: 2
+    archer: 2
+    fabul: 2
+    castlevania: 2
+    summon: 2
+    not_deme: 2
+    meme: 2
+    defense: 2
+    mist: 2
+    mysidia: 2
+    baron: 2
+    dwarf: 2
+    eblan: 2
+    libra: 2
+    '99': 1
+    green_names: 1
+    random_kit: 0
 
   ###########################
   # Item & Location Options #
@@ -449,3 +457,102 @@ Final Fantasy IV Free Enterprise:
   plando_items:
     # Generic items plando.
     []
+
+  triggers:
+
+  # MainObjective
+  - option_category: Final Fantasy IV Free Enterprise
+    option_name: MainObjective
+    option_result: crystal
+    options:
+      Final Fantasy IV Free Enterprise:
+        ForgeTheCrystal: 'true'
+  - option_category: Final Fantasy IV Free Enterprise
+    option_name: MainObjective
+    option_result: giant
+    options:
+      Final Fantasy IV Free Enterprise:
+        ConquerTheGiant: 'true'
+  - option_category: Final Fantasy IV Free Enterprise
+    option_name: MainObjective
+    option_result: fiends
+    options:
+      Final Fantasy IV Free Enterprise:
+        DefeatTheFiends: 'true'
+  - option_category: Final Fantasy IV Free Enterprise
+    option_name: MainObjective
+    option_result: dark-matter
+    options:
+      Final Fantasy IV Free Enterprise:
+        FindTheDarkMatter: 'true'
+  - option_category: Final Fantasy IV Free Enterprise
+    option_name: MainObjective
+    option_result: crystal-plus
+    options:
+      Final Fantasy IV Free Enterprise:
+        ForgeTheCrystal: 'true'
+        ConquerTheGiant:
+          'false': 2
+          'true': 1
+        DefeatTheFiends:
+          'false': 2
+          'true': 1
+        FindTheDarkMatter:
+          'false': 2
+          'true': 1
+  - option_category: Final Fantasy IV Free Enterprise
+    option_name: MainObjective
+    option_result: giant-plus
+    options:
+      Final Fantasy IV Free Enterprise:
+        ConquerTheGiant: 'true'
+        ForgeTheCrystal:
+          'false': 2
+          'true': 1
+        DefeatTheFiends:
+          'false': 2
+          'true': 1
+        FindTheDarkMatter:
+          'false': 2
+          'true': 1
+  - option_category: Final Fantasy IV Free Enterprise
+    option_name: MainObjective
+    option_result: fiends-plus
+    options:
+      Final Fantasy IV Free Enterprise:
+        DefeatTheFiends: 'true'
+        ForgeTheCrystal:
+          'false': 2
+          'true': 1
+        ConquerTheGiant:
+          'false': 2
+          'true': 1
+        FindTheDarkMatter:
+          'false': 2
+          'true': 1
+  - option_category: Final Fantasy IV Free Enterprise
+    option_name: MainObjective
+    option_result: dark-matter-plus
+    options:
+      Final Fantasy IV Free Enterprise:
+        FindTheDarkMatter: 'true'
+        ForgeTheCrystal:
+          'false': 2
+          'true': 1
+        ConquerTheGiant:
+          'false': 2
+          'true': 1
+        DefeatTheFiends:
+          'false': 2
+          'true': 1
+  # force at least one additional objective if no main objective
+  - option_category: Final Fantasy IV Free Enterprise
+    option_name: MainObjective
+    option_result: none
+    options:
+      Final Fantasy IV Free Enterprise:
+        AdditionalObjectives:
+          random-range-low-1-4: 32
+          random-range-low-5-10: 24
+          random-range-low-11-20: 20
+          random-range-low-21-32: 12
