@@ -1,7 +1,7 @@
 ﻿name: Heretic-{player}
 description: Mission Archipelago - Heretic
 requires:
-  version: 0.6.2 # Version of Archipelago required for this yaml to work as expected.
+  version: 0.6.4 # Version of Archipelago required for this yaml to work as expected.
 
 Heretic:
   # Game Options
@@ -294,6 +294,8 @@ Heretic:
     random: 1
     random-low: 0
     random-high: 0
+
+  plando_items: []
 
   # Item & Location Options
   local_items:

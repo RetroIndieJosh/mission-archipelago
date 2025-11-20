@@ -1,7 +1,7 @@
 ﻿name: DOOM2-{player}
 description: Mission Archipelago - DOOM II
 requires:
-  version: 0.6.2 # Version of Archipelago required for this yaml to work as expected.
+  version: 0.6.4 # Version of Archipelago required for this yaml to work as expected.
 
 DOOM II:
   progression_balancing:
@@ -31,6 +31,8 @@ DOOM II:
     # Forces these items to be in their native world.
     []
 
+  plando_items: []
+
   non_local_items:
     # Forces these items to be outside their native world.
     [
@@ -45,6 +47,65 @@ DOOM II:
   start_inventory:
     # Start with these items.
     "Shotgun": 1
+
+  max_ammo_bullets:
+    # Starting maximum: 200-999, Default 200
+    random-range-low-200-399: 2
+    random-range-low-400-999: 1
+  added_ammo_bullets:
+    # Added per backpack: 20-999, Default 200
+    random-range-high-20-119: 2
+    random-range-middle-120-279: 4
+    random-range-low-280-399: 2
+    random-range-low-400-999: 1
+
+  max_ammo_shells:
+    # Starting maximum: 50-999, Default 50
+    random-range-low-50-199: 4
+    random-range-low-200-399: 2
+    random-range-low-400-999: 1
+  added_ammo_shells:
+    # Added per backpack: 5-999, Default 50
+    random-range-high-5-24: 4
+    random-range-middle-25-74: 8
+    random-range-low-75-199: 4
+    random-range-low-200-399: 2
+    random-range-low-400-999: 1
+
+  max_ammo_rockets:
+    # Starting maximum: 50-999, Default 50
+    random-range-low-50-199: 4
+    random-range-low-200-399: 2
+    random-range-low-400-999: 1
+  added_ammo_rockets:
+    # Added per backpack: 5-999, Default 50
+    random-range-high-5-24: 4
+    random-range-middle-25-74: 8
+    random-range-low-75-199: 4
+    random-range-low-200-399: 2
+    random-range-low-400-999: 1
+
+  max_ammo_energy_cells:
+    # Starting maximum: 300-999, Default 300
+    random-range-low-300-499: 2
+    random-range-low-500-999: 1
+  added_ammo_energy_cells:
+    # Added per backpack: 30-999, Default 300
+    random-range-high-30-199: 2
+    random-range-middle-200-399: 8
+    random-range-low-400-999: 4
+
+  split_backpack:
+    # Split the Backpack into four individual items, each one increasing ammo
+    # capacity for one type of weapon only.
+    'false': 4
+    'true': 1
+  backpack_count:
+    # Number of backpacks (or backpack pieces) total: 0-10, default 1
+    0: 1
+    1: 8
+    random-range-2-4: 4
+    random-range-5-10: 2
 
   start_hints:
     # Start with these item's locations prefilled into the !hint command.
