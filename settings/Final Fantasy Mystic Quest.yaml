@@ -1,37 +1,20 @@
 ﻿name: FFMQ-{player}
 description: Mission Archipelago - Final Fantasy Mystic Quest
 requires:
-  version: 0.6.2 # Version of Archipelago required for this yaml to work as expected.
+  version: 0.6.4
 
 Final Fantasy Mystic Quest:
-  # Game Options
-  progression_balancing:
-    # A system that can move progression earlier, to try and prevent the player from getting stuck and bored early.
-    # 
-    # A lower setting means more getting stuck. A higher setting means less getting stuck.
-    #
-    # You can define additional values between the minimum and maximum values.
-    # Minimum value is 0
-    # Maximum value is 99
-    random: 0
-    random-low: 0
-    random-high: 0
-    disabled: 0 # equivalent to 0
-    normal: 50 # equivalent to 50
-    extreme: 0 # equivalent to 99
+  progression_balancing: normal
 
-  accessibility:
-    # Set rules for reachability of your items/locations.
-    # 
-    # **Full:** ensure everything can be reached and acquired.
-    # 
-    # **Minimal:** ensure what is needed to reach your goal can be acquired.
-    # 
-    # **Items:** ensure all logically relevant items can be acquired. Some items, such as keys, may be self-locking, and
-    # some locations may be inaccessible.
-    full: 0
-    minimal: 0
-    items: 50
+  # Set rules for reachability of your items/locations.
+  # 
+  # **Full:** ensure everything can be reached and acquired.
+  # 
+  # **Minimal:** ensure what is needed to reach your goal can be acquired.
+  # 
+  # **Items:** ensure all logically relevant items can be acquired. Some items, such as keys, may be self-locking, and
+  # some locations may be inaccessible.
+  accessibility: items
 
   plando_items:
     # Generic items plando.
@@ -94,23 +77,23 @@ Final Fantasy Mystic Quest:
     # Adjust the level gain rate.
     half: 1
     normal: 4
-    one_and_half: 16
-    double: 64 
-    double_and_half: 32
-    triple: 8
-    quadruple: 2
+    one_and_half: 32
+    double: 128 
+    double_and_half: 64
+    triple: 16
+    quadruple: 8
 
   starting_companion:
     # Set a companion to start with.
     # Random Companion: Randomly select one companion.
     # Random Plus None: Randomly select a companion, with the possibility of none selected.
-    none: 0
-    kaeli: 0
-    tristam: 0
-    phoebe: 0
-    reuben: 0
+    none: 32
+    kaeli: 1
+    tristam: 2
+    phoebe: 4
+    reuben: 8
     random_companion: 0
-    random_plus_none: 1
+    random_plus_none: 0
 
   available_companions:
     # Select randomly which companions will join your party. Unavailable companions can still be reached to get their items and complete their quests if needed.
@@ -119,10 +102,8 @@ Final Fantasy Mystic Quest:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 0
     # Maximum value is 4
-    4: 0
-    random: 1
-    random-low: 0
-    random-high: 0
+    0: 1
+    random-range-high-1-4: 16
 
   companions_locations:
     # Set the primary location of companions. Their secondary location is always the same.
@@ -167,61 +148,64 @@ Final Fantasy Mystic Quest:
 
   enemies_density:
     # Set how many of the original enemies are on each map.
-    all: 50
-    three_quarter: 0
-    half: 0
-    quarter: 0
-    none: 0
+    all: 32
+    three_quarter: 16
+    half: 64
+    quarter: 4
+    none: 1
 
   enemies_scaling_lower:
     # Randomly adjust enemies stats by the selected range percentage. Include mini-bosses' weaker clones.
-    quarter: 50
-    half: 0
-    three_quarter: 0
-    normal: 0
-    one_and_quarter: 0
-    one_and_half: 0
-    double: 0
-    double_and_half: 0
-    triple: 0
+    quarter: 1
+    half: 2
+    three_quarter: 4
+    normal: 16
+    one_and_quarter: 64
+    one_and_half: 32
+    double: 16
+    double_and_half: 4
+    triple: 1
+
 
   enemies_scaling_upper:
     # Randomly adjust enemies stats by the selected range percentage. Include mini-bosses' weaker clones.
-    quarter: 0
-    half: 0
-    three_quarter: 0
-    normal: 0
-    one_and_quarter: 50
-    one_and_half: 0
-    double: 0
-    double_and_half: 0
-    triple: 0
+    # NOTE: This is overridden if lower is more than quarter in triggers
+    quarter: 1
+    half: 2
+    three_quarter: 4
+    normal: 16
+    one_and_quarter: 64
+    one_and_half: 32
+    double: 16
+    double_and_half: 4
+    triple: 1
 
   bosses_scaling_lower:
     # Randomly adjust bosses stats by the selected range percentage. Include Mini-Bosses, Bosses, Bosses' refights and
     # the Dark King.
-    quarter: 50
-    half: 0
-    three_quarter: 0
-    normal: 0
-    one_and_quarter: 0
-    one_and_half: 0
-    double: 0
-    double_and_half: 0
-    triple: 0
+    quarter: 1
+    half: 2
+    three_quarter: 4
+    normal: 16
+    one_and_quarter: 64
+    one_and_half: 32
+    double: 16
+    double_and_half: 4
+    triple: 1
 
   bosses_scaling_upper:
     # Randomly adjust bosses stats by the selected range percentage. Include Mini-Bosses, Bosses, Bosses' refights and
     # the Dark King.
-    quarter: 0
-    half: 0
-    three_quarter: 0
-    normal: 0
-    one_and_quarter: 50
-    one_and_half: 0
-    double: 0
-    double_and_half: 0
-    triple: 0
+    # NOTE: This is overridden if lower is more than quarter in triggers
+    quarter: 1
+    half: 2
+    three_quarter: 4
+    normal: 16
+    one_and_quarter: 64
+    one_and_half: 32
+    double: 16
+    double_and_half: 4
+    triple: 1
 
   enemizer_attacks:
     # Shuffles enemy attacks. Standard: No shuffle. Safe: Randomize every attack but leave out self-destruct and Dark
@@ -247,8 +231,8 @@ Final Fantasy Mystic Quest:
 
   shuffle_enemies_position:
     # Instead of their original position in a given map, enemies are randomly placed.
-    'false': 0
-    'true': 50
+    'false': 1
+    'true': 4
 
   progressive_formations:
     # Enemies' formations are selected by regions, with the weakest formations always selected in Foresta and the
@@ -270,15 +254,15 @@ Final Fantasy Mystic Quest:
   doom_castle_shortcut:
     # Create a shortcut granting access from the start to Doom Castle at Focus Tower's entrance.
     # Also modify the Desert floor, so it can be navigated without the Mega Grenades and the Dragon Claw.
-    'false': 50
-    'true': 0
+    'false': 4
+    'true': 1
 
   tweak_frustrating_dungeons:
     # Make some small changes to a few of the most annoying dungeons. Ice Pyramid: Add 3 shortcuts on the 1st floor.
     # Giant Tree: Add shortcuts on the 1st and 4th floors and curtail mushrooms population.
     # Pazuzu's Tower: Staircases are devoid of enemies (regardless of Enemies Density settings).
-    'false': 50
-    'true': 0
+    'false': 4
+    'true': 1
 
   map_shuffle:
     # None: No shuffle. Overworld: Only shuffle the Overworld locations. Dungeons: Only shuffle the dungeons' floors
@@ -352,3 +336,194 @@ Final Fantasy Mystic Quest:
   item_links:
     # Share part of your item pool with other players.
     []
+
+  triggers:
+
+  # Match enemy scaling lower to >= upper
+  - option_category: Final Fantasy Mystic Quest
+    option_name: enemies_scaling_lower
+    option_result: half
+    options:
+      Final Fantasy Mystic Quest:
+        enemies_scaling_upper:
+          half: 2
+          three_quarter: 4
+          normal: 16
+          one_and_quarter: 64
+          one_and_half: 32
+          double: 16
+          double_and_half: 4
+          triple: 1
+  - option_category: Final Fantasy Mystic Quest
+    option_name: enemies_scaling_lower
+    option_result: three_quarter
+    options:
+      Final Fantasy Mystic Quest:
+        enemies_scaling_upper:
+          three_quarter: 4
+          normal: 16
+          one_and_quarter: 64
+          one_and_half: 32
+          double: 16
+          double_and_half: 4
+          triple: 1
+  - option_category: Final Fantasy Mystic Quest
+    option_name: enemies_scaling_lower
+    option_result: normal
+    options:
+      Final Fantasy Mystic Quest:
+        enemies_scaling_upper:
+          normal: 16
+          one_and_quarter: 64
+          one_and_half: 32
+          double: 16
+          double_and_half: 4
+          triple: 1
+  - option_category: Final Fantasy Mystic Quest
+    option_name: enemies_scaling_lower
+    option_result: one_and_quarter
+    options:
+      Final Fantasy Mystic Quest:
+        enemies_scaling_upper:
+          one_and_quarter: 64
+          one_and_half: 32
+          double: 16
+          double_and_half: 4
+          triple: 1
+  - option_category: Final Fantasy Mystic Quest
+    option_name: enemies_scaling_lower
+    option_result: one_and_half
+    options:
+      Final Fantasy Mystic Quest:
+        enemies_scaling_upper:
+          one_and_half: 32
+          double: 16
+          double_and_half: 4
+          triple: 1
+  - option_category: Final Fantasy Mystic Quest
+    option_name: enemies_scaling_lower
+    option_result: double
+    options:
+      Final Fantasy Mystic Quest:
+        enemies_scaling_upper:
+          one_and_half: 32
+          double: 16
+          double_and_half: 4
+          triple: 1
+  - option_category: Final Fantasy Mystic Quest
+    option_name: enemies_scaling_lower
+    option_result: double
+    options:
+      Final Fantasy Mystic Quest:
+        enemies_scaling_upper:
+          double: 16
+          double_and_half: 4
+          triple: 1
+  - option_category: Final Fantasy Mystic Quest
+    option_name: enemies_scaling_lower
+    option_result: double_and_half
+    options:
+      Final Fantasy Mystic Quest:
+        enemies_scaling_upper:
+          double_and_half: 4
+          triple: 1
+  - option_category: Final Fantasy Mystic Quest
+    option_name: enemies_scaling_lower
+    option_result: triple
+    options:
+      Final Fantasy Mystic Quest:
+        enemies_scaling_upper: triple
+  # Match boss scaling lower to >= upper
+  - option_category: Final Fantasy Mystic Quest
+    option_name: bosses_scaling_lower
+    option_result: half
+    options:
+      Final Fantasy Mystic Quest:
+        bosses_scaling_upper:
+          half: 2
+          three_quarter: 4
+          normal: 16
+          one_and_quarter: 64
+          one_and_half: 32
+          double: 16
+          double_and_half: 4
+          triple: 1
+  - option_category: Final Fantasy Mystic Quest
+    option_name: bosses_scaling_lower
+    option_result: three_quarter
+    options:
+      Final Fantasy Mystic Quest:
+        bosses_scaling_upper:
+          three_quarter: 4
+          normal: 16
+          one_and_quarter: 64
+          one_and_half: 32
+          double: 16
+          double_and_half: 4
+          triple: 1
+  - option_category: Final Fantasy Mystic Quest
+    option_name: bosses_scaling_lower
+    option_result: normal
+    options:
+      Final Fantasy Mystic Quest:
+        bosses_scaling_upper:
+          normal: 16
+          one_and_quarter: 64
+          one_and_half: 32
+          double: 16
+          double_and_half: 4
+          triple: 1
+  - option_category: Final Fantasy Mystic Quest
+    option_name: bosses_scaling_lower
+    option_result: one_and_quarter
+    options:
+      Final Fantasy Mystic Quest:
+        bosses_scaling_upper:
+          one_and_quarter: 64
+          one_and_half: 32
+          double: 16
+          double_and_half: 4
+          triple: 1
+  - option_category: Final Fantasy Mystic Quest
+    option_name: bosses_scaling_lower
+    option_result: one_and_half
+    options:
+      Final Fantasy Mystic Quest:
+        bosses_scaling_upper:
+          one_and_half: 32
+          double: 16
+          double_and_half: 4
+          triple: 1
+  - option_category: Final Fantasy Mystic Quest
+    option_name: bosses_scaling_lower
+    option_result: double
+    options:
+      Final Fantasy Mystic Quest:
+        bosses_scaling_upper:
+          one_and_half: 32
+          double: 16
+          double_and_half: 4
+          triple: 1
+  - option_category: Final Fantasy Mystic Quest
+    option_name: bosses_scaling_lower
+    option_result: double
+    options:
+      Final Fantasy Mystic Quest:
+        bosses_scaling_upper:
+          double: 16
+          double_and_half: 4
+          triple: 1
+  - option_category: Final Fantasy Mystic Quest
+    option_name: bosses_scaling_lower
+    option_result: double_and_half
+    options:
+      Final Fantasy Mystic Quest:
+        bosses_scaling_upper:
+          double_and_half: 4
+          triple: 1
+  - option_category: Final Fantasy Mystic Quest
+    option_name: bosses_scaling_lower
+    option_result: triple
+    options:
+      Final Fantasy Mystic Quest:
+        bosses_scaling_upper: triple
