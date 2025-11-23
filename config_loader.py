@@ -2,7 +2,7 @@ import yaml
 from colorama import Fore
 import sys
 
-def load_config(path="async.yaml"):
+def load_config(path):
     try:
         with open(path, encoding="utf-8-sig") as cf:
             cfg = yaml.safe_load(cf) or {}
