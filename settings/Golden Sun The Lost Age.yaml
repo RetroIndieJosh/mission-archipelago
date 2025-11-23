@@ -1,26 +1,10 @@
 ﻿name: GSTLA-{player}
 description: Mission Archipelago - Golden Sun The Lost Age
 requires:
-  version: 0.6.2 # Version of Archipelago required for this yaml to work as expected.
+  version: 0.6.4
 
 Golden Sun The Lost Age:
-  ################
-  # Game Options #
-  ################
-  progression_balancing:
-    # A system that can move progression earlier, to try and prevent the player from getting stuck and bored early.
-    # 
-    # A lower setting means more getting stuck. A higher setting means less getting stuck.
-    #
-    # You can define additional values between the minimum and maximum values.
-    # Minimum value is 0
-    # Maximum value is 99
-    random: 0
-    random-low: 0
-    random-high: 0
-    disabled: 0 # equivalent to 0
-    normal: 50 # equivalent to 50
-    extreme: 0 # equivalent to 99
+  progression_balancing: normal
 
   accessibility:
     # Set rules for reachability of your items/locations.
@@ -135,10 +119,9 @@ Golden Sun The Lost Age:
     # Default is 0
     # Minimum value is 0
     # Maximum value is 17
-    random-range-0-4: 32
-    random-range-5-9: 8
-    random-range-10-14: 2
-    random-range-14-17: 1
+    random-range-low-1-4: 16
+    random-range-low-5-9: 12
+    random-range-low-10-17: 8
 
   djinn_hunt_count:
     # How many djinn you need to obtain in order to satisfy the Djinn Hunt Objective
@@ -147,10 +130,8 @@ Golden Sun The Lost Age:
     # Default is 56
     # Minimum value is 1
     # Maximum value is 72
-    random-range-1-19: 1
-    random-range-20-39: 2
-    random-range-40-59: 8
-    random-range-60-72: 2
+    random-range-high-1-41: 41
+    random-range-middle-42-72: 66
 
   summon_hunt_count:
     # How many summons you need to obtain in order to satisfy the Summon Hunt Objective
@@ -159,9 +140,8 @@ Golden Sun The Lost Age:
     # Default is 10
     # Minimum value is 1
     # Maximum value is 13
-    random-range-1-5: 1
-    random-range-6-9: 2
-    random-range-10-13: 8
+    random-range-high-1-6: 6
+    random-range-middle-7-13: 14
 
   #####################
   # Logic Adjustments #
@@ -256,10 +236,8 @@ Golden Sun The Lost Age:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 5
     # Maximum value is 99
-    24: 50
-    random: 0
-    random-low: 0
-    random-high: 0
+    random-range-middle-5-43: 78
+    random-range-low-44-99: 56
 
   character_stats:
     # Determine the stats for characters
@@ -275,9 +253,9 @@ Golden Sun The Lost Age:
     # Vanilla: leaves character elements as per the vanilla game
     # Shuffle Character Elements: will shuffle them between characters
     # Randomize Character Elements: will randomize each characters element
-    vanilla: 1
+    vanilla: 2
     shuffle_character_elements: 4
-    randomize_character_elements: 2
+    randomize_character_elements: 1
 
   randomize_class_stat_boosts:
     # When enabled the base stats for classes are randomized
@@ -512,11 +490,8 @@ Golden Sun The Lost Age:
     # Default is 3
     # Minimum value is 1
     # Maximum value is 15
-    1: 1
-    random-range-2-4: 16
-    random-range-5-9: 4
-    random-range-10-12: 2
-    random-range-13-15: 1
+    random-range-middle-1-5: 10
+    random-range-low-6-15: 10
 
   scale_coins:
     # Scale how much Coins are earned by the party.
@@ -525,11 +500,8 @@ Golden Sun The Lost Age:
     # Default is 4
     # Minimum value is 1
     # Maximum value is 15
-    random-range-1-2: 1
-    random-range-3-5: 16
-    random-range-6-9: 4
-    random-range-10-12: 2
-    random-range-13-15: 1
+    random-range-middle-1-7: 16
+    random-range-low-8-15: 8
 
   starting_levels:
     # Determine the starting levels for characters joining the party.
@@ -538,17 +510,17 @@ Golden Sun The Lost Age:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 5
     # Maximum value is 99
-    5: 50
-    random: 0
-    random-low: 0
-    random-high: 0
+    random-range-low-5-9: 40
+    random-range-low-10-19: 40
+    random-range-low-20-39: 40
+    random-range-low-40-99: 59
 
   show_items_outside_chest:
     # Chests and Tablets are replaced with their contents on the floor.
     # This allows for scouting items. Note certain locations are still not visible,
     # for example items in pots or barrels.
-    'false': 0
-    'true': 50
+    'false': 1
+    'true': 0
 
   shuffle_music:
     # When enabled, music is shuffled amongst each other.
