@@ -2,7 +2,7 @@
 name: KSS-{player}
 description: Mission Archipelago - Kirby Super Star
 requires:
-  version: 0.6.3 # Version of Archipelago required for this yaml to work as expected.
+  version: 0.6.4
 
 Kirby Super Star:
   ################
@@ -13,20 +13,7 @@ Kirby Super Star:
     'false': 50
     'true': 0
 
-  progression_balancing:
-    # A system that can move progression earlier, to try and prevent the player from getting stuck and bored early.
-    # 
-    # A lower setting means more getting stuck. A higher setting means less getting stuck.
-    #
-    # You can define additional values between the minimum and maximum values.
-    # Minimum value is 0
-    # Maximum value is 99
-    random: 0
-    random-low: 0
-    random-high: 0
-    disabled: 0 # equivalent to 0
-    normal: 50 # equivalent to 50
-    extreme: 0 # equivalent to 99
+  progression_balancing: normal
 
   accessibility:
     # Set rules for reachability of your items/locations.
@@ -41,11 +28,11 @@ Kirby Super Star:
     # How many subgames must be completed for the game to be considered complete.
     #
     # You can define additional values between the minimum and maximum values.
+    # Default is 6
     # Minimum value is 1
     # Maximum value is 7
-    random-range-1-3: 2
-    random-range-4-6: 4
-    7: 1
+    random-range-high-1-4: 4
+    random-range-middle-5-7: 12
 
   required_subgames:
     # Which subgames are required to be completed for the game to be considered complete.
@@ -80,22 +67,24 @@ Kirby Super Star:
     # Required amount of gold that is needed in order to complete The Great Cave Offensive
     #
     # You can define additional values between the minimum and maximum values.
+    # Default is 9999990
     # Minimum value is 2500000
     # Maximum value is 9999990
-    random-range-2500000-4999990: 1
-    random-range-5000000-6999990: 2
-    random-range-7000000-9999990: 4
+    random-range-high-2500000-3999990: 1
+    random-range-high-4000000-6999990: 4
+    random-range-high-7000000-9999990: 8
 
   the_great_cave_offensive_excess_gold:
     # How much of the excess gold should be kept within the multiworld.
     #
     # You can define additional values between the minimum and maximum values.
+    # Default is 0
     # Minimum value is 0
     # Maximum value is 100
     0: 8
-    random-range-1-20: 4
-    random-range-21-50: 2
-    random-range-51-100: 1
+    random-range-low-1-20: 4
+    random-range-low-21-50: 2
+    random-range-low-51-100: 1
 
   the_great_cave_offensive_gold_thresholds:
     # What percent of the required gold is required before allowing access to
