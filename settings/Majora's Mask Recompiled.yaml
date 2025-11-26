@@ -1,7 +1,7 @@
 ﻿name: Majora-{player}
 description: Mission Archipelago - Majora's Mask
 requires:
-  version: 0.6.2 # Version of Archipelago required for this yaml to work as expected.
+  version: 0.6.4
 
 Majora's Mask Recompiled:
   # Game Options
