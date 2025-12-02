@@ -5,20 +5,7 @@ requires:
 
 Metroid Prime:
   # Game Options
-  progression_balancing:
-    # A system that can move progression earlier, to try and prevent the player from getting stuck and bored early.
-    #
-    # A lower setting means more getting stuck. A higher setting means less getting stuck.
-    #
-    # You can define additional values between the minimum and maximum values.
-    # Minimum value is 0
-    # Maximum value is 99
-    random: 0
-    random-low: 0
-    random-high: 0
-    disabled: 0 # equivalent to 0
-    normal: 50 # equivalent to 50
-    extreme: 0 # equivalent to 99
+  progression_balancing: normal
 
   accessibility:
     # Set rules for reachability of your items/locations.
@@ -41,7 +28,8 @@ Metroid Prime:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 1
     # Maximum value is 12
-    random-range-high-2-12: 1
+    random-range-high-2-4: 3
+    random-range-high-5-12: 16
 
   artifact_hints:
     # If enabled, scanning the artifact stones in the temple will give a hint to their location. Additionally, hints will be pre collected in the client.
@@ -94,7 +82,7 @@ Metroid Prime:
 
   shuffle_scan_visor:
     # If enabled, the scan visor will be shuffled into the item pool and will need to be found in order to scan dash and open certain locks.
-    'false': 8
+    'false': 4
     'true': 1
 
   pre_scan_elevators:
@@ -375,3 +363,15 @@ Metroid Prime:
   item_links:
     # Share part of your item pool with other players.
     []
+
+  triggers:
+
+  # if scan visor is shuffled, possibly disable elevator prescan (so they're locked by finding the visor)
+  - option_category: Metroid Prime
+    option_name: shuffle_scan_visor
+    option_result: 'true'
+    options:
+      Metroid Prime:
+        pre_scan_elevators:
+          'false': 2
+          'true': 1
