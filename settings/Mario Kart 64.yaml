@@ -1,10 +1,12 @@
-﻿# NOTE: I'm unfamiliar with the real effect of most of these options, so this is a highly experimental setup - Josh
-name: Kart64-{player}
+﻿name: Kart64-{player}
 description: Mission Archipelago - Mario Kart 64
 requires:
   version: 0.6.4
 
 Mario Kart 64:
+  ################
+  # Game Options #
+  ################
   progression_balancing: normal
 
   accessibility:
@@ -69,8 +71,8 @@ Mario Kart 64:
     # Expert: Low logic, high randomness, high skill. Few good items may be available early in the run.
     # 
     # No Logic: If fences are enabled, THE RUN MAY BE NEAR IMPOSSIBLE!
-    basic: 2
-    advanced: 1
+    basic: 50
+    advanced: 0
     expert: 0
     no_logic: 0
 
@@ -114,63 +116,64 @@ Mario Kart 64:
     'true': 1
 
   shuffle_drift_abilities:
+    # WARNING This currently breaks generation! Leave it off
     # Optionally shuffle into the item pool the ability to drift and the ability to use mini-turbos as progressive
     # unlocks per kart. "Plentiful" shuffles a 3rd progressive unlock into the pool. "Free Drift" means karts start
     # with the ability to drift. "Free mini-turbo" means both abilities will be obtained together.
-    'off': 8
-    'on': 1
-    plentiful: 8
-    free_drift: 4
-    free_mini_turbo: 2
+    'off': 0
+    'on': 50
+    plentiful: 0
+    free_drift: 0
+    free_mini_turbo: 0
 
   add_traction_tires:
     # Optionally shuffle into the item pool the ability to have traction on off-road and winter surface types,
     # per kart. "Off" means karts always have traction, as in the vanilla game.
-    'false': 1
-    'true': 2
+    'false': 0
+    'true': 50
 
   add_starting_items:
     # Optionally shuffle into the item pool a random item power to start each race with, per kart. For example
     # Mario may be able to start each race with a blue shell. Which item is random per kart.
-    'false': 1
-    'true': 2
+    'false': 0
+    'true': 50
 
   shuffle_railings:
     # Whether to shuffle most track railings into the item pool.
-    'false': 1
-    'true': 2
+    'false': 0
+    'true': 50
 
   fences:
     # Adds colored fences to every course to add variety to the player's racing lines, and blocks about 20% of
     # item boxes. Also adds Yellow/Red/Green/Blue Switch items to the item pool which disable that color of fences.
     # Fences only affect player karts; shells and CPU karts path through them.
-    'false': 1
-    'true': 2
+    'false': 0
+    'true': 50
 
   feather_item:
     # Adds the feather item as seen in Super Mario Kart and the early demos of Mario Kart 64. It can be used to vault
     # fences. Having access to the feather puts locations blocked by fences in logic.
-    'false': 1
-    'true': 2
+    'false': 0
+    'true': 50
 
   shuffle_item_box_respawning:
     # Causes item boxes to not respawn mid-race, and shuffles one "item box respawning" item into the item pool.
-    'false': 2
-    'true': 1
+    'false': 50
+    'true': 0
 
   consistent_item_boxes:
     # Make each item box always give the same item. "On" will always show which item will be given instead of a
     # question mark (?) inside the item boxes. "Identify" will only show which item will be given after triggering the
     # item roulette once.
-    'off': 4
-    'on': 1
-    identify: 2
+    'off': 50
+    'on': 0
+    identify: 0
 
   shuffle_special_item_boxes:
     # Whether to shuffle the special item boxes which always give blue shells into the item pool. One is attached to
     # the hot air balloon on Luigi Raceway, and the other is on the big rock on Koopa Troopa Beach.
-    'false': 1
-    'true': 4
+    'false': 0
+    'true': 50
 
   shuffle_item_box_clusters:
     # How many item box clusters to shuffle into the item pool. At least one item spot from each shuffled cluster will
@@ -180,9 +183,10 @@ Mario Kart 64:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 0
     # Maximum value is 72
-    random-range-high-0-17: 18
-    random-range-middle-18-54: 74
-    random-range-low-55-72: 18
+    36: 50
+    random: 0
+    random-low: 0
+    random-high: 0
 
   filler_trap_percentage:
     # What percentage of filler items will be traps.
@@ -190,8 +194,10 @@ Mario Kart 64:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 0
     # Maximum value is 100
-    random-range-middle-0-39: 80
-    random-range-low-40-100: 71
+    20: 50
+    random: 0
+    random-low: 0
+    random-high: 0
 
   minimum_filler_items:
     # Force more filler items than needed to match the number of locations.
@@ -200,8 +206,10 @@ Mario Kart 64:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 0
     # Maximum value is 40
-    random-range-high-0-20: 21
-    random-range-middle-21-40: 40
+    30: 50
+    random: 0
+    random-low: 0
+    random-high: 0
 
   fix_results_music:
     # Fixes the race win results screen music so the first section repeats 2 times, not 64 times.
