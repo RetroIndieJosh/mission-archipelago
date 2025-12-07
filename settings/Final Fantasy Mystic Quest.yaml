@@ -103,7 +103,7 @@ Final Fantasy Mystic Quest:
     # Minimum value is 0
     # Maximum value is 4
     0: 1
-    random-range-high-1-4: 16
+    random-range-high-1-4: 4
 
   companions_locations:
     # Set the primary location of companions. Their secondary location is always the same.

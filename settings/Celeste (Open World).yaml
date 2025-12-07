@@ -88,8 +88,8 @@ Celeste (Open World):
     # Minimum value is 0
     # Maximum value is 202
     0: 1
-    random-range-middle-1-150: 16
-    random-range-151-202: 1
+    random-range-middle-1-150: 4
+    random-range-151-202: 2
 
   strawberries_required_percentage:
     # Percentage of existing Strawberries you must receive to access your Goal Area (if Lock Goal Area is active) and the Epilogue
@@ -99,7 +99,7 @@ Celeste (Open World):
     # Minimum value is 0
     # Maximum value is 100
     random-range-high-0-60: 1
-    random-range-middle-60-100: 16
+    random-range-middle-60-100: 2
 
   ####################
   # Location Options #

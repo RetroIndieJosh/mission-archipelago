@@ -119,9 +119,9 @@ Golden Sun The Lost Age:
     # Default is 0
     # Minimum value is 0
     # Maximum value is 17
-    random-range-low-1-4: 16
-    random-range-low-5-9: 12
-    random-range-low-10-17: 8
+    random-range-low-1-4: 4
+    random-range-low-5-9: 2
+    random-range-low-10-17: 1
 
   djinn_hunt_count:
     # How many djinn you need to obtain in order to satisfy the Djinn Hunt Objective
@@ -130,8 +130,8 @@ Golden Sun The Lost Age:
     # Default is 56
     # Minimum value is 1
     # Maximum value is 72
-    random-range-high-1-41: 41
-    random-range-middle-42-72: 66
+    random-range-high-1-41: 1
+    random-range-middle-42-72: 2
 
   summon_hunt_count:
     # How many summons you need to obtain in order to satisfy the Summon Hunt Objective
@@ -140,8 +140,8 @@ Golden Sun The Lost Age:
     # Default is 10
     # Minimum value is 1
     # Maximum value is 13
-    random-range-high-1-6: 6
-    random-range-middle-7-13: 14
+    random-range-high-1-6: 1
+    random-range-middle-7-13: 2
 
   #####################
   # Logic Adjustments #
@@ -236,8 +236,9 @@ Golden Sun The Lost Age:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 5
     # Maximum value is 99
-    random-range-middle-5-43: 78
-    random-range-low-44-99: 56
+    # Default 24
+    random-range-middle-5-43: 2
+    random-range-low-44-99: 1
 
   character_stats:
     # Determine the stats for characters
@@ -490,8 +491,8 @@ Golden Sun The Lost Age:
     # Default is 3
     # Minimum value is 1
     # Maximum value is 15
-    random-range-middle-1-5: 10
-    random-range-low-6-15: 10
+    random-range-middle-1-5: 2
+    random-range-low-6-15: 1
 
   scale_coins:
     # Scale how much Coins are earned by the party.
@@ -500,8 +501,8 @@ Golden Sun The Lost Age:
     # Default is 4
     # Minimum value is 1
     # Maximum value is 15
-    random-range-middle-1-7: 16
-    random-range-low-8-15: 8
+    random-range-middle-1-7: 2
+    random-range-low-8-15: 1
 
   starting_levels:
     # Determine the starting levels for characters joining the party.
@@ -510,10 +511,11 @@ Golden Sun The Lost Age:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 5
     # Maximum value is 99
-    random-range-low-5-9: 40
-    random-range-low-10-19: 40
-    random-range-low-20-39: 40
-    random-range-low-40-99: 59
+    # Default 5
+    random-range-low-5-9: 8
+    random-range-low-10-19: 4
+    random-range-low-20-39: 2
+    random-range-low-40-99: 1
 
   show_items_outside_chest:
     # Chests and Tablets are replaced with their contents on the floor.

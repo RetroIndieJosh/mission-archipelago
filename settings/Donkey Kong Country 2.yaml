@@ -79,10 +79,10 @@ Donkey Kong Country 2:
     # Maximum value is 99
     # Default 5
     0: 1
-    random-range-middle-2-10: 288
-    random-range-low-11-20: 160
-    random-range-low-21-40: 80
-    random-range-low-41-99: 118
+    random-range-middle-2-10: 16
+    random-range-low-11-20: 8
+    random-range-low-21-40: 4
+    random-range-low-41-99: 2
 
   # Goal
   goal:
@@ -111,8 +111,8 @@ Donkey Kong Country 2:
     # Minimum value is 0
     # Maximum value is 5
     # Default 4
-    random-range-high-0-2: 3
-    random-range-middle-3-5: 6
+    random-range-high-0-2: 1
+    random-range-middle-3-5: 2
 
   required_cauldron_levels:
     # How many levels in Crocodile Cauldron need to be cleared to fight the area boss
@@ -121,8 +121,8 @@ Donkey Kong Country 2:
     # Minimum value is 0
     # Maximum value is 5
     # Default 4
-    random-range-high-0-2: 3
-    random-range-middle-3-5: 6
+    random-range-high-0-2: 1
+    random-range-middle-3-5: 2
 
   required_quay_levels:
     # How many levels in Krem Quay need to be cleared to fight the area boss
@@ -131,8 +131,8 @@ Donkey Kong Country 2:
     # Minimum value is 0
     # Maximum value is 6
     # Default 4
-    random-range-high-0-1: 2
-    random-range-middle-2-6: 10
+    random-range-high-0-1: 1
+    random-range-middle-2-6: 2
 
   required_kremland_levels:
     # How many levels in Krazy Kremland need to be cleared to fight the area boss
@@ -142,7 +142,7 @@ Donkey Kong Country 2:
     # Maximum value is 6
     # Default 4
     random-range-high-0-1: 1
-    random-range-middle-2-6: 10
+    random-range-middle-2-6: 2
 
   required_gulch_levels:
     # How many levels in Gloomy Gulch need to be cleared to fight the area boss
@@ -151,8 +151,8 @@ Donkey Kong Country 2:
     # Minimum value is 0
     # Maximum value is 5
     # Default 4
-    random-range-high-0-2: 3
-    random-range-middle-3-5: 6
+    random-range-high-0-2: 1
+    random-range-middle-3-5: 2
 
   required_keep_levels:
     # How many levels in K. Rool's Keep need to be cleared to fight the area boss
@@ -161,9 +161,8 @@ Donkey Kong Country 2:
     # Minimum value is 0
     # Maximum value is 6
     # Default 4
-    0: 1
-    1: 2
-    random-range-middle-2-6: 10
+    random-range-high-0-1: 1
+    random-range-middle-2-6: 2
 
   required_krock_levels:
     # How many levels in The Flying Krock need to be cleared to fight the area boss
@@ -192,7 +191,7 @@ Donkey Kong Country 2:
     # Maximum value is 5
     # Default 3
     0: 1
-    random-range-1-5: 5
+    random-range-middle-1-5: 2
 
   lost_world_rock_placement:
     # Determines how Lost World Rocks will be placed in the multiworld

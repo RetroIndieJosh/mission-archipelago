@@ -50,10 +50,10 @@ Donkey Kong Country:
     # Maximum value is 99
     # Default 5
     0: 1
-    random-range-middle-2-10: 288
-    random-range-low-11-20: 160
-    random-range-low-21-40: 80
-    random-range-low-41-99: 118
+    random-range-middle-2-10: 16
+    random-range-low-11-20: 8
+    random-range-low-21-40: 4
+    random-range-low-41-99: 2
 
   # Goal
   gangplank_tokens:
@@ -63,8 +63,8 @@ Donkey Kong Country:
     # Minimum value is 1
     # Maximum value is 6
     # Default 4
-    random-range-high-1-2: 2
-    random-range-middle-3-5: 6
+    random-range-high-1-2: 1
+    random-range-middle-3-5: 2
 
   required_jungle_levels:
     # How many levels in Kongo Jungle need to be cleared to fight Very Gnawty
@@ -73,8 +73,8 @@ Donkey Kong Country:
     # Minimum value is 1
     # Maximum value is 5
     # Default 4
-    random-range-high-1-2: 2
-    random-range-middle-3-5: 6
+    random-range-high-1-2: 1
+    random-range-middle-3-5: 4
 
   required_mines_levels:
     # How many levels in Monkey Mines need to be cleared to fight Master Necky
@@ -83,8 +83,8 @@ Donkey Kong Country:
     # Minimum value is 1
     # Maximum value is 5
     # Default 4
-    random-range-high-1-2: 2
-    random-range-middle-3-5: 6
+    random-range-high-1-2: 1
+    random-range-middle-3-5: 4
 
   required_valley_levels:
     # How many levels in Vine Valley need to be cleared to fight Queen B.
@@ -94,7 +94,7 @@ Donkey Kong Country:
     # Maximum value is 6
     # Default 4
     1: 1
-    random-range-middle-2-6: 5
+    random-range-middle-2-6: 4
 
   required_glacier_levels:
     # How many levels in Gorilla Glacier need to be cleared to fight Really Gnawty
@@ -104,7 +104,7 @@ Donkey Kong Country:
     # Maximum value is 6
     # Default 4
     1: 1
-    random-range-middle-2-6: 5
+    random-range-middle-2-6: 4
 
   required_industries_levels:
     # How many levels in Kremkroc Industries Inc. need to be cleared to fight Dumb Drum
@@ -114,7 +114,7 @@ Donkey Kong Country:
     # Maximum value is 6
     # Default 4
     1: 1
-    random-range-middle-2-6: 5
+    random-range-middle-2-6: 4
 
   required_caverns_levels:
     # How many levels in Chimp Caverns need to be cleared to fight Master Necky Snr.
@@ -123,8 +123,8 @@ Donkey Kong Country:
     # Minimum value is 1
     # Maximum value is 5
     # Default 4
-    random-range-high-1-2: 2
-    random-range-middle-3-5: 6
+    random-range-high-1-2: 1
+    random-range-middle-3-5: 4
 
   # Locations
   logic:
