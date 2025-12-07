@@ -15,6 +15,10 @@ Metroid Fusion:
     full: 50
     minimal: 0
 
+  #################
+  # Logic Options #
+  #################
+
   EarlyProgression:
     # Determines if an early progression item guaranteed in one of your first locations.
     # Normal restricts the starting item pool to Morph Ball and Missiles.
@@ -25,19 +29,63 @@ Metroid Fusion:
     normal: 4
     advanced: 1
 
-  TrickyShinesparksInRegionLogic:
-    # Are difficult or risky shinesparks required to navigate around?
-    # Note that this does not exclude items that require shinesparking in vanilla to obtain.
-    # Use the ShinesparkLocations location group for that.
+  SectorTubeShuffle:
+    # If enabled, shuffles the tube connections between sectors.
+    # Does not affect the non-glass tube connections.
     'false': 50
     'true': 0
+
+  ElevatorShuffle:
+    # If enabled, shuffles the various elevator connections.
+    # Sectors will shuffle the six sector elevators in the Sector Hub.
+    # All will include all elevator connections in the game.
+    # Note that if enabled, logical energy tank requirements will be relaxed.
+    none: 50
+    sectors: 0
+    all: 0
+
+  PointOfNoReturnsInLogic:
+    # Should Point of No Return locations be in logic.
+    # If disabled, you will never be required to enter an area without the items to exit out.
+    'false': 0
+    'true': 50
+
+  death_link:
+    # When you die, everyone who enabled death link dies. Of course, the reverse is true too.
+    'false': 50
+    'true': 0
+
+  #################
+  # Trick Options #
+  #################
+  ShinesparkTrickDifficulty:
+    # What level of shinespark trick difficulty may be required to navigate around.
+    # Note that this does not exclude items that require shinesparking in vanilla to obtain.
+    # Use the ShinesparkLocations location group for that.
+    none: 50
+    beginner: 0
+    advanced: 0
+
+  WallJumpTrickDifficulty:
+    # What level of wall jump trick difficulty may be required to navigate around.
+    none: 50
+    beginner: 0
+    advanced: 0
+
+  CombatDifficulty:
+    # What level of combat tools are logically expected for later game bosses.
+    beginner: 50
+    advanced: 0
+    expert: 0
 
   GameMode:
     # Determines starting location and accessibility.
     # Vanilla starts you in the Docking Bay with no items.
     # Open Sector Hub starts you in the Sector Hub with one E-Tank and one random item. All sector elevators will be open.
+    # Custom will apply the settings in the Custom Game Mode section.
     vanilla: 4
     open_sector_hub: 1
+    custom: 0
 
   InfantMetroidsInPool:
     # How many Infant Metroids will be in the item pool.
@@ -59,6 +107,16 @@ Metroid Fusion:
     # Default is 5
     random-range-middle-1-9: 18
     random-range-low-10-20: 11
+
+  InfantMetroidLocations:
+    # Where Infant Metroids can be located.
+    # Anywhere allows them to be anywhere in the multiworld.
+    # Bosses Encouraged increases the chances of them being located on local boss locations.
+    # Only Bosses means Infant Metroids can only be on your boss locations. Will limit the number of Infant Metroids
+    # in the pool. if greater than the number of bosses.
+    anywhere: 1
+    bosses_encouraged: 4
+    only_bosses: 2
 
   PaletteRandomization:
     # Randomize the ingame palettes.
@@ -120,6 +178,63 @@ Metroid Fusion:
     random-range-middle-0-4: 2
     random-range-low-5-100: 1
 
+  ############################
+  # Custom Game Mode Options #
+  ############################
+  StartingLocation:
+    # Your starting location.
+    # This is a Custom Game Mode option and will only be applied if GameMode is set to Custom.
+    docking_bay: 50
+    operations_deck: 0
+    sector_hub: 0
+    concourse_save_station: 0
+
+  StartingMajorUpgrades:
+    # How many major upgrades you begin with.
+    # Note that depending on your StartingLocation and EarlyProgression settings, you may receive more than specified here
+    # in order to successfully generate the game. Upgrades are taken from the general item pool and will be replaced
+    # by a random minor tank.
+    # These will be applied in addition to your start_inventory and start_inventory_from_pool items.
+    # These will be sent by the client once you're connected.
+    # This is a Custom Game Mode option and will only be applied if GameMode is set to Custom.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 22
+    0: 50
+    random: 0
+    random-low: 0
+    random-high: 0
+
+  StartingEnergyTanks:
+    # How many Energy Tanks you begin with.
+    # This will be overridden by the number specified in start_inventory and start_inventory_from_pool, if applicable.
+    # Energy tanks are taken from the general item pool and will be replaced by a random minor tank.
+    # These will be sent by the client once you're connected.
+    # This is a Custom Game Mode option and will only be applied if GameMode is set to Custom.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 20
+    0: 50
+    random: 0
+    random-low: 0
+    random-high: 0
+
+  OpenSectorElevators:
+    # Determines if the sector elevators in the Sector Hub are locked by their vanilla keycard requirements.
+    # This is a Custom Game Mode option and will only be applied if GameMode is set to Custom.
+    'false': 50
+    'true': 0
+
+  SectorNavigationRoomHintLocks:
+    # Determines if the Navigation Rooms at the start of each sector have their hints locked by keycard requirements.
+    # If set, the keycard required for the hint will be one level higher than the level needed to access the sector
+    # in vanilla. Has no effect if EnableHints is disabled.
+    # This is a Custom Game Mode option and will only be applied if GameMode is set to Custom.
+    'false': 50
+    'true': 0
+
   ###########################
   # Item & Location Options #
   ###########################
@@ -133,6 +248,12 @@ Metroid Fusion:
 
   start_inventory:
     # Start with these items.
+    {}
+
+  start_inventory_from_pool:
+    # Start with the specified amount of these items and don't place them in the world. Example: "Bomb: 1"
+    # 
+    # The game decides what the replacement items will be.
     {}
 
   start_hints:
