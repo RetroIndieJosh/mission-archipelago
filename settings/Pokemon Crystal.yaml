@@ -1,26 +1,13 @@
 ﻿name: PkmnC-{player}
 description: Mission Archipelago - Pokemon Crystal
 requires:
-  version: 0.6.2 # Version of Archipelago required for this yaml to work as expected.
+  version: 0.6.4
 
 Pokemon Crystal:
   ################
   # Game Options #
   ################
-  progression_balancing:
-    # A system that can move progression earlier, to try and prevent the player from getting stuck and bored early.
-    # 
-    # A lower setting means more getting stuck. A higher setting means less getting stuck.
-    #
-    # You can define additional values between the minimum and maximum values.
-    # Minimum value is 0
-    # Maximum value is 99
-    random: 0
-    random-low: 0
-    random-high: 0
-    disabled: 0 # equivalent to 0
-    normal: 50 # equivalent to 50
-    extreme: 0 # equivalent to 99
+  progression_balancing: normal
 
   accessibility:
     # Set rules for reachability of your items/locations.
@@ -81,12 +68,9 @@ Pokemon Crystal:
     # Default is 8
     # Minimum value is 0
     # Maximum value is 16
-    0: 1
-    random-range-1-3: 2
-    random-range-4-6: 4
-    random-range-7-9: 16
-    random-range-10-12: 4
-    random-range-13-16: 2
+    random-range-high-0-3: 1
+    random-range-middle-4-12: 2
+    random-range-low-13-16: 1
 
   red_requirement:
     # Sets the requirement to battle Red
@@ -100,12 +84,11 @@ Pokemon Crystal:
     # Default is 16
     # Minimum value is 0
     # Maximum value is 16
-    0: 1
-    random-range-1-3: 2
-    random-range-4-6: 4
-    random-range-7-9: 8
-    random-range-10-12: 16
-    random-range-13-16: 64
+    random-range-high-0-3: 1
+    random-range-high-4-6: 2
+    random-range-high-7-9: 4
+    random-range-high-10-12: 8
+    random-range-high-13-16: 16
 
   mt_silver_requirement:
     # Sets the requirement to access Mt. Silver and Silver Cave
@@ -119,12 +102,11 @@ Pokemon Crystal:
     # Default is 16
     # Minimum value is 0
     # Maximum value is 16
-    0: 1
-    random-range-1-3: 2
-    random-range-4-6: 4
-    random-range-7-9: 8
-    random-range-10-12: 16
-    random-range-13-16: 64
+    random-range-high-0-3: 1
+    random-range-high-4-6: 2
+    random-range-high-7-9: 4
+    random-range-high-10-12: 8
+    random-range-high-13-16: 16
 
   radio_tower_requirement:
     # Sets the requirement for Team Rocket to take over the Goldenrod Radio Tower
@@ -138,12 +120,10 @@ Pokemon Crystal:
     # Default is 7
     # Minimum value is 0
     # Maximum value is 16
-    0: 1
-    random-range-1-3: 2
-    random-range-4-6: 4
-    random-range-7-9: 16
-    random-range-10-12: 4
-    random-range-13-16: 2
+    random-range-high-0-5: 2
+    random-range-middle-6-8: 4
+    random-range-low-9-14: 2
+    random-range-low-15-16: 1
 
   route_44_access_requirement:
     # Sets the requirement to pass between Mahogany Town and Route 44
@@ -157,12 +137,10 @@ Pokemon Crystal:
     # Default is 7
     # Minimum value is 0
     # Maximum value is 16
-    0: 1
-    random-range-1-3: 2
-    random-range-4-6: 4
-    random-range-7-9: 16
-    random-range-10-12: 4
-    random-range-13-16: 2
+    random-range-high-0-5: 2
+    random-range-middle-6-8: 4
+    random-range-low-9-14: 2
+    random-range-low-15-16: 1
 
   kanto_access_requirement:
     # Sets the requirement to pass between Victory Road gate and Kanto
@@ -185,12 +163,21 @@ Pokemon Crystal:
     # Default is 8
     # Minimum value is 0
     # Maximum value is 16
-    0: 1
-    random-range-1-3: 2
-    random-range-4-6: 4
-    random-range-7-9: 16
-    random-range-10-12: 4
-    random-range-13-16: 2
+    random-range-high-0-3: 1
+    random-range-middle-4-12: 2
+    random-range-low-13-16: 1
+
+  dark_areas:
+    # Sets which areas are dark until Flash is used
+    # 
+    # - _All includes all areas
+    # - _Random has a 50% chance to include each area that is not already included
+    #     
+    # Allowed areas: Burned Tower, Dark Cave, Digletts Cave, Dragons Den,
+    # Goldenrod Underground, Ice Path, Ilex Forest, Mount Moon, Mount Mortar,
+    # Olivine Lighthouse, Rock Tunnel, Silver Cave, Slowpoke Well, Tohjo Falls,
+    # Union Cave, Victory Road, Whirl Islands
+    ['Dark Cave', 'Rock Tunnel', 'Silver Cave', 'Whirl Islands']
 
   route_32_condition:
     # Sets the condition required to pass between the north and south parts of Route 32
@@ -338,9 +325,53 @@ Pokemon Crystal:
     'false': 50
     'true': 0
 
+  item_pool_fill:
+    # Changes how non-progression items are put into the pool.
+    # 
+    # - Vanilla: item pool filled similarly to vanilla.
+    # - Balanced: all filler items uniformly randomized.
+    # - Youngster: item pool filled with items reflecting that of a young trainer.
+    # - Cooltrainer: item pool filled with items reflecting that of a cooltrainer.
+    vanilla: 50
+    balanced: 0
+    youngster: 0
+    cooltrainer: 0
+
+  exclude_post_goal_locations:
+    # Excludes locations which require becoming champion when goal is becoming champion
+    'false': 0
+    'true': 50
+
+  grasssanity:
+    # Adds Cutting grass tiles as locations, each one adds a Grass to the item pool, Grass smells good and sells for ¥1
+    # Long grass tiles in National Park must be Cut twice and as such contribute two locations
+    # 
+    # - One Per Area: Selects a random grass tile in each Route or Area to be a location
+    # - Full: Every grass tile is a location
+    # 
+    # WARNING: This option is dumb, it can add over 700 locations and over 700 useless filler items
+    'off': 50
+    one_per_area: 0
+    full: 0
+
   ##############
   # Shopsanity #
   ##############
+  shopsanity_type:
+    # These add the desired settings to the `shopsanity` option in triggers
+    # For now, the most difficult ones are disabled
+    none: 32
+    johto-marts: 16
+    kanto-marts: 16
+    both-marts: 8
+    game-corners: 4
+    johto-and-gc: 2
+    kanto-and-gc: 2
+    both-and-gc: 1
+    blue-card: 0
+    apricorns: 0
+    # TODO combinations for blue card and apricorns when added
+
   shopsanity:
     # Adds shop purchases as locations, items in shops are added to the item pool
     # - Johto Marts: Adds Johto Poke Marts, including the Goldenrod Dept. Store.
@@ -362,12 +393,12 @@ Pokemon Crystal:
     # - Classification: Shop prices are determined by item classifications (Progression, Useful, Filler/Trap)
     # - Spheres and Classifications: Shop prices are determined by both sphere access and item classifications
     # - Completely Random: Shop prices will be completely random
-    vanilla: 50
-    item_price: 0
-    spheres: 0
-    classification: 0
-    spheres_and_classification: 0
-    completely_random: 0
+    vanilla: 2
+    item_price: 4
+    spheres: 8
+    classification: 8
+    spheres_and_classification: 16
+    completely_random: 1
 
   shopsanity_minimum_price:
     # Sets the minimum cost of shop items when Shopsanity is enabled
@@ -375,10 +406,10 @@ Pokemon Crystal:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 0
     # Maximum value is 10000
-    100: 50
-    random: 0
-    random-low: 0
-    random-high: 0
+    # Default is 100
+    random-range-middle-0-200: 4
+    random-range-low-201-1000: 2
+    random-range-low-1001-10000: 1
 
   shopsanity_maximum_price:
     # Sets the maximum cost of shop items when Shopsanity is enabled
@@ -386,16 +417,16 @@ Pokemon Crystal:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 0
     # Maximum value is 10000
-    3000: 50
-    random: 0
-    random-low: 0
-    random-high: 0
+    # Default is 3000
+    random-range-middle-0-200: 4
+    random-range-low-201-1000: 2
+    random-range-low-1001-10000: 1
 
   provide_shop_hints:
     # Sends out hints when a randomized shop is accessed
-    'off': 50
+    'off': 0
     progression: 0
-    progression_and_useful: 0
+    progression_and_useful: 1
     all: 0
 
   shopsanity_restrict_rare_candies:
@@ -406,7 +437,9 @@ Pokemon Crystal:
   #######
   # HMs #
   #######
+
   hm_compatibility:
+    ## NOTE :: Not messing with this, it essentially makes a brand new Pokemon game
     # Percent chance for Pokemon to be compatible with each HM
     # Headbutt and Rock Smash are considered HMs when applying compatibility
     # 
@@ -480,6 +513,11 @@ Pokemon Crystal:
   ###########
   # Pokemon #
   ###########
+
+  ##########################################################################################################
+  ## NOTE :: Not messing with type/stat/evolution changes as they essentially make a brand new Pokemon game
+  ##########################################################################################################
+
   randomize_wilds:
     # Randomizes species of wild Pokemon
     # 
@@ -487,10 +525,10 @@ Pokemon Crystal:
     # Evolution Lines: Ensures that at least one Pokemon from each evolutionary line can be obtained in the wild
     # Catch 'em All: Ensures that every Pokemon will be obtainable in the wild
     vanilla: 0
-    completely_random: 0
-    base_forms: 1
-    evolution_lines: 0
-    catch_em_all: 0
+    completely_random: 8
+    base_forms: 4
+    evolution_lines: 2
+    catch_em_all: 1
 
   wild_encounter_blocklist:
     # These Pokemon will not appear in the wild
@@ -544,6 +582,13 @@ Pokemon Crystal:
     match_a_type: 0
     increase_bst: 0
 
+  convergent_evolution:
+    # Random evolution can cause multiple Pokemon to evolve into the same Pokemon.
+    # - Avoid: Each Pokemon can only evolve from one Pokemon.
+    # - Allow: Multiple Pokemon can evolve into the same Pokemon. Makes breeding weird.
+    avoid: 50
+    allow: 0
+
   evolution_blocklist:
     # No Pokemon will evolve into these Pokemon. Does nothing if evolution is not randomized.
     # You can use "_Legendaries" as a shortcut for all legendary Pokemon.
@@ -557,6 +602,12 @@ Pokemon Crystal:
     requested: 2
     both: 4
 
+  breeding_blocklist:
+    # No Pokemon will produce eggs containing these Pokemon.
+    # You can use "_Legendaries" as a shortcut for all legendary Pokemon.
+    # Blocklists are best effort, other constraints may cause them to be ignored.
+    []
+
   encounter_grouping:
     # Determines how randomized wild Pokemon are grouped in encounter tables.
     # 
@@ -568,9 +619,9 @@ Pokemon Crystal:
     # will contain only a single encounter. Each rod is a separate encounter.
     # 
     # This setting has no effect if wild Pokemon are not randomized.
-    all_split: 50
-    one_to_one: 0
-    one_per_method: 0
+    all_split: 4
+    one_to_one: 2
+    one_per_method: 1
 
   encounter_slot_distribution:
     # Sets how the Pokemon encounter slots in an area are distributed.
@@ -586,9 +637,9 @@ Pokemon Crystal:
     #         Super Rod: 40%/30%/20%/10%
     # Equal sets all encounter slots to have (almost) equal probability.
     vanilla: 0
-    remove_one_percents: 50
-    balanced: 0
-    equal: 0
+    remove_one_percents: 4
+    balanced: 2
+    equal: 1
 
   ############
   # Starters #
@@ -596,12 +647,13 @@ Pokemon Crystal:
   randomize_starters:
     # Randomizes species of starter Pokemon
     vanilla: 0
-    unevolved_only: 0
-    completely_random: 0
-    first_stage_can_evolve: 1
-    base_stat_mode: 0
+    unevolved_only: 4
+    completely_random: 1
+    first_stage_can_evolve: 8
+    base_stat_mode: 2
 
   starters_bst_average:
+    ## NOTE :: Not messing with this, it essentially makes a brand new Pokemon game
     # If you chose Base Stat Mode for your starters, what is the average base stat total you want your available starters to be?
     #
     # You can define additional values between the minimum and maximum values.
@@ -622,6 +674,8 @@ Pokemon Crystal:
   #########
   # Moves #
   #########
+  ## NOTE :: Not messing with any of these, it essentially makes a brand new Pokemon game
+
   randomize_learnsets:
     # Vanilla: Vanilla learnsets
     # Randomize: Random learnsets
@@ -685,6 +739,17 @@ Pokemon Crystal:
     random-low: 0
     random-high: 0
     none: 50 # equivalent to 255
+
+  physical_special_split:
+    # Sets how moves are determined to be Physical or Special
+    # - Vanilla: Determined by move type, for example: all Fire moves are Special
+    # - Modern: Determined by the move, for example: Flame Wheel is Physical and Ember is Special
+    # - Random by type: Vanilla, but shuffled randomly for each type
+    # - Random by move: Modern, but shuffled randomly for each move
+    vanilla: 50
+    modern: 0
+    random_by_type: 0
+    random_by_move: 0
 
   randomize_tm_moves:
     # Randomizes the moves available as TMs
@@ -784,11 +849,11 @@ Pokemon Crystal:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 0
     # Maximum value is 251
-    random: 0
-    random-low: 2
-    random-high: 1
-    none: 8 # equivalent to 0
-    full: 0 # equivalent to 251
+    0: 16
+    random-range-low-1-50: 8
+    random-range-low-51-100: 4
+    random-range-low-101-200: 2
+    random-range-low-201-251: 1
 
   dexcountsanity:
     # Adds checks for completing Pokedex milestones
@@ -797,11 +862,11 @@ Pokemon Crystal:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 0
     # Maximum value is 251
-    random: 0
-    random-low: 2
-    random-high: 1
-    none: 8 # equivalent to 0
-    full: 0 # equivalent to 251
+    0: 16
+    random-range-low-1-50: 8
+    random-range-low-51-100: 4
+    random-range-low-101-200: 2
+    random-range-low-201-251: 1
 
   dexcountsanity_step:
     # If Dexcountsanity is enabled, specifies the step interval at which your checks are placed.
@@ -811,11 +876,12 @@ Pokemon Crystal:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 1
     # Maximum value is 251
-    1: 16
-    random-range-2-4: 8
-    random-range-5-9: 4
-    random-range-10-19: 2
-    random-range-20-30: 1
+    1: 32
+    random-range-low-2-4: 16
+    random-range-low-5-10: 8
+    random-range-low-11-20: 4
+    random-range-low-21-30: 2
+    random-range-low-31-50: 1
 
   dexcountsanity_leniency:
     # If Dexcountsanity is enabled, specifies the logic leniency for checks.
@@ -827,10 +893,12 @@ Pokemon Crystal:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 0
     # Maximum value is 251
-    0: 50
-    random: 0
-    random-low: 0
-    random-high: 0
+    1: 32
+    random-range-low-2-4: 16
+    random-range-low-5-10: 8
+    random-range-low-11-20: 4
+    random-range-low-21-30: 2
+    random-range-low-31-50: 1
 
   dexsanity_starters:
     # Controls how Dexsanity treats starter Pokemon
@@ -855,11 +923,11 @@ Pokemon Crystal:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 0
     # Maximum value is 223
-    random: 0
-    random-low: 1
-    random-high: 2
-    none: 8 # equivalent to 0
-    full: 0 # equivalent to 223
+    0: 16
+    random-range-low-1-50: 8
+    random-range-low-51-100: 4
+    random-range-low-101-200: 2
+    random-range-low-201-223: 1
 
   kanto_trainersanity:
     # Adds checks for defeating Kanto trainers.
@@ -871,11 +939,10 @@ Pokemon Crystal:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 0
     # Maximum value is 119
-    random: 0
-    random-low: 1
-    random-high: 2
-    none: 8 # equivalent to 0
-    full: 0 # equivalent to 119
+    0: 8
+    random-range-low-1-50: 4
+    random-range-low-51-100: 2
+    random-range-low-101-119: 1
 
   trainersanity_alerts:
     # Shows a message box or plays a sound for Trainersanity checks
@@ -1035,8 +1102,11 @@ Pokemon Crystal:
     # fast_egg_hatch: off/on - Sets whether eggs take a single cycle to hatch
     # fast_egg_make: off/on - Sets whether eggs are guaranteed after one cycle at the day care
     # guaranteed_catch: off/on - Sets whether balls have a 100% success rate
+    # hms_require_teaching: on/off - Sets whether it is required to teach field moves to use them in the field
+    # item_notification: popup/sound/none - Sets how Trainersanity, Dex(count)sanity and Grasssanity locations show item notifications
     # low_hp_beep: on/off - Sets whether the low HP beep is played in battle
     # menu_account: on/off - Sets whether your start menu selection is remembered
+    # more_uncaught_encounters: on/off - Sets whether wild encounters of Pokemon you have not caught are more likely
     # poison_flicker: on/off - Sets whether the overworld poison flash effect is played
     # rods_always_work: off/on - Sets whether the fishing rods always succeed
     # short_fanfares: off/on - Sets whether item receive fanfares are shortened
@@ -1063,8 +1133,11 @@ Pokemon Crystal:
     fast_egg_hatch: 'off'
     fast_egg_make: 'off'
     guaranteed_catch: 'off'
+    hms_require_teaching: 'on'
+    item_notification: popup
     low_hp_beep: 'on'
     menu_account: 'on'
+    more_uncaught_encounters: 'off'
     poison_flicker: 'on'
     rods_always_work: 'off'
     short_fanfares: 'on'
@@ -1085,9 +1158,24 @@ Pokemon Crystal:
     # - Off: Vanilla levels are used.
     # - Spheres: Levels are scaled based on sphere access only.
     # - Spheres and Distance: Levels are scaled based on both sphere access and distance from starting town.
-    'off': 0
-    spheres: 0
-    spheres_and_distance: 1
+    'off': 1
+    spheres: 2
+    spheres_and_distance: 4
+
+  lock_kanto_gyms:
+    # Logically lock entering all Kanto gyms and Mt. Moon behind access to a high level Pokemon, included locations:
+    # - Snorlax
+    # - Ho-oh
+    # - Lugia
+    # - Suicune
+    # - Silver Cave entrance
+    # - Victory Road
+    # 
+    # You can still enter gyms and Mt. Moon without access to any of these.
+    # 
+    # NOTE: It's not recommended to use this option with Level Scaling, as the Gym and wild Pokemon levels will be scaled
+    'off': 50
+    high_level_pokemon: 0
 
   all_pokemon_seen:
     # Start with all Pokemon seen in your Pokedex.
@@ -1101,11 +1189,12 @@ Pokemon Crystal:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 0
     # Maximum value is 999999
-    random: 0
-    random-low: 0
-    random-high: 0
-    vanilla: 0 # equivalent to 3000
-    random-range-2000-4000: 1
+    # Default is 3000
+    random-range-high-0-999: 4
+    random-range-middle-1000-4999: 8
+    random-range-low-5000-9999: 4
+    random-range-low-10000-99999: 2
+    random-range-low-100000-999999: 1
 
   better_marts:
     # Improves the selection of items at Pokemarts
@@ -1119,18 +1208,11 @@ Pokemon Crystal:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 1
     # Maximum value is 255
-    random: 0
-    random-low: 0
-    random-high: 0
-    half: 0 # equivalent to 10
-    normal: 8 # equivalent to 20
-    double: 4 # equivalent to 40
-    triple: 2 # equivalent to 60
-    quadruple: 1 # equivalent to 80
-    quintuple: 0 # equivalent to 100
-    sextuple: 0 # equivalent to 120
-    septuple: 0 # equivalent to 140
-    octuple: 0 # equivalent to 160
+    # default is 20
+    random-range-middle-1-40: 8
+    random-range-high-41-80: 4
+    random-range-low-81-120: 2
+    random-range-low-121-255: 1
 
   skip_elite_four:
     # Go straight to Lance when challenging the Elite Four
@@ -1147,6 +1229,17 @@ Pokemon Crystal:
     random: 0
     random-low: 0
     random-high: 0
+
+  always_unlock_fly_destinations:
+    # Always unlock Fly destinations when entering a town, even if Randomize Fly Unlocks is enabled
+    'false': 50
+    'true': 0
+
+  trainer_name:
+    # Preset your trainer name, this skips the name prompt.
+    # 
+    # Only the first seven characters will be used, unsupported characters will be replaced with '?'.
+    'Kris': 50
 
   death_link:
     # When you die, everyone who enabled death link dies. Of course, the reverse is true too.
@@ -1226,3 +1319,67 @@ Pokemon Crystal:
   plando_items:
     # Generic items plando.
     []
+
+  triggers:
+
+  # shopsanity: Johto Marts
+  - option_category: Pokemon Crystal
+    option_name: shopsanity_type
+    option_result: 'johto-marts'
+    options:
+      Pokemon Crystal:
+        +shopsanity:
+          - "Johto Marts"
+  # shopsanity: Kanto Marts
+  - option_category: Pokemon Crystal
+    option_name: shopsanity_type
+    option_result: 'kanto-marts'
+    options:
+      Pokemon Crystal:
+        +shopsanity:
+          - "Kanto Marts"
+  # shopsanity: Both Marts
+  - option_category: Pokemon Crystal
+    option_name: shopsanity_type
+    option_result: 'both-marts'
+    options:
+      Pokemon Crystal:
+        +shopsanity:
+          - "Johto Marts"
+          - "Kanto Marts"
+  # shopsanity: Game Corners
+  - option_category: Pokemon Crystal
+    option_name: shopsanity_type
+    option_result: 'game-corners'
+    options:
+      Pokemon Crystal:
+        +shopsanity:
+          - "Game Corners"
+  # shopsanity: Johto Marts + Game Corners
+  - option_category: Pokemon Crystal
+    option_name: shopsanity_type
+    option_result: 'johto-and-gc'
+    options:
+      Pokemon Crystal:
+        +shopsanity:
+          - "Johto Marts"
+          - "Game Corners"
+  # shopsanity: Kanto Marts + Game Corners
+  - option_category: Pokemon Crystal
+    option_name: shopsanity_type
+    option_result: 'johto-marts'
+    options:
+      Pokemon Crystal:
+        +shopsanity:
+          - "Kanto Marts"
+          - "Game Corners"
+  # shopsanity: Both Marts + Game Corners
+  - option_category: Pokemon Crystal
+    option_name: shopsanity_type
+    option_result: 'johto-marts'
+    options:
+      Pokemon Crystal:
+        +shopsanity:
+          - "Johto Marts"
+          - "Kanto Marts"
+          - "Game Corners"
