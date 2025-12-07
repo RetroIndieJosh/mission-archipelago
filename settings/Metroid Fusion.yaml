@@ -4,23 +4,7 @@ requires:
   version: 0.6.2 # Version of Archipelago required for this yaml to work as expected.
 
 Metroid Fusion:
-  ################
-  # Game Options #
-  ################
-  progression_balancing:
-    # A system that can move progression earlier, to try and prevent the player from getting stuck and bored early.
-    # 
-    # A lower setting means more getting stuck. A higher setting means less getting stuck.
-    #
-    # You can define additional values between the minimum and maximum values.
-    # Minimum value is 0
-    # Maximum value is 99
-    random: 0
-    random-low: 0
-    random-high: 0
-    disabled: 0 # equivalent to 0
-    normal: 50 # equivalent to 50
-    extreme: 0 # equivalent to 99
+  progression_balancing: normal
 
   accessibility:
     # Set rules for reachability of your items/locations.
@@ -61,8 +45,9 @@ Metroid Fusion:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 1
     # Maximum value is 20
-    random-low: 2
-    random-high: 1
+    # Default is 5
+    random-middle-1-9: 18
+    random-low-10-20: 11
 
   InfantMetroidsRequired:
     # How many Infant Metroids will be required to beat the game.
@@ -71,8 +56,9 @@ Metroid Fusion:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 1
     # Maximum value is 20
-    random-low: 2
-    random-high: 1
+    # Default is 5
+    random-middle-1-9: 18
+    random-low-10-20: 11
 
   PaletteRandomization:
     # Randomize the ingame palettes.
@@ -100,10 +86,9 @@ Metroid Fusion:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 5
     # Maximum value is 100
-    10: 50
-    random: 0
-    random-low: 0
-    random-high: 0
+    # Default 10
+    random-range-middle-5-15: 2
+    random-range-low-16-100: 1
 
   MissileTankAmmo:
     # The amount of missiles provided by a Missile Tank item.
@@ -111,10 +96,9 @@ Metroid Fusion:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 0
     # Maximum value is 100
-    5: 50
-    random: 0
-    random-low: 0
-    random-high: 0
+    # Default 5
+    random-range-middle-0-10: 2
+    random-range-low-11-100: 1
 
   PowerBombDataAmmo:
     # The amount of power bombs provided by a Power Bomb Data item.
@@ -122,10 +106,9 @@ Metroid Fusion:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 5
     # Maximum value is 100
-    10: 50
-    random: 0
-    random-low: 0
-    random-high: 0
+    # Default 10
+    random-range-middle-5-15: 2
+    random-range-low-16-100: 1
 
   PowerBombTankAmmo:
     # The amount of power bombs provided by a Power Bomb Tank item.
@@ -133,10 +116,9 @@ Metroid Fusion:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 0
     # Maximum value is 100
-    2: 50
-    random: 0
-    random-low: 0
-    random-high: 0
+    # Default is 2
+    random-range-middle-0-4: 2
+    random-range-low-5-100: 1
 
   ###########################
   # Item & Location Options #
