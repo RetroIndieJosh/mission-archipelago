@@ -126,6 +126,8 @@ Mario Kart 64:
     free_drift: 0
     free_mini_turbo: 0
 
+  # something below her breaks generation - not sure why, adding MORE items should make it LESS likely to break
+
   add_traction_tires:
     # Optionally shuffle into the item pool the ability to have traction on off-road and winter surface types,
     # per kart. "Off" means karts always have traction, as in the vanilla game.
