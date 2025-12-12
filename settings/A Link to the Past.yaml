@@ -1,24 +1,11 @@
 ﻿name: LttP-{player}
 description: Mission Archipelago - A Link to the Past
 requires:
-  version: 0.6.2 # Version of Archipelago required for this yaml to work as expected.
+  version: 0.6.4
 
 A Link to the Past:
   # Game Options
-  progression_balancing:
-    # A system that can move progression earlier, to try and prevent the player from getting stuck and bored early.
-    # 
-    # A lower setting means more getting stuck. A higher setting means less getting stuck.
-    #
-    # You can define additional values between the minimum and maximum values.
-    # Minimum value is 0
-    # Maximum value is 99
-    random: 0
-    random-low: 0
-    random-high: 0
-    disabled: 0 # equivalent to 0
-    normal: 50 # equivalent to 50
-    extreme: 0 # equivalent to 99
+  progression_balancing: normal
 
   accessibility:
     # Set rules for reachability of your items/locations.
@@ -115,19 +102,17 @@ A Link to the Past:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 0
     # Maximum value is 7
-    0: 1
-    random-range-1-4: 2
-    random-range-5-7: 4
+    # Default is 7
+    random-range-high-0-7: 4
 
   crystals_needed_for_ganon:
     # Number of crystals needed to damage Ganon
     #
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 0
-    # Maximum value is 7
+    # Default is 7
     0: 1
-    random-range-1-4: 2
-    random-range-5-7: 4
+    random-range-high-1-7: 32
 
   triforce_pieces_mode:
     # Determine how to calculate the extra available triforce pieces.
@@ -144,10 +129,10 @@ A Link to the Past:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 100
     # Maximum value is 1000
-    150: 0
-    random: 1
-    random-low: 0
-    random-high: 0
+    # Default is 150
+    random-range-middle-100-199: 4
+    random-range-200-499: 2
+    random-range-500-1000: 1
 
   triforce_pieces_required:
     # Set to how many out of X triforce pieces you need to win the game in a triforce hunt.
@@ -156,10 +141,9 @@ A Link to the Past:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 1
     # Maximum value is 90
-    20: 0
-    random: 1
-    random-low: 0
-    random-high: 0
+    # Default is 20
+    random-range-1-39: 4
+    random-range-40-90: 1
 
   triforce_pieces_available:
     # Set to how many triforces pieces are available to collect in the world. Default is 30. Max is 90, Min is 1
@@ -167,10 +151,9 @@ A Link to the Past:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 1
     # Maximum value is 90
-    30: 0
-    random: 1
-    random-low: 0
-    random-high: 0
+    # Default is 30
+    random-range-1-59: 4
+    random-range-60-90: 1
 
   triforce_pieces_extra:
     # Set to how many extra triforces pieces are available to collect in the world.
@@ -178,10 +161,10 @@ A Link to the Past:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 0
     # Maximum value is 89
-    10: 0
-    random: 1
-    random-low: 0
-    random-high: 0
+    # Default is 10
+    random-range-0-19: 4
+    random-range-20-49: 2
+    random-range-50-89: 1
 
   entrance_shuffle:
     # Dungeons Simple: Shuffle just dungeons amongst each other, swapping dungeons entirely, so Hyrule Castle is always 1 dungeon.
@@ -193,8 +176,8 @@ A Link to the Past:
     # Full: Like Restricted, but all Dungeon entrances are shuffled with all non-Dungeon entrances.
     # Crossed: Like Full, but interiors with multiple entrances are no longer confined to the same world, which may allow crossing worlds.
     # Insanity: Like Crossed, but entrances and exits may be decoupled from each other, so that leaving through an exit may not return you to the entrance you entered from.
-    vanilla: 1
-    dungeons_simple: 0
+    vanilla: 16
+    dungeons_simple: 1
     dungeons_full: 0
     dungeons_crossed: 0
     simple: 0
@@ -211,22 +194,22 @@ A Link to the Past:
 
   big_key_shuffle:
     # Big Key Placement
-    original_dungeon: 8
-    own_dungeons: 4
-    own_world: 2
-    any_world: 0
-    different_world: 0
-    start_with: 1
+    original_dungeon: 16
+    own_dungeons: 8
+    own_world: 4
+    any_world: 1
+    different_world: 1
+    start_with: 2
 
   small_key_shuffle:
     # Small Key Placement
-    original_dungeon: 8
-    own_dungeons: 4
-    own_world: 2
-    any_world: 0
-    different_world: 0
-    start_with: 1
-    universal: 0
+    original_dungeon: 16
+    own_dungeons: 8
+    own_world: 4
+    any_world: 1
+    different_world: 1
+    start_with: 2
+    universal: 1
 
   key_drop_shuffle:
     # Shuffle keys found in pots and dropped from killed enemies,
@@ -317,14 +300,14 @@ A Link to the Past:
 
   retro_bow:
     # Zelda-1 like mode. You have to purchase a quiver to shoot arrows using rupees.
-    'false': 50
-    'true': 0
+    'false': 16
+    'true': 1
 
   retro_caves:
     # Zelda-1 like mode. There are randomly placed take-any caves that contain one Sword and
     # choices of Heart Container/Blue Potion.
-    'false': 50
-    'true': 0
+    'false': 16
+    'true': 1
 
   hints:
     # On/Full: Put item and entrance placement hints on telepathic tiles and some NPCs, Full removes joke hints.
@@ -346,8 +329,8 @@ A Link to the Past:
     # Chaos allows any boss to appear any number of times.
     # Singularity places a single boss in as many places as possible, and a second boss in any remaining locations.
     # Supports plando placement.
-    none: 1
-    basic: 0
+    none: 8
+    basic: 1
     full: 0
     chaos: 0
     singularity: 0
@@ -379,21 +362,21 @@ A Link to the Past:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 0
     # Maximum value is 30
-    0: 50
-    random: 0
-    random-low: 0
-    random-high: 0
+    0: 16
+    random-range-low-1-10: 4
+    random-range-low-11-20: 2
+    random-range-low-21-30: 1
 
   randomize_shop_inventories:
     # Generate new default inventories for overworld/underworld shops, and unique shops; or each shop independently
-    default: 50
-    randomize_by_shop_type: 0
-    randomize_each: 0
+    default: 16
+    randomize_by_shop_type: 2
+    randomize_each: 1
 
   shuffle_shop_inventories:
     # Shuffle default inventories of the shops around
-    'false': 50
-    'true': 0
+    'false': 8
+    'true': 1
 
   include_witch_hut:
     # Consider witch's hut like any other shop and shuffle/randomize it too
@@ -416,10 +399,11 @@ A Link to the Past:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 0
     # Maximum value is 400
-    100: 50
-    random: 0
-    random-low: 0
-    random-high: 0
+    # Default is 100
+    random-range-high-0-49: 2
+    random-range-middle-50-149: 8
+    random-range-low-150-200: 4
+    random-range-low-201-400: 1
 
   shuffle_capacity_upgrades:
     # Shuffle capacity upgrades into the item pool (and allow them to traverse the multiworld).
@@ -430,8 +414,8 @@ A Link to the Past:
 
   bombless_start:
     # Start with a max of 0 bombs available, requiring Bomb Upgrade items in order to use bombs
-    'false': 50
-    'true': 0
+    'false': 8
+    'true': 1
 
   shuffle_prizes:
     # Shuffle "general" prize packs, as in enemy, tree pull, dig etc.; "bonk" prizes; or both.
@@ -555,41 +539,9 @@ A Link to the Past:
     'false': 0
     'true': 50
 
-  ow_palettes:
-    # The type of palette shuffle to use for the overworld
-    default: 50
-    good: 0
-    blackout: 0
-    puke: 0
-    classic: 0
-    grayscale: 0
-    negative: 0
-    dizzy: 0
-    sick: 0
-
-  uw_palettes:
-    # The type of palette shuffle to use for the underworld (caves, dungeons, etc.)
-    default: 50
-    good: 0
-    blackout: 0
-    puke: 0
-    classic: 0
-    grayscale: 0
-    negative: 0
-    dizzy: 0
-    sick: 0
-
-  hud_palettes:
-    # The type of palette shuffle to use for the HUD
-    default: 50
-    good: 0
-    blackout: 0
-    puke: 0
-    classic: 0
-    grayscale: 0
-    negative: 0
-    dizzy: 0
-    sick: 0
+  ow_palettes: default # The type of palette shuffle to use for the overworld
+  uw_palettes: default # The type of palette shuffle to use for the underworld (caves, dungeons, etc.)
+  hud_palettes: default # The type of palette shuffle to use for the HUD
 
   sword_palettes:
     # The type of palette shuffle to use for the sword
@@ -615,13 +567,7 @@ A Link to the Past:
     dizzy: 1
     sick: 1
 
-  heartbeep:
-    # How quickly the heart beep sound effect will play
-    normal: 0
-    double: 0
-    half: 0
-    quarter: 1
-    'off': 0
+  heartbeep: quarter # How quickly the heart beep sound effect will play
 
   heartcolor:
     # The color of hearts in the HUD
@@ -630,36 +576,11 @@ A Link to the Past:
     green: 1
     yellow: 1
 
-  quickswap:
-    # Allows you to quickly swap items while playing with L/R
-    'false': 0
-    'true': 50
-
-  menuspeed:
-    # How quickly the menu appears/disappears
-    normal: 0
-    instant: 1
-    double: 0
-    triple: 0
-    quadruple: 0
-    half: 0
-
-  music:
-    # Whether background music will play in game
-    'false': 0
-    'true': 50
-
-  reduceflashing:
-    # Reduces flashing for certain scenes such as the Misery Mire and Ganon's Tower opening cutscenes
-    'false': 0
-    'true': 50
-
-  triforcehud:
-    # When and how the triforce hunt HUD should display
-    normal: 50
-    hide_goal: 0
-    hide_required: 0
-    hide_both: 0
+  quickswap: 'true' # Allows you to quickly swap items while playing with L/R
+  menuspeed: instant # How quickly the menu appears/disappears
+  music: 'true' # Whether background music will play in game
+  reduceflashing: 'true' # Reduces flashing for certain scenes such as the Misery Mire and Ganon's Tower opening cutscenes
+  triforcehud: normal
 
   # Item & Location Options
   local_items:
@@ -700,6 +621,10 @@ A Link to the Past:
 
   item_links:
     # Share part of your item pool with other players.
+    []
+
+  plando_items:
+    # Generic items plando.
     []
 
   triggers:
