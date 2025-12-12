@@ -1,24 +1,11 @@
 ﻿name: PkmnRB-{player}
 description: Mission Archipelago - Pokemon Red and Blue
 requires:
-  version: 0.6.2 # Version of Archipelago required for this yaml to work as expected.
+  version: 0.6.4
 
 Pokemon Red and Blue:
   # Game Options
-  progression_balancing:
-    # A system that can move progression earlier, to try and prevent the player from getting stuck and bored early.
-    # 
-    # A lower setting means more getting stuck. A higher setting means less getting stuck.
-    #
-    # You can define additional values between the minimum and maximum values.
-    # Minimum value is 0
-    # Maximum value is 99
-    random: 0
-    random-low: 0
-    random-high: 0
-    disabled: 0 # equivalent to 0
-    normal: 50 # equivalent to 50
-    extreme: 0 # equivalent to 99
+  progression_balancing: normal
 
   accessibility:
     # Set rules for reachability of your items/locations.
@@ -33,11 +20,7 @@ Pokemon Red and Blue:
     minimal: 0
     items: 50
 
-  game_version:
-    # Select Red or Blue version.
-    red: 0
-    blue: 0
-    random: 50
+  game_version: random # Select Red or Blue version.
 
   trainer_name: Red
   rival_name: Blue
@@ -49,10 +32,10 @@ Pokemon Red and Blue:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 0
     # Maximum value is 8
+    # Default is 8
     0: 1
-    random-range-1-3: 2
-    4: 4 #default
-    random-range-5-8: 2
+    random-range-middle-1-7: 4
+    8: 1
 
   elite_four_key_items_condition:
     # Percentage of available key items (not counting items you can lose) required to challenge the Elite Four. Does
@@ -61,12 +44,9 @@ Pokemon Red and Blue:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 0
     # Maximum value is 100
-    0: 32
-    random-range-1-10: 16
-    random-range-11-20: 8
-    random-range-21-40: 4
-    random-range-41-70: 2
-    random-range-71-100: 1
+    # Default is 0
+    0: 4
+    random-range-low-1-100: 1
 
   elite_four_pokedex_condition:
     # Percentage of logically-reachable Pokemon that must be registered as "owned" in the Pokedex in order to
@@ -75,12 +55,9 @@ Pokemon Red and Blue:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 0
     # Maximum value is 100
-    0: 32
-    random-range-1-10: 16
-    random-range-11-20: 8
-    random-range-21-40: 4
-    random-range-41-70: 2
-    random-range-71-100: 1
+    # Default is 0
+    0: 4
+    random-range-low-1-100: 1
 
   victory_road_condition:
     # Number of badges required to reach the front entrance of Victory Road.
@@ -88,10 +65,9 @@ Pokemon Red and Blue:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 0
     # Maximum value is 8
+    # Default is 7
     0: 1
-    random-range-1-3: 2
-    4: 4 #default
-    random-range-5-8: 2
+    random-range-high-1-7: 2
 
   route_22_gate_condition:
     # Number of badges required to pass through the Route 22 Gate
@@ -99,10 +75,9 @@ Pokemon Red and Blue:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 0
     # Maximum value is 7
+    # Default is 7
     0: 1
-    random-range-1-3: 2
-    4: 4 #default
-    random-range-5-7: 2
+    random-range-high-1-7: 2
 
   viridian_gym_condition:
     # Number of badges required to enter Viridian Gym.
@@ -110,10 +85,9 @@ Pokemon Red and Blue:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 0
     # Maximum value is 7
+    # Default is 7
     0: 1
-    random-range-1-3: 2
-    4: 4 #default
-    random-range-5-7: 2
+    random-range-high-1-7: 2
 
   cerulean_cave_badges_condition:
     # Number of badges needed to access the Cerulean Cave entrance in addition to the required Key Items.
@@ -122,9 +96,8 @@ Pokemon Red and Blue:
     # Minimum value is 0
     # Maximum value is 8
     0: 1
-    random-range-1-3: 2
-    4: 4 #default
-    random-range-5-8: 2
+    random-range-middle-1-7: 4
+    8: 2
 
   cerulean_cave_key_items_condition:
     # Percentage of available key items (not counting items you can lose) required to access the Cerulean Cave
@@ -134,13 +107,10 @@ Pokemon Red and Blue:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 0
     # Maximum value is 100
-    0: 1
-    random-range-1-10: 2
-    random-range-11-20: 4
-    random-range-21-40: 8
-    random-range-41-70: 16 #default is 50
-    random-range-71-100: 4
-
+    # Default is 50
+    random-range-high-0-40: 1
+    random-range-middle-41-70: 4
+    random-range-low-71-100: 2
 
   route_3_condition:
     # Set a condition to pass through from Pewter City to Route 3.
@@ -152,8 +122,8 @@ Pokemon Red and Blue:
 
   robbed_house_officer:
     # You can disable to remove the requirement to help Bill before you can enter the robbed house in Cerulean City.
-    'false': 1
-    'true': 0
+    'false': 2
+    'true': 1
 
   second_fossil_check_condition:
     # After choosing one of the fossil location items, you can obtain the remaining item from the Cinnabar Lab
@@ -162,26 +132,23 @@ Pokemon Red and Blue:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 0
     # Maximum value is 3
-    3: 0
-    random: 1
-    random-low: 0
-    random-high: 0
+    random-range-high-0-3: 1
 
   fossil_check_item_types:
     # The two fossil checks always contain items for your own game. Here, you can choose what types of items can
     # appear. Key Items means only advancement items can appear. Unique means key items or TMs may appear. No Key Items
     # means no advancement items may appear.
-    any: 0
-    key_items: 0
-    unique_items: 0
-    no_key_items: 1
+    any: 1
+    key_items: 2
+    unique_items: 4
+    no_key_items: 8
 
   exp_all:
     # Choose how the Exp. All item is handled. It can be removed entirely, shuffled into the item pool, or you can
     # start with it.
     remove: 1
-    randomize: 2
-    start_with: 4
+    randomize: 4
+    start_with: 8
 
   old_man:
     # With Open Viridian City, the Old Man will let you through without needing to turn in Oak's Parcel.
@@ -267,12 +234,13 @@ Pokemon Red and Blue:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 0
     # Maximum value is 317
-    disabled: 32 #default
-    random-range-1-30: 16
-    random-range-31-61: 8
-    random-range-61-120: 4
-    random-range-121-216: 2
-    random-range-217-317: 1
+    # Default is 0 (disabled)
+    disabled: 32 
+    random-range-low-1-30: 16
+    random-range-low-31-61: 8
+    random-range-low-61-120: 4
+    random-range-low-121-216: 2
+    random-range-low-217-317: 1
 
   dexsanity:
     # Adds location checks for Pokemon flagged "owned" on your Pokedex. You may specify the exact number of Dexsanity
@@ -285,16 +253,17 @@ Pokemon Red and Blue:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 0
     # Maximum value is 151
-    disabled: 8 # equivalent to 0
-    random-range-1-50: 4
-    random-range-51-100: 2
-    random-range-101-151: 1
+    # Default is 0 (disabled)
+    disabled: 8
+    random-range-low-1-50: 4
+    random-range-low-51-100: 2
+    random-range-low-101-151: 1
 
   randomize_pokedex:
     # Randomize the location of the Pokedex, or start with it.
     vanilla: 0
-    randomize: 0
-    start_with: 1
+    randomize: 1
+    start_with: 8
 
   require_pokedex:
     # Require the Pokedex to obtain items from Oak's Aides or from Dexsanity checks.
@@ -310,12 +279,13 @@ Pokemon Red and Blue:
 
   oaks_aide_rt_2:
     # Number of Pokemon registered in the Pokedex required to receive the item from Oak's Aide on Route 2.
-    # Vanilla is 10.
     #
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 1
     # Maximum value is 80
-    random-range-1-15: 1 # default is 10
+    # Default is 10
+    random-range-high-1-4: 1
+    random-range-middle-5-14: 2
 
   oaks_aide_rt_11:
     # Number of Pokemon registered in the Pokedex required to receive the item from Oak's Aide on Route 11.
@@ -324,7 +294,8 @@ Pokemon Red and Blue:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 1
     # Maximum value is 80
-    random-range-16-25: 1 # default is 20
+    random-range-high-15-20: 1
+    random-range-middle-21-40: 2
 
   oaks_aide_rt_15:
     # Number of Pokemon registered in the Pokedex required to receive the item from Oak's Aide on Route 15.
@@ -333,14 +304,16 @@ Pokemon Red and Blue:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 1
     # Maximum value is 80
-    random-range-26-75: 1 # default is 50
+    # Default is 50
+    random-range-middle-41-60: 2
+    random-range-low-61-80: 1
 
   stonesanity:
     # Removes the four evolution stones from the Celadon Department Store and replaces four of the five Moon Stones
     # in the item pool with the four shop stones. If randomize_hidden_items is off, this will cause the two hidden
     # Moon Stone locations to be randomized anyway. These are in Pokemon Mansion 1F and Mt Moon B2F.
-    'false': 50
-    'true': 0
+    'false': 8
+    'true': 1
 
   door_shuffle:
     # Simple: entrances are randomized together in groups: Pokemarts, Gyms, single exit dungeons, dual exit dungeons,
@@ -381,13 +354,13 @@ Pokemon Red and Blue:
 
   free_fly_location:
     # One random Fly destination will be unlocked by default.
-    'false': 0
-    'true': 50
+    'false': 1
+    'true': 8
 
   town_map_fly_location:
     # One random Fly destination will be unlocked when you obtain the Town Map.
-    'false': 50
-    'true': 0
+    'false': 8
+    'true': 1
 
   blind_trainers:
     # Chance each frame that you are standing on a tile in a trainer's line of sight that they will fail to initiate a
@@ -430,10 +403,10 @@ Pokemon Red and Blue:
     # Minimum value is 4
     # Maximum value is 255
     half: 0 # equivalent to 8
-    normal: 128 # equivalent to 16
-    double: 64 # equivalent to 32
-    triple: 32 # equivalent to 48
-    quadruple: 16 # equivalent to 64
+    normal: 16 # equivalent to 16
+    double: 128 # equivalent to 32
+    triple: 64 # equivalent to 48
+    quadruple: 32 # equivalent to 64
     quintuple: 8 # equivalent to 80
     sextuple: 4 # equivalent to 96
     septuple: 2 # equivalent to 112
@@ -486,8 +459,8 @@ Pokemon Red and Blue:
     # Guarantee all first evolution stage Pokemon are available, or all Pokemon of all stages.
     # Currently only has an effect if wild Pokemon are randomized.
     'off': 0
-    first_stage: 1
-    all_pokemon: 0
+    first_stage: 8
+    all_pokemon: 1
 
   randomize_pokemon_stats:
     # Randomize base stats for each Pokemon. Shuffle will shuffle the 5 base stat values amongst each other. Randomize
@@ -767,9 +740,9 @@ Pokemon Red and Blue:
   better_shops:
     # Change every town's Pokemart to contain all normal Pokemart items. Additionally, you can add the Master Ball
     # to these shops.
-    'off': 0
-    'on': 0
-    add_master_ball: 1
+    'off': 1
+    'on': 8
+    add_master_ball: 4
 
   master_ball_price:
     # Price for Master Balls. Can only be bought if Better Shops is set to Add Master Ball, but this will affect the
@@ -778,10 +751,13 @@ Pokemon Red and Blue:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 0
     # Maximum value is 999999
-    5000: 50
-    random: 0
-    random-low: 0
-    random-high: 0
+    # Default is 5000
+    random-range-high-0-999: 4
+    random-range-high-1000-3999: 8
+    random-range-middle-4000-5999: 32
+    random-range-low-6000-9999: 16
+    random-range-low-10000-99999: 4
+    random-range-low-100000-999999: 1
 
   starting_money:
     # The amount of money you start with.
@@ -789,15 +765,17 @@ Pokemon Red and Blue:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 0
     # Maximum value is 999999
-    3000: 50
-    random: 0
-    random-low: 0
-    random-high: 0
+    # Default is 3000
+    random-range-high-0-999: 8
+    random-range-middle-1000-4999: 32
+    random-range-low-5000-9999: 16
+    random-range-low-10000-99999: 4
+    random-range-low-100000-999999: 1
 
   lose_money_on_blackout:
     # Lose half your money when blacking out, as in vanilla.
-    'false': 0
-    'true': 50
+    'false': 1
+    'true': 8
 
   poke_doll_skip:
     # Patch out the Pokemon Tower Poke Doll skip or have this skip considered in logic.
@@ -816,11 +794,11 @@ Pokemon Red and Blue:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 0
     # Maximum value is 100
-    0: 16
-    random-range-1-10: 8
-    random-range-11-30: 4
-    random-range-31-60: 2
-    random-range-61-100: 1
+    0: 64
+    random-range-low-1-10: 8
+    random-range-low-11-30: 4
+    random-range-low-31-60: 2
+    random-range-low-61-100: 1
 
   poison_trap_weight:
     # Weights for Poison Traps. These apply the Poison status to all your party members.
