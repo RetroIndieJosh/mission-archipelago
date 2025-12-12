@@ -98,9 +98,9 @@ Quake 1:
     # Default is 100
     # Minimum value is 25
     # Maximum value is 100
-    random-range-25-50: 1
-    random-range-51-75: 2
-    random-range-76-100: 4
+    random-range-high-25-50: 1
+    random-range-high-51-75: 2
+    random-range-high-76-100: 4
 
   included_locations_preset:
     # Presets for included locations.
@@ -109,10 +109,14 @@ Quake 1:
     # Dense adds 50% ammo + health.
     # All adds 100% ammo + health.
     # Use the custom option if you want to make use of CustomIncludedLocations.
-    iconic: 2
-    balanced: 4
-    dense: 2
-    all: 1
+    # NOTE: Struggles to generate with anything less than dense.
+    # TODO: Consider triggers based on # of episodes - fewer = higher density;
+      # this would require a special "episode_count" setting since we can't
+      # determine from the settings
+    iconic: 0
+    balanced: 0
+    dense: 1
+    all: 0
     custom: 0
 
   include_mp_items:
@@ -224,12 +228,9 @@ Quake 1:
     # Default is 9
     # Minimum value is 3
     # Maximum value is 32
-    random-range-3-6: 4
-    random-range-7-11: 16
-    random-range-12-16: 8
-    random-range-17-21: 4
-    random-range-22-26: 2
-    random-range-27-32: 1
+    random-range-high-3-6: 1
+    random-range-middle-7-11: 4
+    random-range-low-12-32: 2
 
   shuffle_starting_levels:
     # If enabled will pick levels unlocked by default at random instead of the first of each episode
@@ -243,11 +244,8 @@ Quake 1:
     # Default is 1
     # Minimum value is 1
     # Maximum value is 32
-    1: 16
-    random-range-2-8: 8
-    random-range-9-16: 4
-    random-range-17-24: 2
-    random-range-25-32: 1
+    1: 4
+    random-range-low-2-32: 1
 
   progressive_weapons:
     # Replace weapon unlocks and ammunition capacity upgrades with progressive versions.
@@ -268,16 +266,8 @@ Quake 1:
     # Default is 10
     # Minimum value is 0
     # Maximum value is 90
-    random-range-0-5: 64
-    random-range-6-15: 256
-    random-range-16-25: 128
-    random-range-26-35: 64
-    random-range-36-45: 32
-    random-range-46-55: 16
-    random-range-56-65: 8
-    random-range-66-75: 4
-    random-range-76-85: 2
-    random-range-86-90: 1
+    random-range-middle-0-20: 4
+    random-range-low-21-90: 1
 
   traps_as_progressive:
     # Traps show up as progressive items in-game.
