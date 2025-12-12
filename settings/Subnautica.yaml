@@ -1,24 +1,11 @@
 ﻿name: Sub-{player}
 description: Mission Archipelago - Subnautica
 requires:
-  version: 0.6.2 # Version of Archipelago required for this yaml to work as expected.
+  version: 0.6.4
 
 Subnautica:
   # Game Options
-  progression_balancing:
-    # A system that can move progression earlier, to try and prevent the player from getting stuck and bored early.
-    # 
-    # A lower setting means more getting stuck. A higher setting means less getting stuck.
-    #
-    # You can define additional values between the minimum and maximum values.
-    # Minimum value is 0
-    # Maximum value is 99
-    random: 0
-    random-low: 0
-    random-high: 0
-    disabled: 0 # equivalent to 0
-    normal: 50 # equivalent to 50
-    extreme: 0 # equivalent to 99
+  progression_balancing: normal
 
   accessibility:
     # Set rules for reachability of your items/locations.
@@ -124,6 +111,11 @@ Subnautica:
     Silver Ore: 4
     Titanium: 16
 
+  empty_tanks:
+    # Oxygen Tanks stored in inventory are empty if enabled.
+    'false': 1
+    'true': 8
+
   # Item & Location Options
   local_items:
     # Forces these items to be in their native world.
@@ -164,15 +156,19 @@ Subnautica:
     # The game decides what the replacement items will be.
     {}
 
+  plando_items:
+    # Generic items plando.
+    []
+
   triggers:
-  # if goal is launch, force on free samples
+  # if goal is launch, force free samples ON
   - option_category: Subnautica
     option_name: goal
     option_result: launch
     options:
       Subnautica:
         free_samples: true
-  # if scan logic requires stasis, auto-hint stasis rifle
+  # if scan logic requires stasis, auto-hint stasis rifle fragments
   - option_category: Subnautica
     option_name: creature_scan_logic
     option_result: stasis
