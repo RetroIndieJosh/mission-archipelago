@@ -38,7 +38,6 @@ def load_config(path: str = "async.yaml") -> Tuple[Dict[str, Any], str, int, flo
         print(Fore.RED + "generation must be 'weights' or 'count'." + Fore.WHITE)
         raise ConfigError("message")
 
-
     # These are preserved for compatibility but currently not used elsewhere.
     max_rank = int(cfg.get("max-rank", 1))
 
@@ -61,4 +60,18 @@ def load_config(path: str = "async.yaml") -> Tuple[Dict[str, Any], str, int, flo
             )
             rank_mult = 1.0
 
-    return cfg, generation, max_rank, rank_mult
+    world_mult_value = cfg.get("world-mult", 0)
+    world_mult_range_value = cfg.get("world-mult-range", 0)
+
+    try:
+        world_mult = int(world_mult_value)
+        world_mult_range = int(world_mult_range_value)
+    except (TypeError, ValueError):
+        print(Fore.RED + "'world-mult' and 'world-mult-range' must be integers." + Fore.WHITE)
+        raise ConfigError("message")
+
+    if world_mult < 0 or world_mult_range < 0:
+        print(Fore.RED + "'world-mult' and 'world-mult-range' must be >= 0." + Fore.WHITE)
+        raise ConfigError("message")
+
+    return cfg, generation, max_rank, rank_mult, world_mult, world_mult_range

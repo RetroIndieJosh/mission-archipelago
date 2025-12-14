@@ -31,6 +31,11 @@ max-rank: 4
 # default: 1
 rank-mult: 2
 
+# multiplier for game count in count mode (no effect in rank mode)
+# final = original * (world-mult + random(0, world-mult-range+1))
+world-mult: 1
+world-mult-range: 3
+
 game:
   A Link to the Past: 1
   Actraiser: 1

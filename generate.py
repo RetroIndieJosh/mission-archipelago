@@ -1,4 +1,5 @@
 import os
+import random
 import sys
 
 from config_loader import load_config
@@ -21,13 +22,18 @@ def main(config_path: str | None = None, output_dir: str = "output") -> None:
     # Load configuration
     if config_path is None:
         config_path = _config_path_from_argv()
-    cfg, generation, *_ = load_config(config_path)
+    cfg, generation, *_, world_mult, world_mult_range = load_config(config_path)
 
     mystery = MysterySettings(generation=generation)
 
     # Initialize RAW values from config
     for gname, val in cfg.get("game", {}).items():
-        mystery["game"][gname] = int(val)
+        if world_mult_range > 0:
+            mult = random.randint(world_mult, world_mult + world_mult_range)
+        else:
+            mult = world_mult
+
+        mystery["game"][gname] = int(val) * mult
 
     # Add game metadata from YAML files
     game_files = collect_game_files()
