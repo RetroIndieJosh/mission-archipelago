@@ -130,6 +130,7 @@ class MysterySettings(dict):
         if self.generation == "count":
             header = f"{'GAME':<30}{'#':>8}{'%':>6}\n" + "-" * 44
             total = sum(w for w in self["game"].values() if w != 0)
+            unique_games = sum(1 for w in self["game"].values() if w != 0)
             for game in sorted(self["game"]):
                 raw = self["game"][game]
                 if raw == 0:
@@ -137,6 +138,7 @@ class MysterySettings(dict):
                 pct = (raw / total) * 100 if total else 0.0
                 lines.append(f"{game:<30}{raw:>8}{pct:>6.1f}%")
             table = header + "\n" + "\n".join(lines)
+            table += f"\nUnique games: {unique_games}"
             table += f"\nTotal count: {total}"
         else:
             # Weights mode: show raw weights and percentages
