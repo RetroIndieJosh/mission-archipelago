@@ -8,22 +8,33 @@ from mystery_settings import MysterySettings
 from file_utils import collect_game_files, write_outputs
 
 
-def _config_path_from_argv(default: str = "async.yaml") -> str:
+def _parse_args(default_config: str = "async.yaml"):
+    """
+    Parses command-line arguments.
+
+    Returns:
+        config_path (str)
+        total_games_override (int | None)
+        dry_run (bool)
+    """
+    config_path = default_config
+    total_games_override = None
+    dry_run = False
+
     for arg in sys.argv[1:]:
-        if not arg.startswith("--"):
-            return arg
-    return default
+        if arg == "--dry":
+            dry_run = True
+        elif arg.isdigit():
+            if total_games_override is None:
+                total_games_override = int(arg)
+        elif not arg.startswith("--"):
+            config_path = arg
+
+    return config_path, total_games_override, dry_run
 
 
-def _has_flag(flag: str) -> bool:
-    return flag in sys.argv[1:]
-
-
-def main(config_path: str | None = None, output_dir: str = "output") -> None:
-    if config_path is None:
-        config_path = _config_path_from_argv()
-
-    dry_run = _has_flag("--dry")
+def main(output_dir: str = "output") -> None:
+    config_path, total_games_override, dry_run = _parse_args()
 
     cfg, world_mult, world_mult_range, total_games, seed = load_config(config_path)
 
@@ -34,6 +45,16 @@ def main(config_path: str | None = None, output_dir: str = "output") -> None:
     else:
         actual_seed = random.randrange(1 << 32)
         random.seed(actual_seed)
+
+    # ---------------- CLI override ----------------
+    if total_games_override is not None:
+        total_games = total_games_override
+
+    if total_games > 0 and (world_mult > 0 or world_mult_range > 0):
+        print(
+            "[note] total-games is set; "
+            "world-mult and world-mult-range are ignored."
+        )
 
     mystery = MysterySettings()
     game_cfg = cfg.get("game", {})
@@ -83,3 +104,4 @@ def main(config_path: str | None = None, output_dir: str = "output") -> None:
 
 if __name__ == "__main__":
     main()
+
