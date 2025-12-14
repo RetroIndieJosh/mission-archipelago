@@ -5,20 +5,7 @@ requires:
 
 Yacht Dice:
   # Game Options
-  progression_balancing:
-    # A system that can move progression earlier, to try and prevent the player from getting stuck and bored early.
-    # 
-    # A lower setting means more getting stuck. A higher setting means less getting stuck.
-    #
-    # You can define additional values between the minimum and maximum values.
-    # Minimum value is 0
-    # Maximum value is 99
-    random: 0
-    random-low: 0
-    random-high: 0
-    disabled: 0 # equivalent to 0
-    normal: 50 # equivalent to 50
-    extreme: 0 # equivalent to 99
+  progression_balancing: normal
 
   accessibility:
     # Set rules for reachability of your items/locations.
@@ -52,10 +39,9 @@ Yacht Dice:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 500
     # Maximum value is 1000
-    1000: 0
-    random: 1
-    random-low: 0
-    random-high: 0
+    # Default is 1000
+    random-range-high-500-750: 1
+    random-range-high-751-1000: 2
 
   score_for_goal:
     # This option determines what score you need to reach to finish the game.
@@ -64,20 +50,21 @@ Yacht Dice:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 500
     # Maximum value is 1000
-    777: 0
-    random: 1
-    random-low: 0
-    random-high: 0
+    # Default is 777
+    random-range-500-699: 2
+    random-range-middle-700-854: 4
+    random-range-low-855-1000: 1
 
   minimal_number_of_dice_and_rolls:
     # The minimal number of dice and rolls in the pool.
     # These are guaranteed, unlike the later items.
     # You can never get more than 8 dice and 5 rolls.
     # You start with one dice and one roll.
-    5_dice_and_3_rolls: 1
-    5_dice_and_5_rolls: 1
-    6_dice_and_4_rolls: 1
-    7_dice_and_3_rolls: 1
+    # Default is 5+3
+    5_dice_and_3_rolls: 16
+    5_dice_and_5_rolls: 8
+    6_dice_and_4_rolls: 4
+    7_dice_and_3_rolls: 2
     8_dice_and_2_rolls: 1
 
   number_of_dice_fragments_per_dice:
@@ -89,11 +76,9 @@ Yacht Dice:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 1
     # Maximum value is 5
-    1: 1
-    2: 2
-    3: 4
-    4: 8 #default
-    5: 4
+    # Default is 4
+    random-range-high-1-2: 1
+    random-range-middle-3-5: 4
 
   number_of_roll_fragments_per_roll:
     # Rolls can be split into fragments, gathering enough will give you an extra roll.
@@ -104,11 +89,9 @@ Yacht Dice:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 1
     # Maximum value is 5
-    1: 1
-    2: 2
-    3: 4
-    4: 8 #default
-    5: 4
+    # Default is 4
+    random-range-high-1-2: 1
+    random-range-middle-3-5: 4
 
   alternative_categories:
     # There are 16 default categories, but there are also 16 alternative categories.
@@ -120,17 +103,15 @@ Yacht Dice:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 0
     # Maximum value is 16
+    # Default is 0
     0: 8
-    random-range-1-4: 4
-    random-range-5-10: 2
-    random-range-11-16: 1
+    random-range-low-1-4: 4
+    random-range-low-5-10: 2
+    random-range-low-11-16: 1
 
-  allow_manual_input:
-    # If allowed, players can roll IRL dice and input them manually into the game.
+  allow_manual_input: no_dont_allow # If allowed, players can roll IRL dice and input them manually into the game.
     # By sending "manual" in the chat, an input field appears where you can type your dice rolls.
     # Of course, we cannot check anymore if the player is playing fair.
-    yes_allow: 0
-    no_dont_allow: 1
 
   # Extra progression items
   weight_of_dice:
@@ -143,10 +124,11 @@ Yacht Dice:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 0
     # Maximum value is 100
-    5: 0
-    random: 1
-    random-low: 0
-    random-high: 0
+    # Default is 5
+    random-range-middle-0-10: 8
+    random-range-low-11-30: 4
+    random-range-low-31-60: 2
+    random-range-low-61-100: 1
 
   weight_of_roll:
     # With more rolls, you will be able to reach higher scores.
@@ -154,10 +136,9 @@ Yacht Dice:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 0
     # Maximum value is 100
-    20: 0
-    random: 1
-    random-low: 0
-    random-high: 0
+    # Default is 20
+    random-range-middle-0-40: 2
+    random-range-low-41-100: 1
 
   weight_of_fixed_score_multiplier:
     # Getting a Fixed Score Multiplier will boost all future scores by 10%.
@@ -165,10 +146,8 @@ Yacht Dice:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 0
     # Maximum value is 100
-    30: 0
-    random: 1
-    random-low: 0
-    random-high: 0
+    random-range-middle-0-60: 2
+    random-range-low-61-100: 1
 
   weight_of_step_score_multiplier:
     # The Step Score Multiplier boosts your multiplier after every roll by 1%, and resets on sheet reset.
@@ -178,10 +157,10 @@ Yacht Dice:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 0
     # Maximum value is 100
-    0: 0
-    random: 1
-    random-low: 0
-    random-high: 0
+    # Default is 0
+    random-range-low-0-20: 4
+    random-range-low-21-50: 2
+    random-range-low-51-100: 1
 
   weight_of_double_category:
     # This option allows categories to appear multiple times.
@@ -190,10 +169,10 @@ Yacht Dice:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 0
     # Maximum value is 100
-    50: 0
-    random: 1
-    random-low: 0
-    random-high: 0
+    # Default is 50
+    random-range-high-0-29: 1
+    random-range-middle-30-70: 4
+    random-range-low-71-100: 2
 
   weight_of_points:
     # Are you tired of rolling dice countless times and tallying up points one by one, all by yourself? 
@@ -204,10 +183,8 @@ Yacht Dice:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 0
     # Maximum value is 100
-    20: 0
-    random: 1
-    random-low: 0
-    random-high: 0
+    random-range-middle-0-40: 2
+    random-range-low-41-100: 1
 
   points_size:
     # If you choose to add points to the item pool, you can choose to have many small points,
@@ -225,8 +202,8 @@ Yacht Dice:
     # - decrease the number of locations at the start (you'll start with 2 dice and 2 rolls).
     # - will limit the number of dice/roll fragments per dice/roll to 2.
     # - in multiplayer games, it will reduce the number of filler items.
-    no_dont: 50
-    yes_please: 0
+    no_dont: 8
+    yes_please: 1
 
   add_bonus_points:
     # Yacht Dice typically has space for extra items.
@@ -236,9 +213,9 @@ Yacht Dice:
     # All Of It: fill all locations with extra points
     # Sure: put some bonus points in
     # Never: do not put any bonus points
-    all_of_it: 1
+    all_of_it: 2
     sure: 4
-    never: 0
+    never: 1
 
   add_story_chapters:
     # Yacht Dice typically has space for more items.
@@ -248,9 +225,9 @@ Yacht Dice:
     # All Of It: fill all locations with story chapters
     # Sure: if there is space left, put in 10 story chapters.
     # Never: do not put any story chapters in, I do not like reading (but I am glad you are reading THIS!)
-    all_of_it: 0
-    sure: 0
-    never: 50
+    all_of_it: 1
+    sure: 4
+    never: 16
 
   which_story:
     # The most important part of Yacht Dice is the narrative.
