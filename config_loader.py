@@ -44,6 +44,24 @@ def load_config(path: str = "async.yaml") -> Tuple[
     world_mult = _int("world-mult", 0)
     world_mult_range = _int("world-mult-range", 0)
     total_games = _int("total-games", 0)
-    seed = _int("seed", 0)
+
+    raw_seed = cfg.get("seed", 0)
+
+    try:
+        if isinstance(raw_seed, str):
+            seed = int(raw_seed, 0)   # allows 0x..., 0, etc.
+        else:
+            seed = int(raw_seed)
+    except (TypeError, ValueError):
+        print(Fore.RED + "'seed' must be a hex or integer value." + Fore.WHITE)
+        raise ConfigError
+
+    if seed < 0 or seed > 0x100000000:
+        print(
+            Fore.RED
+            + "seed must be in range 0x1–0x100000000 (0 means random)."
+            + Fore.WHITE
+        )
+        raise ConfigError
 
     return cfg, world_mult, world_mult_range, total_games, seed

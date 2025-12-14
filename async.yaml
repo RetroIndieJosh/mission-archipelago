@@ -24,6 +24,9 @@ total-games: 20
 #world-mult: 0
 #world-mult-range: 1
 
+# 0 for random seed, [1, 4294967296] OR [0x1, 0x100 000 000] for deterministic
+seed: 0xFF
+
 game:
   # rank 1
   Castlevania - Circle of the Moon: 32

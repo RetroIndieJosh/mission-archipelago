@@ -67,20 +67,30 @@ class MysterySettings(dict):
         }
 
     def __str__(self) -> str:
+        entries = [(g, c) for g, c in self["game"].items() if c > 0]
+
+        total = sum(c for _, c in entries)
+        unique = len(entries)
+
+        if not entries:
+            return "No games generated."
+
+        name_width = max(len(g) for g, _ in entries)
+
+        header = (
+            f"{'GAME':<{name_width}}  {'#':>5}  {'%':>6}\n"
+            + "-" * (name_width + 15)
+        )
+
         lines = []
-        total = sum(v for v in self["game"].values() if v > 0)
-        unique = sum(1 for v in self["game"].values() if v > 0)
-
-        header = f"{'GAME':<30}{'#':>8}{'%':>6}\n" + "-" * 46
-
-        for game in sorted(self["game"]):
-            count = self["game"][game]
-            if count == 0:
-                continue
+        for game, count in sorted(entries):
             pct = (count / total) * 100 if total else 0
-            lines.append(f"{game:<30}{count:>8}{pct:>6.1f}%")
+            lines.append(
+                f"{game:<{name_width}}  {count:>5}  {pct:>5.1f}%"
+            )
 
         table = header + "\n" + "\n".join(lines)
         table += f"\nUnique games: {unique}"
         table += f"\nTotal count: {total}"
+
         return table
