@@ -1,7 +1,7 @@
 ﻿name: Yacht-{player}
 description: Mission Archipelago - Yacht Dice
 requires:
-  version: 0.6.2 # Version of Archipelago required for this yaml to work as expected.
+  version: 0.6.4
 
 Yacht Dice:
   # Game Options

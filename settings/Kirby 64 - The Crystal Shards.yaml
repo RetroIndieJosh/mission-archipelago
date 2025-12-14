@@ -7,12 +7,9 @@ Kirby 64 - The Crystal Shards:
   ################
   # Game Options #
   ################
-  death_link:
-    # When you die, everyone who enabled death link dies. Of course, the reverse is true too.
-    'false': 50
-    'true': 0
-
   progression_balancing: normal
+
+  death_link: 'false' # When you die, everyone who enabled death link dies. Of course, the reverse is true too.
 
   accessibility:
     # Set rules for reachability of your items/locations.

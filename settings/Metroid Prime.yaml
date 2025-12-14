@@ -1,7 +1,7 @@
 ﻿name: Prime-{player}
 description: Mission Archipelago - Metroid Prime
 requires:
-  version: 0.6.2 # Version of Archipelago required for this yaml to work as expected.
+  version: 0.6.4
 
 Metroid Prime:
   # Game Options

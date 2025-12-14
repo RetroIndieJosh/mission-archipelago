@@ -1,7 +1,7 @@
 ﻿name: Stardew-{player}
 description: Mission Archipelago - Stardew Valley
 requires:
-  version: 0.6.2 # Version of Archipelago required for this yaml to work as expected.
+  version: 0.6.4
 
 Stardew Valley:
   progression_balancing: normal

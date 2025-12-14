@@ -5,15 +5,7 @@ requires:
 
 Donkey Kong Country 2:
   # Game Options
-  progression_balancing:
-    # A system that can move progression earlier, to try and prevent the player from getting stuck and bored early.
-    # 
-    # A lower setting means more getting stuck. A higher setting means less getting stuck.
-    #
-    # You can define additional values between the minimum and maximum values.
-    # Minimum value is 0
-    # Maximum value is 99
-    normal: 1 # equivalent to 50
+  progression_balancing: normal
 
   accessibility:
     # Set rules for reachability of your items/locations.
