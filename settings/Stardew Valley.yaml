@@ -4,6 +4,17 @@ requires:
   version: 0.6.2 # Version of Archipelago required for this yaml to work as expected.
 
 Stardew Valley:
+  progression_balancing: normal
+
+  accessibility:
+    # Set rules for reachability of your items/locations.
+    # 
+    # **Full:** ensure everything can be reached and acquired.
+    # 
+    # **Minimal:** ensure what is needed to reach your goal can be acquired.
+    full: 50
+    minimal: 0
+
   # Game Options
   plando_items:
     # Generic items plando.
@@ -107,12 +118,9 @@ Stardew Valley:
     buildings: 0
     chaos: 0
 
-  exclude_ginger_island:
-    # Exclude Ginger Island?
+  exclude_ginger_island: 'true' # Exclude Ginger Island?
     # This option will forcefully exclude everything related to Ginger Island from the slot.
     # If you pick a goal that requires Ginger Island, this option will get forced to 'false'
-    'false': 0
-    'true': 1
 
   # Major Unlocks
   season_randomization:
@@ -126,12 +134,9 @@ Stardew Valley:
     randomized_not_winter: 4
     progressive: 2
 
-  cropsanity:
-    # Pierre now sells a random amount of seasonal seeds and Joja sells them without season requirements, but only in huge packs.
+  cropsanity: enabled # Pierre now sells a random amount of seasonal seeds and Joja sells them without season requirements, but only in huge packs.
     # Disabled: All the seeds are unlocked from the start, there are no location checks for growing and harvesting crops
     # Enabled: Seeds are unlocked as archipelago items, for each seed there is a location check for growing and harvesting that crop
-    disabled: 0
-    enabled: 50
 
   backpack_progression:
     # Shuffle the backpack?
@@ -218,15 +223,16 @@ Stardew Valley:
     # Board and Qi: The Special Orders from Mr Qi's walnut room are checks, in addition to the board in town
     # Short: All Special Order requirements are reduced by 40%
     # Very Short: All Special Order requirements are reduced by 80%
-    vanilla: 0
-    board: 0
-    board_qi: 0
-    vanilla_short: 0
-    board_short: 50
-    board_qi_short: 0
-    vanilla_very_short: 0
-    board_very_short: 0
-    board_qi_very_short: 0
+    # Default: board_short
+    vanilla: 8
+    board: 64
+    board_qi: 1
+    vanilla_short: 32
+    board_short: 256
+    board_qi_short: 2
+    vanilla_very_short: 16
+    board_very_short: 128
+    board_qi_very_short: 4
 
   quest_locations:
     # Include location checks for quests
@@ -239,7 +245,10 @@ Stardew Valley:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 0
     # Maximum value is 56
-    random-low: 1
+    # Default is 7
+    random-range-middle-0-14: 4
+    random-range-low-15-30: 2
+    random-range-low-31-56: 1
 
   fishsanity:
     # Locations for catching each fish the first time?
@@ -291,7 +300,9 @@ Stardew Valley:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 1
     # Maximum value is 8
-    random-middle: 1
+    # Default is 4
+    random-range-middle-1-7: 14
+    8: 1
 
   monstersanity:
     # Locations for slaying monsters?
@@ -348,11 +359,10 @@ Stardew Valley:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 0
     # Maximum value is 15
-    none: 64 # equivalent to 0
-    queen_of_sauce: 32 # equivalent to 1
-    purchases: 32 # equivalent to 2
-    qos_and_purchases: 16 # equivalent to 3
-    random-range-low-4-8: 4
+    # Default is 0
+    0: 16
+    random-range-low-1-3: 4
+    random-range-low-4-8: 2
     random-range-low-9-15: 1
 
   craftsanity:
@@ -389,8 +399,10 @@ Stardew Valley:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 0
     # Maximum value is 50000
-    random-range-middle-0-20000: 2
-    random-range-low-20001-50000: 1
+    # Default is 5000
+    random-range-middle-0-9999: 8
+    random-range-low-10000-19999: 2
+    random-range-low-20000-50000: 1
 
   profit_margin:
     # Multiplier over all gold earned in-game by the player.
@@ -398,7 +410,9 @@ Stardew Valley:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 25
     # Maximum value is 400
-    random-range-middle-25-125: 2
+    # Default is 100
+    random-range-high-25-74: 1
+    random-range-middle-75-124: 4
     random-range-low-126-400: 1
 
   experience_multiplier:
@@ -409,9 +423,11 @@ Stardew Valley:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 25
     # Maximum value is 800
-    random-range-middle-25-125: 4
-    random-range-low-126-400: 2
-    random-range-low-401-800: 1
+    # Default is 200
+    random-range-25-99: 1
+    random-range-middle-100-299: 16
+    random-range-low-300-499: 4
+    random-range-low-500-800: 2
 
   friendship_multiplier:
     # How fast you want to earn friendship points with villagers.
@@ -421,9 +437,11 @@ Stardew Valley:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 25
     # Maximum value is 800
-    random-range-middle-25-125: 4
-    random-range-low-126-400: 2
-    random-range-low-401-800: 1
+    # Default is 200
+    random-range-25-99: 1
+    random-range-middle-100-299: 16
+    random-range-low-300-499: 4
+    random-range-low-500-800: 2
 
   debris_multiplier:
     # How much debris will spawn on the player's farm?
@@ -445,7 +463,9 @@ Stardew Valley:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 0
     # Maximum value is 12
-    random-range-low-4-12: 1
+    # Default is 4
+    random-range-middle-0-7: 4
+    random-range-low-8-12: 1
 
   enabled_filler_buffs:
     # Enable various permanent player buffs to roll as filler items
@@ -502,10 +522,7 @@ Stardew Valley:
     Time Flies Trap: 100
     Weakness Trap: 100
 
-  multiple_day_sleep_enabled:
-    # Enable the ability to sleep automatically for multiple days straight?
-    'false': 0
-    'true': 50
+  multiple_day_sleep_enabled: 'true' # Enable the ability to sleep automatically for multiple days straight?
 
   multiple_day_sleep_cost:
     # How much gold it will cost to use MultiSleep. You will have to pay that amount for each day skipped.
@@ -513,25 +530,19 @@ Stardew Valley:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 0
     # Maximum value is 200
-    random-low: 1
+    # Default is 0
+    random-range-low-0-19: 8
+    random-range-low-20-99: 2 
+    random-range-100-200: 1
 
-  quick_start:
-    # Do you want the quick start package? You will get a few items to help early game automation,
+  quick_start: 'true' # Do you want the quick start package? You will get a few items to help early game automation,
     # so you can use the multiple day sleep at its maximum.
-    'false': 0
-    'true': 50
 
   # Advanced Options
-  gifting:
-    # Do you want to enable gifting items to and from other Archipelago slots?
+  gifting: 'false' # Do you want to enable gifting items to and from other Archipelago slots?
     # Items can only be sent to games that also support gifting
-    'false': 0
-    'true': 50
 
-  death_link:
-    # When you die, everyone who enabled death link dies. Of course, the reverse is true too.
-    'false': 50
-    'true': 0
+  death_link: 'false' # When you die, everyone who enabled death link dies. Of course, the reverse is true too.
 
   mods:
     # List of mods that will be included in the shuffling.
@@ -541,30 +552,6 @@ Stardew Valley:
     # If using Remixed bundles, this guarantees some of them will show up in your community center.
     # If more bundles are specified than what fits in their parent room, that room will randomly pick from only the plando ones
     []
-
-  progression_balancing:
-    # A system that can move progression earlier, to try and prevent the player from getting stuck and bored early.
-    # 
-    # A lower setting means more getting stuck. A higher setting means less getting stuck.
-    #
-    # You can define additional values between the minimum and maximum values.
-    # Minimum value is 0
-    # Maximum value is 99
-    random: 0
-    random-low: 0
-    random-high: 0
-    disabled: 0 # equivalent to 0
-    normal: 50 # equivalent to 50
-    extreme: 0 # equivalent to 99
-
-  accessibility:
-    # Set rules for reachability of your items/locations.
-    # 
-    # **Full:** ensure everything can be reached and acquired.
-    # 
-    # **Minimal:** ensure what is needed to reach your goal can be acquired.
-    full: 50
-    minimal: 0
 
   # Item & Location Options
   local_items:
