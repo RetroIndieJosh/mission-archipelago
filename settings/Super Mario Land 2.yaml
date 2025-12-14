@@ -1,24 +1,11 @@
 ﻿name: SML2-{player}
 description: Mission Archipelago - Super Mario Land 2
 requires:
-  version: 0.6.2 # Version of Archipelago required for this yaml to work as expected.
+  version: 0.6.4
 
 Super Mario Land 2:
   # Game Options
-  progression_balancing:
-    # A system that can move progression earlier, to try and prevent the player from getting stuck and bored early.
-    # 
-    # A lower setting means more getting stuck. A higher setting means less getting stuck.
-    #
-    # You can define additional values between the minimum and maximum values.
-    # Minimum value is 0
-    # Maximum value is 99
-    random: 0
-    random-low: 0
-    random-high: 0
-    disabled: 0 # equivalent to 0
-    normal: 50 # equivalent to 50
-    extreme: 0 # equivalent to 99
+  progression_balancing: normal
 
   accessibility:
     # Set rules for reachability of your items/locations.
@@ -52,9 +39,9 @@ Super Mario Land 2:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 0
     # Maximum value is 6
+    # Default is 6
     0: 1
-    random-range-1-4: 8
-    6: 64
+    random-range-high-1-6: 12
 
   mario_coin_fragment_percentage:
     # Percentage of filler items to be replaced with Mario Coin Fragments. Note that the Coinsanity and Coinsanity
@@ -64,11 +51,8 @@ Super Mario Land 2:
     # Default is 20
     # Minimum value is 1
     # Maximum value is 50
-    random-range-1-5: 1
-    random-range-6-15: 2
-    random-range-16-25: 4
-    random-range-26-35: 2
-    random-range-36-50: 1
+    random-range-middle-1-39: 2
+    random-range-low-40-50: 1
 
   mario_coin_fragments_required_percentage:
     # Percentage of the Mario Coins in the item pool that are required to put the Mario Coin together.
@@ -77,12 +61,8 @@ Super Mario Land 2:
     # Default is 75
     # Minimum value is 1
     # Maximum value is 100
-    random-range-1-10: 1
-    random-range-11-34: 2
-    random-range-35-49: 4
-    random-range-50-64: 8
-    random-range-65-84: 16
-    random-range-85-100: 8
+    random-range-1-49: 1
+    random-range-50-100: 2
 
   coinsanity:
     # Shuffles the singular coins found freestanding and in question mark blocks into the item pool, and adds location
@@ -100,14 +80,12 @@ Super Mario Land 2:
     # Default is 150
     # Minimum value is 31
     # Maximum value is 2599
-    random-range-31-60: 8
-    random-range-61-100: 16
-    random-range-101-200: 32
-    random-range-201-400: 16
-    random-range-401-700: 8
-    random-range-701-1100: 4
-    random-range-1101-1600: 2
-    random-range-1601-2599: 1
+    random-range-middle-31-271: 32
+    random-range-low-272-400: 16
+    random-range-low-401-600: 8
+    random-range-low-601-1000: 4
+    random-range-low-1001-1500: 2
+    random-range-low-1501-2599: 1
 
   shuffle_midway_bells:
     # Shuffle Midway Bells into the item pool. You can always start at the beginning of a level after obtaining the
@@ -117,10 +95,7 @@ Super Mario Land 2:
     'false': 4
     'true': 1
 
-  marios_castle_midway_bell:
-    # Adds a Midway Bell to the final stage, just before the Wario fight.
-    'false': 0
-    'true': 1
+  marios_castle_midway_bell: 'true' # Adds a Midway Bell to the final stage, just before the Wario fight.
 
   shuffle_pipe_traversal:
     # Single: Shuffle a Pipe Traversal item into the item pool, which is required to enter any pipes.
@@ -171,24 +146,17 @@ Super Mario Land 2:
 
   randomize_enemies:
     # Randomize enemies throughout levels.
-    'false': 50
-    'true': 0
+    'false': 4
+    'true': 1
 
   randomize_platforms:
     # Randomize platforms throughout levels.
-    'false': 50
-    'true': 0
+    'false': 4
+    'true': 1
 
-  randomize_music:
-    # Randomize the music that plays in levels and overworld areas.
-    'false': 50
-    'true': 0
-
-  energy_link:
-    # All extra lives beyond 1 are transferred into the server's shared EnergyLink storage. If you drop to 0,
+  randomize_music: 'false' # Randomize the music that plays in levels and overworld areas.
+  energy_link: 'true' # All extra lives beyond 1 are transferred into the server's shared EnergyLink storage. If you drop to 0,
     # 1 will be replenished if there is sufficient energy stored.
-    'false': 0
-    'true': 50
 
   # Item & Location Options
   local_items:
