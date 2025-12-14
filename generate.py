@@ -1,6 +1,7 @@
 import os
 import random
 import sys
+from collections import Counter
 
 from config_loader import load_config
 from mystery_settings import MysterySettings
@@ -8,46 +9,76 @@ from file_utils import collect_game_files, write_outputs
 
 
 def _config_path_from_argv(default: str = "async.yaml") -> str:
-    """
-    Get the configuration file path from command-line arguments.
+    for arg in sys.argv[1:]:
+        if not arg.startswith("--"):
+            return arg
+    return default
 
-    Usage:
-        python generate.py            -> uses default "async.yaml"
-        python generate.py config.yml -> uses "config.yml"
-    """
-    return sys.argv[1] if len(sys.argv) > 1 else default
+
+def _has_flag(flag: str) -> bool:
+    return flag in sys.argv[1:]
 
 
 def main(config_path: str | None = None, output_dir: str = "output") -> None:
-    # Load configuration
     if config_path is None:
         config_path = _config_path_from_argv()
-    cfg, generation, *_, world_mult, world_mult_range = load_config(config_path)
 
-    mystery = MysterySettings(generation=generation)
+    dry_run = _has_flag("--dry")
 
-    # Initialize RAW values from config
-    for gname, val in cfg.get("game", {}).items():
-        if world_mult_range > 0:
-            mult = random.randint(world_mult, world_mult + world_mult_range)
-        else:
-            mult = world_mult
+    cfg, world_mult, world_mult_range, total_games, seed = load_config(config_path)
 
-        mystery["game"][gname] = int(val) * mult
+    # ---------------- RNG seeding ----------------
+    if seed > 0:
+        random.seed(seed)
+        actual_seed = seed
+    else:
+        actual_seed = random.randrange(1 << 32)
+        random.seed(actual_seed)
 
-    # Add game metadata from YAML files
-    game_files = collect_game_files()
-    for path in game_files:
+    mystery = MysterySettings()
+    game_cfg = cfg.get("game", {})
+
+    # --------------------------------------------------
+    # MODE 1: weighted selection to exact total-games
+    # --------------------------------------------------
+    if total_games > 0:
+        games = list(game_cfg.keys())
+        weights = [int(game_cfg[g]) for g in games]
+
+        chosen = random.choices(games, weights=weights, k=total_games)
+        counts = Counter(chosen)
+
+        for g in games:
+            mystery["game"][g] = counts.get(g, 0)
+
+    # --------------------------------------------------
+    # MODE 2: direct counts with world-mult logic
+    # --------------------------------------------------
+    else:
+        for gname, val in game_cfg.items():
+            if world_mult_range > 0:
+                mult = random.randint(world_mult, world_mult + world_mult_range)
+            else:
+                mult = world_mult
+
+            mystery["game"][gname] = int(val) * mult
+
+    # Load game metadata
+    for path in collect_game_files():
         filename_key = os.path.splitext(os.path.basename(path))[0]
-        # Align YAML with config key if it exists
         key = filename_key if filename_key in mystery["game"] else None
         mystery.add_game(path, key=key)
 
-    # Write outputs
-    write_outputs(mystery, generation, output_dir=output_dir)
+    if dry_run:
+        print("\n[DRY RUN — no files written]\n")
+    else:
+        write_outputs(mystery, output_dir=output_dir)
 
     print("\nEstimated game distribution:\n")
     print(mystery)
+
+    if seed == 0:
+        print(f"\nSeed used: {actual_seed}")
 
 
 if __name__ == "__main__":

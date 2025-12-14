@@ -4,6 +4,7 @@ description: RetroIndieJosh - Mission Archipelago Game Weights
 requires:
   version: 0.6.4
 
+# set total-games for weights mode; otherwise numbers are count of games
 # count - generate the exact number of games given
 # weights - use values in game section as weights (total # of games specified on generation)
 #
@@ -14,73 +15,63 @@ requires:
 #   Subnautica: 3        # weights: 3/20 = 15% of generated games / count: 3 games
 # count: always generates 20 games
 # weights: can generate any number of games (if < 20, games may be skipped!)
-generation: count
+total-games: 100
 
-# all - generate all games listed (except with count/weight 0)
-# rank - generate games based on folder structure up to max-rank
-#   note that this will fail if it finds a game with no count/weight; use 0 to skip
-categorize: all
+# multiplier for game count in count mode (no effect in rank mode)
+# final = original * (world-mult + random(0, world-mult-range+1))
+#world-mult: 0
+#world-mult-range: 1
 
-# the maximum rank generated (only in categorize: rank)
-# minimum: 1
-# maximum: the highest Rank folder in /settings
-max-rank: 4
-
-# multiplier for weights based on rank (no effect in count mode)
-# final = MAX(original^((max-rank - rank) * rank-mult))
-# default: 1
-rank-mult: 2
-
-game:
-  A Link to the Past: 0
-  Actraiser: 0
-  Bumper Stickers: 0
-  Castlevania - Circle of the Moon: 0
-  Celeste (Open World): 0
-  ChecksFinder: 0
-  ChecksMate: 0
-  DOOM 1993: 0
-  DOOM II: 0
-  Donkey Kong Country 2: 0
-  Donkey Kong Country 3: 0
-  Donkey Kong Country: 0
-  Final Fantasy IV Free Enterprise: 0
-  Final Fantasy Mystic Quest: 0
-  Golden Sun The Lost Age: 0
-  Heretic: 0
-  Kirby 64 - The Crystal Shards: 0
-  Kirby Super Star: 0
-  Links Awakening DX: 0
-  Majora's Mask Recompiled: 0
-  Mario Kart 64: 0
-  Mega Man 2: 0
-  Mega Man 3: 0
-  Mega Man X2: 0
-  Mega Man X: 0
-  MegaMan Battle Network 3: 0
-  Metroid Fusion: 0
-  Metroid Prime: 0
-  Metroid Zero Mission: 0
-  Ocarina of Time: 0
-  Paint: 0
-  Pokemon Crystal: 0
-  Pokemon Red and Blue: 0
-  Quake 1: 0
-  SMZ3: 0
-  Slay the Spire: 0
-  Sonic Adventure 2 Battle: 0
-  Sonic the Hedgehog 1: 0
-  Star Wars Episode I Racer: 0
-  Stardew Valley: 0
-  Subnautica: 0
-  Super Mario 64: 0
-  Super Mario Land 2: 0
-  Super Mario World: 0
-  Super Metroid: 0
-  Symphony of the Night: 0
-  Tetris Attack: 0
-  The Legend of Zelda: 0
-  The Messenger: 0
-  The Wind Waker: 0
-  VVVVVV: 0
-  Yacht Dice: 0
+game: # ranks 1-4
+  A Link to the Past: 1
+  Actraiser: 1
+  Bumper Stickers: 1
+  Castlevania - Circle of the Moon: 1
+  Celeste (Open World): 1
+  ChecksFinder: 1
+  ChecksMate: 1
+  DOOM 1993: 1
+  DOOM II: 1
+  Donkey Kong Country 2: 1
+  Donkey Kong Country 3: 1
+  Donkey Kong Country: 1
+  Final Fantasy IV Free Enterprise: 1
+  Final Fantasy Mystic Quest: 1
+  Golden Sun The Lost Age: 1
+  Heretic: 1
+  Kirby 64 - The Crystal Shards: 1
+  Kirby Super Star: 1
+  Links Awakening DX: 1
+  Majora's Mask Recompiled: 1
+  Mario Kart 64: 1
+  Mega Man 2: 1
+  Mega Man 3: 1
+  Mega Man X2: 1
+  Mega Man X: 1
+  MegaMan Battle Network 3: 1
+  Metroid Fusion: 1
+  Metroid Prime: 1
+  Metroid Zero Mission: 1
+  Ocarina of Time: 1
+  Paint: 1
+  Pokemon Crystal: 1
+  Pokemon Red and Blue: 1
+  Quake 1: 1
+  SMZ3: 1
+  Slay the Spire: 1
+  Sonic Adventure 2 Battle: 1
+  Sonic the Hedgehog 1: 1
+  Star Wars Episode I Racer: 1
+  Stardew Valley: 1
+  Subnautica: 1
+  Super Mario 64: 1
+  Super Mario Land 2: 1
+  Super Mario World: 1
+  Super Metroid: 1
+  Symphony of the Night: 1
+  Tetris Attack: 1
+  The Legend of Zelda: 1
+  The Messenger: 1
+  The Wind Waker: 1
+  VVVVVV: 1
+  Yacht Dice: 1
