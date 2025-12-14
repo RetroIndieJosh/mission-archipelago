@@ -1,24 +1,11 @@
 ﻿name: TetAtk-{player}
 description: Mission Archipelago - Tetris Attack
 requires:
-  version: 0.6.2 # Version of Archipelago required for this yaml to work as expected.
+  version: 0.6.4
 
 Tetris Attack:
   # Game Options
-  progression_balancing:
-    # A system that can move progression earlier, to try and prevent the player from getting stuck and bored early.
-    # 
-    # A lower setting means more getting stuck. A higher setting means less getting stuck.
-    #
-    # You can define additional values between the minimum and maximum values.
-    # Minimum value is 0
-    # Maximum value is 99
-    random: 0
-    random-low: 0
-    random-high: 0
-    disabled: 0 # equivalent to 0
-    normal: 50 # equivalent to 50
-    extreme: 0 # equivalent to 99
+  progression_balancing: normal
 
   accessibility:
     # Set rules for reachability of your items/locations.
@@ -59,9 +46,9 @@ Tetris Attack:
     # This makes Puzzle and/or Extra Puzzle Round 6 Clear one of the goals.
     # If multiple modes need to be cleared, each will provide a final item and auto-hint the other win conditions.
     no_puzzle: 8
-    puzzle: 4
-    extra_puzzle: 2
-    puzzle_and_extra_puzzle: 1
+    puzzle: 1
+    extra_puzzle: 0
+    puzzle_and_extra_puzzle: 0
     puzzle_or_extra_puzzle: 0
 
   versus_goal:
@@ -245,6 +232,10 @@ Tetris Attack:
 
   item_links:
     # Share part of your item pool with other players.
+    []
+
+  plando_items:
+    # Generic items plando.
     []
 
   triggers:
