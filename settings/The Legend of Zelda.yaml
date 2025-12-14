@@ -1,24 +1,11 @@
 ﻿name: TLoZ-{player}
 description: Mission Archipelago - The Legend of Zelda
 requires:
-  version: 0.6.2 # Version of Archipelago required for this yaml to work as expected.
+  version: 0.6.4
 
 The Legend of Zelda:
   # Game Options
-  progression_balancing:
-    # A system that can move progression earlier, to try and prevent the player from getting stuck and bored early.
-    # 
-    # A lower setting means more getting stuck. A higher setting means less getting stuck.
-    #
-    # You can define additional values between the minimum and maximum values.
-    # Minimum value is 0
-    # Maximum value is 99
-    random: 0
-    random-low: 0
-    random-high: 0
-    disabled: 0 # equivalent to 0
-    normal: 50 # equivalent to 50
-    extreme: 0 # equivalent to 99
+  progression_balancing: normal
 
   accessibility:
     # Set rules for reachability of your items/locations.
@@ -31,8 +18,8 @@ The Legend of Zelda:
 
   ExpandedPool:
     # Puts room clear drops and take any caves into the pool of items and locations.
-    'false': 0
-    'true': 1
+    'false': 1
+    'true': 2
 
   TriforceLocations:
     # Where Triforce fragments can be located. Note that Triforce pieces
@@ -87,4 +74,8 @@ The Legend of Zelda:
 
   item_links:
     # Share part of your item pool with other players.
+    []
+
+  plando_items:
+    # Generic items plando.
     []
