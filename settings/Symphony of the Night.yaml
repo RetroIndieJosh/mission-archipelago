@@ -7,20 +7,7 @@ Symphony of the Night:
   ################
   # Game Options #
   ################
-  progression_balancing:
-    # A system that can move progression earlier, to try and prevent the player from getting stuck and bored early.
-    # 
-    # A lower setting means more getting stuck. A higher setting means less getting stuck.
-    #
-    # You can define additional values between the minimum and maximum values.
-    # Minimum value is 0
-    # Maximum value is 99
-    random: 0
-    random-low: 0
-    random-high: 0
-    disabled: 0 # equivalent to 0
-    normal: 50 # equivalent to 50
-    extreme: 0 # equivalent to 99
+  progression_balancing: normal
 
   accessibility:
     # Set rules for reachability of your items/locations.
@@ -63,8 +50,8 @@ Symphony of the Night:
 
   boss_locations:
     # Boss drops would be part of the seed pool.
-    'false': 2
-    'true': 1
+    'false': 1
+    'true': 2
 
   ###################
   # Gameplay Tweaks #
@@ -74,9 +61,9 @@ Symphony of the Night:
     # closed: The door will be closed as in vanilla
     # open: The door will be open after reaching Alchemy Laboratory, ensuring the Death cutscene
     # open_early: The door will be open from the start, allowing you to break the Death cutscene
-    closed: 50
-    open: 0
-    open_early: 0
+    closed: 8
+    open: 4
+    open_early: 1
 
   open_are:
     # If true, the back door from Chapel to Colosseum will be open
@@ -98,7 +85,7 @@ Symphony of the Night:
     # normal: All vanilla stats
     # hard: 50% more monster HP, attack and defense
     # very_hard: 100% more monster HP, attack, and defense
-    easy: 4
+    easy: 8
     normal: 32
     hard: 4
     very_hard: 1
@@ -110,14 +97,16 @@ Symphony of the Night:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 24
     # Maximum value is 200
-    24: 1
-    random: 1
-    random-low: 0
-    random-high: 0
+    # Default is 24 (OFF)
+    24: 16
+    random-range-25-49: 2
+    random-range-50-74: 4
+    random-range-middle-75-124: 8
+    random-range-low-125-200: 1
 
   drop_mod:
     # Modifier for monster drop. Override difficult preset
-    # normal: Drop chance is not modified
+    # normal: Drop chance is not modified (DEFAULT)
     # increase: increase the odds of a drop
     # abundant: increase further odds of a drop
     # guaranteed: guarantees drops for every enemy that has one. Ring of arcana makes them drop their rare item instead
@@ -130,7 +119,7 @@ Symphony of the Night:
     # Randomize enemy drops
     # simple: Only randomize between each enemy drop
     # simple_global: Only randomize between each enemy drop including global drops
-    'off': 8
+    'off': 8 # default
     simple: 2
     simple_global: 1
 
@@ -139,10 +128,7 @@ Symphony of the Night:
     'false': 4
     'true': 1
 
-  death_link:
-    # When you die, everyone who enabled death link dies. Of course, the reverse is true too.
-    'false': 50
-    'true': 0
+  death_link: 'false' # When you die, everyone who enabled death link dies. Of course, the reverse is true too.
 
   random_shop:
     # Randomize items sold by Librarian
@@ -152,15 +138,12 @@ Symphony of the Night:
     # on_no_prog_lib: No progression item can appear at shop enforcing a Library card on sale
     'off': 1
     'on': 0
-    on_lib: 2
+    on_lib: 4
     on_no_prog: 0
-    on_no_prog_lib: 4
+    on_no_prog_lib: 2
 
-  unlocked_mode:
-    # Opens all five shorcuts in first castle and one in second castle
+  unlocked_mode: 'false' # Opens all five shorcuts in first castle and one in second castle
     # Might break logic
-    'false': 50
-    'true': 0
 
   relic_suprise:
     # All relics are hidden behind the same sprite and palette.
@@ -186,64 +169,27 @@ Symphony of the Night:
     # normal_castle: Your random room will be on the first castle
     # reverse_castle: Your random room will be on the reverse castle
     # any_castle: Your random room could be anywhere
-    vanilla: 8
+    vanilla: 16
     normal_castle: 4
-    reverse_castle: 2
-    any_castle: 1
+    reverse_castle: 1
+    any_castle: 2
 
-  reverse_library:
-    # Adds a new function to library cards. Hold down while using them to take Alucard to the second castle library
+  reverse_library: 'true' # Adds a new function to library cards. Hold down while using them to take Alucard to the second castle library
     # after Richter is saved
-    'false': 50
-    'true': 0
 
-  no_logic:
-    # There is logic. Seed might be unbeatable. Heavy on glitch knowledge
-    'false': 50
-    'true': 0
+  no_logic: 'false' # There is logic. Seed might be unbeatable. Heavy on glitch knowledge
 
   #######
   # QOL #
   #######
-  infinite_wing_smash:
-    # Makes wing smash continue until you hit a wall or run out of MP (cancellable by exiting bat form)
-    'false': 50
-    'true': 0
-
-  remove_prologue:
-    # Remove prologue fight
-    'false': 0
-    'true': 1
-
-  magic_vessels:
-    # Replace heart max up with magic max up
-    'false': 50
-    'true': 0
-
-  anti_freeze:
-    # Remove screen freezes on level-up, relic and vessels acquisition
-    'false': 0
-    'true': 1
-
-  my_purse:
-    # Prevent Death from stealing your gear
-    'false': 50
-    'true': 0
-
-  fast_warp:
-    # Quickens warp animation when using teleporters
-    'false': 0
-    'true': 1
-
-  skip_nz1:
-    # Disable rotating gears clock tower puzzle. Hitting any gear once opens the secret door
-    'false': 50
-    'true': 0
-
-  auto_heal:
-    # Entering a save room heal Alucard
-    'false': 0
-    'true': 1
+  infinite_wing_smash: 'false' # Makes wing smash continue until you hit a wall or run out of MP (cancellable by exiting bat form)
+  remove_prologue: 'true' # Remove prologue fight
+  magic_vessels: 'false' # Replace heart max up with magic max up
+  anti_freeze: 'true' # Remove screen freezes on level-up, relic and vessels acquisition
+  my_purse: 'false' # Prevent Death from stealing your gear
+  fast_warp: 'true' # Quickens warp animation when using teleporters
+  skip_nz1: 'true' # Disable rotating gears clock tower puzzle. Hitting any gear once opens the secret door
+  auto_heal: 'true' # Entering a save room heal Alucard
 
   #############
   # Cosmetics #
@@ -280,10 +226,7 @@ Symphony of the Night:
     onyx_trim: 1
     coral_trim: 1
 
-  random_music:
-    # Randomize the game music
-    'false': 50
-    'true': 0
+  random_music: 'false' # Randomize the game music
 
   color_randomizer:
     # Randomize various color paletter. Ex: Cape colors, gravity boots trail, hydrostorm
