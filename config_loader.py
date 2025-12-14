@@ -60,7 +60,7 @@ def load_config(path: str = "async.yaml") -> Tuple[Dict[str, Any], str, int, flo
             )
             rank_mult = 1.0
 
-    world_mult_value = cfg.get("world-mult", 0)
+    world_mult_value = cfg.get("world-mult", 1)
     world_mult_range_value = cfg.get("world-mult-range", 0)
 
     try:
