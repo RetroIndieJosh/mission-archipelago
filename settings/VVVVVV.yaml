@@ -1,26 +1,13 @@
 ﻿name: V6-{player}
 description: Mission Archipelago - VVVVVV
 requires:
-  version: 0.6.2 # Version of Archipelago required for this yaml to work as expected.
+  version: 0.6.4
 
 VVVVVV:
   ################
   # Game Options #
   ################
-  progression_balancing:
-    # A system that can move progression earlier, to try and prevent the player from getting stuck and bored early.
-    # 
-    # A lower setting means more getting stuck. A higher setting means less getting stuck.
-    #
-    # You can define additional values between the minimum and maximum values.
-    # Minimum value is 0
-    # Maximum value is 99
-    random: 0
-    random-low: 0
-    random-high: 0
-    disabled: 0 # equivalent to 0
-    normal: 50 # equivalent to 50
-    extreme: 0 # equivalent to 99
+  progression_balancing: normal
 
   accessibility:
     # Set rules for reachability of your items/locations.
@@ -31,10 +18,7 @@ VVVVVV:
     full: 50
     minimal: 0
 
-  music_rando:
-    # Randomize Music
-    'false': 50
-    'true': 0
+  music_rando: 'false' # Randomize Music
 
   area_rando:
     # Randomize Entrances to Areas
@@ -47,23 +31,14 @@ VVVVVV:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 0
     # Maximum value is 3
-    0: 1
-    1: 2
-    2: 2
-    3: 4
-    random: 0
-    random-low: 0
-    random-high: 0
+    random-range-high-0-3: 1
 
   area_cost:
     # Randomize which Area requires which set of DoorCost Trinkets
     'false': 2
     'true': 1
 
-  death_link:
-    # When you die, everyone who enabled death link dies. Of course, the reverse is true too.
-    'false': 50
-    'true': 0
+  death_link: 'false' # When you die, everyone who enabled death link dies. Of course, the reverse is true too.
 
   death_link_amnesty:
     # Amount of Deaths to take before sending a DeathLink signal, for balancing difficulty
