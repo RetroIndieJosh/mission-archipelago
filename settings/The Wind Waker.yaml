@@ -1,24 +1,11 @@
 ﻿name: WW-{player}
 description: Mission Archipelago - The Wind Waker
 requires:
-  version: 0.6.2 # Version of Archipelago required for this yaml to work as expected.
+  version: 0.6.4
 
 The Wind Waker:
   # Game Options
-  progression_balancing:
-    # A system that can move progression earlier, to try and prevent the player from getting stuck and bored early.
-    # 
-    # A lower setting means more getting stuck. A higher setting means less getting stuck.
-    #
-    # You can define additional values between the minimum and maximum values.
-    # Minimum value is 0
-    # Maximum value is 99
-    random: 0
-    random-low: 0
-    random-high: 0
-    disabled: 0 # equivalent to 0
-    normal: 50 # equivalent to 50
-    extreme: 0 # equivalent to 99
+  progression_balancing: normal
 
   accessibility:
     # Set rules for reachability of your items/locations.
@@ -29,15 +16,12 @@ The Wind Waker:
     full: 50
     minimal: 0
 
-  death_link:
-    # When you die, everyone who enabled death link dies. Of course, the reverse is true too.
-    'false': 50
-    'true': 0
+  death_link: 'false' # When you die, everyone who enabled death link dies. Of course, the reverse is true too.
 
   # Progression Locations
   progression_dungeons:
     # This controls whether dungeon locations are randomized.
-    'false': 1
+    'false': 0
     'true': 4
 
   progression_dungeon_secrets:
@@ -171,8 +155,8 @@ The Wind Waker:
     # - **Swordless:** You will start the game with no sword, and won't be able to find it anywhere. You have to beat the
     #   entire game using other items as weapons instead of the sword. (Note that Phantom Ganon in FF becomes vulnerable
     #   to Skull Hammer in this mode.)
-    start_with_sword: 8
-    no_starting_sword: 1
+    start_with_sword: 1
+    no_starting_sword: 0
     swords_optional: 0
     swordless: 0
 
@@ -224,11 +208,9 @@ The Wind Waker:
     local: 8
     keylunacy: 1
 
-  chest_type_matches_contents:
-    # Changes the chest type to reflect its contents. A metal chest has a progress item, a wooden chest has a non-progress
+  chest_type_matches_contents: 'true' # Changes the chest type to reflect its
+    # contents. A metal chest has a progress item, a wooden chest has a non-progress
     # item or a consumable, and a green chest has a potentially required dungeon key.
-    'false': 0
-    'true': 1
 
   # Entrance Randomizer Options
   randomize_dungeon_entrances:
@@ -318,10 +300,7 @@ The Wind Waker:
     'false': 0
     'true': 1
 
-  remove_music:
-    # Mutes all ingame music.
-    'false': 50
-    'true': 0
+  remove_music: 'false' # Mutes all ingame music.
 
   # Required Bosses
   required_bosses:
