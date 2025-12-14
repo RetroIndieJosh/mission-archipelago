@@ -83,7 +83,10 @@ class MysterySettings(dict):
         )
 
         lines = []
-        for game, count in sorted(entries):
+        for game, count in sorted(
+            entries,
+            key=lambda x: (-x[1], x[0])
+        ):
             pct = (count / total) * 100 if total else 0
             lines.append(
                 f"{game:<{name_width}}  {count:>5}  {pct:>5.1f}%"
