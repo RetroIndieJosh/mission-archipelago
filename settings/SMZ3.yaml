@@ -1,24 +1,11 @@
 ﻿name: SMZ3-{player}
 description: Mission Archipelago - Super Metroid Zelda 3
 requires:
-  version: 0.6.2 # Version of Archipelago required for this yaml to work as expected.
+  version: 0.6.4
 
 SMZ3:
   # Game Options
-  progression_balancing:
-    # A system that can move progression earlier, to try and prevent the player from getting stuck and bored early.
-    # 
-    # A lower setting means more getting stuck. A higher setting means less getting stuck.
-    #
-    # You can define additional values between the minimum and maximum values.
-    # Minimum value is 0
-    # Maximum value is 99
-    random: 0
-    random-low: 0
-    random-high: 0
-    disabled: 0 # equivalent to 0
-    normal: 50 # equivalent to 50
-    extreme: 0 # equivalent to 99
+  progression_balancing: normal
 
   accessibility:
     # Set rules for reachability of your items/locations.
@@ -57,7 +44,7 @@ SMZ3:
     # the game.
     # Uncle - The sword will always be placed on Link's Uncle.
     randomized: 0
-    early: 2
+    early: 4
     uncle: 1
 
   morph_location:
@@ -68,7 +55,7 @@ SMZ3:
     # Original location - The morph ball will always be placed at its original 
     # location.
     randomized: 0
-    early: 1
+    early: 2
     original: 1
 
   goal:
@@ -80,7 +67,7 @@ SMZ3:
     #                                      the Crateria Boss Key requirement from Tourian to allow faster access.
     # All Dungeons and Defeat Mother Brain -  Similar to "Defeat Ganon and Mother Brain", but also requires all dungeons 
     #                                         to be beaten including Castle Tower and Agahnim.
-    defeatboth: 4
+    defeatboth: 8
     fastganondefeatmotherbrain: 2
     alldungeonsdefeatmotherbrain: 1
 
@@ -100,8 +87,7 @@ SMZ3:
     # Minimum value is 0
     # Maximum value is 7
     0: 1
-    random-range-1-4: 2
-    random-range-5-7: 4
+    random-range-high-1-7: 7
 
   ganon_vulnerable:
     # The amount of crystals required to be able to harm Ganon. The amount can be found 
@@ -110,9 +96,7 @@ SMZ3:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 0
     # Maximum value is 7
-    0: 1
-    random-range-1-4: 2
-    random-range-5-7: 4
+    random-range-high-0-7: 7
 
   open_tourian:
     # The amount of boss tokens required to enter Tourian. The amount can be found in-game 
@@ -121,24 +105,12 @@ SMZ3:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 0
     # Maximum value is 4
-    0: 1
-    1: 4
-    2: 8
-    3: 16
-    4: 32
+    random-range-high-0-4: 1
 
-  spin_jumps_animation:
-    # Enable separate space/screw jump animations
-    'false': 0
-    'true': 1
-
-  heart_beep_speed:
-    # Sets the speed of the heart beep sound in A Link to the Past.
-    'off': 0
-    quarter: 1
-    half: 0
-    normal: 0
-    double: 0
+  spin_jumps_animation: 'true' # Enable separate space/screw jump animations
+  heart_beep_speed: quarter # Sets the speed of the heart beep sound in A Link to the Past.
+  quick_swap: 'true' # When enabled, lets you switch items in ALTTP with L/R
+  energy_beep: 'true' # Toggles the low health energy beep in Super Metroid.
 
   heart_color:
     # Changes the color of the hearts in the HUD for A Link to the Past.
@@ -146,16 +118,6 @@ SMZ3:
     green: 1
     blue: 1
     yellow: 1
-
-  quick_swap:
-    # When enabled, lets you switch items in ALTTP with L/R
-    'false': 0
-    'true': 1
-
-  energy_beep:
-    # Toggles the low health energy beep in Super Metroid.
-    'false': 0
-    'true': 1
 
   # Item & Location Options
   local_items:
@@ -195,3 +157,12 @@ SMZ3:
   item_links:
     # Share part of your item pool with other players.
     []
+
+  triggers:
+  # for fast ganon, require at least one crystal to make vulnerable
+  - option_category: SMZ3
+    option_name: goal
+    option_result: fastganondefeatmotherbrain
+    options:
+      SMZ3:
+        ganon_vulnerable: random-range-1-7
