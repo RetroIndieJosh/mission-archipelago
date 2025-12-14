@@ -1,7 +1,7 @@
 ﻿name: SA2B-{player}
 description: Mission Archipelago - Sonic Adventure 2 Battle
 requires:
-  version: 0.6.2 # Version of Archipelago required for this yaml to work as expected.
+  version: 0.6.4
 
 Sonic Adventure 2 Battle:
   # Game Options
