@@ -1,24 +1,11 @@
 ﻿name: SM64-{player}
 description: Mission Archipelago - Super Mario 64
 requires:
-  version: 0.6.2 # Version of Archipelago required for this yaml to work as expected.
+  version: 0.6.4
 
 Super Mario 64:
   # Game Options
-  progression_balancing:
-    # A system that can move progression earlier, to try and prevent the player from getting stuck and bored early.
-    # 
-    # A lower setting means more getting stuck. A higher setting means less getting stuck.
-    #
-    # You can define additional values between the minimum and maximum values.
-    # Minimum value is 0
-    # Maximum value is 99
-    random: 0
-    random-low: 0
-    random-high: 0
-    disabled: 0 # equivalent to 0
-    normal: 50 # equivalent to 50
-    extreme: 0 # equivalent to 99
+  progression_balancing: normal
 
   accessibility:
     # Set rules for reachability of your items/locations.
@@ -53,13 +40,13 @@ Super Mario 64:
 
   buddy_checks:
     # Bob-omb Buddies are checks, Cannon Unlocks are items
-    'false': 4
+    'false': 2
     'true': 1
 
   exclamation_boxes:
     # Include 1Up Exclamation Boxes during randomization.
     # Adds 29 locations to the pool.
-    'false': 8
+    'false': 16
     'true': 1
 
   progressive_keys:
@@ -80,16 +67,9 @@ Super Mario 64:
     'on': 1
     vanilla: 2
 
-  strict_cap_requirements:
-    # If disabled, Stars that expect special caps may have to be acquired without the caps
-    'false': 0
-    'true': 50
-
-  strict_cannon_requirements:
-    # If disabled, Stars that expect cannons may have to be acquired without them.
+  strict_cap_requirements: 'true' # If disabled, Stars that expect special caps may have to be acquired without the caps
+  strict_cannon_requirements: 'true' # If disabled, Stars that expect cannons may have to be acquired without them.
     # Has no effect if Buddy Checks and Move Randomizer are disabled
-    'false': 0
-    'true': 50
 
   # Ability Options
   enable_move_rando:
@@ -98,16 +78,19 @@ Super Mario 64:
     # Specific actions to randomize can be specified in the YAML.
     'false': 2
     'true': 1
+  
+  move_rando_actions: [] # NOTE: these are set in triggers based on move_rando_mode
+  move_rando_mode: # Which actions to randomize when Move Randomizer is enabled
+    # attacks_grabs - Dive, Ground Pound, Kick, Climb, Ledge Grab
+    # jumps - Triple Jump, Long Jump, Backflip, Side Flip, Wall Kick
+    # all - attacks, grabs, and jumps
+    # NOTE: there's no "none" option because of enable_move_rando
+    attacks_grabs: 4
+    jumps: 2
+    all: 1
 
-  move_rando_actions:
-    # Which actions to randomize when Move Randomizer is enabled
-    ['Triple Jump', 'Long Jump', 'Backflip', 'Side Flip', 'Wall Kick', 'Dive', 'Ground Pound', 'Kick', 'Climb', 'Ledge Grab']
-
-  strict_move_requirements:
-    # If disabled, Stars that expect certain moves may have to be acquired without them. Only makes a difference
+  strict_move_requirements: 'true' # If disabled, Stars that expect certain moves may have to be acquired without them. Only makes a difference
     # if Move Randomization is enabled
-    'false': 0
-    'true': 50
 
   # Star Options
   amount_of_stars:
@@ -118,9 +101,9 @@ Super Mario 64:
     # Default is 120
     # Minimum value is 35
     # Maximum value is 120
-    random-range-35-60: 1
-    random-range-61-90: 2
-    random-range-91-120: 4
+    random-range-high-35-60: 1
+    random-range-high-61-90: 2
+    random-range-high-91-120: 4
 
   first_bowser_star_door_cost:
     # What percent of the total stars are required at the Star Door to Bowser in the Dark World
@@ -130,7 +113,7 @@ Super Mario 64:
     # Minimum value is 0
     # Maximum value is 40
     0: 1
-    random-range-1-12: 4
+    random-range-middle-2-12: 8
 
   basement_star_door_cost:
     # What percent of the total stars are required at the Star Door in the Basement
@@ -139,7 +122,9 @@ Super Mario 64:
     # Default is 25
     # Minimum value is 0
     # Maximum value is 50
-    random-range-13-37: 1
+    random-range-high-0-12: 1
+    random-range-middle-13-37: 4
+    random-range-low-38-50: 2
 
   second_floor_star_door_cost:
     # What percent of the total stars are required to access the third floor
@@ -148,7 +133,9 @@ Super Mario 64:
     # Default is 42
     # Minimum value is 0
     # Maximum value is 70
-    random-range-38-46: 4
+    random-range-high-0-37: 1
+    random-range-middle-38-46: 4
+    random-range-low-47-70: 2
 
   mips1_cost:
     # What percent of the total stars are required to spawn MIPS the first time
@@ -157,8 +144,9 @@ Super Mario 64:
     # Default is 12
     # Minimum value is 0
     # Maximum value is 35
-    0: 1
-    random-range-1-24: 4
+    random-range-high-0-5: 1
+    random-range-middle-6-18: 2
+    random-range-low-19-35: 2
 
   mips2_cost:
     # What percent of the total stars are required to spawn MIPS the second time.
@@ -167,8 +155,9 @@ Super Mario 64:
     # Default is 42
     # Minimum value is 0
     # Maximum value is 70
-    random-range-38-46: 4
-    random-range-47-70: 1
+    random-range-high-0-29: 1
+    random-range-middle-30-54: 4
+    random-range-low-55-70: 2
 
   stars_to_finish:
     # What percent of the total stars are required at the infinite stairs
@@ -177,8 +166,9 @@ Super Mario 64:
     # Default is 58
     # Minimum value is 0
     # Maximum value is 90
-    random-range-47-70: 4
-    random-range-71-90: 1
+    random-range-high-0-39: 1
+    random-range-middle-40-76: 4
+    random-range-low-77-90: 2
 
   # Item & Location Options
   local_items:
@@ -212,3 +202,50 @@ Super Mario 64:
   item_links:
     # Share part of your item pool with other players.
     []
+
+  triggers:
+    # 
+    # move_rando_mode
+    #
+
+    # attacks_grabs - Dive, Ground Pound, Kick, Climb, Ledge Grab
+  - option_category: Super Mario 64
+    option_name: move_rando_mode
+    option_result: attacks_grabs
+    options:
+      Super Mario 64:
+        +move_rando_actions:
+          - 'Dive'
+          - 'Ground Pound'
+          - 'Kick'
+          - 'Climb'
+          - 'Ledge Grab'
+    # jumps - Triple Jump, Long Jump, Backflip, Side Flip, Wall Kick
+  - option_category: Super Mario 64
+    option_name: move_rando_mode
+    option_result: jumps
+    options:
+      Super Mario 64:
+        +move_rando_actions:
+          - 'Triple Jump'
+          - 'Long Jump'
+          - 'Backflip'
+          - 'Side Flip'
+          - 'Wall Kick'
+    # all - attacks, grabs, and jumps
+  - option_category: Super Mario 64
+    option_name: move_rando_mode
+    option_result: all
+    options:
+      Super Mario 64:
+        +move_rando_actions:
+          - 'Triple Jump'
+          - 'Long Jump'
+          - 'Backflip'
+          - 'Side Flip'
+          - 'Wall Kick'
+          - 'Dive'
+          - 'Ground Pound'
+          - 'Kick'
+          - 'Climb'
+          - 'Ledge Grab'
