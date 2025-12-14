@@ -1,24 +1,11 @@
 ﻿name: SM-{player}
 description: Mission Archipelago - Super Metroid
 requires:
-  version: 0.6.2 # Version of Archipelago required for this yaml to work as expected.
+  version: 0.6.4
 
 Super Metroid:
   # Game Options
-  progression_balancing:
-    # A system that can move progression earlier, to try and prevent the player from getting stuck and bored early.
-    # 
-    # A lower setting means more getting stuck. A higher setting means less getting stuck.
-    #
-    # You can define additional values between the minimum and maximum values.
-    # Minimum value is 0
-    # Maximum value is 99
-    random: 0
-    random-low: 0
-    random-high: 0
-    disabled: 0 # equivalent to 0
-    normal: 50 # equivalent to 50
-    extreme: 0 # equivalent to 99
+  progression_balancing: normal
 
   accessibility:
     # Set rules for reachability of your items/locations.
@@ -50,53 +37,33 @@ Super Metroid:
     custom: 0
     varia_custom: 1
 
+  game_start:
+    # Where the game starts (early/mid set in triggers)
+    # start: ceres or landing_site (set in start_location)
+    # early: landing_site, gauntlet_top, green_brinstar_elevator, big_pink, etecoons_supers, red_brinstar_elevator, wrecked_ship_main, golden_four
+    # mid: firefleas_top, business_center, bubble_mountain, aqueduct
+    start: 4
+    early: 8
+    later: 1
+
   start_location:
     # Choose where you want to start the game.
-    ceres: 0
-    landing_site: 1
-    gauntlet_top: 1
-    green_brinstar_elevator: 1
-    big_pink: 1
-    etecoons_supers: 1
-    wrecked_ship_main: 1
-    firefleas_top: 1
-    business_center: 1
-    bubble_mountain: 1
-    mama_turtle: 1
-    watering_hole: 1
-    aqueduct: 1
-    red_brinstar_elevator: 1
-    golden_four: 1
+    # NOTE: leave this as ceres only, it's otherwise set in triggers based on game_start
+    ceres: 1
+    landing_site: 8
 
   remote_items:
     # Indicates you get items sent from your own world. This allows coop play of a world.
     'false': 50
     'true': 0
 
-  death_link:
-    # When DeathLink is enabled and someone dies, you will die. With survive reserve tanks can save you.
-    disable: 50
-    enable: 0
-    enable_survive: 0
+  death_link: disable # When DeathLink is enabled and someone dies, you will die. With survive reserve tanks can save you.
+  morph_placement: early # Influences where the Morphing Ball with be placed.
 
-  max_difficulty:
-    # Depending on the perceived difficulties of the techniques, bosses, hell runs etc. from the preset, it will
+  max_difficulty: easy # Depending on the perceived difficulties of the techniques, bosses, hell runs etc. from the preset, it will
     # prevent the Randomizer from placing an item in a location too difficult to reach with the current items.
-    easy: 1
-    medium: 0
-    hard: 0
-    harder: 0
-    hardcore: 0
-    mania: 0
-    infinity: 0
 
-  morph_placement:
-    # Influences where the Morphing Ball with be placed.
-    early: 1
-    normal: 0
-
-  hide_items:
-    # Hides half of the visible items.
+  hide_items: 'false' # Hides half of the visible items.
     # Items always visible:
     # - Energy Tank, Gauntlet
     # - Energy Tank, Terminator
@@ -107,14 +74,9 @@ Super Metroid:
     # - Power Bomb (lower Norfair above fire flea room)
     # - Missile (Gravity Suit)
     # - Missile (green Maridia shinespark)
-    'false': 50
-    'true': 0
 
-  strict_minors:
-    # Instead of using the Minors proportions as probabilities, enforce a strict distribution to match the proportions
+  strict_minors: 'false' # Instead of using the Minors proportions as probabilities, enforce a strict distribution to match the proportions
     # as closely as possible.
-    'false': 50
-    'true': 0
 
   missile_qty:
     # The higher the number the higher the probability of choosing missles when placing a minor.
@@ -123,12 +85,9 @@ Super Metroid:
     # Default is 30
     # Minimum value is 10
     # Maximum value is 90
-    random-range-10-20: 2
-    random-range-21-29: 4
-    30: 8
-    random-range-31-40: 4
-    random-range-41-60: 2
-    random-range-61-90: 1
+    random-range-high-10-24: 2
+    random-range-middle-25-34: 4
+    random-range-low-35-90: 1
 
   super_qty:
     # The higher the number the higher the probability of choosing super missles when placing a minor.
@@ -137,12 +96,9 @@ Super Metroid:
     # Default is 20
     # Minimum value is 10
     # Maximum value is 90
-    random-range-10-19: 8
-    20: 16
-    random-range-21-30: 8
-    random-range-31-40: 4
-    random-range-41-60: 2
-    random-range-61-90: 1
+    random-range-high-10-14: 2
+    random-range-middle-15-24: 4
+    random-range-low-25-90: 1
 
   power_bomb_qty:
     # The higher the number the higher the probability of choosing power bombs when placing a minor.
@@ -151,9 +107,8 @@ Super Metroid:
     # Default is 10
     # Minimum value is 10
     # Maximum value is 90
-    10: 8
-    random-range-11-20: 4
-    random-range-21-30: 1
+    random-range-low-10-20: 4
+    random-range-low-21-90: 1
 
   minor_qty:
     # From 7%, minimum number of minors required to finish the game, to 100%.
@@ -161,18 +116,18 @@ Super Metroid:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 7
     # Maximum value is 100
-    100: 50
-    random: 0
-    random-low: 0
-    random-high: 0
+    # Default is 100
+    random-range-high-7-30: 1
+    random-range-high-31-70: 8
+    random-range-high-71-100: 32
 
   energy_qty:
     # Choose how many Energy/Reserve Tanks will be available, from 0-1 in ultra sparse, 4-6 in sparse, 8-12 in medium
     # and 18 in vanilla.
     ultra_sparse: 0
     sparse: 0
-    medium: 0
-    vanilla: 50
+    medium: 1
+    vanilla: 16
 
   area_randomization:
     # Randomize areas together using bidirectional access portals.
@@ -180,10 +135,7 @@ Super Metroid:
     light: 0
     full: 0
 
-  area_layout:
-    # Some layout tweaks to make your life easier in areas randomizer.
-    'false': 0
-    'true': 1
+  area_layout: 'true' # Some layout tweaks to make your life easier in areas randomizer.
 
   doors_colors_rando:
     # Randomize the color of Red/Green/Yellow doors. Add four new type of doors which require Ice/Wave/Spazer/Plasma
@@ -221,13 +173,13 @@ Super Metroid:
     # - go to the vanilla animals door to cycle through the 4 available escapes, and complete as many escapes as you can
     # 
     # Pick your challenge, or try to do both, but watch your timer!
-    'false': 50
-    'true': 0
+    'false': 16
+    'true': 1
 
   remove_escape_enemies:
     # Remove enemies during escape sequence, disable it to blast through enemies with your Hyper Beam and cause lag.
-    'false': 1
-    'true': 0
+    'false': 2
+    'true': 1
 
   fun_combat:
     # Forces removal of Plasma Beam and Screw Attack if the preset and settings allow it. In addition, can randomly
@@ -247,22 +199,15 @@ Super Metroid:
     'false': 50
     'true': 0
 
-  layout_patches:
-    # Include the anti-softlock layout patches. Disable at your own softlocking risk!
-    'false': 0
-    'true': 50
-
-  varia_tweaks:
-    # Include minor tweaks for the game to behave 'as it should' in a randomizer context
-    'false': 0
-    'true': 1
+  layout_patches: 'true' # Include the anti-softlock layout patches. Disable at your own softlocking risk!
+  varia_tweaks: 'true' # Include minor tweaks for the game to behave 'as it should' in a randomizer context
 
   nerfed_charge:
     # Samus begins with a starter Charge Beam that does one third of charged shot damage that can damage bosses. Pseudo
     # Screws also do one third damage. Special Beam Attacks do normal damage but cost 3 Power Bombs instead of 1. Once the
     # Charge Beam item has been collected, it does full damage and special attacks are back to normal.
-    'false': 50
-    'true': 0
+    'false': 8
+    'true': 1
 
   gravity_behaviour:
     # Modify the heat damage and enemy damage reduction qualities of the Gravity and Varia Suits.
@@ -270,58 +215,24 @@ Super Metroid:
     balanced: 50
     progressive: 0
 
-  elevators_speed:
-    # Accelerate elevators transitions.
-    'false': 0
-    'true': 50
-
-  fast_doors:
-    # Accelerate doors transitions.
-    'false': 0
-    'true': 50
-
-  spin_jump_restart:
-    # Allows Samus to start spinning in mid air after jumping or falling.
-    'false': 50
-    'true': 0
-
-  rando_speed:
-    # Let Samus keeps her momentum when landing from a fall or from jumping.
-    'false': 50
-    'true': 0
-
-  infinite_space_jump:
-    # Space jumps can be done quicker and at any time in air, water or lava, even after falling long distances.
-    'false': 50
-    'true': 0
-
-  refill_before_save:
-    # Refill energy and ammo when saving.
-    'false': 0
-    'true': 1
-
-  hud:
-    # Displays the current area name and the number of remaining items of selected item split in the HUD for the
+  elevators_speed: 'true' # Accelerate elevators transitions.
+  fast_doors: 'true' # Accelerate doors transitions.
+  spin_jump_restart: 'false' # Allows Samus to start spinning in mid air after jumping or falling.
+  rando_speed: 'false' # Let Samus keeps her momentum when landing from a fall or from jumping.
+  infinite_space_jump: 'false' # Space jumps can be done quicker and at any time in air, water or lava, even after falling long distances.
+  refill_before_save: 'true' # Refill energy and ammo when saving.
+  hud: 'true' # Displays the current area name and the number of remaining items of selected item split in the HUD for the
     # current area.
-    'false': 0
-    'true': 1
 
   animals:
     # Replace saving the animals in the escape sequence by a random surprise.
     # Note: This setting is not available when Escape Randomization is enabled, as it is replaced by Animals Challenges
     # (see Escape Randomization help for more information).
-    'false': 50
-    'true': 0
+    'false': 8
+    'true': 1
 
-  no_music:
-    # Disable the background music.
-    'false': 50
-    'true': 0
-
-  random_music:
-    # Randomize the background music.
-    'false': 50
-    'true': 0
+  no_music: 'false' # Disable the background music.
+  random_music: 'false' # Randomize the background music.
 
   custom_preset:
     # see https://randommetroidsolver.pythonanywhere.com/presets for detailed info on each preset settings
@@ -354,6 +265,30 @@ Super Metroid:
     'false': 0
     'true': 1
 
+  custom_objective_bosses:
+    none: 1
+    specific: 8
+    random: 4
+    either: 2
+
+  custom_objective_minibosses:
+    none: 4
+    specific: 2
+    random: 2
+    both: 1
+
+  custom_objective_items:
+    'false': 2
+    'true': 1
+
+  custom_objective_regions:
+    'false': 2
+    'true': 1
+  
+  custom_objective_memes:
+    'false': 4
+    'true': 1
+
   custom_objective_list:
     # If ""Custom objectives"" is enabled, "Custom Objective count" will be used to pick an amount of objective from the list.
     # This setting is ignored if ""Custom objectives"" is set to false.
@@ -367,28 +302,6 @@ Super Metroid:
     # "collect 100% items" and "nothing". The default is ["random"]. A full list of supported objectives can be found at:
     # https://github.com/ArchipelagoMW/Archipelago/blob/main/worlds/sm/variaRandomizer/utils/objectives.py
     [
-      "kill kraid",
-      "kill phantoon",
-      "kill draygon",
-      "kill ridley",
-      "kill spore spawn",
-      "kill botwoon",
-      "kill crocomire",
-      "kill golden torizo",
-      "collect 25% items",
-      "collect 50% items",
-      "collect 75% items",
-      "collect all upgrades",
-      "clear crateria",
-      "clear green brinstar",
-      "clear red brinstar",
-      "clear wrecked ship",
-      "clear upper norfair",
-      "clear croc's lair",
-      "clear lower norfair",
-      "clear west maridia",
-      "clear east maridia",
-      "visit the animals"
     ]
 
   custom_objective_count:
@@ -398,11 +311,8 @@ Super Metroid:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 1
     # Maximum value is 5
-    1: 1
-    2: 2
-    3: 4
-    4: 8
-    5: 4
+    random-range-high-1-2: 1
+    random-range-middle-3-5: 8
 
   objective:
     # If ""Custom objectives"" is disabled, choose which objectives are required to sink the Golden Four statue and to open access to Tourian.
@@ -463,3 +373,138 @@ Super Metroid:
   item_links:
     # Share part of your item pool with other players.
     []
+
+  triggers:
+
+  # game start: early
+  - option_category: Super Metroid
+    option_name: game_start
+    option_result: early
+    options:
+      Super Metroid:
+        start_location:
+          gauntlet_top: 4
+          green_brinstar_elevator: 4
+          big_pink: 2
+          etecoons_supers: 2
+          wrecked_ship_main: 1
+          red_brinstar_elevator: 2
+          golden_four: 4
+  # game start: later
+  - option_category: Super Metroid
+    option_name: game_start
+    option_result: later
+    options:
+      Super Metroid:
+        start_location:
+          firefleas_top: 1
+          business_center: 2
+          bubble_mountain: 2
+          mama_turtle: 1
+          watering_hole: 1
+          aqueduct: 1
+
+  # CUSTOM OBJECTIVES #
+  - option_category: Super Metroid
+    option_name: custom_objective_bosses
+    option_result: specific
+    options:
+      Super Metroid:
+        +custom_objective_list:
+          - kill kraid
+          - kill phantoon
+          - kill draygon
+          - kill ridley
+  - option_category: Super Metroid
+    option_name: custom_objective_bosses
+    option_result: random
+    options:
+      Super Metroid:
+        +custom_objective_list:
+          - kill one G4
+          - kill two G4
+          - kill three G4
+          - kill all G4
+  - option_category: Super Metroid
+    option_name: custom_objective_bosses
+    option_result: either
+    options:
+      Super Metroid:
+        +custom_objective_list:
+          - kill kraid
+          - kill phantoon
+          - kill draygon
+          - kill ridley
+          - kill one G4
+          - kill two G4
+          - kill three G4
+          - kill all G4
+  - option_category: Super Metroid
+    option_name: custom_objective_minibosses
+    option_result: specific
+    options:
+      Super Metroid:
+        +custom_objective_list:
+          - kill spore spawn
+          - kill botwoon
+          - kill crocomire
+          - kill golden torizo
+  - option_category: Super Metroid
+    option_name: custom_objective_minibosses
+    option_result: random
+    options:
+      Super Metroid:
+        +custom_objective_list:
+          - kill one miniboss
+          - kill two minibosses
+          - kill three minibosses
+          - kill all mini bosses
+  - option_category: Super Metroid
+    option_name: custom_objective_minibosses
+    option_result: either
+    options:
+      Super Metroid:
+        +custom_objective_list:
+          - kill spore spawn
+          - kill botwoon
+          - kill crocomire
+          - kill golden torizo
+          - kill one miniboss
+          - kill two minibosses
+          - kill three minibosses
+          - kill all mini bosses
+  - option_category: Super Metroid
+    option_name: custom_objective_items
+    option_result: 'true'
+    options:
+      Super Metroid:
+        +custom_objective_list:
+          - collect 25% items
+          - collect 50% items
+          - collect all upgrades
+  - option_category: Super Metroid
+    option_name: custom_objective_regions
+    option_result: 'true'
+    options:
+      Super Metroid:
+        +custom_objective_list:
+          - clear crateria
+          - clear green brinstar
+          - clear red brinstar
+          - clear wrecked ship
+          - clear upper norfair
+          - clear lower norfair
+          - clear west maridia
+          - clear east maridia
+  - option_category: Super Metroid
+    option_name: custom_objective_memes
+    option_result: 'true'
+    options:
+      Super Metroid:
+        +custom_objective_list:
+          - tickle the red fish
+          - kill the orange geemer
+          - kill shaktool
+          - activate chozo robots
+          - visit the animals
+          - kill king cacatac
