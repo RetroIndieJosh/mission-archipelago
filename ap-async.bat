@@ -1,61 +1,49 @@
 @echo off
-setlocal
-setlocal enabledelayedexpansion
+setlocal EnableDelayedExpansion
 
-set "PLAYERS=C:\Games\Archipelago\Players\"
-set "GENERATE=C:\Games\Archipelago\ArchipelagoGenerate.exe"
+set "AP_ROOT=C:\Games\Archipelago"
+set "PLAYERS=%AP_ROOT%\Players"
+set "GENERATE=%AP_ROOT%\ArchipelagoGenerate.exe"
+set "ASYNC_ROOT=%AP_ROOT%\output"
 
-:: --- Select generation mode ---
-echo Select generation mode:
-echo 1 = Count
-echo 2 = Weights
-echo 3 = Quit
-choice /c 123 /n /m "Enter choice (1-3): "
-set "CHOICE=%ERRORLEVEL%"
+set "META=output\ffr.meta"
 
-if "%CHOICE%"=="3" (
-    echo Quitting.
-    exit /b
+:: --- Validate meta file ---
+if not exist "%META%" (
+    echo Missing ffr.meta. Run generator first.
+    exit /b 1
 )
 
-if "%CHOICE%"=="1" (
-    set "GENERATION=count"
-) else if "%CHOICE%"=="2" (
-    set "GENERATION=weights"
-) else (
-    echo Invalid choice, quitting.
-    exit /b
+:: --- Read meta ---
+set "FF_COUNT=0"
+
+for /f "usebackq tokens=1,2 delims==" %%A in ("%META%") do (
+    if "%%A"=="count" set "FF_COUNT=%%B"
 )
 
-:: --- Number of multiworlds ---
-set /p NUM_MULTIWORLDS="Enter number of multiworlds to create (0 to quit): "
-if "%NUM_MULTIWORLDS%"=="0" (
-    echo User chose 0, exiting.
-    exit /b
-)
+:: --- Create async directory ---
+for /f %%T in ('powershell -NoProfile -Command "Get-Date -Format yyyyMMdd_HHmmss"') do set TIMESTAMP=%%T
+set "ASYNC_DIR=%ASYNC_ROOT%\async_%TIMESTAMP%"
 
-:: --- Clean up old files ---
-echo Cleaning up old files in Archipelago Players directory
-del "%PLAYERS%\*.yaml"
+echo Creating directory: "%ASYNC_DIR%"
+mkdir "%ASYNC_DIR%"
 
-:: --- Copy new files ---
-echo Copying files to Archipelago Players directory
-copy "output\*.yaml" "%PLAYERS%"
-
-:: --- Number of players if weights ---
-set "MULTI_ARGS="
-if /i "%GENERATION%"=="weights" (
-    set /p NUM_PLAYERS="Number of players in each multiworld: "
-    if not "!NUM_PLAYERS!"=="" (
-        set "MULTI_ARGS=--multi !NUM_PLAYERS!"
+:: --- Copy NES files ---
+if %FF_COUNT% GTR 0 (
+    echo Copying Final Fantasy ROMs to %ASYNC_DIR%
+    for /L %%I in (1,1,%FF_COUNT%) do (
+        copy "%FF_SOURCE%\Final Fantasy_%%I.nes" "%ASYNC_DIR%" >nul
     )
 )
 
+:: --- Clean up old YAMLs ---
+del "%PLAYERS%\*.yaml" >nul 2>&1
+
+:: --- Copy YAMLs ---
+copy "output\*.yaml" "%PLAYERS%" >nul
+
 :: --- Generate ---
 echo Generating...
-for /L %%i in (1,1,%NUM_MULTIWORLDS%) do (
-    echo Running: "%GENERATE%" --csv_output --spoiler 0 %MULTI_ARGS%
-    "%GENERATE%" --csv_output --spoiler 1 %MULTI_ARGS%
-)
+"%GENERATE%" --csv_output --spoiler 1
 
 echo Done.

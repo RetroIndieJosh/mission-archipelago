@@ -35,7 +35,7 @@ def write_outputs(mystery, output_dir: str = "output") -> None:
 
 def _iter_nonzero_games(mystery) -> Iterable[tuple[str, int]]:
     for game, value in mystery["game"].items():
-        if value > 0:
+        if value > 0 and game not in mystery.external_games:
             yield game, value
 
 

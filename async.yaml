@@ -16,79 +16,87 @@ requires:
 # count: always generates 20 games
 # weights: can generate any number of games (if < 20, games may be skipped!)
 # NOTE: if this is set, world-mult and world-mult-range are IGNORED
-total-games: 20
+#total-games: 20
 
 # multiplier for game count in count mode (no effect in rank mode)
 # final = original * (world-mult + random(0, world-mult-range+1))
 # NOTE: this is ignored if total-games is set
-#world-mult: 0
+world-mult: 1
 #world-mult-range: 1
 
 # 0 for random seed, [1, 4294967296] OR [0x1, 0x100 000 000] for deterministic
-seed: 0xFF
+seed: 0
+
+# path to FFR seeds - these must be generated manually
+# the number of yaml/nes files in this directory must EXACTLY match the number
+# of games generated, so if you're using total-games this only works if seed is
+# set and you dry run to see how many you need
+FFR: "C:\\Games\\Randomizers\\Final Fantasy Randomizer\\Mission Archipelago"
 
 game:
   # rank 1
-  Castlevania - Circle of the Moon: 32
-  #Final Fantasy: 32
-  Mega Man 2: 32
-  The Messenger: 64
-  Subnautica: 32
-  Star Wars Episode I Racer: 32
-  Super Metroid: 32
+  Castlevania - Circle of the Moon: 1
+  Final Fantasy: 1
+  Mega Man 2: 1
+  The Messenger: 2
+  Subnautica: 1
+  Star Wars Episode I Racer: 1
+  Super Metroid: 1
 
   # rank 2
-  DOOM 1993: 16
-  A Link to the Past: 16
-  Ocarina of Time: 32
-  SMZ3: 16
-  Tetris Attack: 16
+  DOOM 1993: 1
+  A Link to the Past: 1
+  Ocarina of Time: 3
+  SMZ3: 1
+  Tetris Attack: 1
 
   # rank 3
-  Links Awakening DX: 8
-  Mega Man 3: 8
-  Mega Man X: 8
-  Metroid Prime: 8
-  Metroid Zero Mission: 8
-  Symphony of the Night: 8
+  Links Awakening DX: 1
+  Mega Man 3: 1
+  Mega Man X: 1
+  Metroid Prime: 1
+  Metroid Zero Mission: 1
+  Symphony of the Night: 1
 
   # rank 4
-  DOOM II: 4
-  Mega Man X2: 4
-  Pokemon Red and Blue: 4
-  Stardew Valley: 4
-  Super Mario 64: 4
-  Super Mario Land 2: 4
-  Super Mario World: 4
-  VVVVVV: 4
-  Yacht Dice: 4
+  DOOM II: 1
+  Mega Man X2: 1
+  Pokemon Red and Blue: 1
+  Stardew Valley: 1
+  Super Mario 64: 1
+  Super Mario Land 2: 1
+  Super Mario World: 1
+  Yacht Dice: 1
 
   # rank 5
-  Actraiser: 2
-  Celeste (Open World): 2
-  ChecksFinder: 2
-  ChecksMate: 2
-  Donkey Kong Country 2: 2
-  Donkey Kong Country 3: 2
+  Celeste (Open World): 1
+  ChecksFinder: 1
+  ChecksMate: 1
   Donkey Kong Country: 2
-  Final Fantasy IV Free Enterprise: 2
-  Final Fantasy Mystic Quest: 2
-  Golden Sun The Lost Age: 2
-  Heretic: 2
-  Kirby 64 - The Crystal Shards: 2
-  Majora's Mask Recompiled: 2
+  Final Fantasy IV Free Enterprise: 1
+  Final Fantasy Mystic Quest: 1
+  Golden Sun The Lost Age: 1
+  Kirby 64 - The Crystal Shards: 1
   Mario Kart 64: 2
-  Metroid Fusion: 2
-  Pokemon Crystal: 2
-  Quake 1: 2
-  Slay the Spire: 2
-  Sonic Adventure 2 Battle: 2
-  Sonic the Hedgehog 1: 2
-  The Legend of Zelda: 2
+  Metroid Fusion: 1
+  Pokemon Crystal: 1
+  Quake 1: 1
+  Sonic Adventure 2 Battle: 1
+  Sonic the Hedgehog 1: 1
+  The Legend of Zelda: 1
 
   # rank 6+
+  Kirby Super Star: 2
+  Paint: 2
+
+  # saving for later / skipping this round
+  Actraiser: 0
   Bumper Stickers: 0
-  Kirby Super Star: 4
-  MegaMan Battle Network 3: 1
-  Paint: 4
-  The Wind Waker: 1
+  Donkey Kong Country 2: 0
+  Donkey Kong Country 3: 0
+  Heretic: 0
+  Majora's Mask Recompiled: 0
+  MegaMan Battle Network 3: 0
+  Slay the Spire: 0
+  The Wind Waker: 0
+  VVVVVV: 0

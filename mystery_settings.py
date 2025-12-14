@@ -10,6 +10,10 @@ class MysterySettings(dict):
         super().__init__()
         self["game"]: Dict[str, int] = {}
         self.games_data: Dict[str, Dict[str, Any]] = {}
+        self.external_games: set[str] = set()
+
+    def mark_external(self, game_key: str) -> None:
+        self.external_games.add(game_key)
 
     def add_game(self, game_path: str, key: str | None = None) -> None:
         if not game_path.endswith(".yaml"):
@@ -39,7 +43,6 @@ class MysterySettings(dict):
             )
 
         self.games_data[game_key] = {
-            "file_path": game_path,
             "options": dict(options),
             "name": options["name"],
             "description": options.get("description", ""),
@@ -68,14 +71,16 @@ class MysterySettings(dict):
 
     def __str__(self) -> str:
         entries = [(g, c) for g, c in self["game"].items() if c > 0]
+        if not entries:
+            return "No games generated."
 
         total = sum(c for _, c in entries)
         unique = len(entries)
 
-        if not entries:
-            return "No games generated."
-
-        name_width = max(len(g) for g, _ in entries)
+        name_width = max(
+            len(g) + (2 if g in self.external_games else 0)
+            for g, _ in entries
+        )
 
         header = (
             f"{'GAME':<{name_width}}  {'#':>5}  {'%':>6}\n"
@@ -83,17 +88,18 @@ class MysterySettings(dict):
         )
 
         lines = []
-        for game, count in sorted(
-            entries,
-            key=lambda x: (-x[1], x[0])
-        ):
+        for game, count in sorted(entries, key=lambda x: (-x[1], x[0])):
+            label = game + (" *" if game in self.external_games else "")
             pct = (count / total) * 100 if total else 0
             lines.append(
-                f"{game:<{name_width}}  {count:>5}  {pct:>5.1f}%"
+                f"{label:<{name_width}}  {count:>5}  {pct:>5.1f}%"
             )
 
         table = header + "\n" + "\n".join(lines)
         table += f"\nUnique games: {unique}"
         table += f"\nTotal count: {total}"
+
+        if self.external_games:
+            table += "\n* external"
 
         return table

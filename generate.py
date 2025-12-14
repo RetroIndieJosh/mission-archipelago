@@ -9,14 +9,6 @@ from file_utils import collect_game_files, write_outputs
 
 
 def _parse_args(default_config: str = "async.yaml"):
-    """
-    Parses command-line arguments.
-
-    Returns:
-        config_path (str)
-        total_games_override (int | None)
-        dry_run (bool)
-    """
     config_path = default_config
     total_games_override = None
     dry_run = False
@@ -36,9 +28,16 @@ def _parse_args(default_config: str = "async.yaml"):
 def main(output_dir: str = "output") -> None:
     config_path, total_games_override, dry_run = _parse_args()
 
-    cfg, world_mult, world_mult_range, total_games, seed = load_config(config_path)
+    (
+        cfg,
+        world_mult,
+        world_mult_range,
+        total_games,
+        seed,
+        ffr_path,
+    ) = load_config(config_path)
 
-    # ---------------- RNG seeding ----------------
+    # ---- RNG seed ----
     if seed > 0:
         random.seed(seed)
         actual_seed = seed
@@ -46,22 +45,13 @@ def main(output_dir: str = "output") -> None:
         actual_seed = random.randrange(1 << 32)
         random.seed(actual_seed)
 
-    # ---------------- CLI override ----------------
     if total_games_override is not None:
         total_games = total_games_override
-
-    if total_games > 0 and (world_mult > 0 or world_mult_range > 0):
-        print(
-            "[note] total-games is set; "
-            "world-mult and world-mult-range are ignored."
-        )
 
     mystery = MysterySettings()
     game_cfg = cfg.get("game", {})
 
-    # --------------------------------------------------
-    # MODE 1: weighted selection to exact total-games
-    # --------------------------------------------------
+    # ---- counts ----
     if total_games > 0:
         games = list(game_cfg.keys())
         weights = [int(game_cfg[g]) for g in games]
@@ -71,37 +61,83 @@ def main(output_dir: str = "output") -> None:
 
         for g in games:
             mystery["game"][g] = counts.get(g, 0)
-
-    # --------------------------------------------------
-    # MODE 2: direct counts with world-mult logic
-    # --------------------------------------------------
     else:
-        for gname, val in game_cfg.items():
+        for g, val in game_cfg.items():
             if world_mult_range > 0:
                 mult = random.randint(world_mult, world_mult + world_mult_range)
             else:
                 mult = world_mult
+            mystery["game"][g] = int(val) * mult
 
-            mystery["game"][gname] = int(val) * mult
-
-    # Load game metadata
+    # ---- load metadata ----
     for path in collect_game_files():
-        filename_key = os.path.splitext(os.path.basename(path))[0]
-        key = filename_key if filename_key in mystery["game"] else None
+        key = os.path.splitext(os.path.basename(path))[0]
+        key = key if key in mystery["game"] else None
         mystery.add_game(path, key=key)
+
+    # ---- FFR validation ----
+    ffr_files = []
+    ff_game = "Final Fantasy"
+
+    if mystery["game"].get(ff_game, 0) > 0:
+        mystery.mark_external(ff_game)
+
+        if not ffr_path:
+            print("Final Fantasy selected but FFR path not provided.")
+            sys.exit(1)
+
+        if not os.path.isdir(ffr_path):
+            print(f"FFR path does not exist: {ffr_path}")
+            sys.exit(1)
+
+        yamls = sorted(
+            f for f in os.listdir(ffr_path) if f.lower().endswith(".yaml")
+        )
+
+        if len(yamls) != mystery["game"][ff_game]:
+            print(
+                f"FFR YAML count mismatch: expected "
+                f"{mystery['game'][ff_game]}, found {len(yamls)}"
+            )
+            sys.exit(1)
+
+        for y in yamls:
+            base = os.path.splitext(y)[0]
+            nes = base + ".nes"
+            if not os.path.isfile(os.path.join(ffr_path, nes)):
+                print(f"Missing matching NES for {y}")
+                sys.exit(1)
+            ffr_files.append((y, nes))
 
     if dry_run:
         print("\n[DRY RUN — no files written]\n")
     else:
         write_outputs(mystery, output_dir=output_dir)
 
+        for i, (y, nes) in enumerate(ffr_files, start=1):
+            # copy + rename YAML
+            src_yaml = os.path.join(ffr_path, y)
+            dst_yaml = os.path.join(output_dir, f"{ff_game}_{i}.yaml")
+            with open(src_yaml, "rb") as fsrc, open(dst_yaml, "wb") as fdst:
+                fdst.write(fsrc.read())
+
+            # copy + rename NES
+            src_nes = os.path.join(ffr_path, nes)
+            dst_nes = os.path.join(output_dir, f"{ff_game}_{i}.nes")
+            with open(src_nes, "rb") as fsrc, open(dst_nes, "wb") as fdst:
+                fdst.write(fsrc.read())
+
     print("\nEstimated game distribution:\n")
     print(mystery)
 
-    if seed == 0:
-        print(f"\nSeed used: {actual_seed}")
+    if ffr_files:
+        meta_path = os.path.join(output_dir, "ffr.meta")
+        with open(meta_path, "w", encoding="utf-8") as f:
+            f.write(f"count={len(ffr_files)}\n")
+
+    print(f"seed={actual_seed}")
+    print(f"count={len(ffr_files)}")
 
 
 if __name__ == "__main__":
     main()
-

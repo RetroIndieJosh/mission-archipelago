@@ -9,7 +9,7 @@ class ConfigError(Exception):
 
 
 def load_config(path: str = "async.yaml") -> Tuple[
-    Dict[str, Any], int, int, int, int
+    Dict[str, Any], int, int, int, int, str | None
 ]:
     """
     Returns:
@@ -18,6 +18,7 @@ def load_config(path: str = "async.yaml") -> Tuple[
         world_mult_range
         total_games
         seed
+        ffr_path
     """
     try:
         with open(path, encoding="utf-8-sig") as cf:
@@ -41,19 +42,19 @@ def load_config(path: str = "async.yaml") -> Tuple[
             raise ConfigError
         return val
 
-    world_mult = _int("world-mult", 0)
+    world_mult = _int("world-mult", 1)
     world_mult_range = _int("world-mult-range", 0)
     total_games = _int("total-games", 0)
 
+    # ---- seed (hex or int) ----
     raw_seed = cfg.get("seed", 0)
-
     try:
         if isinstance(raw_seed, str):
-            seed = int(raw_seed, 0)   # allows 0x..., 0, etc.
+            seed = int(raw_seed, 0)
         else:
             seed = int(raw_seed)
     except (TypeError, ValueError):
-        print(Fore.RED + "'seed' must be a hex or integer value." + Fore.WHITE)
+        print(Fore.RED + "'seed' must be hex (0x...) or integer." + Fore.WHITE)
         raise ConfigError
 
     if seed < 0 or seed > 0x100000000:
@@ -64,4 +65,9 @@ def load_config(path: str = "async.yaml") -> Tuple[
         )
         raise ConfigError
 
-    return cfg, world_mult, world_mult_range, total_games, seed
+    ffr_path = cfg.get("FFR")
+    if ffr_path is not None and not isinstance(ffr_path, str):
+        print(Fore.RED + "'FFR' must be a path string." + Fore.WHITE)
+        raise ConfigError
+
+    return cfg, world_mult, world_mult_range, total_games, seed, ffr_path
