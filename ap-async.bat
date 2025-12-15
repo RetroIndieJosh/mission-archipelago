@@ -10,29 +10,31 @@ set "META=output\ffr.meta"
 
 :: --- Validate meta file ---
 if not exist "%META%" (
-    echo Missing ffr.meta. Run generator first.
-    exit /b 1
+    echo Missing ffr.meta. If you expect FFR in the generator, you will be sorely disappointed.
+    pause
 )
 
-:: --- Read meta ---
 set "FF_COUNT=0"
 
-for /f "usebackq tokens=1,2 delims==" %%A in ("%META%") do (
-    if "%%A"=="count" set "FF_COUNT=%%B"
-)
+if exist "%META%" (
+    :: --- Read meta ---
+    for /f "usebackq tokens=1,2 delims==" %%A in ("%META%") do (
+        if "%%A"=="count" set "FF_COUNT=%%B"
+    )
 
-:: --- Create async directory ---
-for /f %%T in ('powershell -NoProfile -Command "Get-Date -Format yyyyMMdd_HHmmss"') do set TIMESTAMP=%%T
-set "ASYNC_DIR=%ASYNC_ROOT%\async_%TIMESTAMP%"
+    :: --- Create async directory ---
+    for /f %%T in ('powershell -NoProfile -Command "Get-Date -Format yyyyMMdd_HHmmss"') do set TIMESTAMP=%%T
+    set "ASYNC_DIR=%ASYNC_ROOT%\async_%TIMESTAMP%"
 
-echo Creating directory: "%ASYNC_DIR%"
-mkdir "%ASYNC_DIR%"
+    echo Creating directory: "%ASYNC_DIR%"
+    mkdir "%ASYNC_DIR%"
 
-:: --- Copy NES files ---
-if %FF_COUNT% GTR 0 (
-    echo Copying Final Fantasy ROMs to %ASYNC_DIR%
-    for /L %%I in (1,1,%FF_COUNT%) do (
-        copy "%FF_SOURCE%\Final Fantasy_%%I.nes" "%ASYNC_DIR%" >nul
+    :: --- Copy NES files ---
+    if %FF_COUNT% GTR 0 (
+        echo Copying Final Fantasy ROMs to %ASYNC_DIR%
+        for /L %%I in (1,1,%FF_COUNT%) do (
+            copy "%FF_SOURCE%\Final Fantasy_%%I.nes" "%ASYNC_DIR%" >nul
+        )
     )
 )
 
