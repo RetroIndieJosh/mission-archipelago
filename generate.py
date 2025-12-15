@@ -1,5 +1,6 @@
 import os
 import random
+import shutil
 import sys
 from collections import Counter
 
@@ -27,6 +28,12 @@ def _parse_args(default_config: str = "async.yaml"):
 
 def main(output_dir: str = "output") -> None:
     config_path, total_games_override, dry_run = _parse_args()
+
+    # ---- clean output directory ----
+    if not dry_run:
+        if os.path.exists(output_dir):
+            shutil.rmtree(output_dir)
+        os.makedirs(output_dir, exist_ok=True)
 
     (
         cfg,
