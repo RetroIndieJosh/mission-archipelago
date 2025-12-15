@@ -4,6 +4,7 @@ description: RetroIndieJosh - Mission Archipelago Game Weights
 requires:
   version: 0.6.4
 
+# set total-games for weights mode; otherwise numbers are count of games
 # count - generate the exact number of games given
 # weights - use values in game section as weights (total # of games specified on generation)
 #
@@ -14,29 +15,23 @@ requires:
 #   Subnautica: 3        # weights: 3/20 = 15% of generated games / count: 3 games
 # count: always generates 20 games
 # weights: can generate any number of games (if < 20, games may be skipped!)
-generation: count
-
-# all - generate all games listed (except with count/weight 0)
-# rank - generate games based on folder structure up to max-rank
-#   note that this will fail if it finds a game with no count/weight; use 0 to skip
-categorize: all
-
-# the maximum rank generated (only in categorize: rank)
-# minimum: 1
-# maximum: the highest Rank folder in /settings
-max-rank: 4
-
-# multiplier for weights based on rank (no effect in count mode)
-# final = MAX(original^((max-rank - rank) * rank-mult))
-# default: 1
-rank-mult: 2
+# NOTE: if this is set, world-mult and world-mult-range are IGNORED
+#total-games: 20
 
 # multiplier for game count in count mode (no effect in rank mode)
 # final = original * (world-mult + random(0, world-mult-range+1))
+# NOTE: this is ignored if total-games is set
 world-mult: 1
-#world-mult-range: 3
+#world-mult-range: 1
 
+# 0 for random seed, [1, 4294967296] OR [0x1, 0x100 000 000] for deterministic
+seed: 0
+
+# path to FFR seeds - these must be generated manually
+# the number of yaml/nes files in this directory must EXACTLY match the number
+# of games generated, so if you're using total-games this only works if seed is
+# set and you dry run to see how many you need
 FFR: "C:\\Games\\Randomizers\\Final Fantasy Randomizer\\Mission Archipelago"
 
 game:
-  Final Fantasy: 2
+  Ocarina of Time but it's just Master Quest Water Temple: 1

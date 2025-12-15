@@ -1,0 +1,335 @@
+﻿name: OoTMQWT-{player}
+description: Mission Archipelago - Ocarina of Time
+requires:
+  version: 0.6.4
+
+Ocarina of Time but it's just Master Quest Water Temple:
+  ################
+  # Game Options #
+  ################
+  progression_balancing: normal
+
+  accessibility:
+    # Set rules for reachability of your items/locations.
+    # 
+    # **Minimal:** ensure what is needed to reach your goal can be acquired.
+    # 
+    # **Items:** ensure all logically relevant items can be acquired.
+    items: 50
+    minimal: 0
+
+  start_mode:
+    # Determines how, if at all, you can reach sphere 1 locations.
+    # iron_boots starts you with Iron Boots and, if fewer_tunic_requirements is off, Zora Tunic.
+    # guard_house starts you in the Market Guard House with 7 pots to open. If warp_songs is off, you can return
+    # to the Guard House by exiting the Water Temple into the Gold Skulltula House, then exiting it.
+    # burger_king starts you with nothing. No sphere 1 for you. We'll break all the rules. I won't tell if you won't.
+    # If every player in the multiworld has burger_king selected, one player may be changed to guard_house.
+    burger_king: 0
+    iron_boots: 1
+    guard_house: 4
+
+  warp_songs:
+    # Shuffle warp songs into the item pool, which will take you to various locations for some additional location
+    # checks. If this is on, you will need a warp song to access the Skulltula House. If it's off, you can access it
+    # by exiting the Water Temple.
+    'false': 1
+    'true': 4
+
+  boss:
+    # Select which boss you will fight at the end of the dungeon.
+    king_dodongo: 1
+    phantom_ganon: 1
+    volvagia: 1
+    morpha: 8
+    twinrova: 1
+    bongo_bongo: 1
+
+  boss_key_location:
+    # Where your Boss Key (Water Temple) may be found. Note that if you do not place it at a Skulltula reward location,
+    # your game may end up being over with very quickly. If a Skulltula reward location is chosen, rewards beyond the one
+    # chosen will be guaranteed to contain filler items.
+    anywhere: 1
+    own_game: 2
+    10_skulltulas_reward: 4
+    20_skulltulas_reward: 8
+    30_skulltulas_reward: 32
+    40_skulltulas_reward: 0
+    50_skulltulas_reward: 0
+
+  tokens_in_pool:
+    # Number of Gold Skulltula Tokens in the item pool. A minimum may be enforced by your boss key location setting.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 10
+    # Maximum value is 70
+    # Default is 50
+    random-range-low-50-70: 1
+
+  local_tokens:
+    # This will place Gold Skulltula Tokens into local_items, so you don't have to do it manually by typing out the
+    # whole name of the item into local_items, because you have more important things to do with your time.
+    'false': 0
+    'true': 50
+
+  enable_scarecrow:
+    # Enable the Scarecrow to be spawned by using your Ocarina.
+    'false': 0
+    'true': 50
+
+  max_health:
+    # What maximum hearts will be obtainable.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 3
+    # Maximum value is 20
+    random-range-high-3-7: 1
+    random-range-middle-8-16: 8
+    random-range-low-17-20: 2
+
+  logic_fewer_tunic_requirements:
+    # Enable the "Fewer Tunic Requirements" trick to logic, which may require you to do any and all of Water Temple
+    # except below the central pillar without Zora Tunic.
+    'false': 50
+    'true': 0
+
+  logic_water_mq_central_pillar:
+    # Enable the "Water Temple MQ Central Pillar with Fire Arrows" trick to logic, which may require you to light the
+    # torches in the Central Pillar with Fire Arrows.
+    'false': 50
+    'true': 0
+
+  logic_water_mq_locked_gs:
+    # Enable the "Water Temple MQ North Basement GS Without Small Key" trick to logic, which may require hookshotting an
+    # invisible hookshot target to get over the gate to the basement GS, skipping the locked door.
+    'false': 50
+    'true': 0
+
+  logic_lab_diving:
+    # Enable the "Lake Hylia Lab Dive without Gold Scale" trick to logic, which may require removing the Iron Boots in
+    # the midst of hookshotting the crate, to trick the scientist into thinking you're a great swimmer.
+    # Only relevant if shuffle_warp_songs is on.
+    'false': 50
+    'true': 0
+
+  logic_water_dragon_jump_dive:
+    # Enable the "Water Temple Dragon Statue Jump Dive" trick into logic, which may require you to reach the submerged
+    # tunnel in the dragon statue room without Scales or Iron Boots using momentum from your fall from above.
+    'false': 50
+    'true': 0
+
+  logic_water_north_basement_ledge_jump:
+    # Enable the "Water Temple North Basement Ledge with Precise Jump" trick to logic, which may require a precise jump
+    # in the northern basement to reach the ledge without hover boots or scarecrow.
+    'false': 50
+    'true': 0
+
+  logic_dc_hammer_floor:
+    # Enable the "Dodongo's Cavern Smash the Boss Lobby Floor" trick to logic. The bombable floor before King Dodongo
+    # can be destroyed with Hammer if hit in the very center.
+    'false': 50
+    'true': 0
+
+  logic_lens_bongo:
+    # Enable the "Shadow Temple Bongo Bongo without Lens of Truth" trick to logic.
+    'false': 50
+    'true': 0
+
+  minor_items_as_major_chest: 'true' # Hylian Shield, Deku Shield, and Bombchus appear in big/gold chests.
+  death_link: 'false' # When you die, everyone who enabled death link dies. Of course, the reverse is true too.
+  fast_chests: 'true' # All chest animations are fast. If disabled, major items have a slow animation.
+  correct_chest_appearances: both # Changes chest textures and/or sizes to match their contents.
+    # Off: All chests have their vanilla size/appearance.
+    # Textures: Chest textures reflect their contents.
+    # Both: Like Textures, but progression items and boss keys get big chests, and other items get small chests.
+    # Classic: Old behavior of CSMC; textures distinguish keys from non-keys, and size distinguishes importance.
+
+  correct_potcrate_appearances: textures_content # Changes the appearance of pots, crates, and beehives that contain items.
+    # Off: Vanilla appearance for all containers.
+    # Textures (Content): Unchecked pots and crates have a texture reflecting their contents. Unchecked beehives with progression items will wiggle.
+    # Textures (Unchecked): Unchecked pots and crates are golden. Unchecked beehives will wiggle.
+
+  text_shuffle:
+    # Randomizes text in the game for comedic effect.
+    # Except Hints: does not randomize important text such as hints, small/boss key information, and item prices.
+    # Complete: randomizes every textbox, including the useful ones.
+    none: 50
+    except_hints: 0
+    complete: 0
+
+  damage_multiplier:
+    # Controls the amount of damage Link takes.
+    half: 0
+    normal: 50
+    double: 0
+    quadruple: 0
+    ohko: 0
+
+  deadly_bonks:
+    # Bonking on a wall or object will hurt Link. "Normal" is a half heart of damage.
+    none: 50
+    half: 0
+    normal: 0
+    double: 0
+    quadruple: 0
+    ohko: 0
+
+  no_collectible_hearts: 'false' # Hearts will not drop from enemies or objects.
+
+  start_with_consumables:
+    # Start the game with full Deku Sticks and Deku Nuts.
+    'false': 50
+    'true': 0
+
+  ice_trap_appearance:
+    # Changes the appearance of traps, including other games' traps, as freestanding items.
+    major_only: 50
+    junk_only: 0
+    anything: 0
+
+  default_targeting:
+    # Default targeting option.
+    hold: 50
+    switch: 0
+
+  display_dpad:
+    # Show dpad icon on HUD for quick actions (ocarina, hover boots, iron boots, mask).
+    'false': 0
+    'true': 50
+
+  dpad_dungeon_menu:
+    # Show separated menus on the pause screen for dungeon keys, rewards, and Vanilla/MQ info.
+    'false': 0
+    'true': 50
+
+  correct_model_colors:
+    # Makes in-game models match their HUD element colors.
+    'false': 0
+    'true': 50
+
+  background_music:
+    # Randomize or disable background music.
+    normal: 50
+    'off': 0
+    randomized: 0
+
+  fanfares:
+    # Randomize or disable item fanfares.
+    normal: 50
+    'off': 0
+    randomized: 0
+
+  ocarina_fanfares:
+    # Enable ocarina songs as fanfares. These are longer than usual fanfares. Does nothing without fanfares randomized.
+    'false': 50
+    'true': 0
+
+  kokiri_color: random_chpoice # Choose a color. "random_choice" selects a random option. "completely_random" generates a random hex code.
+  goron_color: random_choice
+    # Choose a color. "random_choice" selects a random option. "completely_random" generates a random hex code.
+  zora_color: random_choice # Choose a color. "random_choice" selects a random option. "completely_random" generates a random hex code.
+  silver_gauntlets_color: random_choice # Choose a color. "random_choice" selects a random option. "completely_random" generates a random hex code.
+  golden_gauntlets_color: random_choice # Choose a color. "random_choice" selects a random option. "completely_random" generates a random hex code.
+  mirror_shield_frame_color: random_choice # Choose a color. "random_choice" selects a random option. "completely_random" generates a random hex code.
+  navi_color_default_inner: random_choice # Choose a color. "random_choice" selects a random option. "completely_random" generates a random hex code.
+  navi_color_default_outer: random_choice # Choose a color. "random_choice" selects a random option. "completely_random" generates a random hex code.
+    # "match_inner" copies the inner color for this option.
+
+  navi_color_enemy_inner: random_choice # Choose a color. "random_choice" selects a random option. "completely_random" generates a random hex code.
+  navi_color_enemy_outer: random_choice # Choose a color. "random_choice" selects a random option. "completely_random" generates a random hex code.
+    # "match_inner" copies the inner color for this option.
+
+  navi_color_npc_inner: random_choice # Choose a color. "random_choice" selects a random option. "completely_random" generates a random hex code.
+  navi_color_npc_outer: random_choice # Choose a color. "random_choice" selects a random option. "completely_random" generates a random hex code.
+    # "match_inner" copies the inner color for this option.
+
+  navi_color_prop_inner: random_choice # Choose a color. "random_choice" selects a random option. "completely_random" generates a random hex code.
+  navi_color_prop_outer: random_choice # Choose a color. "random_choice" selects a random option. "completely_random" generates a random hex code.
+    # "match_inner" copies the inner color for this option.
+
+  sword_trail_duration:
+    # Set the duration for sword trails.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 4
+    # Maximum value is 20
+    # Default is 4
+    random: 1
+
+  sword_trail_color_inner: random_choice # Choose a color. "random_choice" selects a random option. "completely_random" generates a random hex code.
+  sword_trail_color_outer: random_choice # Choose a color. "random_choice" selects a random option. "completely_random" generates a random hex code.
+    # "match_inner" copies the inner color for this option.
+
+  bombchu_trail_color_inner: random_choice # Choose a color. "random_choice" selects a random option. "completely_random" generates a random hex code.
+  bombchu_trail_color_outer: random_choice # Choose a color. "random_choice" selects a random option. "completely_random" generates a random hex code.
+    # "match_inner" copies the inner color for this option.
+
+  heart_color: random_choice # Choose a color. "random_choice" selects a random option. "completely_random" generates a random hex code.
+  magic_color: random_choice # Choose a color. "random_choice" selects a random option. "completely_random" generates a random hex code.
+  a_button_color: random_choice # Choose a color. "random_choice" selects a random option. "completely_random" generates a random hex code.
+  b_button_color: random_choice # Choose a color. "random_choice" selects a random option. "completely_random" generates a random hex code.
+  c_button_color: random_choice # Choose a color. "random_choice" selects a random option. "completely_random" generates a random hex code.
+  start_button_color: random_choice # Choose a color. "random_choice" selects a random option. "completely_random" generates a random hex code.
+  sfx_navi_overworld: none # Choose a sound effect. "random_choice" selects a random option. "random_ear_safe" selects a random safe option.
+    # "completely_random" selects any random sound.
+  sfx_navi_enemy: none # Choose a sound effect. "random_choice" selects a random option. "random_ear_safe" selects a random safe option.
+    # "completely_random" selects any random sound.
+  sfx_low_hp: default # Choose a sound effect. "random_choice" selects a random option. "random_ear_safe" selects a random safe option.
+    # "completely_random" selects any random sound.
+  sfx_menu_cursor: default # Choose a sound effect. "random_choice" selects a random option. "random_ear_safe" selects a random safe option.
+    # "completely_random" selects any random sound.
+  sfx_menu_select: default # Choose a sound effect. "random_choice" selects a random option. "random_ear_safe" selects a random safe option.
+    # "completely_random" selects any random sound.
+  sfx_nightfall: default # Choose a sound effect. "random_choice" selects a random option. "random_ear_safe" selects a random safe option.
+    # "completely_random" selects any random sound.
+  sfx_horse_neigh: default # Choose a sound effect. "random_choice" selects a random option. "random_ear_safe" selects a random safe option.
+    # "completely_random" selects any random sound.
+  sfx_hover_boots: default # Choose a sound effect. "random_choice" selects a random option. "random_ear_safe" selects a random safe option.
+    # "completely_random" selects any random sound.
+  sfx_ocarina: 
+    # Change the sound of the ocarina.
+    ocarina: 1
+    malon: 1
+    whistle: 2
+    harp: 2
+    grind_organ: 2
+    flute: 2
+
+  ###########################
+  # Item & Location Options #
+  ###########################
+  local_items:
+    # Forces these items to be in their native world.
+    []
+
+  non_local_items:
+    # Forces these items to be outside their native world.
+    []
+
+  start_inventory:
+    # Start with the specified amount of these items. Example: "Bomb: 1"
+    {}
+
+  start_hints:
+    # Start with these item's locations prefilled into the ``!hint`` command.
+    []
+
+  start_location_hints:
+    # Start with these locations and their item prefilled into the ``!hint`` command.
+    []
+
+  exclude_locations:
+    # Prevent these locations from having an important item.
+    []
+
+  priority_locations:
+    # Prevent these locations from having an unimportant item.
+    []
+
+  item_links:
+    # Share part of your item pool with other players.
+    []
+
+  plando_items:
+    # Generic items plando.
+    []

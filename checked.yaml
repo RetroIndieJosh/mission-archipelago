@@ -1,40 +1,8 @@
 name: Player-{player}
 
-description: RetroIndieJosh - Mission Archipelago Game Weights
+description: Use this to check for any cross-game generation issues on checked games
 requires:
   version: 0.6.4
-
-# count - generate the exact number of games given
-# weights - use values in game section as weights (total # of games specified on generation)
-#
-# FOR EXAMPLE:
-#   Mega Man 2: 5        # weights: 5/20 = 25% of generated games / count: 5 games
-#   DOOM 1993: 8         # weights: 8/20 = 40% of generated games / count: 8 games
-#   Ocarina of Time: 4   # weights: 4/20 = 20% of generated games / count: 4 games
-#   Subnautica: 3        # weights: 3/20 = 15% of generated games / count: 3 games
-# count: always generates 20 games
-# weights: can generate any number of games (if < 20, games may be skipped!)
-generation: count
-
-# all - generate all games listed (except with count/weight 0)
-# rank - generate games based on folder structure up to max-rank
-#   note that this will fail if it finds a game with no count/weight; use 0 to skip
-categorize: all
-
-# the maximum rank generated (only in categorize: rank)
-# minimum: 1
-# maximum: the highest Rank folder in /settings
-max-rank: 4
-
-# multiplier for weights based on rank (no effect in count mode)
-# final = MAX(original^((max-rank - rank) * rank-mult))
-# default: 1
-rank-mult: 2
-
-# multiplier for game count in count mode (no effect in rank mode)
-# final = original * (world-mult + random(0, world-mult-range+1))
-world-mult: 1
-world-mult-range: 3
 
 game:
   A Link to the Past: 1
@@ -67,6 +35,7 @@ game:
   Metroid Prime: 1
   Metroid Zero Mission: 1
   Ocarina of Time: 1
+  Ocarina of Time but it's just Master Quest Water Temple: 1
   Paint: 1
   Pokemon Crystal: 1
   Pokemon Red and Blue: 1
