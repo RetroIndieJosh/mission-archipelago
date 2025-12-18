@@ -20,9 +20,20 @@ Pokemon Crystal:
 
   goal:
     # Elite Four: Defeat the Champion and enter the Hall of Fame
-    # Red: Defeat Red at Mt. Silver
-    elite_four: 4
-    red: 1
+    # Red: Defeat Red in Mt. Silver
+    # Diploma: Catch all logically available Pokemon and receive the diploma in Celadon City
+    # Rival: Win all possible rival battles
+    # Defeat Team Rocket: Vanquish Team Rocket in Slowpoke Well, Mahogany Town, Radio Tower and defeat the grunt
+    # on Route 24 (if Kanto is accessible)
+    # Unown Hunt: Catch all 26 Unown forms that are attached to signs across the region(s) and show the completed Unown dex
+    #  to the scientist in Ruins of Alph. In order to encounter the Unown you'll need to solve their corresponding tile puzzle.
+    #  Each puzzle requires 16 pieces which must be found first.
+    elite_four: 8
+    red: 4
+    diploma: 1
+    rival: 2
+    defeat_team_rocket: 2
+    unown_hunt: 1
 
   #######
   # Map #
