@@ -1,6 +1,6 @@
 name: Player-{player}
 
-description: Use this to test newly added games or features in the generator
+description: RetroIndieJosh - Big Async solo practice generator yaml
 requires:
   version: 0.6.4
 
@@ -34,4 +34,25 @@ seed: 0
 FFR: "C:\\Games\\Randomizers\\Final Fantasy Randomizer\\Mission Archipelago"
 
 game:
-  Ocarina of Time but it's just Master Quest Water Temple: 1
+  Celeste (Open World): 1
+  ChecksFinder: 1
+  ChecksMate: 1
+  DOOM II: 1
+  Donkey Kong Country: 1
+  Final Fantasy IV Free Enterprise: 1
+  Kirby 64 - The Crystal Shards: 1
+  Kirby Super Star: 1
+  Mario Kart 64: 1
+  Mega Man X2: 1
+  Metroid Fusion: 1
+  Paint: 1
+  Pokemon Crystal: 1
+  Pokemon Red and Blue: 1
+  Quake 1: 1
+  SMZ3: 1
+  Sonic Adventure 2 Battle: 1
+  Sonic the Hedgehog 1: 1
+  Super Mario 64: 1
+  Super Mario Land 2: 1
+  Super Mario World: 1
+  Symphony of the Night: 1

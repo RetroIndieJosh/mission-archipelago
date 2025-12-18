@@ -1,6 +1,6 @@
 name: Player-{player}
 
-description: RetroIndieJosh - Mission Archipelago Game Weights
+description: RetroIndieJosh - Big Async generator yaml
 requires:
   version: 0.6.4
 
@@ -34,52 +34,41 @@ seed: 0
 FFR: "C:\\Games\\Randomizers\\Final Fantasy Randomizer\\Mission Archipelago"
 
 game:
-  # rank 1
-  Final Fantasy: 1
-  Mega Man 2: 1
-  The Messenger: 2
-  Star Wars Episode I Racer: 1
-  Super Metroid: 1
-
-  # rank 2
-  DOOM 1993: 1
   A Link to the Past: 1
-  Ocarina of Time: 5
-  SMZ3: 1
-  Tetris Attack: 1
-
-  # rank 3
-  Links Awakening DX: 1
-  Mega Man 3: 1
-  Mega Man X: 1
-  Metroid Prime: 1
-  Metroid Zero Mission: 1
-  Symphony of the Night: 1
-
-  # rank 4
-  DOOM II: 1
-  Mega Man X2: 2
-  Pokemon Red and Blue: 1
-  Super Mario 64: 1
-  Super Mario Land 2: 1
-  Super Mario World: 1
-  Yacht Dice: 1
-
-  # rank 5
   Celeste (Open World): 1
   ChecksFinder: 1
   ChecksMate: 1
+  DOOM 1993: 1
+  DOOM II: 1
   Donkey Kong Country: 3
   Final Fantasy IV Free Enterprise: 1
-  Final Fantasy Mystic Quest: 1
+  Final Fantasy: 1
   Kirby 64 - The Crystal Shards: 1
+  Links Awakening DX: 1
   Mario Kart 64: 3
+  Mega Man 2: 1
+  Mega Man 3: 1
+  Mega Man X2: 2
+  Mega Man X: 1
   Metroid Fusion: 1
+  Metroid Prime: 1
+  Metroid Zero Mission: 1
+  Ocarina of Time: 5
   Pokemon Crystal: 1
+  Pokemon Red and Blue: 1
   Quake 1: 1
+  SMZ3: 1
   Sonic Adventure 2 Battle: 1
   Sonic the Hedgehog 1: 1
-  The Legend of Zelda: 1
+  Star Wars Episode I Racer: 1
+  Super Mario 64: 1
+  Super Mario Land 2: 1
+  Super Mario World: 1
+  Super Metroid: 1
+  Symphony of the Night: 1
+  Tetris Attack: 1
+  The Messenger: 2
+  Yacht Dice: 1
 
   # rank 6+
   Kirby Super Star: 5
@@ -91,6 +80,7 @@ game:
   Castlevania - Circle of the Moon: 0
   Donkey Kong Country 2: 0
   Donkey Kong Country 3: 0
+  Final Fantasy Mystic Quest: 0
   Golden Sun The Lost Age: 0
   Heretic: 0
   Majora's Mask Recompiled: 0
@@ -99,5 +89,6 @@ game:
   Slay the Spire: 0
   Stardew Valley: 0
   Subnautica: 0
+  The Legend of Zelda: 0
   The Wind Waker: 0
   VVVVVV: 0
