@@ -1,0 +1,60 @@
+﻿name: LADX-{player}
+description: Mission Archipelago - Link's Awakening DX 202
+requires:
+  version: 0.6.4
+
+Links Awakening DX:
+  progression_balancing: normal
+  plando_items: []
+  accessibility: full
+  gfxmod: 'false'
+  logic: normal
+
+  goal: seashells
+  instrument_count: 8
+
+  shuffle_instruments: original_dungeon
+  shuffle_nightmare_keys: world
+  shuffle_small_keys: world
+  shuffle_maps: original_dungeon
+  shuffle_compasses: original_dungeon
+  shuffle_stone_beaks: original_dungeon
+
+  warps: improved
+  tradequest: 'true'
+  rooster: 'true'
+  tarins_gift: local_progression
+  overworld: normal
+  trendy_game: easy
+  in_game_hints: 'true'
+  nag_messages: 'false'
+  stabilize_item_pool: 'false'
+  quickswap: none
+  hard_mode: none
+  boots_controls: bracelet
+
+  experimental_dungeon_shuffle: 'false'
+  experimental_entrance_shuffle: simple
+
+  link_palette: normal
+  palette: normal
+  text_shuffle: 'false'
+  foreign_item_icons: guess_by_name
+  ap_title_screen: 'true'
+  music: vanilla
+  music_change_condition: always
+  low_hp_beep: slow
+  text_mode: fast
+  no_flash: 'true'
+
+  local_items: []
+  stealing: out_of_logic
+
+  non_local_items: []
+  start_inventory: {}
+  start_inventory_from_pool: {}
+  start_hints: []
+  start_location_hints: []
+  exclude_locations: []
+  priority_locations: []
+  item_links: []
