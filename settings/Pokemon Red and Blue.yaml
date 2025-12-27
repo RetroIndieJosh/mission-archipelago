@@ -67,7 +67,7 @@ Pokemon Red and Blue:
     # Maximum value is 8
     # Default is 7
     0: 1
-    random-range-high-1-7: 2
+    random-range-high-1-7: 4
 
   route_22_gate_condition:
     # Number of badges required to pass through the Route 22 Gate
@@ -77,7 +77,7 @@ Pokemon Red and Blue:
     # Maximum value is 7
     # Default is 7
     0: 1
-    random-range-high-1-7: 2
+    random-range-high-1-7: 4
 
   viridian_gym_condition:
     # Number of badges required to enter Viridian Gym.
@@ -87,7 +87,7 @@ Pokemon Red and Blue:
     # Maximum value is 7
     # Default is 7
     0: 1
-    random-range-high-1-7: 2
+    random-range-high-1-7: 4
 
   cerulean_cave_badges_condition:
     # Number of badges needed to access the Cerulean Cave entrance in addition to the required Key Items.
