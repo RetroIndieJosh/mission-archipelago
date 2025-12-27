@@ -2,7 +2,7 @@ name: Player-{player}
 
 description: RetroIndieJosh - Big Async generator yaml
 requires:
-  version: 0.6.4
+  version: 0.6.5
 
 # set total-games for weights mode; otherwise numbers are count of games
 # count - generate the exact number of games given

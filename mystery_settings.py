@@ -66,7 +66,7 @@ class MysterySettings(dict):
             "name": info["name"],
             "description": info["description"],
             "requires": info["requires"],
-            game_key: options,
+            **options,
         }
 
     def __str__(self) -> str:
