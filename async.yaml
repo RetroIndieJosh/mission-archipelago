@@ -31,64 +31,28 @@ seed: 0
 # the number of yaml/nes files in this directory must EXACTLY match the number
 # of games generated, so if you're using total-games this only works if seed is
 # set and you dry run to see how many you need
-FFR: "C:\\Games\\Randomizers\\Final Fantasy Randomizer\\Mission Archipelago"
+#FFR: "C:\\Games\\Randomizers\\Final Fantasy Randomizer\\Mission Archipelago"
 
 game:
-  A Link to the Past: 1
-  Celeste (Open World): 1
-  ChecksFinder: 1
-  ChecksMate: 1
-  DOOM 1993: 1
   DOOM II: 1
-  Donkey Kong Country: 3
+  Donkey Kong Country: 4 # 1J 2L 1T
   Final Fantasy IV Free Enterprise: 1
-  Final Fantasy: 1
-  Kirby 64 - The Crystal Shards: 1
-  Links Awakening DX: 1
-  Mario Kart 64: 3
-  Mega Man 2: 1
-  Mega Man 3: 1
-  Mega Man X2: 2
+  Kirby Super Star: 4 # 3L 1T
+  Mario Kart 64: 2 # 2L
+  Mega Man X2: 3 # 1 each
   Mega Man X: 1
   Metroid Fusion: 1
   Metroid Prime: 1
-  Metroid Zero Mission: 1
-  Ocarina of Time: 5
+  Ocarina of Time: 4 # 3L 1T
+  Paint: 2 # 1L 1J
   Pokemon Crystal: 1
-  Pokemon Red and Blue: 1
+  Pokemon Red and Blue: 2 # 1J 1T
   Quake 1: 1
   SMZ3: 1
   Sonic Adventure 2 Battle: 1
   Sonic the Hedgehog 1: 1
-  Star Wars Episode I Racer: 1
   Super Mario 64: 1
   Super Mario Land 2: 1
-  Super Mario World: 1
-  Super Metroid: 1
+  Super Mario World: 2 # 1J 1T
   Symphony of the Night: 1
-  Tetris Attack: 1
-  The Messenger: 2
-  Yacht Dice: 1
-
-  # rank 6+
-  Kirby Super Star: 5
-  Paint: 3
-
-  # saving for later / skipping this round
-  Actraiser: 0
-  Bumper Stickers: 0
-  Castlevania - Circle of the Moon: 0
-  Donkey Kong Country 2: 0
-  Donkey Kong Country 3: 0
-  Final Fantasy Mystic Quest: 0
-  Golden Sun The Lost Age: 0
-  Heretic: 0
-  Majora's Mask Recompiled: 0
-  MegaMan Battle Network 3: 0
-  Ocarina of Time but it's just Master Quest Water Temple: 0
-  Slay the Spire: 0
-  Stardew Valley: 0
-  Subnautica: 0
-  The Legend of Zelda: 0
-  The Wind Waker: 0
-  VVVVVV: 0
+  The Messenger: 2 # 1L 1J
