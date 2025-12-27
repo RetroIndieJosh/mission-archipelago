@@ -224,7 +224,7 @@ Final Fantasy IV Free Enterprise:
     # Minimum value is 1
     # Maximum value is 5
     random-range-high-1-4: 1
-    5: 4
+    5: 8
 
   CharactersPermajoin:
     # If enabled, characters may not be dismissed from the party.
