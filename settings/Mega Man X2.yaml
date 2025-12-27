@@ -206,7 +206,7 @@ Mega Man X2:
     # Armor Upgrades: Consider upgrades to get access to the lab.
     # Heart Tanks: Consider heart tanks to get access to the lab.
     # Sub Tanks: Consider sub tanks to get access to the lab.
-    ['Medals', 'Weapons', 'Armor Upgrades', 'Heart Tanks', 'Sub Tanks']
+    []
 
   base_medal_count:
     # How many Maverick Medals are required to access X-Hunter's Stage.
