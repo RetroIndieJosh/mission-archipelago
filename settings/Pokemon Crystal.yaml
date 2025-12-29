@@ -313,9 +313,9 @@ Pokemon Crystal:
     # Vanilla: Does not randomize gym badges
     # Shuffle: Randomizes gym badges between gym leaders
     # Completely Random: Randomizes badges with all other items
-    vanilla: 1
+    vanilla: 4
     shuffle: 4
-    completely_random: 8
+    completely_random: 1
 
   randomize_pokegear:
     # Shuffles the Pokegear and cards into the pool
