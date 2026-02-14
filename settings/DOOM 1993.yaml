@@ -246,6 +246,14 @@ DOOM 1993:
           - "Tower of Babel (E2M8)"
           - "Dis (E3M8)"
 
+  # force disable Episode 4 if difficulty is medium
+  - option_category: DOOM 1993
+    option_name: difficulty
+    option_result: medium
+    options:
+      DOOM 1993:
+        episode4: false
+
   # force disable Episode 4 if difficulty is hard
   - option_category: DOOM 1993
     option_name: difficulty
